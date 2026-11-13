@@ -5,4 +5,6 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: './',
   plugins: [react()],
+  // No Windows o watcher às vezes perde gravações seguidas; polling evita tela velha.
+  server: { watch: { usePolling: true, interval: 200 } },
 });

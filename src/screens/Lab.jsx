@@ -1,4 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+function useMedia(q) {
+  const [on, setOn] = useState(() => window.matchMedia(q).matches);
+  useEffect(() => {
+    const m = window.matchMedia(q), f = () => setOn(m.matches);
+    m.addEventListener('change', f);
+    return () => m.removeEventListener('change', f);
+  }, [q]);
+  return on;
+}
 import { elements, cats } from '../data/nucleo.js';
 import { col, el, findMatch, reactorStatus, sub, usageText } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
@@ -12,6 +22,8 @@ export default function Lab({ game }) {
   const [hovered, setHovered] = useState('C');
   const [filterCat, setFilterCat] = useState(null);
   const [dragOver, setDragOver] = useState(false);
+  const small = useMedia('(max-width: 640px)');
+  const atomScale = small ? 0.5 : ATOM_SCALE;
 
   const add = (sym, d = 1) => { addAtom(sym, d); setHovered(sym); };
   const zoneKeys = Object.keys(st.zone);
@@ -42,7 +54,7 @@ export default function Lab({ game }) {
               const e = el(sym), cat = cats[e.cat];
               return (
                 <div className="zone-atom" key={sym}>
-                  <Atom3D size={Math.max(44, Math.round(e.rad * ATOM_SCALE))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
+                  <Atom3D size={Math.max(44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{sym} ×{st.zone[sym]}</span>
                   <div className="steppers">
                     <button className="btn-step" onClick={() => add(sym, -1)} aria-label={`Remover um átomo de ${e.name}`}>−</button>

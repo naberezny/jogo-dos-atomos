@@ -46,6 +46,15 @@ export default function App() {
         </div>
       </aside>
 
+      <div style={{ minWidth: 0 }}>
+      <header className="mobile-top">
+        <div className="brand"><span className="brand-mark" aria-hidden="true" /><span className="brand-name">NÚCLEO</span></div>
+        <div className="lvl">
+          <span className="display" style={{ fontWeight: 600, color: 'var(--fg)' }}>Nível {P.level}</span>
+          <div className="bar" aria-label={`${xpIn} de ${XP_PER_LEVEL} XP`}><div style={{ width: (xpIn / XP_PER_LEVEL) * 100 + '%' }} /></div>
+          <span className="mono">{P.disc.length}/{substances.length}</span>
+        </div>
+      </header>
       <main className="main">
         {st.screen === 'home' && <Home P={P} go={go} />}
         {st.screen === 'lab' && <Lab game={game} />}
@@ -53,6 +62,7 @@ export default function App() {
         {st.screen === 'missions' && <Missions P={P} />}
         {st.screen === 'profile' && <Profile game={game} />}
       </main>
+      </div>
 
       {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => set({ result: null, screen: 'coll', collFilter: 'Todas' })} />}
     </div>

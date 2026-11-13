@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { bySymbolFormula, col, el, geom3d, molarMass, structure, subXP } from '../game/logic.js';
 import Mol3D from '../components/Mol3D.jsx';
 
@@ -23,6 +23,12 @@ export default function ResultModal({ game, onClose, toColl }) {
   const { st } = game;
   const s = bySymbolFormula(st.result);
   const [view, setView] = useState('3D');
+  const wrap = useRef(null);
+  const cont = useRef(null);
+  useEffect(() => {
+    if (wrap.current) wrap.current.scrollTop = 0;
+    cont.current?.focus({ preventScroll: true });
+  }, [st.result]);
   useEffect(() => {
     const k = e => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', k);
@@ -31,7 +37,7 @@ export default function ResultModal({ game, onClose, toColl }) {
   if (!s) return null;
 
   return (
-    <div className="modal-wrap" onClick={onClose}>
+    <div className="modal-wrap" ref={wrap} onClick={onClose}>
       <div className="modal" role="dialog" aria-modal="true" aria-label={`${s.name} (${s.d})`} onClick={e => e.stopPropagation()}>
         <div className="modal-left">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
@@ -84,7 +90,7 @@ export default function ResultModal({ game, onClose, toColl }) {
             <div style={{ textWrap: 'pretty' }}>{s.fact}</div>
           </div>
           <div style={{ display: 'flex', gap: 10, marginTop: 'auto', flexWrap: 'wrap' }}>
-            <button className="btn btn-primary" onClick={onClose} autoFocus>Continuar</button>
+            <button className="btn btn-primary" onClick={onClose} ref={cont}>Continuar</button>
             <button className="btn btn-ghost" onClick={toColl}>Ver na coleção</button>
           </div>
         </div>
