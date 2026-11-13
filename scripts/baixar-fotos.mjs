@@ -61,7 +61,7 @@ export const ARQUIVO = {
   N2O: 'N2O_Medical_Tanks.jpg', SO2: '20180519_USGS_Leilani_Estates_Hawaii_Volcanic_EruptionDSC_0411_medium.jpg',
   TiO2: 'Titanium(IV)_oxide.jpg', H2S: 'Deposit_from_hydrogen_sulphide.jpg', HCN: 'Hydrogen_cyanide.jpg',
   KOH: 'Potassium_hydroxide.jpg', CaF2: 'Closeup_of_Fluorite.jpg', CaCl2: 'Calcium_chloride_CaCl2.jpg',
-  MgCl2: 'Magnesium_chloride.jpg', FeS2: 'Bullypyrite2.jpg', SO3: 'Schwefeltrioxid_Ampulle.jpg',
+  MgCl2: 'Magnesium_chloride.jpg', FeS2: 'Pyrite_from_Ampliación_a_Victoria_Mine,_Navajún,_La_Rioja,_Spain_2.jpg', SO3: 'Schwefeltrioxid_Ampulle.jpg',
   C2H2: 'Carbide_lamp_lit.jpg', CH2O: null,
   HNO3: 'Fuming_nitric_acid_40ml.jpg', CaH2O2: 'Calcium_hydroxide.jpg', MgH2O2: 'Brucite-169935.jpg',
   KNO3: 'Potassium_nitrate.jpg', KIO3: 'Jodičnan_draselný.JPG', CH2O3: 'SiphonSeltzerAnchorBWks001.jpg',
