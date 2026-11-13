@@ -13,8 +13,10 @@ substâncias reais, como água, sal de cozinha, metano, glicose e cafeína.
 3. Quando a proporção bate com uma substância do catálogo, aparece o botão **Fundir**.
 4. A nova substância entra na **Coleção**, rende XP e avança as **Missões** e as medalhas do **Perfil**.
 
-Toque em qualquer elemento para abrir a **ficha** dele, com a eletrosfera em 3D, as camadas K–Q, a
-distribuição eletrônica de Linus Pauling e o botão para adicioná-lo ao reator.
+Toque em qualquer elemento para abrir a **ficha** dele: eletrosfera em 3D com as camadas K–Q e, abaixo,
+as abas **Básico** (como foi descoberto, origem do nome e curiosidades) e **Avançado** (grupo, período,
+bloco, partículas, distribuição eletrônica, pontos de fusão e ebulição, densidade, eletronegatividade,
+energia de ionização, afinidade eletrônica e estados de oxidação), além do botão para adicioná-lo ao reator.
 
 ## Conteúdo
 
@@ -60,3 +62,9 @@ src/screens/      telas: início, laboratório, ficha do elemento, resultado, co
 As fotos em `public/fotos/` vêm da Wikimedia Commons. Autor, licença e página de origem de cada
 uma estão em `src/data/fotos.json` e aparecem no jogo abaixo da foto. Para baixar de novo ou trocar
 uma foto, edite `ARQUIVO` em `scripts/baixar-fotos.mjs` e rode `node scripts/baixar-fotos.mjs`.
+
+## Dados dos elementos
+
+Os dados físicos e químicos (`src/data/ciencia.json`) vêm da tabela periódica da
+[PubChem](https://pubchem.ncbi.nlm.nih.gov/periodic-table/) (NIH). A história, a origem do nome e as
+curiosidades (`src/data/historia/`) foram escritas para o jogo.
