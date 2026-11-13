@@ -118,13 +118,12 @@ h1, h2, h3 { margin: 0; }
 .cell .z { font-family: var(--mono); font-size: 9px; color: oklch(0.78 0.01 265); line-height: 1; }
 .cell .s { font-family: var(--display); font-size: clamp(11px, 1.25vw, 18px); font-weight: 600; line-height: 1; text-align: center; }
 .cell .n { font-size: 8px; line-height: 1.1; color: oklch(0.76 0.01 265); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
-.cell .xray { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); z-index: 5; padding: 2px 7px; border-radius: 5px; border: 1px solid; background: var(--sunken); font-family: var(--mono); font-size: 9px; white-space: nowrap; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .15s; }
-.cell:hover .xray, .cell:focus-within .xray { opacity: 1; pointer-events: auto; }
 .series { border-radius: 5px; border: 1px dashed; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 9px; }
 
 /* ---------- Raio-X ---------- */
 .scrim { position: fixed; inset: 0; z-index: 39; background: oklch(0.1 0.02 265 / 0.4); }
 .drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 40; width: min(400px, 100vw); overflow: auto; border-left: 1px solid; background: var(--panel); box-shadow: -24px 0 60px oklch(0.08 0.02 265 / 0.6); display: flex; flex-direction: column; }
+.drawer-foot { position: sticky; bottom: 0; margin-top: auto; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; gap: 8px; }
 .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px 12px; }
 .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid oklch(0.32 0.025 265); background: transparent; font-size: 16px; cursor: pointer; }
 .atom-stage { height: 310px; border-radius: 12px; border: 1px solid var(--line); background: var(--sunken); display: flex; align-items: center; justify-content: center; }
@@ -222,6 +221,9 @@ h1, h2, h3 { margin: 0; }
   .atom-stage { height: 290px; }
 }
 
+@keyframes chegou { 0% { transform: scale(.4); opacity: 0; } 55% { transform: scale(1.12); opacity: 1; } 100% { transform: none; } }
+.zone-atom.just-added { animation: chegou .6s ease-out; }
+.zone-atom.just-added .mono { color: var(--accent) !important; }
 @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
 .modal, .drawer { animation: pop .25s ease-out; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

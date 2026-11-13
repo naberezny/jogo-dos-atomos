@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function useMedia(q) {
   const [on, setOn] = useState(() => window.matchMedia(q).matches);
@@ -25,7 +25,25 @@ export default function Lab({ game }) {
   const small = useMedia('(max-width: 640px)');
   const atomScale = small ? 0.5 : ATOM_SCALE;
 
+  const reactor = useRef(null);
+  const [flash, setFlash] = useState(null);
   const add = (sym, d = 1) => { addAtom(sym, d); setHovered(sym); };
+  const open = sym => { setHovered(sym); set({ drawer: sym }); };
+  // Botão da ficha: adiciona, fecha e, se o reator estiver fora da tela (celular), rola até ele.
+  const addFromDrawer = sym => {
+    add(sym);
+    set({ drawer: null });
+    setFlash({ sym, k: Date.now() });
+    requestAnimationFrame(() => {
+      const r = reactor.current?.getBoundingClientRect();
+      if (r && (r.top < 60 || r.bottom > window.innerHeight - 80)) reactor.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  };
+  useEffect(() => {
+    if (!flash) return;
+    const t = setTimeout(() => setFlash(null), 1200);
+    return () => clearTimeout(t);
+  }, [flash]);
   const zoneKeys = Object.keys(st.zone);
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
@@ -36,11 +54,12 @@ export default function Lab({ game }) {
     <section className="lab" aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div className="page-head">
         <div><div className="eyebrow">Laboratório</div><h2>Reator de fusão</h2></div>
-        <div style={{ fontSize: 13, color: 'var(--muted)' }}>Arraste ou toque nos elementos para adicioná-los</div>
+        <div style={{ fontSize: 13, color: 'var(--muted)' }}>Toque num elemento para ver a ficha e adicionar, ou arraste até o reator</div>
       </div>
 
       <div className="lab-top">
         <div
+          ref={reactor}
           className={`reactor${dragOver ? ' over' : ''}${st.fusing ? ' fusing' : ''}`}
           onDragOver={e => { e.preventDefault(); if (!dragOver) setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
@@ -53,7 +72,7 @@ export default function Lab({ game }) {
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
               return (
-                <div className="zone-atom" key={sym}>
+                <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym}>
                   <Atom3D size={Math.max(44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{sym} ×{st.zone[sym]}</span>
                   <div className="steppers">
@@ -92,7 +111,7 @@ export default function Lab({ game }) {
               <div>Número atômico {fe.z} · massa {fe.mass} u</div>
               <div>Raio ≈ {fe.rad} pm{fe.est ? ' (estimado)' : ''} · camadas {fe.shells.join(' · ')}</div>
               <div style={{ color: 'oklch(0.78 0.02 265)' }}>{usageText(fe.sym, st.discovered)}</div>
-              <button className="btn-small" style={{ alignSelf: 'flex-start', marginTop: 4 }} onClick={() => set({ drawer: fe.sym })}>Ver raio‑x de {fe.sym}</button>
+              <button className="btn-small" style={{ alignSelf: 'flex-start', marginTop: 4 }} onClick={() => set({ drawer: fe.sym })}>Ver ficha de {fe.sym}</button>
             </div>
           </div>
         </div>
@@ -122,11 +141,11 @@ export default function Lab({ game }) {
                   className="cell"
                   role="button"
                   tabIndex={0}
-                  aria-label={`${e.name}, ${e.z}. Adicionar ao reator`}
+                  aria-label={`${e.name}, ${e.z}. Ver ficha e adicionar ao reator`}
                   draggable
                   onDragStart={ev => { ev.dataTransfer.setData('text/plain', e.sym); ev.dataTransfer.effectAllowed = 'copy'; }}
-                  onClick={() => add(e.sym)}
-                  onKeyDown={ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); add(e.sym); } }}
+                  onClick={() => open(e.sym)}
+                  onKeyDown={ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(e.sym); } }}
                   onMouseEnter={() => setHovered(e.sym)}
                   onFocus={() => setHovered(e.sym)}
                   style={{
@@ -137,7 +156,6 @@ export default function Lab({ game }) {
                     outline: st.zone[e.sym] ? `1.5px solid ${col(e.cat)}` : undefined,
                   }}
                 >
-                  <button className="xray" tabIndex={-1} style={{ borderColor: col(e.cat), color: col(e.cat) }} onClick={ev => { ev.stopPropagation(); set({ drawer: e.sym }); }}>raio‑x</button>
                   <span className="z">{e.z}</span>
                   <span className="s" style={{ color: col(e.cat) }}>{e.sym}</span>
                   <span className="n">{e.name}</span>
@@ -150,7 +168,7 @@ export default function Lab({ game }) {
         </div>
       </div>
 
-      {st.drawer && <ElementDrawer sym={st.drawer} discovered={st.discovered} onClose={() => set({ drawer: null })} onAdd={() => add(st.drawer)} />}
+      {st.drawer && <ElementDrawer sym={st.drawer} discovered={st.discovered} onClose={() => set({ drawer: null })} onAdd={() => addFromDrawer(st.drawer)} inZone={st.zone[st.drawer] || 0} />}
     </section>
   );
 }

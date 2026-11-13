@@ -3,7 +3,7 @@ import { cats } from '../data/nucleo.js';
 import { col, el, electronInfo, shellInfo, SHELL_LETTERS, usageText } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
 
-export default function ElementDrawer({ sym, discovered, onClose, onAdd }) {
+export default function ElementDrawer({ sym, discovered, onClose, onAdd, inZone = 0 }) {
   const t = el(sym), tc = cats[t.cat];
   const [tab, setTab] = useState('Básico');
   const [view, setView] = useState('3D');
@@ -22,9 +22,9 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd }) {
   return (
     <>
       <div className="scrim" onClick={onClose} />
-      <aside className="drawer" role="dialog" aria-modal="true" aria-label={`Raio-x de ${t.name}`} style={{ borderColor: col(t.cat, 0.5) }}>
+      <aside className="drawer" role="dialog" aria-modal="true" aria-label={`Ficha de ${t.name}`} style={{ borderColor: col(t.cat, 0.5) }}>
         <div className="drawer-head">
-          <div className="eyebrow">Raio‑x do elemento</div>
+          <div className="eyebrow">Ficha do elemento</div>
           <button className="icon-btn" onClick={onClose} aria-label="Fechar">✕</button>
         </div>
         <div className="seg" style={{ margin: '0 20px' }}>
@@ -105,8 +105,9 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd }) {
           </div>
         )}
 
-        <div style={{ marginTop: 'auto', padding: 20, borderTop: '1px solid var(--line)' }}>
-          <button className="btn btn-primary" style={{ width: '100%' }} onClick={onAdd}>Adicionar ao reator</button>
+        <div className="drawer-foot">
+          {inZone > 0 && <div style={{ fontSize: 12.5, color: 'var(--muted)', textAlign: 'center' }}>Já há {inZone} {inZone > 1 ? 'átomos' : 'átomo'} de {t.sym} no reator</div>}
+          <button className="btn btn-primary" style={{ width: '100%' }} onClick={onAdd}>Adicionar {t.sym} ao reator</button>
         </div>
       </aside>
     </>
