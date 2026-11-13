@@ -32,6 +32,12 @@ export const MISSIONS = [
   { title: 'Química orgânica', desc: 'Crie 3 compostos que tenham carbono e hidrogênio.', target: 3, val: c => c.disc.filter(s => s.c.C && s.c.H).length, reward: 200 },
   { title: 'Arquiteto molecular', desc: 'Crie uma substância com 4 elementos diferentes.', target: 1, val: c => c.disc.filter(s => s.nEl >= 4).length, reward: 250 },
   { title: 'Explorador da tabela', desc: 'Coloque 15 elementos diferentes no reator.', target: 15, val: c => c.usedEls.length, reward: 150 },
+  { title: 'Halogênios em ação', desc: 'Descubra 8 substâncias com flúor, cloro, bromo ou iodo.', target: 8, val: c => c.disc.filter(s => s.c.F || s.c.Cl || s.c.Br || s.c.I).length, reward: 150 },
+  { title: 'Mineralogista', desc: 'Forme 6 minerais: calcário, quartzo, hematita, coríndon, magnetita, pirita, fluorita ou magnesita.', target: 6, val: c => c.disc.filter(s => ['CaCO3', 'SiO2', 'Fe2O3', 'Al2O3', 'Fe3O4', 'FeS2', 'CaF2', 'MgCO3'].includes(s.f)).length, reward: 200 },
+  { title: 'Metais de transição', desc: 'Descubra 4 substâncias com ferro, zinco, titânio, cobre, prata ou manganês.', target: 4, val: c => c.disc.filter(s => Object.keys(s.c).some(k => el(k).cat === 'tm')).length, reward: 200 },
+  { title: 'Farmácia', desc: 'Crie aspirina, paracetamol, vitamina C e leite de magnésia.', target: 4, val: c => c.disc.filter(s => ['C9H8O4', 'C8H9NO2', 'C6H8O6', 'MgH2O2'].includes(s.f)).length, reward: 250 },
+  { title: 'Química doce', desc: 'Crie glicose, sacarose, sacarina e aspartame.', target: 4, val: c => c.disc.filter(s => ['C6H12O6', 'C12H22O11', 'C7H5NO3S', 'C14H18N2O5'].includes(s.f)).length, reward: 250 },
+  { title: 'Gigantes moleculares', desc: 'Crie 3 substâncias com 20 átomos ou mais.', target: 3, val: c => c.disc.filter(s => s.atoms >= 20).length, reward: 300 },
   { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 },
 ];
 
@@ -59,6 +65,8 @@ export function medals(st, P) {
     ['10', 'Colecionador', 'Tenha 10 substâncias na coleção.', P.disc.length >= 10, 65],
     ['N5', 'Veterano', 'Alcance o nível 5.', P.level >= 5, 28],
     ['He', 'Curioso nobre', 'Tente fundir um gás nobre.', st.nobleTried, 340],
+    ['50', 'Meio caminho', 'Tenha 50 substâncias na coleção.', P.disc.length >= 50, 250],
+    ['Rx', 'Farmacêutico', 'Conclua a missão Farmácia.', P.missions.some(m => m.title === 'Farmácia' && m.done), 170],
     ['∞', 'Mente completa', 'Descubra todas as substâncias.', P.disc.length >= substances.length, 105],
   ].map(([glyph, title, desc, on, h]) => ({ glyph, title, desc, on, h }));
 }
