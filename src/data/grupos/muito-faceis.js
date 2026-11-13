@@ -1,0 +1,30 @@
+// Substâncias de 2 a 4 átomos.
+import { S } from '../substancia.js';
+
+export const MUITO_FACEIS = [
+  S('Cl2', 'Gás cloro', 'gás', 'Tratamento de água e desinfecção de piscinas.', 'Já foi usado como arma na Primeira Guerra Mundial; hoje torna potável a água de bilhões de pessoas.'),
+  S('I2', 'Iodo', 'sólido', 'Tintura de iodo e outros antissépticos.', 'Quando aquecido, solta um vapor violeta. O nome vem do grego iodes, "cor de violeta".'),
+  S('Br2', 'Bromo', 'líquido', 'Retardantes de chama e antigos filmes fotográficos.', 'É o único não metal líquido à temperatura ambiente. O nome vem do grego bromos, "mau cheiro".'),
+  S('P4', 'Fósforo branco', 'sólido', 'Origem do fósforo usado em fertilizantes e na indústria.', 'Brilha no escuro ao reagir devagar com o oxigênio. Foi descoberto em 1669 por um alquimista que fervia urina.'),
+  S('NO', 'Óxido nítrico', 'gás', 'Produzido pelo corpo humano e pelos motores a combustão.', 'No corpo, é um mensageiro que relaxa os vasos sanguíneos. A descoberta rendeu o Nobel de Medicina de 1998.'),
+  S('MgO', 'Óxido de magnésio', 'sólido', 'Antiácidos e tijolos de fornos industriais.', 'Forma-se quando o magnésio queima, com uma luz branca tão forte que era usada nos flashes das câmeras antigas.'),
+  S('ZnO', 'Óxido de zinco', 'sólido', 'Pomadas contra assaduras e protetores solares.', 'Bloqueia os raios UVA e UVB, por isso é o filtro dos protetores solares minerais.'),
+  S('HF', 'Fluoreto de hidrogênio', 'gás', 'Indústria do vidro e de chips eletrônicos.', 'É um dos poucos compostos que corroem o vidro, por isso é guardado em frascos de plástico.'),
+  S('NaF', 'Fluoreto de sódio', 'sólido', 'Cremes dentais e água fluoretada.', 'O flúor ajuda o esmalte dos dentes a resistir aos ácidos que causam cáries.'),
+  S('KI', 'Iodeto de potássio', 'sólido', 'Pastilhas de proteção contra radiação e sal iodado.', 'Em acidentes nucleares, enche a tireoide de iodo comum e impede que ela absorva iodo radioativo.'),
+  S('AgBr', 'Brometo de prata', 'sólido', 'Filmes fotográficos antigos.', 'Escurece quando a luz o atinge. É o princípio da fotografia em filme.'),
+  S('NO2', 'Dióxido de nitrogênio', 'gás', 'Escapamento de carros e chaminés de fábricas.', 'É o gás marrom-avermelhado que dá cor à névoa de poluição das grandes cidades.'),
+  S('N2O', 'Óxido nitroso', 'gás', 'Anestesia no dentista e sprays de chantilly.', 'É chamado de gás hilariante porque pode causar euforia e risadas quando inalado.'),
+  S('SO2', 'Dióxido de enxofre', 'gás', 'Vulcões, queima de carvão e conservante de vinhos.', 'Na atmosfera, vira ácido sulfúrico e contribui para a chuva ácida.'),
+  S('TiO2', 'Dióxido de titânio', 'sólido', 'Protetor solar, tintas brancas e creme dental.', 'É o pigmento branco mais usado do mundo, presente em tintas, papéis e até em balas.'),
+  S('H2S', 'Sulfeto de hidrogênio', 'gás', 'Ovos podres, esgotos e fontes termais.', 'O nariz humano o percebe em quantidades baixíssimas, mas ele é tóxico em concentrações maiores.'),
+  S('HCN', 'Cianeto de hidrogênio', 'líquido', 'Indústria de plásticos como o acrílico e o náilon.', 'É extremamente tóxico. Algumas pessoas sentem nele um cheiro de amêndoas amargas; outras não sentem nada.'),
+  S('KOH', 'Hidróxido de potássio', 'sólido', 'Sabão líquido e pilhas alcalinas.', 'Sabões feitos com potássio são mais moles que os de sódio, por isso viram sabão líquido.'),
+  S('CaF2', 'Fluoreto de cálcio', 'sólido', 'Mineral fluorita; lentes de câmeras e telescópios.', 'A palavra "fluorescência" vem da fluorita, que brilha sob luz ultravioleta.'),
+  S('CaCl2', 'Cloreto de cálcio', 'sólido', 'Antimofo e sachês que absorvem umidade.', 'Absorve tanta água do ar que acaba se dissolvendo nela e vira o líquido do fundo do pote de antimofo.'),
+  S('MgCl2', 'Cloreto de magnésio', 'sólido', 'Suplementos e coagulante para fazer tofu.', 'No Japão é extraído da água do mar com o nome de nigari e usado para coalhar o leite de soja.'),
+  S('FeS2', 'Pirita', 'sólido', 'Mineral comum em rochas e minas.', 'É chamada de "ouro de tolo" porque seu brilho dourado enganava garimpeiros.'),
+  S('SO3', 'Trióxido de enxofre', 'líquido', 'Fabricação de ácido sulfúrico.', 'Reage violentamente com água formando ácido sulfúrico; é um dos causadores da chuva ácida.'),
+  S('C2H2', 'Acetileno', 'gás', 'Maçaricos de solda e corte de metais.', 'Queimado com oxigênio, produz uma chama de mais de 3.000 °C, capaz de cortar aço.'),
+  S('CH2O', 'Formaldeído', 'gás', 'Formol, resinas e conservação de peças anatômicas.', 'O formol vendido em farmácias é uma solução de cerca de 37% de formaldeído em água.'),
+];
