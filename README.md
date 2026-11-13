@@ -37,6 +37,14 @@ npm run build
 
 O build sai em `dist/`. A cada push na `main`, o GitHub Actions publica o jogo no GitHub Pages.
 
+### Docker
+
+```bash
+docker compose up -d --build
+```
+
+Sobe o jogo com nginx na porta 8096 (mude com `PORTA=9000 docker compose up -d --build`).
+
 ## Estrutura
 
 ```

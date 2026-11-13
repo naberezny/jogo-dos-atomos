@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    image: jogo-dos-atomos:latest
+    restart: unless-stopped
+    ports:
+      - "${PORTA:-8096}:80"
