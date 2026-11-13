@@ -8,7 +8,7 @@ substâncias reais, como água, sal de cozinha, metano, glicose e cafeína.
 ## Como jogar
 
 1. No **Laboratório**, toque ou arraste um elemento da tabela periódica para o reator.
-2. Ajuste a quantidade de cada átomo com `−` e `+`. O painel ao lado diz se falta algum átomo
+2. Ajuste a quantidade de cada átomo com `−`, `+` e `+5`. O painel ao lado diz se falta algum átomo
    (e você pode tocar na dica para adicioná-lo).
 3. Quando a proporção bate com uma substância do catálogo, aparece o botão **Fundir**.
 4. A nova substância entra na **Coleção**, rende XP e avança as **Missões** e as medalhas do **Perfil**.
@@ -19,9 +19,9 @@ distribuição eletrônica de Linus Pauling.
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
-- 26 substâncias, com estado físico, uso no dia a dia e curiosidade
+- 95 substâncias, de H₂O à capsaicina, com estado físico, uso no dia a dia e curiosidade
 - Molécula em 2D e em 3D (bolas e varetas)
-- 7 missões, 8 medalhas e níveis a cada 300 XP
+- 13 missões, 10 medalhas e níveis a cada 300 XP
 - Progresso salvo no navegador
 
 ## Desenvolvimento
