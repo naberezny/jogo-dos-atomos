@@ -10,7 +10,7 @@ function useMedia(q) {
   return on;
 }
 import { elements, cats } from '../data/nucleo.js';
-import { col, el, findMatch, reactorStatus, sub, usageText } from '../game/logic.js';
+import { col, el, findMatch, reactorStatus, sub } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
@@ -48,7 +48,6 @@ export default function Lab({ game }) {
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
-  const fe = el(hovered) || elements[0];
 
   return (
     <section className="lab" aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -100,18 +99,6 @@ export default function Lab({ game }) {
                 ))}
               </div>
             )}
-          </div>
-          <div className="card focus">
-            <div className="tile" style={{ borderColor: col(fe.cat, 0.5), background: col(fe.cat, 0.12) }}>
-              <div className="z">{fe.z}</div><div className="s" style={{ color: col(fe.cat) }}>{fe.sym}</div><div className="m">{fe.mass}</div>
-            </div>
-            <div className="facts">
-              <div className="name">{fe.name}</div>
-              <div style={{ color: col(fe.cat) }}>{cats[fe.cat].name}</div>
-              <div>Número atômico {fe.z} · massa {fe.mass} u</div>
-              <div>Raio ≈ {fe.rad} pm{fe.est ? ' (estimado)' : ''} · camadas {fe.shells.join(' · ')}</div>
-              <div style={{ color: 'oklch(0.78 0.02 265)' }}>{usageText(fe.sym, st.discovered)}</div>
-            </div>
           </div>
         </div>
       </div>
