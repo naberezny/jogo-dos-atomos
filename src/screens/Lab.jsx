@@ -111,7 +111,6 @@ export default function Lab({ game }) {
               <div>Número atômico {fe.z} · massa {fe.mass} u</div>
               <div>Raio ≈ {fe.rad} pm{fe.est ? ' (estimado)' : ''} · camadas {fe.shells.join(' · ')}</div>
               <div style={{ color: 'oklch(0.78 0.02 265)' }}>{usageText(fe.sym, st.discovered)}</div>
-              <button className="btn-small" style={{ alignSelf: 'flex-start', marginTop: 4 }} onClick={() => set({ drawer: fe.sym })}>Ver ficha de {fe.sym}</button>
             </div>
           </div>
         </div>
