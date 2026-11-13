@@ -142,6 +142,24 @@ h1, h2, h3 { margin: 0; }
 .kv span:last-child { font-size: 14px; font-weight: 500; }
 .fact { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 10px; background: oklch(0.23 0.03 195 / 0.5); font-size: 15px; line-height: 1.5; }
 
+/* ---------- Coleção, missões, perfil ---------- */
+.coll-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.sub-card { text-align: left; padding: 18px; border-radius: 12px; border: 1px solid oklch(0.25 0.02 265); background: oklch(0.17 0.02 265); display: flex; flex-direction: column; gap: 10px; min-height: 150px; font: inherit; color: var(--fg); }
+.sub-card:disabled { cursor: default; }
+.sub-card.known { border-color: oklch(0.32 0.03 265); background: oklch(0.2 0.022 265); cursor: pointer; transition: border-color .2s, transform .15s; }
+.sub-card.known:hover { border-color: oklch(0.82 0.13 195 / 0.5); transform: translateY(-2px); }
+.sub-card .formula { font-family: var(--display); font-size: 26px; font-weight: 600; color: oklch(0.5 0.02 265); }
+.sub-card.known .formula { color: var(--accent); }
+.pill { font-size: 11px; padding: 3px 8px; border-radius: 5px; background: oklch(0.26 0.025 265); color: oklch(0.82 0.02 265); }
+.missions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.mission { display: grid; grid-template-columns: minmax(0, 1fr) 200px 110px; align-items: center; gap: 24px; padding: 20px 22px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); }
+.reward { justify-self: end; padding: 6px 12px; border-radius: 7px; border: 1px solid oklch(0.82 0.14 65 / 0.4); color: oklch(0.85 0.14 65); font-size: 12px; white-space: nowrap; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.medals { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.medal { padding: 20px; border-radius: 12px; border: 1px solid; background: var(--panel); display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.medal .glyph { width: 64px; height: 64px; border-radius: 50%; border: 2px solid; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
 .modal, .drawer { animation: pop .25s ease-out; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }

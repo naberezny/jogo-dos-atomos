@@ -5,7 +5,9 @@ import { substances } from './data/nucleo.js';
 import Home from './screens/Home.jsx';
 import Lab from './screens/Lab.jsx';
 import ResultModal from './screens/ResultModal.jsx';
-import Placeholder from './screens/Placeholder.jsx';
+import Collection from './screens/Collection.jsx';
+import Missions from './screens/Missions.jsx';
+import Profile from './screens/Profile.jsx';
 
 const NAV = [
   ['home', 'Início', '00'],
@@ -47,9 +49,9 @@ export default function App() {
       <main className="main">
         {st.screen === 'home' && <Home P={P} go={go} />}
         {st.screen === 'lab' && <Lab game={game} />}
-        {st.screen === 'coll' && <Placeholder title="Coleção" />}
-        {st.screen === 'missions' && <Placeholder title="Missões" />}
-        {st.screen === 'profile' && <Placeholder title="Perfil" />}
+        {st.screen === 'coll' && <Collection game={game} />}
+        {st.screen === 'missions' && <Missions P={P} />}
+        {st.screen === 'profile' && <Profile game={game} />}
       </main>
 
       {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => set({ result: null, screen: 'coll', collFilter: 'Todas' })} />}
