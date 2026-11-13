@@ -7,14 +7,14 @@ substâncias reais, como água, sal de cozinha, metano, glicose e cafeína.
 
 ## Como jogar
 
-1. No **Laboratório**, toque ou arraste um elemento da tabela periódica para o reator.
+1. No **Laboratório**, toque num elemento da tabela periódica para abrir a ficha e adicioná-lo, ou arraste-o direto para o reator.
 2. Ajuste a quantidade de cada átomo com `−`, `+` e `+5`. O painel ao lado diz se falta algum átomo
    (e você pode tocar na dica para adicioná-lo).
 3. Quando a proporção bate com uma substância do catálogo, aparece o botão **Fundir**.
 4. A nova substância entra na **Coleção**, rende XP e avança as **Missões** e as medalhas do **Perfil**.
 
-Use o **raio‑x** de qualquer elemento para ver a eletrosfera em 3D, as camadas K–Q e a
-distribuição eletrônica de Linus Pauling.
+Toque em qualquer elemento para abrir a **ficha** dele, com a eletrosfera em 3D, as camadas K–Q, a
+distribuição eletrônica de Linus Pauling e o botão para adicioná-lo ao reator.
 
 ## Conteúdo
 
@@ -52,7 +52,7 @@ prototipo/        protótipo original feito no Claude Design (referência)
 src/data/         elementos e substâncias
 src/game/         regras do jogo (combinação, XP, missões) e estado salvo
 src/components/   átomo e molécula animados em canvas
-src/screens/      telas: início, laboratório, raio-x, resultado, coleção, missões, perfil
+src/screens/      telas: início, laboratório, ficha do elemento, resultado, coleção, missões, perfil
 ```
 
 ## Créditos das fotos
