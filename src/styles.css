@@ -88,6 +88,7 @@ h1, h2, h3 { margin: 0; }
 .fusing .zone { transform: scale(0.82); }
 .zone-atom { display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .zone-atom .steppers { display: flex; gap: 6px; }
+.btn-step.wide { width: auto; padding: 0 8px; font-family: var(--mono); font-size: 12px; }
 .zone-formula { font-family: var(--display); font-size: 22px; letter-spacing: 0.04em; min-height: 28px; }
 
 .status { padding: 18px 20px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; gap: 10px; transition: border-color .25s; }

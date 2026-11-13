@@ -59,6 +59,7 @@ export default function Lab({ game }) {
                   <div className="steppers">
                     <button className="btn-step" onClick={() => add(sym, -1)} aria-label={`Remover um átomo de ${e.name}`}>−</button>
                     <button className="btn-step" onClick={() => add(sym, 1)} aria-label={`Adicionar um átomo de ${e.name}`}>+</button>
+                    <button className="btn-step wide" onClick={() => add(sym, 5)} aria-label={`Adicionar cinco átomos de ${e.name}`}>+5</button>
                   </div>
                 </div>
               );

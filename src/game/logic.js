@@ -131,7 +131,13 @@ export function structure(s) {
   const nodes = [], bonds = [];
   const mk = (sym, x, y) => { nodes.push({ sym, x, y, r: sym === 'H' ? 15 : 22, cat: el(sym).cat }); return nodes.length - 1; };
   const bond = (a, b) => bonds.push([a, b]);
-  if (Object.keys(s.c).length === 1) {
+  if (Object.keys(s.c).length === 1 && list.length > 3) {
+    // P₄, S₈: anel de átomos iguais.
+    const n = list.length, R = n > 5 ? 95 : 70;
+    const ids = list.map((sym, i) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return mk(sym, cx + R * Math.cos(a), cy + R * Math.sin(a)); });
+    ids.forEach((id, i) => bond(id, ids[(i + 1) % n]));
+    if (n === 4) { bond(ids[0], ids[2]); bond(ids[1], ids[3]); }
+  } else if (Object.keys(s.c).length === 1) {
     const n = list.length, gap = 70;
     const ids = list.map((sym, i) => mk(sym, cx + (i - (n - 1) / 2) * gap, cy + (n === 3 && i === 1 ? -30 : 0)));
     for (let i = 1; i < ids.length; i++) bond(ids[i - 1], ids[i]);
