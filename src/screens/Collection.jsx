@@ -1,4 +1,5 @@
 import { substances } from '../data/nucleo.js';
+import { fotoUrl, temFoto } from '../components/Foto.jsx';
 
 const STATE = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 const FILTERS = {
@@ -41,6 +42,7 @@ export default function Collection({ game }) {
                 <span className="mono" style={{ fontSize: 11, color: 'oklch(0.68 0.02 265)' }}>#{String(i + 1).padStart(2, '0')}</span>
                 <span className="pill">{STATE[s.state]}</span>
               </div>
+              {k && temFoto(s.f) && <img className="thumb" src={fotoUrl(s.f)} alt="" loading="lazy" decoding="async" />}
               <div className="formula">{k ? s.d : '? ? ?'}</div>
               <div style={{ fontSize: 15, fontWeight: 500, marginTop: 'auto' }}>{k ? s.name : 'Não descoberta'}</div>
               <div style={{ fontSize: 12, color: 'oklch(0.68 0.02 265)' }}>{k ? s.where : `${s.atoms} átomos · ${s.nEl} elemento${s.nEl > 1 ? 's' : ''}`}</div>

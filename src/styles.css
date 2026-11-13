@@ -151,6 +151,11 @@ h1, h2, h3 { margin: 0; }
 .sub-card.known:hover { border-color: oklch(0.82 0.13 195 / 0.5); transform: translateY(-2px); }
 .sub-card .formula { font-family: var(--display); font-size: 26px; font-weight: 600; color: oklch(0.5 0.02 265); }
 .sub-card.known .formula { color: var(--accent); }
+.sub-card .thumb { width: calc(100% + 36px); margin: 0 -18px; height: 110px; object-fit: cover; display: block; background: var(--sunken); }
+.foto { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.foto img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 10px; background: var(--sunken); display: block; }
+.foto figcaption { font-size: 11px; line-height: 1.4; color: oklch(0.66 0.02 265); }
+.foto figcaption a { color: var(--accent); }
 .pill { font-size: 11px; padding: 3px 8px; border-radius: 5px; background: oklch(0.26 0.025 265); color: oklch(0.82 0.02 265); }
 .missions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .mission { display: grid; grid-template-columns: minmax(0, 1fr) 200px 110px; align-items: center; gap: 24px; padding: 20px 22px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); }
@@ -206,6 +211,7 @@ h1, h2, h3 { margin: 0; }
   .filters { overflow-x: auto; max-width: 100%; }
   .coll-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .sub-card { padding: 14px; min-height: 130px; }
+  .sub-card .thumb { width: calc(100% + 28px); margin: 0 -14px; height: 90px; }
   .sub-card .formula { font-size: 21px; }
   .modal-left, .modal-right { padding: 18px; }
   .modal-right .display[style*='52px'] { font-size: 40px !important; }

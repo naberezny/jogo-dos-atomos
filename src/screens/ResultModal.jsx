@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { bySymbolFormula, col, el, geom3d, molarMass, structure, subXP } from '../game/logic.js';
 import Mol3D from '../components/Mol3D.jsx';
+import Foto, { temFoto } from '../components/Foto.jsx';
 
 const STATE = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 
@@ -22,7 +23,11 @@ function Mol2D({ s }) {
 export default function ResultModal({ game, onClose, toColl }) {
   const { st } = game;
   const s = bySymbolFormula(st.result);
-  const [view, setView] = useState('3D');
+  const foto = s && temFoto(s.f);
+  const [escolha, setView] = useState(null);
+  const view = escolha === 'Foto' && !foto ? '3D' : escolha || (foto ? 'Foto' : '3D');
+  const views = foto ? ['Foto', '2D', '3D'] : ['2D', '3D'];
+  useEffect(() => setView(null), [st.result]);
   const wrap = useRef(null);
   const cont = useRef(null);
   useEffect(() => {
@@ -42,9 +47,11 @@ export default function ResultModal({ game, onClose, toColl }) {
         <div className="modal-left">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
             <div className="eyebrow">Estrutura</div>
-            <div className="seg accent">{['2D', '3D'].map(l => <button key={l} aria-pressed={view === l} onClick={() => setView(l)}>{l}</button>)}</div>
+            <div className="seg accent">{views.map(l => <button key={l} aria-pressed={view === l} onClick={() => setView(l)}>{l}</button>)}</div>
           </div>
-          {view === '2D' ? (
+          {view === 'Foto' ? (
+            <Foto s={s} />
+          ) : view === '2D' ? (
             <>
               <Mol2D s={s} />
               <div style={{ fontSize: 12, color: 'oklch(0.66 0.02 265)', textAlign: 'center' }}>Representação simplificada das ligações</div>

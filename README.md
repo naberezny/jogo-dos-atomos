@@ -20,7 +20,7 @@ distribuição eletrônica de Linus Pauling.
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
 - 95 substâncias, de H₂O à capsaicina, com estado físico, uso no dia a dia e curiosidade
-- Molécula em 2D e em 3D (bolas e varetas)
+- Foto real de 83 substâncias (Wikimedia Commons, com autor e licença) e molécula em 2D e em 3D
 - 13 missões, 10 medalhas e níveis a cada 300 XP
 - Progresso salvo no navegador
 
@@ -54,3 +54,9 @@ src/game/         regras do jogo (combinação, XP, missões) e estado salvo
 src/components/   átomo e molécula animados em canvas
 src/screens/      telas: início, laboratório, raio-x, resultado, coleção, missões, perfil
 ```
+
+## Créditos das fotos
+
+As fotos em `public/fotos/` vêm da Wikimedia Commons. Autor, licença e página de origem de cada
+uma estão em `src/data/fotos.json` e aparecem no jogo abaixo da foto. Para baixar de novo ou trocar
+uma foto, edite `ARQUIVO` em `scripts/baixar-fotos.mjs` e rode `node scripts/baixar-fotos.mjs`.
