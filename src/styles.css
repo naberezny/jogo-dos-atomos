@@ -1,0 +1,7 @@
+:root {
+  --bg: oklch(0.15 0.02 265);
+  --fg: oklch(0.95 0.01 265);
+}
+html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: 'IBM Plex Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+button { font-family: inherit; }
