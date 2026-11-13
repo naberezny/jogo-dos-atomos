@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./nucleo-data.js"></script>
+<style>
+html,body{margin:0;background:oklch(0.15 0.02 265);color:oklch(0.95 0.01 265);font-family:'IBM Plex Sans',sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:oklch(0.82 0.13 195)}a:hover{color:oklch(0.9 0.1 195)}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh;background:oklch(0.15 0.02 265)">
+
+  <aside style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:28px;padding:28px 18px;border-right:1px solid oklch(0.26 0.025 265);background:oklch(0.17 0.022 265)">
+    <div style="display:flex;align-items:center;gap:10px;padding:0 8px">
+      <div style="width:28px;height:28px;border-radius:50%;border:2px solid oklch(0.82 0.13 195);display:flex;align-items:center;justify-content:center">
+        <div style="width:8px;height:8px;border-radius:50%;background:oklch(0.82 0.13 195)"></div>
+      </div>
+      <div style="font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:22px;letter-spacing:0.12em">NÚCLEO</div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+        <button onClick="{{ n.go }}" style="display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:8px;border:1px solid {{ n.border }};background:{{ n.bg }};color:{{ n.color }};font-size:14px;font-weight:500;text-align:left;cursor:pointer">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;width:22px;opacity:0.7">{{ n.code }}</span>{{ n.label }}
+        </button>
+      </sc-for>
+    </nav>
+    <div style="margin-top:auto;padding:14px;border-radius:10px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.2 0.022 265);display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <span style="font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:15px">Nível {{ level }}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:oklch(0.72 0.02 265)">{{ xpInLevel }}/300 XP</span>
+      </div>
+      <div style="height:6px;border-radius:3px;background:oklch(0.28 0.025 265);overflow:hidden">
+        <div style="height:100%;width:{{ xpPct }};background:oklch(0.82 0.13 195);transition:width .6s"></div>
+      </div>
+      <div style="font-size:12px;color:oklch(0.72 0.02 265)">{{ discCount }} de {{ subTotal }} substâncias</div>
+    </div>
+  </aside>
+
+  <main style="min-width:0;padding:28px 36px 48px;display:flex;flex-direction:column;gap:24px">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:stretch">
+        <section data-screen-label="Início" style="padding:48px 44px;border-radius:16px;border:1px solid oklch(0.28 0.025 265);background:radial-gradient(circle at 85% 20%, oklch(0.3 0.06 200 / 0.5), transparent 55%), oklch(0.19 0.022 265);display:flex;flex-direction:column;gap:22px;min-height:440px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;color:oklch(0.82 0.13 195)">LABORATÓRIO DE MOLÉCULAS</div>
+          <h1 style="margin:0;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:56px;line-height:1.02;letter-spacing:-0.01em;text-wrap:balance">Combine átomos. Descubra a matéria.</h1>
+          <p style="margin:0;max-width:520px;font-size:17px;line-height:1.55;color:oklch(0.8 0.02 265);text-wrap:pretty">Arraste elementos da tabela periódica para o reator. Quando a combinação forma uma substância real, ela é criada e entra na sua coleção.</p>
+          <div style="display:flex;gap:12px;margin-top:auto;flex-wrap:wrap">
+            <button onClick="{{ goLab }}" style="padding:14px 24px;border-radius:10px;border:none;background:oklch(0.82 0.13 195);color:oklch(0.18 0.03 230);font-weight:600;font-size:15px;cursor:pointer">Entrar no laboratório</button>
+            <button onClick="{{ goColl }}" style="padding:14px 24px;border-radius:10px;border:1px solid oklch(0.36 0.03 265);background:transparent;color:oklch(0.95 0.01 265);font-weight:500;font-size:15px;cursor:pointer">Ver coleção</button>
+          </div>
+        </section>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="padding:22px;border-radius:14px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">MISSÃO EM DESTAQUE</div>
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:22px;font-weight:600">{{ featMission.title }}</div>
+            <div style="font-size:14px;color:oklch(0.78 0.02 265)">{{ featMission.desc }}</div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="flex:1;height:6px;border-radius:3px;background:oklch(0.28 0.025 265);overflow:hidden"><div style="height:100%;width:{{ featMission.pct }};background:oklch(0.82 0.15 145)"></div></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:oklch(0.78 0.02 265)">{{ featMission.progress }}</span>
+            </div>
+          </div>
+          <div style="padding:22px;border-radius:14px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);display:flex;align-items:center;gap:18px">
+            <div style="width:84px;height:84px;border-radius:12px;border:1px solid oklch(0.82 0.13 195 / 0.4);background:oklch(0.82 0.13 195 / 0.1);display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:22px;color:oklch(0.82 0.13 195)">{{ lastDisc.formula }}</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">ÚLTIMA DESCOBERTA</div>
+              <div style="font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:600">{{ lastDisc.name }}</div>
+              <div style="font-size:13px;color:oklch(0.72 0.02 265)">{{ lastDisc.state }}</div>
+            </div>
+          </div>
+          <div style="padding:22px;border-radius:14px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);display:flex;flex-direction:column;gap:14px;flex:1">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">COMO JOGAR</div>
+            <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;color:oklch(0.82 0.13 195)">01</span><span style="font-size:14px">Escolha um elemento na tabela periódica.</span></div>
+            <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;color:oklch(0.82 0.13 195)">02</span><span style="font-size:14px">Arraste para o reator e ajuste a quantidade de cada átomo.</span></div>
+            <div style="display:flex;gap:12px;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;color:oklch(0.82 0.13 195)">03</span><span style="font-size:14px">Com a proporção certa, a fusão acontece sozinha.</span></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isLab }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Laboratório" style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:oklch(0.72 0.02 265)">LABORATÓRIO</div>
+            <h2 style="margin:4px 0 0;font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:600">Reator de fusão</h2>
+          </div>
+          <div style="font-size:13px;color:oklch(0.72 0.02 265)">Arraste ou clique nos elementos para adicioná-los</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:20px">
+          <div onDragOver="{{ onDragOver }}" onDragLeave="{{ onDragLeave }}" onDrop="{{ onDrop }}" style="position:relative;min-height:320px;border-radius:16px;border:1.5px dashed {{ zoneBorder }};background:radial-gradient(circle at 50% 50%, {{ zoneGlow }}, transparent 65%), oklch(0.18 0.022 265);box-shadow:{{ zoneShadow }};transition:border-color .25s, box-shadow .4s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px 28px 24px">
+            <div style="position:absolute;top:14px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">ÁREA DE FUSÃO</div>
+            <sc-if value="{{ hasZone }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ clearZone }}" style="position:absolute;top:10px;right:12px;padding:6px 12px;border-radius:6px;border:1px solid oklch(0.34 0.025 265);background:transparent;color:oklch(0.8 0.02 265);font-size:12px;cursor:pointer">Limpar</button>
+            </sc-if>
+            <sc-if value="{{ zoneEmpty }}" hint-placeholder-val="{{ true }}">
+              <div style="width:180px;height:180px;border-radius:50%;border:1px dashed oklch(0.36 0.03 265);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:13px;line-height:1.5;color:oklch(0.68 0.02 265)">Solte os átomos aqui</div>
+            </sc-if>
+            <div style="display:flex;flex-wrap:wrap;gap:22px;justify-content:center;transform:scale({{ zoneScale }});transition:transform .5s">
+              <sc-for list="{{ zoneItems }}" as="a" hint-placeholder-count="0">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+                  <sc-if value="{{ a.is3d }}" hint-placeholder-val="{{ true }}">
+                    {{ a.view }}
+                    <div style="display:flex;align-items:baseline;gap:6px">
+                      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:oklch(0.9 0.01 265)">×{{ a.count }}</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ a.isFlat }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:relative;width:76px;height:76px;border-radius:50%;border:2px solid {{ a.color }};background:{{ a.bg }};box-shadow:0 0 24px {{ a.glow }};display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:600;color:{{ a.color }}">
+                    {{ a.sym }}
+                    <div style="position:absolute;top:-6px;right:-8px;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:oklch(0.95 0.01 265);color:oklch(0.18 0.03 265);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center">×{{ a.count }}</div>
+                  </div>
+                  </sc-if>
+                  <div style="display:flex;gap:6px">
+                    <button onClick="{{ a.dec }}" style="width:30px;height:26px;border-radius:6px;border:1px solid oklch(0.34 0.025 265);background:oklch(0.22 0.022 265);color:oklch(0.9 0.01 265);cursor:pointer;font-size:15px">−</button>
+                    <button onClick="{{ a.inc }}" style="width:30px;height:26px;border-radius:6px;border:1px solid oklch(0.34 0.025 265);background:oklch(0.22 0.022 265);color:oklch(0.9 0.01 265);cursor:pointer;font-size:15px">+</button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:20px;letter-spacing:0.04em;color:oklch(0.9 0.01 265);min-height:26px">{{ zoneFormula }}</div>
+            <sc-if value="{{ isPending }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ fuseNow }}" style="padding:13px 34px;border-radius:10px;border:none;background:oklch(0.82 0.15 145);color:oklch(0.2 0.05 145);font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.08em;cursor:pointer;box-shadow:0 0 28px oklch(0.82 0.15 145 / 0.45)" style-hover="box-shadow:0 0 40px oklch(0.82 0.15 145 / 0.7)">FUNDIR</button>
+            </sc-if>
+            <sc-if value="{{ show3dNote }}" hint-placeholder-val="{{ false }}">
+              
+            </sc-if>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:18px 20px;border-radius:14px;border:1px solid {{ statusBorder }};background:oklch(0.19 0.022 265);display:flex;flex-direction:column;gap:10px;transition:border-color .25s">
+              <div style="display:flex;align-items:center;gap:8px">
+                <div style="width:8px;height:8px;border-radius:50%;background:{{ statusColor }}"></div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:{{ statusColor }}">{{ statusTag }}</div>
+              </div>
+              <div style="font-family:'Chakra Petch',sans-serif;font-size:19px;font-weight:600">{{ statusTitle }}</div>
+              <div style="font-size:14px;line-height:1.5;color:oklch(0.78 0.02 265);text-wrap:pretty">{{ statusText }}</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <sc-for list="{{ missing }}" as="m" hint-placeholder-count="0">
+                  <div style="padding:5px 10px;border-radius:6px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.color }};font-family:'IBM Plex Mono',monospace;font-size:13px">+{{ m.n }} {{ m.sym }}</div>
+                </sc-for>
+              </div>
+
+            </div>
+            <div style="padding:18px 20px;border-radius:14px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);display:flex;gap:16px;flex:1">
+              <div style="flex:none;width:92px;height:100px;border-radius:10px;border:1.5px solid {{ focus.border }};background:{{ focus.bg }};padding:8px 10px;display:flex;flex-direction:column;justify-content:space-between">
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:oklch(0.85 0.01 265)">{{ focus.z }}</div>
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:34px;font-weight:600;line-height:1;color:{{ focus.color }}">{{ focus.sym }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:oklch(0.78 0.01 265)">{{ focus.mass }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:600">{{ focus.name }}</div>
+                <div style="font-size:13px;color:{{ focus.color }}">{{ focus.catName }}</div>
+                <div style="font-size:13px;color:oklch(0.72 0.02 265)">Número atômico {{ focus.z }} · massa {{ focus.mass }} u</div>
+                <div style="font-size:13px;color:oklch(0.72 0.02 265)">Raio ≈ {{ focus.rad }} pm · camadas {{ focus.shells }}</div>
+                <div style="font-size:13px;color:oklch(0.78 0.02 265)">{{ focus.usage }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:20px;border-radius:16px;border:1px solid oklch(0.26 0.025 265);background:oklch(0.17 0.022 265);display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:18px;font-weight:600">Tabela periódica</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ legend }}" as="l" hint-placeholder-count="10">
+                <button onClick="{{ l.toggle }}" style="display:flex;align-items:center;gap:6px;padding:5px 9px;border-radius:6px;border:1px solid {{ l.border }};background:{{ l.bg }};color:oklch(0.86 0.01 265);font-size:11.5px;cursor:pointer">
+                  <span style="width:8px;height:8px;border-radius:2px;background:{{ l.color }}"></span>{{ l.name }}
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(18,minmax(0,1fr));grid-template-rows:repeat(7,auto) 14px auto auto;gap:4px">
+            <sc-for list="{{ cells }}" as="c" hint-placeholder-count="118">
+              <div draggable="true" onDragStart="{{ c.onDragStart }}" onClick="{{ c.onClick }}" onMouseEnter="{{ c.onEnter }}" onMouseLeave="{{ c.onLeave }}" style="grid-column:{{ c.col }};grid-row:{{ c.row }};aspect-ratio:1/1.08;min-width:0;padding:3px 4px;border-radius:5px;border:1px solid {{ c.border }};background:{{ c.bg }};opacity:{{ c.opacity }};outline:{{ c.outline }};display:flex;flex-direction:column;justify-content:space-between;cursor:grab;user-select:none;position:relative;transition:opacity .2s, transform .15s" style-hover="transform:translateY(-2px)">
+                <sc-if value="{{ c.showInfo }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ c.openInfo }}" style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);z-index:5;padding:2px 7px;border-radius:5px;border:1px solid {{ c.color }};background:oklch(0.16 0.02 265);color:{{ c.color }};font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.04em;white-space:nowrap;cursor:pointer">raio‑x</button>
+                </sc-if>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:oklch(0.78 0.01 265);line-height:1">{{ c.zShown }}</div>
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:clamp(11px,1.25vw,18px);font-weight:600;line-height:1;color:{{ c.color }};text-align:center">{{ c.sym }}</div>
+                <div style="font-size:8px;line-height:1.1;color:oklch(0.76 0.01 265);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center">{{ c.nameShown }}</div>
+              </div>
+            </sc-for>
+            <div style="grid-column:3;grid-row:6;border-radius:5px;border:1px dashed oklch(0.8 0.13 340 / 0.4);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:oklch(0.8 0.13 340)">57–71</div>
+            <div style="grid-column:3;grid-row:7;border-radius:5px;border:1px dashed oklch(0.8 0.14 5 / 0.4);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:oklch(0.8 0.14 5)">89–103</div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isColl }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Coleção" style="display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:oklch(0.72 0.02 265)">ENCICLOPÉDIA</div>
+            <h2 style="margin:4px 0 0;font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:600">Coleção de substâncias</h2>
+            <div style="margin-top:6px;font-size:14px;color:oklch(0.72 0.02 265)">{{ discCount }} de {{ subTotal }} descobertas</div>
+          </div>
+          <div style="display:flex;gap:4px;padding:4px;border-radius:10px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.18 0.022 265)">
+            <sc-for list="{{ collFilters }}" as="f" hint-placeholder-count="5">
+              <button onClick="{{ f.pick }}" style="padding:7px 14px;border-radius:7px;border:none;background:{{ f.bg }};color:{{ f.color }};font-size:13px;cursor:pointer">{{ f.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px">
+          <sc-for list="{{ collItems }}" as="s" hint-placeholder-count="12">
+            <button onClick="{{ s.open }}" style="text-align:left;padding:18px;border-radius:12px;border:1px solid {{ s.border }};background:{{ s.bg }};color:oklch(0.95 0.01 265);display:flex;flex-direction:column;gap:10px;min-height:150px;cursor:{{ s.cursor }}">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:oklch(0.68 0.02 265)">#{{ s.num }}</span>
+                <span style="font-size:11px;padding:3px 8px;border-radius:5px;background:oklch(0.26 0.025 265);color:oklch(0.82 0.02 265)">{{ s.stateLabel }}</span>
+              </div>
+              <div style="font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:600;color:{{ s.fColor }}">{{ s.formula }}</div>
+              <div style="font-size:15px;font-weight:500;margin-top:auto">{{ s.name }}</div>
+              <div style="font-size:12px;color:oklch(0.68 0.02 265)">{{ s.meta }}</div>
+            </button>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isMissions }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Missões" style="display:flex;flex-direction:column;gap:22px;max-width:980px">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:oklch(0.72 0.02 265)">DESAFIOS</div>
+          <h2 style="margin:4px 0 0;font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:600">Missões</h2>
+          <div style="margin-top:6px;font-size:14px;color:oklch(0.72 0.02 265)">{{ missionsDone }} de {{ missionsTotal }} concluídas</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ missions }}" as="m" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) 200px 110px;align-items:center;gap:24px;padding:20px 22px;border-radius:12px;border:1px solid {{ m.border }};background:oklch(0.19 0.022 265)">
+              <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:18px;font-weight:600">{{ m.title }}</div>
+                <div style="font-size:14px;color:oklch(0.76 0.02 265)">{{ m.desc }}</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="height:6px;border-radius:3px;background:oklch(0.28 0.025 265);overflow:hidden"><div style="height:100%;width:{{ m.pct }};background:{{ m.barColor }}"></div></div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:oklch(0.72 0.02 265)">{{ m.progress }}</div>
+              </div>
+              <div style="justify-self:end;padding:6px 12px;border-radius:7px;border:1px solid {{ m.tagBorder }};color:{{ m.tagColor }};font-family:'IBM Plex Mono',monospace;font-size:12px">{{ m.tag }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Perfil" style="display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;align-items:center;gap:22px;padding:26px;border-radius:16px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);flex-wrap:wrap">
+          <div style="width:88px;height:88px;border-radius:50%;border:2px solid oklch(0.82 0.13 195);display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-size:30px;font-weight:600;color:oklch(0.82 0.13 195)">{{ level }}</div>
+          <div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px">
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:26px;font-weight:600">Pesquisador(a)</div>
+            <div style="font-size:14px;color:oklch(0.76 0.02 265)">Nível {{ level }} · {{ xp }} XP no total · faltam {{ xpToNext }} XP para o nível {{ nextLevel }}</div>
+            <div style="height:8px;max-width:420px;border-radius:4px;background:oklch(0.28 0.025 265);overflow:hidden"><div style="height:100%;width:{{ xpPct }};background:oklch(0.82 0.13 195)"></div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+            <div style="padding:20px;border-radius:12px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.19 0.022 265);display:flex;flex-direction:column;gap:6px">
+              <div style="font-family:'Chakra Petch',sans-serif;font-size:34px;font-weight:600">{{ st.value }}</div>
+              <div style="font-size:13px;color:oklch(0.72 0.02 265)">{{ st.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:600">Medalhas <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:400;color:oklch(0.72 0.02 265)">{{ medalsDone }}/{{ medalsTotal }}</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">
+            <sc-for list="{{ medals }}" as="md" hint-placeholder-count="8">
+              <div style="padding:20px;border-radius:12px;border:1px solid {{ md.border }};background:oklch(0.19 0.022 265);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;opacity:{{ md.opacity }}">
+                <div style="width:64px;height:64px;border-radius:50%;border:2px solid {{ md.color }};background:{{ md.bg }};display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-size:18px;font-weight:600;color:{{ md.color }}">{{ md.glyph }}</div>
+                <div style="font-family:'Chakra Petch',sans-serif;font-size:16px;font-weight:600">{{ md.title }}</div>
+                <div style="font-size:12.5px;line-height:1.4;color:oklch(0.72 0.02 265)">{{ md.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{ hasDrawer }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:39;background:oklch(0.1 0.02 265 / 0.4)"></div>
+    <div data-screen-label="Detalhes do elemento" style="position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(400px,100vw);overflow:auto;border-left:1px solid {{ tip.border }};background:oklch(0.19 0.022 265);box-shadow:-24px 0 60px oklch(0.08 0.02 265 / 0.6);display:flex;flex-direction:column">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">RAIO‑X DO ELEMENTO</div>
+        <button onClick="{{ closeDrawer }}" style="width:32px;height:32px;border-radius:8px;border:1px solid oklch(0.32 0.025 265);background:transparent;color:oklch(0.9 0.01 265);font-size:16px;cursor:pointer">✕</button>
+      </div>
+      <div style="display:flex;gap:3px;padding:4px;margin:0 20px;border-radius:9px;border:1px solid oklch(0.27 0.025 265);background:oklch(0.16 0.02 265)">
+        <sc-for list="{{ tip.tabs }}" as="tb" hint-placeholder-count="2">
+          <button onClick="{{ tb.pick }}" style="flex:1;padding:6px 10px;border-radius:6px;border:none;background:{{ tb.bg }};color:{{ tb.color }};font-size:12.5px;font-weight:500;cursor:pointer">{{ tb.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:16px;padding:20px">
+        <div style="flex:none;width:92px;height:100px;border-radius:9px;border:1.5px solid {{ tip.border }};background:{{ tip.bg }};padding:6px 8px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:oklch(0.85 0.01 265)">{{ tip.z }}</div>
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:28px;font-weight:600;line-height:1;color:{{ tip.color }}">{{ tip.sym }}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:oklch(0.78 0.01 265)">{{ tip.mass }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:24px;font-weight:600">{{ tip.name }}</div>
+          <div style="font-size:13.5px;color:{{ tip.color }}">{{ tip.catName }}</div>
+        </div>
+      </div>
+      <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:oklch(0.68 0.02 265)">ELETROSFERA</div>
+          <div style="display:flex;gap:3px;padding:3px;border-radius:8px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.15 0.02 265)">
+            <sc-for list="{{ tip.views }}" as="vw" hint-placeholder-count="2">
+              <button onClick="{{ vw.pick }}" style="padding:5px 10px;border-radius:6px;border:none;background:{{ vw.bg }};color:{{ vw.color }};font-size:12px;font-weight:500;white-space:nowrap;cursor:pointer">{{ vw.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="height:310px;border-radius:12px;border:1px solid oklch(0.27 0.025 265);background:oklch(0.16 0.02 265);display:flex;align-items:center;justify-content:center">{{ tip.view }}</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <sc-for list="{{ tip.shellChips }}" as="sc" hint-placeholder-count="3">
+            <button onClick="{{ sc.pick }}" style="display:flex;align-items:baseline;gap:5px;padding:5px 9px;border-radius:6px;border:1px solid {{ sc.border }};background:{{ sc.bg }};color:oklch(0.92 0.01 265);cursor:pointer"><span style="font-family:'Chakra Petch',sans-serif;font-size:12px;font-weight:600;color:{{ sc.color }}">{{ sc.letter }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ sc.n }}</span></button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ tip.noShell }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:12.5px;color:oklch(0.66 0.02 265)">Clique em uma órbita (ou em uma camada acima) para ver os detalhes.</div>
+        </sc-if>
+        <sc-if value="{{ tip.hasShell }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:14px 16px;border-radius:10px;border:1px solid {{ tip.border }};background:{{ tip.bg }};display:flex;flex-direction:column;gap:6px">
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:17px;font-weight:600">Camada {{ tip.shell.letter }} <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:400;color:oklch(0.72 0.02 265)">n = {{ tip.shell.n }}</span></div>
+            <div style="font-size:13.5px;color:oklch(0.85 0.01 265)">{{ tip.shell.count }} elétrons de {{ tip.shell.max }} possíveis (2n²)</div>
+            <div style="font-size:13.5px;color:oklch(0.85 0.01 265)">Subníveis: <span style="font-family:'IBM Plex Mono',monospace;color:{{ tip.color }}">{{ tip.shell.subs }}</span></div>
+            <div style="font-size:12.5px;line-height:1.45;color:oklch(0.76 0.02 265)">{{ tip.shell.role }}</div>
+          </div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ tip.isBasic }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.5;color:oklch(0.76 0.02 265)">
+          <div>Número atômico {{ tip.z }} · massa {{ tip.mass }} u</div>
+          <div>Raio ≈ {{ tip.rad }} pm · camadas {{ tip.shells }}</div>
+          <div style="color:oklch(0.82 0.02 265)">{{ tip.usage }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ tip.isAdv }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:oklch(0.68 0.02 265)">DISTRIBUIÇÃO ELETRÔNICA (LINUS PAULING)</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.55;color:oklch(0.94 0.01 265);word-break:break-word">{{ tip.full }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:oklch(0.68 0.02 265)">FORMA ABREVIADA</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:{{ tip.color }}">{{ tip.short }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:oklch(0.68 0.02 265)">POR CAMADAS</div>
+            <div style="display:flex;gap:5px;flex-wrap:wrap">
+              <sc-for list="{{ tip.layers }}" as="ly" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;align-items:center;min-width:34px;padding:4px 6px;border-radius:6px;border:1px solid {{ ly.border }};background:{{ ly.bg }}">
+                  <span style="font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:600;color:{{ ly.color }}">{{ ly.letter }}</span>
+                  <span style="font-family:'IBM Plex Mono',monospace;font-size:13px">{{ ly.n }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="font-size:12.5px;color:oklch(0.8 0.02 265)">Elétrons na camada de valência: <span style="font-family:'IBM Plex Mono',monospace;color:{{ tip.color }}">{{ tip.valence }}</span></div>
+          <sc-if value="{{ tip.exception }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:12px;line-height:1.45;color:oklch(0.82 0.14 65)">Exceção à regra: elétrons do subnível s migram para o d, deixando o átomo mais estável.</div>
+          </sc-if>
+        </div>
+      </sc-if>
+      <div style="margin-top:auto;padding:20px;border-top:1px solid oklch(0.27 0.025 265)">
+        <button onClick="{{ tip.add }}" style="width:100%;padding:12px;border-radius:9px;border:none;background:oklch(0.82 0.13 195);color:oklch(0.18 0.03 230);font-weight:600;font-size:14px;cursor:pointer">Adicionar ao reator</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeResult }}" style="position:fixed;inset:0;z-index:50;background:oklch(0.1 0.02 265 / 0.78);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:32px">
+      <div data-screen-label="Resultado" onClick="{{ stop }}" style="width:min(920px,100%);max-height:calc(100vh - 64px);overflow:auto;border-radius:18px;border:1px solid oklch(0.82 0.13 195 / 0.45);background:oklch(0.19 0.022 265);box-shadow:0 0 80px oklch(0.82 0.13 195 / 0.18);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)">
+        <div style="padding:26px;border-right:1px solid oklch(0.28 0.025 265);display:flex;flex-direction:column;gap:14px;background:oklch(0.17 0.022 265)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">ESTRUTURA</div>
+            <div style="display:flex;gap:3px;padding:3px;border-radius:8px;border:1px solid oklch(0.28 0.025 265);background:oklch(0.15 0.02 265)">
+              <sc-for list="{{ resViews }}" as="v" hint-placeholder-count="2">
+                <button onClick="{{ v.pick }}" style="padding:5px 12px;border-radius:6px;border:none;background:{{ v.bg }};color:{{ v.color }};font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer">{{ v.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <sc-if value="{{ resIs2d }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative;width:340px;height:280px;max-width:100%;margin:0 auto">
+            <sc-for list="{{ res.bonds }}" as="b" hint-placeholder-count="0">
+              <div style="position:absolute;left:{{ b.x }};top:{{ b.y }};width:{{ b.w }};height:3px;border-radius:2px;background:oklch(0.5 0.03 265);transform:translate(-50%,-50%) rotate({{ b.a }})"></div>
+            </sc-for>
+            <sc-for list="{{ res.atoms }}" as="at" hint-placeholder-count="0">
+              <div style="position:absolute;left:{{ at.x }};top:{{ at.y }};width:{{ at.d }};height:{{ at.d }};transform:translate(-50%,-50%);border-radius:50%;border:2px solid {{ at.color }};background:{{ at.bg }};display:flex;align-items:center;justify-content:center;font-family:'Chakra Petch',sans-serif;font-size:{{ at.fs }};font-weight:600;color:{{ at.color }}">{{ at.sym }}</div>
+            </sc-for>
+          </div>
+          <div style="font-size:12px;color:oklch(0.66 0.02 265);text-align:center">Representação simplificada das ligações</div>
+          </sc-if>
+          <sc-if value="{{ resIs3d }}" hint-placeholder-val="{{ false }}">
+            <div style="width:340px;height:280px;max-width:100%;margin:0 auto">{{ res.view3d }}</div>
+            <div style="font-size:12px;color:oklch(0.66 0.02 265);text-align:center">Modelo de bolas e varetas · arraste para girar</div>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:auto">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">COMPOSIÇÃO</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ res.comp }}" as="cp" hint-placeholder-count="2">
+                <div style="padding:5px 10px;border-radius:6px;border:1px solid {{ cp.border }};background:{{ cp.bg }};font-size:13px;white-space:nowrap"><span style="font-family:'Chakra Petch',sans-serif;font-weight:600;color:{{ cp.color }}">{{ cp.sym }}</span> {{ cp.name }} ×{{ cp.n }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="padding:28px 30px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="padding:5px 10px;border-radius:6px;background:{{ res.badgeBg }};color:{{ res.badgeColor }};font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500">{{ res.badge }}</div>
+            <sc-if value="{{ res.levelUp }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:5px 10px;border-radius:6px;background:oklch(0.82 0.14 65);color:oklch(0.2 0.04 65);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500">{{ res.levelText }}</div>
+            </sc-if>
+          </div>
+          <div>
+            <div style="font-family:'Chakra Petch',sans-serif;font-size:52px;font-weight:700;line-height:1;color:oklch(0.82 0.13 195)">{{ res.formula }}</div>
+            <div style="margin-top:8px;font-family:'Chakra Petch',sans-serif;font-size:28px;font-weight:600">{{ res.name }}</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div style="padding:8px 12px;border-radius:8px;border:1px solid oklch(0.3 0.025 265);display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;color:oklch(0.68 0.02 265)">Estado físico (25 °C)</span><span style="font-size:14px;font-weight:500">{{ res.state }}</span></div>
+            <div style="padding:8px 12px;border-radius:8px;border:1px solid oklch(0.3 0.025 265);display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;color:oklch(0.68 0.02 265)">Massa molar</span><span style="font-size:14px;font-weight:500">{{ res.molar }} g/mol</span></div>
+            <div style="padding:8px 12px;border-radius:8px;border:1px solid oklch(0.3 0.025 265);display:flex;flex-direction:column;gap:2px"><span style="font-size:11px;color:oklch(0.68 0.02 265)">Átomos</span><span style="font-size:14px;font-weight:500">{{ res.atomCount }}</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.72 0.02 265)">NO DIA A DIA</div>
+            <div style="font-size:15px;line-height:1.5">{{ res.where }}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:14px 16px;border-radius:10px;background:oklch(0.23 0.03 195 / 0.5)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:oklch(0.82 0.13 195)">CURIOSIDADE</div>
+            <div style="font-size:15px;line-height:1.5;text-wrap:pretty">{{ res.fact }}</div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:auto;flex-wrap:wrap">
+            <button onClick="{{ closeResult }}" style="padding:12px 20px;border-radius:9px;border:none;background:oklch(0.82 0.13 195);color:oklch(0.18 0.03 230);font-weight:600;font-size:14px;cursor:pointer">Continuar</button>
+            <button onClick="{{ resultToColl }}" style="padding:12px 20px;border-radius:9px;border:1px solid oklch(0.36 0.03 265);background:transparent;color:oklch(0.95 0.01 265);font-size:14px;white-space:nowrap;cursor:pointer">Ver na coleção</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hints&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;cellDetail&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Símbolo&quot;,&quot;Símbolo + nº&quot;,&quot;Completo&quot;],&quot;default&quot;:&quot;Completo&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;atoms3d&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;atomScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.4,&quot;max&quot;:1.2,&quot;step&quot;:0.05,&quot;default&quot;:0.85,&quot;unit&quot;:&quot;px/pm&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = this.loadState();
+  loadState() {
+    const base = { screen: 'home', zone: {}, hovered: 'C', filterCat: null, fusing: false, result: null, resultNew: false, levelUp: null, discovered: ['H2O', 'O2', 'CO2'], fusions: 0, atomsUsed: 0, usedEls: ['H', 'O', 'C'], nobleTried: false, collFilter: 'Todas', dragOver: false };
+    try { const s = JSON.parse(localStorage.getItem('nucleo-save-v1') || 'null'); if (s) ['screen', 'discovered', 'fusions', 'atomsUsed', 'usedEls', 'nobleTried'].forEach(k => { if (s[k] != null) base[k] = s[k]; }); } catch (e) {}
+    return base;
+  }
+  componentDidMount() {
+    if (!window.NUCLEO_DATA) this.poll = setInterval(() => { if (window.NUCLEO_DATA) { clearInterval(this.poll); this.forceUpdate(); } }, 50);
+  }
+  atomComp() {
+    if (window.__NucleoAtom3Dv2) return window.__NucleoAtom3Dv2;
+    const shared = window.__nucleoRot = window.__nucleoRot || { yaw: 0, pitch: -0.35 };
+    const Atom3D = function (p) {
+      const ref = React.useRef(null); const pr = React.useRef(p); pr.current = p;
+      React.useEffect(() => {
+        const cv = ref.current, ctx = cv.getContext('2d'); let raf;
+        const local = { yaw: 0, pitch: -0.35 }, drag = { on: false, x: 0, y: 0, moved: 0 };
+        let spinY = 0, k = 0, last = performance.now(), rings = [], hover = -1;
+        const R = () => pr.current.own ? local : shared;
+        const segDist = (px, py, a, b) => { const dx = b[0] - a[0], dy = b[1] - a[1]; const t = Math.max(0, Math.min(1, ((px - a[0]) * dx + (py - a[1]) * dy) / (dx * dx + dy * dy || 1))); return Math.hypot(px - a[0] - t * dx, py - a[1] - t * dy); };
+        const hit = e => { const bb = cv.getBoundingClientRect(); const x = e.clientX - bb.left, y = e.clientY - bb.top; let best = -1, bd = 8; rings.forEach((pts, i) => { for (let j = 1; j < pts.length; j++) { const d = segDist(x, y, pts[j - 1], pts[j]); if (d < bd) { bd = d; best = i; } } }); return best; };
+        const down = e => { drag.on = true; drag.x = e.clientX; drag.y = e.clientY; drag.moved = 0; cv.setPointerCapture(e.pointerId); };
+        const move = e => {
+          if (drag.on) { if (!pr.current.top) { const r = R(); r.yaw += (e.clientX - drag.x) * 0.012; r.pitch = Math.max(-1.4, Math.min(1.4, r.pitch + (e.clientY - drag.y) * 0.012)); } drag.moved += Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y); drag.x = e.clientX; drag.y = e.clientY; }
+          hover = pr.current.onPick && !drag.on ? hit(e) : -1;
+          cv.style.cursor = hover >= 0 ? 'pointer' : pr.current.top ? 'default' : drag.on ? 'grabbing' : 'grab';
+        };
+        const up = e => { if (drag.on && drag.moved < 5 && pr.current.onPick) pr.current.onPick(hit(e)); drag.on = false; };
+        const leave = () => { hover = -1; };
+        cv.addEventListener('pointerdown', down); cv.addEventListener('pointermove', move); cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('pointerleave', leave);
+        const frame = now => {
+          const { size: S, shells, h, c, fusing, top, sel, own } = pr.current; const dpr = window.devicePixelRatio || 1;
+          const dt = Math.min(0.05, (now - last) / 1000); last = now;
+          if (cv.width !== Math.round(S * dpr)) { cv.width = Math.round(S * dpr); cv.height = Math.round(S * dpr); }
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, S, S);
+          k += ((top ? 1 : 0) - k) * Math.min(1, dt * 5);
+          if (!drag.on && !top) spinY += dt * 0.25;
+          const t = now / 1000, C = S / 2, Rr = C * 0.86, N = shells.length, sp = fusing ? 3.5 : 1, r0 = R();
+          const yaw = (r0.yaw + (own ? spinY : t * 0.25)) * (1 - k), pitch = r0.pitch * (1 - k);
+          const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), spn = Math.sin(pitch);
+          const proj = (x, y, z) => { const x1 = x * cy + z * sy, z1 = -x * sy + z * cy; const y2 = y * cp - z1 * spn, z2 = y * spn + z1 * cp; return [C + x1, C + y2, z2]; };
+          const cloud = ctx.createRadialGradient(C, C, 0, C, C, Rr * 1.12);
+          cloud.addColorStop(0, `oklch(0.8 ${c} ${h} / 0.22)`); cloud.addColorStop(0.7, `oklch(0.8 ${c} ${h} / 0.08)`); cloud.addColorStop(1, `oklch(0.8 ${c} ${h} / 0)`);
+          ctx.fillStyle = cloud; ctx.beginPath(); ctx.arc(C, C, Rr * 1.12, 0, Math.PI * 2); ctx.fill();
+          const back = [], front = [], hasSel = sel != null && sel >= 0, big = S > 200 ? 1.5 : 1; rings = [];
+          shells.forEach((count, i) => {
+            const n = i + 1, r = N === 1 ? Rr : Rr * (0.32 + 0.68 * i / (N - 1));
+            const tilt = (1.15 + n * 0.41) * (1 - k), spin = n * 0.93, ct = Math.cos(tilt), st = Math.sin(tilt), cs = Math.cos(spin), ss = Math.sin(spin);
+            const pt = th => { const x0 = r * Math.cos(th), y0 = r * Math.sin(th); const y1 = y0 * ct, z1 = y0 * st; return proj(x0 * cs - y1 * ss, x0 * ss + y1 * cs, z1); };
+            const pts = []; for (let q = 0; q <= 72; q++) pts.push(pt(q / 72 * Math.PI * 2)); rings.push(pts);
+            const on = i === sel, hv = i === hover;
+            const al = on ? 0.95 : hv ? 0.7 : hasSel ? 0.14 : 0.28;
+            ctx.beginPath(); pts.forEach((q, j) => j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]));
+            ctx.strokeStyle = `oklch(${on ? 0.9 : 0.8} ${c} ${h} / ${al})`; ctx.lineWidth = on ? 2.2 : hv ? 1.6 : 1; ctx.stroke();
+            if (own && k > 0.6) { ctx.globalAlpha = (k - 0.6) / 0.4; ctx.fillStyle = on ? `oklch(0.92 ${c} ${h})` : 'oklch(0.72 0.02 265)'; ctx.font = "600 10px 'Chakra Petch', sans-serif"; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; const lp = pts[63]; ctx.fillText('KLMNOPQ'[i], lp[0] + 4, lp[1] - 4); ctx.globalAlpha = 1; }
+            const w = t * sp * 1.4 / Math.pow(n, 0.8);
+            for (let q = 0; q < count; q++) { const p3 = pt(w + q * Math.PI * 2 / count); (p3[2] < 0 ? back : front).push([p3[0], p3[1], p3[2] / Rr, hasSel ? (on ? 1 : 0.35) : 1]); }
+          });
+          const dot = ([x, y, z, f]) => { const rr = (0.6 + (z + 1) * 0.25) * big * (f === 1 && hasSel ? 1.3 : 1); ctx.fillStyle = `oklch(0.97 0.03 ${h} / ${(0.55 + (z + 1) * 0.22) * f})`; ctx.shadowColor = `oklch(0.85 ${c} ${h})`; ctx.shadowBlur = 3; ctx.beginPath(); ctx.arc(x, y, rr, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0; };
+          back.forEach(dot);
+          const nr = Math.max(4, S * (own ? 0.045 : 0.07)); const g = ctx.createRadialGradient(C - nr * 0.35, C - nr * 0.35, nr * 0.1, C, C, nr);
+          g.addColorStop(0, `oklch(0.97 0.04 ${h})`); g.addColorStop(0.5, `oklch(0.78 ${c} ${h})`); g.addColorStop(1, `oklch(0.45 ${c} ${h})`);
+          ctx.fillStyle = g; ctx.shadowColor = `oklch(0.8 ${c} ${h} / 0.8)`; ctx.shadowBlur = fusing ? 18 : 10; ctx.beginPath(); ctx.arc(C, C, nr, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0;
+          front.forEach(dot);
+          raf = requestAnimationFrame(frame);
+        };
+        raf = requestAnimationFrame(frame);
+        return () => { cancelAnimationFrame(raf); cv.removeEventListener('pointerdown', down); cv.removeEventListener('pointermove', move); cv.removeEventListener('pointerup', up); cv.removeEventListener('pointercancel', up); cv.removeEventListener('pointerleave', leave); };
+      }, []);
+      return React.createElement('canvas', { ref, title: p.title, style: { width: p.size + 'px', height: p.size + 'px', display: 'block', cursor: 'grab', touchAction: 'none' } });
+    };
+    window.__NucleoAtom3Dv2 = Atom3D; return Atom3D;
+  }
+  geom3d(f, raw) {
+    this.g3v3 = this.g3v3 || {}; if (this.g3v3[f]) return this.g3v3[f];
+    const n = raw.nodes.length, deg = new Array(n).fill(0); raw.bonds.forEach(([a, b]) => { deg[a]++; deg[b]++; });
+    const pts = raw.nodes.map((q, i) => ({ x: q.x - 170, y: q.y - 140, z: Math.sin(i * 2.3) * 30, r: q.r, real: true }));
+    const bonds = raw.bonds.slice();
+    raw.nodes.forEach((q, i) => { if (['O', 'S', 'N'].includes(q.sym) && deg[i] >= 2) { const lp = 4 - deg[i]; for (let k = 0; k < lp; k++) { pts.push({ x: pts[i].x + (k ? -20 : 20), y: pts[i].y + 10, z: pts[i].z + (k ? -25 : 25), r: 10, real: false }); bonds.push([i, pts.length - 1]); } } });
+    const L = (a, b) => (pts[a].r + pts[b].r) * 1.06;
+    const bset = new Set(bonds.map(([a, b]) => a + '-' + b).concat(bonds.map(([a, b]) => b + '-' + a)));
+    for (let it = 0; it < 500; it++) {
+      const F = pts.map(() => ({ x: 0, y: 0, z: 0 }));
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) { if (bset.has(i + '-' + j)) continue; const dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y, dz = pts[j].z - pts[i].z; const d2 = dx * dx + dy * dy + dz * dz + 0.01, d = Math.sqrt(d2), k = 9000 / d2; F[i].x -= dx / d * k; F[i].y -= dy / d * k; F[i].z -= dz / d * k; F[j].x += dx / d * k; F[j].y += dy / d * k; F[j].z += dz / d * k; }
+      bonds.forEach(([a, b]) => { const dx = pts[b].x - pts[a].x, dy = pts[b].y - pts[a].y, dz = pts[b].z - pts[a].z, d = Math.hypot(dx, dy, dz) + 0.01, k = (d - L(a, b)) * 0.5; F[a].x += dx / d * k; F[a].y += dy / d * k; F[a].z += dz / d * k; F[b].x -= dx / d * k; F[b].y -= dy / d * k; F[b].z -= dz / d * k; });
+      const step = 0.4 * (1 - it / 600); pts.forEach((p, i) => { p.x += Math.max(-8, Math.min(8, F[i].x * step)); p.y += Math.max(-8, Math.min(8, F[i].y * step)); p.z += Math.max(-8, Math.min(8, F[i].z * step)); });
+    }
+    const real = pts.slice(0, n); const m = real.reduce((a, p) => ({ x: a.x + p.x / n, y: a.y + p.y / n, z: a.z + p.z / n }), { x: 0, y: 0, z: 0 });
+    const ext = Math.max(1, ...real.map(p => Math.hypot(p.x - m.x, p.y - m.y, p.z - m.z) + p.r));
+    const sc = Math.min(3, 110 / ext);
+    const g = { atoms: raw.nodes.map((q, i) => ({ sym: q.sym, cat: q.cat, r: q.r * sc * 0.95, x: (real[i].x - m.x) * sc, y: (real[i].y - m.y) * sc, z: (real[i].z - m.z) * sc })), bonds: raw.bonds };
+    this.g3v3[f] = g; return g;
+  }
+  molComp() {
+    if (window.__NucleoMol3D) return window.__NucleoMol3D;
+    const self = this;
+    const Mol3D = function (p) {
+      const ref = React.useRef(null); const pr = React.useRef(p); pr.current = p;
+      React.useEffect(() => {
+        const cv = ref.current, ctx = cv.getContext('2d'); let raf; const rot = { yaw: 0.5, pitch: -0.3 }, drag = { on: false, x: 0, y: 0, t: 0 };
+        const down = e => { drag.on = true; drag.x = e.clientX; drag.y = e.clientY; cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing'; };
+        const move = e => { if (!drag.on) return; rot.yaw += (e.clientX - drag.x) * 0.012; rot.pitch = Math.max(-1.5, Math.min(1.5, rot.pitch + (e.clientY - drag.y) * 0.012)); drag.x = e.clientX; drag.y = e.clientY; };
+        const up = () => { drag.on = false; cv.style.cursor = 'grab'; };
+        cv.addEventListener('pointerdown', down); cv.addEventListener('pointermove', move); cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+        let last = performance.now();
+        const frame = now => {
+          const { g, col } = pr.current; const W = 340, H = 280, dpr = window.devicePixelRatio || 1;
+          if (cv.width !== W * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+          if (!drag.on) rot.yaw += (now - last) / 1000 * 0.45; last = now;
+          const cy = Math.cos(rot.yaw), sy = Math.sin(rot.yaw), cp = Math.cos(rot.pitch), sp = Math.sin(rot.pitch);
+          const P = g.atoms.map(a => { const x1 = a.x * cy + a.z * sy, z1 = -a.x * sy + a.z * cy; const y2 = a.y * cp - z1 * sp, z2 = a.y * sp + z1 * cp; const s = 300 / (300 - z2); return { a, x: W / 2 + x1 * s, y: H / 2 + y2 * s, z: z2, s }; });
+          const items = [];
+          g.bonds.forEach(([i, j]) => { const A = P[i], B = P[j], M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2, s: (A.s + B.s) / 2 }; items.push({ z: A.z - 0.5, bond: [A, M] }); items.push({ z: B.z - 0.5, bond: [M, B] }); });
+          P.forEach(q => items.push({ z: q.z, atom: q }));
+          items.sort((a, b) => a.z - b.z);
+          items.forEach(it => {
+            if (it.bond) { const [A, B] = it.bond; const f = 0.5 + 0.5 * Math.max(-1, Math.min(1, it.z / 120)); ctx.strokeStyle = `oklch(${0.42 + f * 0.2} 0.02 265)`; ctx.lineWidth = 5 * (A.s + B.s) / 2; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); return; }
+            const q = it.atom, r = q.a.r * q.s, c = col(q.a.cat), f = 0.5 + 0.5 * Math.max(-1, Math.min(1, q.z / 120));
+            const gr = ctx.createRadialGradient(q.x - r * 0.35, q.y - r * 0.4, r * 0.05, q.x, q.y, r);
+            gr.addColorStop(0, `oklch(0.98 0.03 ${c.h})`); gr.addColorStop(0.35, `oklch(${0.72 + f * 0.1} ${c.c} ${c.h})`); gr.addColorStop(1, `oklch(${0.3 + f * 0.1} ${c.c} ${c.h})`);
+            ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(q.x, q.y, r, 0, Math.PI * 2); ctx.fill();
+            if (r > 11) { ctx.fillStyle = 'oklch(0.15 0.02 265 / 0.85)'; ctx.font = `600 ${Math.round(r * 0.62)}px 'Chakra Petch', sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(q.a.sym, q.x, q.y + 1); }
+          });
+          raf = requestAnimationFrame(frame);
+        };
+        raf = requestAnimationFrame(frame);
+        return () => { cancelAnimationFrame(raf); cv.removeEventListener('pointerdown', down); cv.removeEventListener('pointermove', move); cv.removeEventListener('pointerup', up); cv.removeEventListener('pointercancel', up); };
+      }, []);
+      return React.createElement('canvas', { ref, style: { width: '340px', height: '280px', maxWidth: '100%', display: 'block', cursor: 'grab', touchAction: 'none' } });
+    };
+    window.__NucleoMol3D = Mol3D; return Mol3D;
+  }
+  componentWillUnmount() { clearInterval(this.poll); clearTimeout(this.fuseT); }
+  componentDidUpdate() {
+    const { screen, discovered, fusions, atomsUsed, usedEls, nobleTried } = this.state;
+    try { localStorage.setItem('nucleo-save-v1', JSON.stringify({ screen, discovered, fusions, atomsUsed, usedEls, nobleTried })); } catch (e) {}
+  }
+  col(cat, a) { const c = window.NUCLEO_DATA.cats[cat]; const L = cat === 'un' ? 0.72 : 0.8; return `oklch(${L} ${c.c} ${c.h}${a != null ? ' / ' + a : ''})`; }
+  sub(s) { return s.replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]); }
+  el(sym) { return window.NUCLEO_DATA.elements.find(e => e.sym === sym); }
+  key(c) { return Object.keys(c).sort().map(k => k + c[k]).join('|'); }
+  findMatch(zone) { const k = this.key(zone); return window.NUCLEO_DATA.substances.find(s => this.key(s.c) === k); }
+  subXP(s) { return 10 * s.atoms + 20 * s.nEl; }
+  missionDefs() {
+    return [
+      { title: 'Primeiros passos', desc: 'Descubra 5 substâncias.', target: 5, val: c => c.disc.length, reward: 100 },
+      { title: 'Sopro de vida', desc: 'Descubra 5 substâncias no estado gasoso.', target: 5, val: c => c.disc.filter(s => s.state === 'gás').length, reward: 150 },
+      { title: 'Mar salgado', desc: 'Forme dois sais: cloreto de sódio e cloreto de potássio.', target: 2, val: c => c.disc.filter(s => s.f === 'NaCl' || s.f === 'KCl').length, reward: 120 },
+      { title: 'Química orgânica', desc: 'Crie 3 compostos que tenham carbono e hidrogênio.', target: 3, val: c => c.disc.filter(s => s.c.C && s.c.H).length, reward: 200 },
+      { title: 'Arquiteto molecular', desc: 'Crie uma substância com 4 elementos diferentes.', target: 1, val: c => c.disc.filter(s => s.nEl >= 4).length, reward: 250 },
+      { title: 'Explorador da tabela', desc: 'Coloque 15 elementos diferentes no reator.', target: 15, val: c => c.usedEls.length, reward: 150 },
+      { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 }
+    ];
+  }
+  progress(st) {
+    const D = window.NUCLEO_DATA;
+    const disc = st.discovered.map(f => D.substances.find(s => s.f === f)).filter(Boolean);
+    const ctx = { disc, usedEls: st.usedEls, total: D.substances.length };
+    const missions = this.missionDefs().map(m => { const t = typeof m.target === 'function' ? m.target(ctx) : m.target; const v = Math.min(m.val(ctx), t); return { ...m, t, v, done: v >= t }; });
+    const xp = 50 + disc.reduce((a, s) => a + this.subXP(s), 0) + missions.filter(m => m.done).reduce((a, m) => a + m.reward, 0);
+    return { disc, ctx, missions, xp, level: Math.floor(xp / 300) + 1 };
+  }
+  addAtom(sym, delta = 1) {
+    const D = window.NUCLEO_DATA; const e = this.el(sym); if (!e) return;
+    this.setState(s => {
+      const zone = { ...s.zone }; zone[sym] = Math.max(0, Math.min(30, (zone[sym] || 0) + delta)); if (!zone[sym]) delete zone[sym];
+      const usedEls = delta > 0 && !s.usedEls.includes(sym) ? [...s.usedEls, sym] : s.usedEls;
+      return { zone, usedEls, nobleTried: s.nobleTried || e.cat === 'ng', hovered: sym };
+    }, () => this.checkFusion());
+  }
+  checkFusion() {
+    clearTimeout(this.fuseT);
+    const m = Object.keys(this.state.zone).length ? this.findMatch(this.state.zone) : null;
+    if (!m) { if (this.state.fusing || this.state.pending) this.setState({ fusing: false, pending: false }); return; }
+    this.setState({ pending: true, fusing: false });
+  }
+  fuseNow() {
+    clearTimeout(this.fuseT);
+    const m = this.findMatch(this.state.zone); if (!m) return;
+    this.setState({ fusing: true, pending: false });
+    this.fuseT = setTimeout(() => this.complete(m), 1000);
+  }
+  complete(m) {
+    this.setState(s => {
+      const before = this.progress(s).level;
+      const isNew = !s.discovered.includes(m.f);
+      const next = { ...s, discovered: isNew ? [...s.discovered, m.f] : s.discovered };
+      const after = this.progress(next).level;
+      return { discovered: next.discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, pending: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null };
+    });
+  }
+  structure(s) {
+    const W = 340, H = 280, cx = W / 2, cy = H / 2;
+    const list = []; Object.keys(s.c).forEach(k => { for (let i = 0; i < s.c[k]; i++) list.push(k); });
+    const nodes = [], bonds = [];
+    const mk = (sym, x, y) => { const e = this.el(sym); const r = sym === 'H' ? 15 : 22; nodes.push({ sym, x, y, r, cat: e.cat }); return nodes.length - 1; };
+    const bond = (a, b) => bonds.push([a, b]);
+    const allSame = Object.keys(s.c).length === 1;
+    if (allSame) {
+      const n = list.length, gap = 70; const ids = list.map((sym, i) => mk(sym, cx + (i - (n - 1) / 2) * gap, cy + (n === 3 && i === 1 ? -30 : 0)));
+      for (let i = 1; i < ids.length; i++) bond(ids[i - 1], ids[i]);
+    } else if (list.length <= 9) {
+      const order = ['C', 'Si', 'S', 'N', 'P', 'Fe', 'Ca', 'Na', 'K', 'Cl', 'O'];
+      const heavy = Object.keys(s.c).filter(k => k !== 'H');
+      heavy.sort((a, b) => (s.c[a] - s.c[b]) || (order.indexOf(a) - order.indexOf(b)));
+      const center = heavy[0]; const c = mk(center, cx, cy);
+      const rest = list.slice(); rest.splice(rest.indexOf(center), 1);
+      const R = rest.length <= 2 ? 80 : 95;
+      rest.forEach((sym, i) => { const a = (rest.length === 2 ? Math.PI : -Math.PI / 2) + i * (2 * Math.PI / rest.length) * (rest.length === 2 ? 0.62 : 1) - (rest.length === 2 ? 0.62 * Math.PI : 0); const id = mk(sym, cx + R * Math.cos(a), cy + R * Math.sin(a)); bond(c, id); });
+    } else {
+      const heavy = list.filter(x => x !== 'H'), hs = list.filter(x => x === 'H');
+      const hr = heavy.length > 8 ? 78 : 62; const ang = heavy.map((_, i) => -Math.PI / 2 + i * 2 * Math.PI / heavy.length);
+      const hid = heavy.map((sym, i) => mk(sym, cx + hr * Math.cos(ang[i]), cy + hr * Math.sin(ang[i])));
+      for (let i = 1; i < hid.length; i++) bond(hid[i - 1], hid[i]);
+      if (heavy.length > 4) bond(hid[hid.length - 1], hid[0]);
+      const per = heavy.map(() => []); hs.forEach((h, i) => per[Math.floor(i * heavy.length / hs.length)].push(h));
+      per.forEach((arr, j) => arr.forEach((h, k) => { const a = ang[j] + (k - (arr.length - 1) / 2) * 0.32; const id = mk(h, cx + 124 * Math.cos(a), cy + 116 * Math.sin(a)); bond(hid[j], id); }));
+    }
+    return {
+      raw: { nodes, bonds },
+      atoms: nodes.map(n => ({ sym: n.sym, x: n.x + 'px', y: n.y + 'px', d: n.r * 2 + 'px', fs: (n.sym === 'H' ? 12 : 15) + 'px', color: this.col(n.cat), bg: 'oklch(0.2 0.025 265)' })),
+      bonds: bonds.map(([a, b]) => { const A = nodes[a], B = nodes[b]; const dx = B.x - A.x, dy = B.y - A.y; return { x: (A.x + B.x) / 2 + 'px', y: (A.y + B.y) / 2 + 'px', w: Math.hypot(dx, dy) + 'px', a: Math.atan2(dy, dx) + 'rad' }; })
+    };
+  }
+  renderVals() {
+    const D = window.NUCLEO_DATA;
+    const st = this.state; const go = screen => () => this.setState({ screen });
+    const navDefs = [['home', 'Início', '00'], ['lab', 'Laboratório', '01'], ['coll', 'Coleção', '02'], ['missions', 'Missões', '03'], ['profile', 'Perfil', '04']];
+    const nav = navDefs.map(([id, label, code]) => { const on = st.screen === id; return { label, code, go: go(id), bg: on ? 'oklch(0.82 0.13 195 / 0.12)' : 'transparent', border: on ? 'oklch(0.82 0.13 195 / 0.35)' : 'transparent', color: on ? 'oklch(0.9 0.08 195)' : 'oklch(0.8 0.02 265)' }; });
+    const base = { nav, isHome: st.screen === 'home', isLab: st.screen === 'lab', isColl: st.screen === 'coll', isMissions: st.screen === 'missions', isProfile: st.screen === 'profile', goLab: go('lab'), goColl: go('coll') };
+    if (!D) return base;
+
+    const P = this.progress(st);
+    const xpIn = P.xp % 300;
+    const showHints = this.props.hints ?? true;
+    const detail = this.props.cellDetail ?? 'Completo';
+
+    const zoneKeys = Object.keys(st.zone);
+    const is3d = this.props.atoms3d ?? true; const scale = this.props.atomScale ?? 0.85; const A3 = is3d ? this.atomComp() : null;
+    const zoneItems = zoneKeys.map(sym => { const e = this.el(sym); const cat = D.cats[e.cat]; const size = Math.max(44, Math.round(e.rad * scale));
+      return { sym, count: st.zone[sym], is3d, isFlat: !is3d, diam: e.rad * 2 + (e.est ? ' (estimado)' : ''),
+        view: A3 ? React.createElement(A3, { key: sym, size, shells: e.shells, h: cat.h, c: cat.c, fusing: st.fusing, title: `${e.name}: camadas ${e.shells.join(' · ')}` }) : null, color: this.col(e.cat), bg: this.col(e.cat, 0.12), glow: this.col(e.cat, st.fusing ? 0.7 : 0.25), inc: () => this.addAtom(sym, 1), dec: () => this.addAtom(sym, -1) }; });
+    const zoneFormula = zoneKeys.length ? this.sub(zoneKeys.map(k => k + (st.zone[k] > 1 ? st.zone[k] : '')).join('')) : '';
+
+    let statusTag = 'AGUARDANDO', statusTitle = 'Reator vazio', statusText = 'Arraste átomos da tabela para a área de fusão.', statusColor = 'oklch(0.72 0.02 265)', missing = [];
+    if (zoneKeys.length) {
+      const match = this.findMatch(st.zone);
+      if (match && st.pending) { statusTag = 'COMBINAÇÃO VÁLIDA'; statusTag = 'FUSÃO DISPONÍVEL'; statusTitle = 'Fusão disponível'; statusText = 'Esses átomos podem formar uma substância. Clique em Fundir para descobrir qual, ou continue adicionando átomos.'; statusColor = 'oklch(0.82 0.13 195)'; }
+      else if (match) { statusTag = 'FUSÃO EM ANDAMENTO'; statusTitle = 'Combinação estável encontrada'; statusText = 'Os átomos estão se ligando…'; statusColor = 'oklch(0.82 0.15 145)'; }
+      else {
+        const cands = D.substances.filter(s => zoneKeys.every(k => (s.c[k] || 0) >= st.zone[k]));
+        if (cands.length) {
+          const miss = s => Object.keys(s.c).reduce((a, k) => a + s.c[k] - (st.zone[k] || 0), 0);
+          const best = cands.slice().sort((a, b) => miss(a) - miss(b))[0];
+          const known = st.discovered.includes(best.f);
+          statusTag = 'QUASE LÁ'; statusColor = 'oklch(0.82 0.14 65)';
+          statusTitle = 'Faltam átomos';
+          statusText = showHints ? `Adicione os átomos abaixo para completar a ligação. ${cands.length > 1 ? cands.length + ' substâncias do catálogo começam com essa combinação.' : ''}` : 'A combinação ainda não está completa.';
+          if (showHints) missing = Object.keys(best.c).filter(k => best.c[k] > (st.zone[k] || 0)).map(k => { const e = this.el(k); return { sym: k, n: best.c[k] - (st.zone[k] || 0), color: this.col(e.cat), bg: this.col(e.cat, 0.1), border: this.col(e.cat, 0.4) }; });
+        } else {
+          statusTag = 'INSTÁVEL'; statusColor = 'oklch(0.72 0.17 25)';
+          const noble = zoneKeys.find(k => this.el(k).cat === 'ng');
+          const unused = zoneKeys.find(k => !D.substances.some(s => s.c[k]));
+          if (noble) { statusTitle = `${this.el(noble).name} não quer se ligar`; statusText = 'Gases nobres têm a camada de valência completa e quase nunca formam ligações. Remova-o do reator.'; }
+          else if (unused) { statusTitle = `${this.el(unused).name} ainda não tem receitas`; statusText = 'Esse elemento não participa de nenhuma substância do catálogo. Tente outros elementos.'; }
+          else { statusTitle = 'Proporção sem correspondência'; statusText = 'Nenhuma substância do catálogo tem essa proporção de átomos. Diminua a quantidade de algum deles.'; }
+        }
+      }
+    }
+
+    const fe = this.el(st.hovered) || D.elements[0];
+    const usedIn = D.substances.filter(s => s.c[fe.sym]);
+    const focus = { rad: fe.rad + (fe.est ? ' (estimado)' : ''), shells: fe.shells.join(' · '), sym: fe.sym, name: fe.name, z: fe.z, mass: fe.mass, catName: D.cats[fe.cat].name, color: this.col(fe.cat), bg: this.col(fe.cat, 0.12), border: this.col(fe.cat, 0.5), usage: usedIn.length ? `Aparece em ${usedIn.length} substância${usedIn.length > 1 ? 's' : ''} do catálogo: ${usedIn.slice(0, 4).map(s => st.discovered.includes(s.f) ? this.sub(s.f) : '???').join(', ')}${usedIn.length > 4 ? '…' : ''}` : 'Não aparece nas substâncias do catálogo.' };
+
+    const cells = D.elements.map(e => {
+      const dim = st.filterCat && st.filterCat !== e.cat; const inZone = !!st.zone[e.sym];
+      return { sym: e.sym, name: e.name, col: e.col, row: e.row, color: this.col(e.cat), bg: this.col(e.cat, st.hovered === e.sym ? 0.24 : 0.09), border: this.col(e.cat, 0.35), opacity: dim ? 0.18 : 1, outline: inZone ? `1.5px solid ${this.col(e.cat)}` : 'none', zShown: detail === 'Símbolo' ? '' : e.z, nameShown: detail === 'Completo' ? e.name : '',
+        showInfo: st.hoverCell === e.sym, openInfo: ev => { ev.stopPropagation(); this.setState({ drawer: e.sym, drawerShell: -1 }); },
+        onDragStart: ev => { this.setState({ hoverCell: null }); ev.dataTransfer.setData('text/plain', e.sym); ev.dataTransfer.effectAllowed = 'copy'; }, onClick: () => this.addAtom(e.sym),
+        onEnter: () => this.setState({ hovered: e.sym, hoverCell: e.sym }),
+        onLeave: () => this.setState({ hoverCell: null }) };
+    });
+    let tip = null;
+    if (st.drawer) {
+      const t = this.el(st.drawer); const sup = x => String(x).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]); const L = 'spdf';
+      const fmt = cf => cf.map(([n, l, k]) => `${n}${L[l]}${sup(k)}`).join(' ');
+      const cores = [[86, 'Rn'], [54, 'Xe'], [36, 'Kr'], [18, 'Ar'], [10, 'Ne'], [2, 'He']].find(([z]) => z < t.z);
+      let short = fmt(t.conf);
+      if (cores) { const core = this.el(cores[1]).conf; const rest = t.conf.filter(([n, l, k]) => !core.some(c => c[0] === n && c[1] === l && c[2] === k)); short = `[${cores[1]}] ${fmt(rest)}`; }
+      const letters = 'KLMNOPQ'; const ui = D.substances.filter(s => s.c[t.sym]);
+      const tab = st.tipTab || 'Básico';
+      const dv = st.drawerView || '3D', sel = st.drawerShell ?? -1, tc = D.cats[t.cat];
+      const selShell = sel >= 0 && sel < t.shells.length ? sel : -1;
+      const shellSubs = selShell >= 0 ? t.conf.filter(([n]) => n === selShell + 1).sort((x, y) => x[1] - y[1]) : [];
+      tip = { add: () => this.addAtom(t.sym), sym: t.sym,
+        view: React.createElement(this.atomComp(), { key: 'drawer-' + t.sym, own: true, size: 300, shells: t.shells, h: tc.h, c: tc.c, fusing: false, top: dv === 'Topo', sel: selShell, onPick: i => this.setState({ drawerShell: i }) }),
+        views: [['3D', '3D livre'], ['Topo', 'Vista de topo']].map(([id, label]) => { const on = dv === id; return { label, bg: on ? 'oklch(0.82 0.13 195)' : 'transparent', color: on ? 'oklch(0.18 0.03 230)' : 'oklch(0.8 0.02 265)', pick: () => this.setState({ drawerView: id }) }; }),
+        shellChips: t.shells.map((n, i) => { const on = i === selShell; return { letter: 'KLMNOPQ'[i], n, color: this.col(t.cat), bg: on ? this.col(t.cat, 0.25) : this.col(t.cat, 0.06), border: on ? this.col(t.cat) : this.col(t.cat, 0.3), pick: () => this.setState({ drawerShell: on ? -1 : i }) }; }),
+        hasShell: selShell >= 0, noShell: selShell < 0,
+        shell: selShell >= 0 ? { letter: 'KLMNOPQ'[selShell], n: selShell + 1, count: t.shells[selShell], max: 2 * (selShell + 1) ** 2, subs: shellSubs.map(([n, l, k]) => `${n}${'spdf'[l]}${String(k).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d])}`).join(' '),
+          role: selShell === t.shells.length - 1 ? 'Camada de valência: seus elétrons participam das ligações químicas.' : selShell === 0 ? 'Camada mais próxima do núcleo, com a menor energia.' : 'Camada interna: seus elétrons não participam das ligações.' } : {}, name: t.name, z: t.z, mass: t.mass, catName: D.cats[t.cat].name, color: this.col(t.cat), bg: this.col(t.cat, 0.12), border: this.col(t.cat, 0.5),
+        rad: t.rad + (t.est ? ' (estimado)' : ''), shells: t.shells.join(' · '),
+        usage: ui.length ? `Aparece em ${ui.length} substância${ui.length > 1 ? 's' : ''} do catálogo: ${ui.slice(0, 4).map(s => st.discovered.includes(s.f) ? this.sub(s.f) : '???').join(', ')}${ui.length > 4 ? '…' : ''}` : 'Não aparece nas substâncias do catálogo.',
+        full: fmt(t.conf), short, valence: t.shells[t.shells.length - 1], exception: [24, 29, 42, 46, 47, 78, 79].includes(t.z),
+        layers: t.shells.map((k, i) => ({ letter: letters[i], n: k, color: this.col(t.cat), bg: this.col(t.cat, 0.1), border: this.col(t.cat, 0.35) })),
+        isBasic: tab === 'Básico', isAdv: tab === 'Avançado',
+        tabs: ['Básico', 'Avançado'].map(label => { const on = tab === label; return { label, bg: on ? 'oklch(0.3 0.03 265)' : 'transparent', color: on ? 'oklch(0.95 0.01 265)' : 'oklch(0.7 0.02 265)', pick: () => this.setState({ tipTab: label }) }; }) };
+    }
+    const legend = Object.keys(D.cats).map(k => { const on = st.filterCat === k; return { name: D.cats[k].name, color: this.col(k), bg: on ? this.col(k, 0.18) : 'transparent', border: on ? this.col(k, 0.6) : 'oklch(0.28 0.025 265)', toggle: () => this.setState(s => ({ filterCat: s.filterCat === k ? null : k })) }; });
+
+    const stateLbl = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
+    const fmap = { 'Todas': () => true, 'Descobertas': s => st.discovered.includes(s.f), 'Gases': s => s.state === 'gás', 'Líquidos': s => s.state === 'líquido', 'Sólidos': s => s.state === 'sólido' };
+    const collFilters = Object.keys(fmap).map(label => { const on = st.collFilter === label; return { label, bg: on ? 'oklch(0.3 0.03 265)' : 'transparent', color: on ? 'oklch(0.95 0.01 265)' : 'oklch(0.72 0.02 265)', pick: () => this.setState({ collFilter: label }) }; });
+    const collItems = D.substances.map((s, i) => ({ s, i })).filter(({ s }) => fmap[st.collFilter](s)).map(({ s, i }) => {
+      const k = st.discovered.includes(s.f);
+      return { num: String(i + 1).padStart(2, '0'), formula: k ? s.d : '? ? ?', name: k ? s.name : 'Não descoberta', stateLabel: stateLbl[s.state], meta: k ? s.where : `${s.atoms} átomos · ${s.nEl} elemento${s.nEl > 1 ? 's' : ''}`, fColor: k ? 'oklch(0.82 0.13 195)' : 'oklch(0.45 0.02 265)', border: k ? 'oklch(0.32 0.03 265)' : 'oklch(0.25 0.02 265)', bg: k ? 'oklch(0.2 0.022 265)' : 'oklch(0.17 0.02 265)', cursor: k ? 'pointer' : 'default', open: () => { if (k) this.setState({ result: s.f, resultNew: false, levelUp: null }); } };
+    });
+
+    const missions = P.missions.map(m => ({ title: m.title, desc: m.desc, pct: (m.v / m.t * 100) + '%', progress: `${m.v} / ${m.t}`, barColor: m.done ? 'oklch(0.82 0.15 145)' : 'oklch(0.82 0.13 195)', border: m.done ? 'oklch(0.82 0.15 145 / 0.4)' : 'oklch(0.28 0.025 265)', tag: m.done ? 'Concluída' : `+${m.reward} XP`, tagColor: m.done ? 'oklch(0.85 0.15 145)' : 'oklch(0.85 0.14 65)', tagBorder: m.done ? 'oklch(0.82 0.15 145 / 0.4)' : 'oklch(0.82 0.14 65 / 0.4)' }));
+    const feat = P.missions.find(m => !m.done) || P.missions[P.missions.length - 1];
+    const last = P.disc[P.disc.length - 1];
+
+    const gases = P.disc.filter(s => s.state === 'gás').length, org = P.disc.filter(s => s.c.C && s.c.H).length;
+    const medalDefs = [
+      ['1', 'Primeira fusão', 'Realize sua primeira fusão no reator.', st.fusions >= 1, 195],
+      ['H₂O', 'Gota d’água', 'Descubra a água.', st.discovered.includes('H2O'), 230],
+      ['G5', 'Mestre dos gases', 'Descubra 5 gases.', gases >= 5, 300],
+      ['C–H', 'Orgânico', 'Descubra 3 compostos orgânicos.', org >= 3, 145],
+      ['10', 'Colecionador', 'Tenha 10 substâncias na coleção.', P.disc.length >= 10, 65],
+      ['N5', 'Veterano', 'Alcance o nível 5.', P.level >= 5, 28],
+      ['He', 'Curioso nobre', 'Tente fundir um gás nobre.', st.nobleTried, 340],
+      ['∞', 'Mente completa', 'Descubra todas as substâncias.', P.disc.length >= D.substances.length, 105]
+    ];
+    const medals = medalDefs.map(([glyph, title, desc, on, h]) => ({ glyph, title, desc, color: on ? `oklch(0.82 0.14 ${h})` : 'oklch(0.5 0.02 265)', bg: on ? `oklch(0.82 0.14 ${h} / 0.12)` : 'transparent', border: on ? `oklch(0.82 0.14 ${h} / 0.4)` : 'oklch(0.26 0.02 265)', opacity: on ? 1 : 0.55 }));
+
+    let res = { bonds: [], atoms: [], comp: [] };
+    const rs = st.result && D.substances.find(s => s.f === st.result);
+    if (rs) {
+      const molar = Object.keys(rs.c).reduce((a, k) => a + this.el(k).mass * rs.c[k], 0);
+      const str = this.structure(rs); const D3 = this.molComp();
+      const g = this.geom3d(rs.f, str.raw);
+      res = { ...str, view3d: React.createElement(D3, { key: rs.f, g, col: cat => D.cats[cat] }), formula: rs.d, name: rs.name, state: stateLbl[rs.state], where: rs.where, fact: rs.fact, molar: molar.toFixed(2).replace('.', ','), atomCount: rs.atoms,
+        badge: st.resultNew ? `NOVA DESCOBERTA · +${this.subXP(rs)} XP` : 'JÁ NA COLEÇÃO', badgeBg: st.resultNew ? 'oklch(0.82 0.15 145)' : 'oklch(0.28 0.025 265)', badgeColor: st.resultNew ? 'oklch(0.2 0.05 145)' : 'oklch(0.85 0.02 265)',
+        levelUp: !!st.levelUp, levelText: `SUBIU PARA O NÍVEL ${st.levelUp}`,
+        comp: Object.keys(rs.c).map(k => { const e = this.el(k); return { sym: k, name: e.name, n: rs.c[k], color: this.col(e.cat), bg: this.col(e.cat, 0.08), border: this.col(e.cat, 0.3) }; }) };
+    }
+
+    const zoneBorder = st.fusing ? 'oklch(0.82 0.15 145)' : st.dragOver ? 'oklch(0.82 0.13 195)' : 'oklch(0.36 0.03 265)';
+    return {
+      ...base,
+      level: P.level, xp: P.xp, xpInLevel: xpIn, xpPct: (xpIn / 300 * 100) + '%', xpToNext: 300 - xpIn, nextLevel: P.level + 1,
+      discCount: P.disc.length, subTotal: D.substances.length,
+      featMission: { title: feat.title, desc: feat.desc, pct: (feat.v / feat.t * 100) + '%', progress: `${feat.v}/${feat.t}` },
+      lastDisc: last ? { formula: last.d, name: last.name, state: stateLbl[last.state] } : { formula: '—', name: 'Nenhuma ainda', state: '' },
+      zoneItems, zoneFormula, hasZone: zoneKeys.length > 0, show3dNote: is3d && zoneKeys.length > 0, zoneEmpty: zoneKeys.length === 0,
+      zoneBorder, zoneGlow: st.fusing ? 'oklch(0.82 0.15 145 / 0.22)' : st.dragOver ? 'oklch(0.82 0.13 195 / 0.12)' : 'oklch(0.3 0.04 230 / 0.25)',
+      zoneShadow: st.fusing ? '0 0 60px oklch(0.82 0.15 145 / 0.35), inset 0 0 60px oklch(0.82 0.15 145 / 0.15)' : 'none',
+      zoneScale: st.fusing ? 0.82 : 1,
+      onDragOver: e => { e.preventDefault(); if (!this.state.dragOver) this.setState({ dragOver: true }); },
+      onDragLeave: () => this.setState({ dragOver: false }),
+      onDrop: e => { e.preventDefault(); const s = e.dataTransfer.getData('text/plain'); this.setState({ dragOver: false }); if (s) this.addAtom(s); },
+      clearZone: () => { clearTimeout(this.fuseT); this.setState({ zone: {}, fusing: false, pending: false }); },
+      isPending: !!st.pending, fuseNow: () => this.fuseNow(),
+      statusTag, statusTitle, statusText, statusColor, statusBorder: zoneKeys.length ? statusColor.replace(')', ' / 0.45)') : 'oklch(0.28 0.025 265)', missing,
+      focus, cells, legend, tip, hasDrawer: !!tip && st.screen === 'lab',
+      closeDrawer: () => this.setState({ drawer: null }), collFilters, collItems,
+      missions, missionsDone: P.missions.filter(m => m.done).length, missionsTotal: P.missions.length,
+      stats: [{ value: P.disc.length, label: 'Substâncias descobertas' }, { value: st.fusions, label: 'Fusões realizadas' }, { value: st.atomsUsed, label: 'Átomos fundidos' }, { value: st.usedEls.length, label: 'Elementos explorados' }],
+      medals, medalsDone: medalDefs.filter(m => m[3]).length, medalsTotal: medalDefs.length,
+      hasResult: !!rs, res,
+      resIs2d: (st.resView || '3D') === '2D', resIs3d: (st.resView || '3D') === '3D',
+      resViews: ['2D', '3D'].map(label => { const on = (st.resView || '3D') === label; return { label, bg: on ? 'oklch(0.82 0.13 195)' : 'transparent', color: on ? 'oklch(0.18 0.03 230)' : 'oklch(0.8 0.02 265)', pick: () => this.setState({ resView: label }) }; }),
+      closeResult: () => this.setState({ result: null }),
+      stop: e => e.stopPropagation(),
+      resultToColl: () => this.setState({ result: null, screen: 'coll', collFilter: 'Todas' })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
