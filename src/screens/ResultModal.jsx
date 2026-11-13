@@ -5,16 +5,30 @@ import Foto, { temFoto } from '../components/Foto.jsx';
 
 const STATE = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 
+const CARGA = c => (Math.abs(c) > 1 ? Math.abs(c) : '') + (c > 0 ? '+' : '−');
+
 function Mol2D({ s }) {
-  const { nodes, bonds } = structure(s);
+  const { nodes, bonds, u } = structure(s);
+  const gap = Math.max(3.5, Math.min(6, u * 0.1));
   return (
     <div className="mol2d" role="img" aria-label={`Estrutura de ${s.name}`}>
-      {bonds.map(([a, b], i) => {
-        const A = nodes[a], B = nodes[b], dx = B.x - A.x, dy = B.y - A.y;
-        return <div key={'b' + i} style={{ position: 'absolute', left: (A.x + B.x) / 2, top: (A.y + B.y) / 2, width: Math.hypot(dx, dy), height: 3, borderRadius: 2, background: 'oklch(0.5 0.03 265)', transform: `translate(-50%,-50%) rotate(${Math.atan2(dy, dx)}rad)` }} />;
+      {bonds.flatMap(([a, b, o], i) => {
+        const A = nodes[a], B = nodes[b], dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy);
+        const nx = -dy / L, ny = dx / L;
+        const offs = o === 2 ? [-gap, gap] : o === 3 ? [-gap * 1.5, 0, gap * 1.5] : [0];
+        return offs.map((k, j) => (
+          <div key={'b' + i + '-' + j} style={{
+            position: 'absolute', left: (A.x + B.x) / 2 + nx * k, top: (A.y + B.y) / 2 + ny * k, width: L, height: 0,
+            borderTop: o === 0 ? '2px dashed oklch(0.55 0.05 265)' : `${o > 1 ? 2.5 : 3}px solid oklch(0.5 0.03 265)`,
+            transform: `translate(-50%,-50%) rotate(${Math.atan2(dy, dx)}rad)`,
+          }} />
+        ));
       })}
       {nodes.map((n, i) => (
-        <div key={'a' + i} className="display" style={{ position: 'absolute', left: n.x, top: n.y, width: n.r * 2, height: n.r * 2, transform: 'translate(-50%,-50%)', borderRadius: '50%', border: `2px solid ${col(n.cat)}`, background: 'oklch(0.2 0.025 265)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: n.sym === 'H' ? 12 : 15, fontWeight: 600, color: col(n.cat) }}>{n.sym}</div>
+        <div key={'a' + i} className="display" style={{ position: 'absolute', left: n.x, top: n.y, width: n.r * 2, height: n.r * 2, transform: 'translate(-50%,-50%)', borderRadius: '50%', border: `2px solid ${col(n.cat)}`, background: 'oklch(0.2 0.025 265)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: Math.max(8, n.r * (n.sym === 'H' ? 0.8 : 0.68)), fontWeight: 600, color: col(n.cat) }}>
+          {n.sym}
+          {n.charge !== 0 && <span style={{ position: 'absolute', top: -n.r * 0.35, right: -n.r * 0.55, fontSize: Math.max(9, n.r * 0.55), color: 'var(--text-2, #cbd5e1)' }}>{CARGA(n.charge)}</span>}
+        </div>
       ))}
     </div>
   );
@@ -54,7 +68,7 @@ export default function ResultModal({ game, onClose, toColl }) {
           ) : view === '2D' ? (
             <>
               <Mol2D s={s} />
-              <div style={{ fontSize: 12, color: 'oklch(0.66 0.02 265)', textAlign: 'center' }}>Representação simplificada das ligações</div>
+              <div style={{ fontSize: 12, color: 'oklch(0.66 0.02 265)', textAlign: 'center' }}>Traço duplo ou triplo = ligação dupla ou tripla · tracejado = atração iônica</div>
             </>
           ) : (
             <>
