@@ -1,4 +1,4 @@
-// Ficha de um elemento: nome com badges das informações básicas e as abas Básico (história, nome,
+// Ficha de um elemento: nome com prótons, nêutrons e elétrons, e as abas Básico (badges, história, nome,
 // curiosidades) e Avançado (distribuição eletrônica e propriedades). A eletrosfera em 3D e as camadas
 // ficam sempre à vista, entre o topo e as abas.
 // É só o conteúdo; quem usa decide a moldura (gaveta no laboratório, painel fixo nos estudos).
@@ -103,10 +103,13 @@ export default function ElementFicha({ sym, discovered }) {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
         <div className="display" style={{ fontSize: 24, fontWeight: 600 }}>{t.name}</div>
         <div style={{ fontSize: 13.5, color: col(t.cat) }}>{tc.name}</div>
-        {/* Informações básicas em badges fininhos, no espaço ao lado do nome. */}
-        <div className="ef-badges" style={{ '--c': col(t.cat, 0.4) }}>
-          <span className="ef-badge">{cc.ano ? `Descoberto em ${cc.ano}` : 'Descoberta: —'}</span>
-          <span className="ef-badge">{f.estado === '—' ? 'Estado desconhecido' : `${f.estado} a 25 °C`}</span>
+        {/* Partículas do átomo neutro, no espaço ao lado do nome. */}
+        <div className="ef-particulas" style={{ '--c': col(t.cat) }}>
+          {[['Prótons', t.z, 'p⁺'], ['Nêutrons', f.neut, 'n⁰'], ['Elétrons', t.z, 'e⁻']].map(([rot, n, simb]) => (
+            <div key={simb} className="ef-particula" title={simb === 'n⁰' ? (t.est ? 'No isótopo mais estável' : 'No isótopo mais comum') : undefined}>
+              <b className="display">{n}</b><span>{simb} {rot}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -120,6 +123,10 @@ export default function ElementFicha({ sym, discovered }) {
 
     {tab === 'Básico' ? (
       <div className="ficha-corpo" role="tabpanel">
+        <div className="ef-badges" style={{ '--c': col(t.cat, 0.4) }}>
+          <span className="ef-badge">{cc.ano ? `Descoberto em ${cc.ano}` : 'Descoberta: —'}</span>
+          <span className="ef-badge">{f.estado === '—' ? 'Estado desconhecido' : `${f.estado} a 25 °C`}</span>
+        </div>
         {hs && (
           <>
             <Secao titulo="Como foi descoberto"><p>{hs.h}</p></Secao>
