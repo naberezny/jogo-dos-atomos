@@ -34,7 +34,12 @@ export default function App() {
     const h = location.hash.slice(1), inicial = ehSecao(h) ? h : tela;
     history.replaceState({ tela: inicial, i: 0 }, '', '#' + inicial);
     if (inicial !== st.screen) set({ screen: inicial });
-    const pop = e => set({ screen: ehSecao(e.state?.tela) ? e.state.tela : 'home', drawer: null, result: null });
+    const pop = e => {
+      // Sem estado salvo (endereço digitado à mão), vale o que está depois do #.
+      const h = location.hash.slice(1), alvo = ehSecao(e.state?.tela) ? e.state.tela : ehSecao(h) ? h : 'home';
+      if (!e.state) history.replaceState({ tela: alvo, i: 1 }, '', '#' + alvo);
+      set({ screen: alvo, drawer: null, result: null });
+    };
     window.addEventListener('popstate', pop);
     return () => window.removeEventListener('popstate', pop);
     // eslint-disable-next-line react-hooks/exhaustive-deps

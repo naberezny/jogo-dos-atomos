@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { col, el } from '../game/logic.js';
 import ElementFicha from '../components/ElementFicha.jsx';
 
@@ -11,7 +12,9 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd, onBack,
     return () => window.removeEventListener('keydown', k);
   }, [onClose]);
 
-  return (
+  // Vai direto para o <body>: dentro de um modal com desfoque de fundo, um elemento fixo ficaria preso
+  // à área rolável do modal e deixaria a tela de baixo aparecer.
+  return createPortal(
     <>
       <div className={`scrim${onBack ? ' over' : ''}`} onClick={onClose} />
       <aside className={`drawer${onBack ? ' over' : ''}`} role="dialog" aria-modal="true" aria-label={`Ficha de ${t.name}`} style={{ borderColor: col(t.cat, 0.5) }}>
@@ -27,6 +30,7 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd, onBack,
           <button className="btn btn-primary" style={{ width: '100%' }} onClick={onAdd}>Adicionar {t.sym} ao reator</button>
         </div>}
       </aside>
-    </>
+    </>,
+    document.body,
   );
 }
