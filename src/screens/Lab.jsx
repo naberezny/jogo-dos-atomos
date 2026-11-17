@@ -6,6 +6,7 @@ import { col, el, findMatch, FUSE_CHARGE, fusable, fuseMs, reactorStatus, sub } 
 import Atom3D from '../components/Atom3D.jsx';
 import FusionFX from '../components/FusionFX.jsx';
 import PeriodicTable from '../components/PeriodicTable.jsx';
+import PageHeader from '../components/PageHeader.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -58,10 +59,7 @@ export default function Lab({ game }) {
 
   return (
     <section className="lab" aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <div className="page-head">
-        <div><div className="eyebrow">Laboratório</div><h2>Reator de fusão</h2></div>
-        <div style={{ fontSize: 13, color: 'var(--muted)' }}>Toque num elemento para ver a ficha e adicionar, ou arraste até o reator</div>
-      </div>
+      <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Toque num elemento para ver a ficha e adicionar, ou arraste até o reator" />
 
       <div className="lab-top">
         <div

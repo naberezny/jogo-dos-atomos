@@ -5,6 +5,7 @@ import { col, el } from '../game/logic.js';
 import useMedia from '../hooks/useMedia.js';
 import PeriodicTable from '../components/PeriodicTable.jsx';
 import ElementFicha from '../components/ElementFicha.jsx';
+import PageHeader from '../components/PageHeader.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const semAcento = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -30,17 +31,12 @@ export default function Estudos({ game }) {
 
   return (
     <section aria-label="Estudos" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <div className="page-head">
-        <div>
-          <div className="eyebrow">Estudos</div>
-          <h2>Tabela periódica</h2>
-          <div className="sub">Os 118 elementos, com eletrosfera em 3D, história e propriedades. Toque num elemento para ver a ficha.</div>
-        </div>
+      <PageHeader eyebrow="Estudos" title="Tabela periódica" sub="Os 118 elementos, com eletrosfera em 3D, história e propriedades. Toque num elemento para ver a ficha.">
         <form className="busca" role="search" onSubmit={ev => { ev.preventDefault(); const p = achados && elements.find(e => achados.has(e.sym)); if (p) escolher(p.sym); }}>
           <input type="search" value={busca} onChange={ev => setBusca(ev.target.value)} placeholder="Buscar por nome, símbolo ou número" aria-label="Buscar elemento" />
           {achados && <span className="mono">{achados.size}</span>}
         </form>
-      </div>
+      </PageHeader>
 
       <div className={`estudos${largo ? ' largo' : ''}`}>
         <PeriodicTable onPick={escolher} selected={sym} isOff={achados ? s => !achados.has(s) : undefined} />

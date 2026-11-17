@@ -21,6 +21,9 @@ energia de ionização, afinidade eletrônica e estados de oxidação), além do
 Na aba **Estudos**, a tabela periódica e a ficha completa de cada elemento ficam lado a lado, com busca
 por nome, símbolo ou número, sem o reator.
 
+A tela inicial reúne um cartão para cada seção, e toda tela tem uma seta de voltar. A navegação entra no
+histórico do navegador: o botão Voltar do celular funciona, e links como `…/#estudos` abrem direto na seção.
+
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)

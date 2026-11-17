@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { medals as medalList, XP_PER_LEVEL } from '../game/logic.js';
+import PageHeader from '../components/PageHeader.jsx';
 
 export default function Profile({ game }) {
   const { st, P, reset } = game;
@@ -15,6 +16,7 @@ export default function Profile({ game }) {
 
   return (
     <section aria-label="Perfil" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+      <PageHeader eyebrow="Pesquisador(a)" title="Perfil" />
       <div className="card" style={{ display: 'flex', alignItems: 'center', gap: 22, padding: 26, borderRadius: 16, flexWrap: 'wrap' }}>
         <div className="display" style={{ width: 88, height: 88, borderRadius: '50%', border: '2px solid var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 30, fontWeight: 600, color: 'var(--accent)' }}>{P.level}</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flex: 1, minWidth: 220 }}>

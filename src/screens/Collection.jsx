@@ -1,5 +1,6 @@
 import { substances } from '../data/nucleo.js';
 import { fotoUrl, temFoto } from '../components/Foto.jsx';
+import PageHeader from '../components/PageHeader.jsx';
 
 const STATE = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 const FILTERS = {
@@ -17,16 +18,11 @@ export default function Collection({ game }) {
 
   return (
     <section aria-label="Coleção" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-      <div className="page-head">
-        <div>
-          <div className="eyebrow">Enciclopédia</div>
-          <h2>Coleção de substâncias</h2>
-          <div className="sub">{P.disc.length} de {substances.length} descobertas</div>
-        </div>
+      <PageHeader eyebrow="Enciclopédia" title="Coleção de substâncias" sub={`${P.disc.length} de ${substances.length} descobertas`}>
         <div className="seg filters">
           {Object.keys(FILTERS).map(l => <button key={l} aria-pressed={filter === l} onClick={() => set({ collFilter: l })}>{l}</button>)}
         </div>
-      </div>
+      </PageHeader>
       <div className="coll-grid">
         {items.map(({ s, i }) => {
           const k = st.discovered.includes(s.f);

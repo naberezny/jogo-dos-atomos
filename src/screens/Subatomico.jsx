@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { acharReceita, antiDe, cabem, categorias, familias, par, particulas, REC, receitas, statusSub, xpSub } from '../data/subatomico.js';
 import { FUSE_CHARGE, fuseMs, progress } from '../game/logic.js';
 import FusionFX from '../components/FusionFX.jsx';
+import PageHeader from '../components/PageHeader.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
 const MAX = 6;
@@ -175,16 +176,11 @@ export default function Subatomico({ game }) {
 
   return (
     <section aria-label="Modo subatômico" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <div className="page-head">
-        <div>
-          <div className="eyebrow">Modo subatômico</div>
-          <h2>Acelerador de partículas</h2>
-          <div className="sub">{disc.length} de {receitas.length} descobertas · quarks, léptons e bósons formam tudo o que existe</div>
-        </div>
+      <PageHeader eyebrow="Modo subatômico" title="Acelerador de partículas" sub={`${disc.length} de ${receitas.length} descobertas · quarks, léptons e bósons formam tudo o que existe`}>
         <div className="seg">
           {['Acelerador', 'Descobertas'].map(l => <button key={l} aria-pressed={aba === l} onClick={() => setAba(l)}>{l}</button>)}
         </div>
-      </div>
+      </PageHeader>
 
       {aba === 'Acelerador' ? (
         <>

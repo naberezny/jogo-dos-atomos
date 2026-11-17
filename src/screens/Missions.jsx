@@ -1,14 +1,10 @@
+import PageHeader from '../components/PageHeader.jsx';
+
 export default function Missions({ P }) {
   const done = P.missions.filter(m => m.done).length;
   return (
     <section aria-label="Missões" style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 980 }}>
-      <div className="page-head">
-        <div>
-          <div className="eyebrow">Desafios</div>
-          <h2>Missões</h2>
-          <div className="sub">{done} de {P.missions.length} concluídas</div>
-        </div>
-      </div>
+      <PageHeader eyebrow="Desafios" title="Missões" sub={`${done} de ${P.missions.length} concluídas`} />
       <ul className="missions">
         {P.missions.map(m => (
           <li key={m.title} className="mission" style={{ borderColor: m.done ? 'oklch(0.82 0.15 145 / 0.4)' : undefined }}>
