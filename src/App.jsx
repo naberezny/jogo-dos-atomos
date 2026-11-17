@@ -3,7 +3,7 @@ import { bySymbolFormula, col, el, subXP } from './game/logic.js';
 import { substances } from './data/nucleo.js';
 import { par, REC, receitas, xpSub } from './data/subatomico.js';
 import { fotoUrl, temFoto } from './components/Foto.jsx';
-import { fraseParticula, fraseSubstancia } from './data/frases.js';
+import { fraseParticula, fraseSubstancia } from './data/medalhas.js';
 import { useGame } from './game/useGame.js';
 import Home from './screens/Home.jsx';
 import Lab from './screens/Lab.jsx';
@@ -18,6 +18,7 @@ import { nivelDe, Revelacao, XpLateral, XpTela, XpTopo } from './components/Cele
 import { ehSecao, NavCtx, SECOES } from './nav.js';
 import Missions from './screens/Missions.jsx';
 import Profile from './screens/Profile.jsx';
+import Medalhas from './screens/Medalhas.jsx';
 
 export default function App() {
   const game = useGame();
@@ -95,7 +96,7 @@ export default function App() {
       <aside className="side">
         <button className="brand" onClick={() => go('home')} aria-label="Núcleo: ir para o início"><span className="brand-mark" aria-hidden="true" /><span className="brand-name">NÚCLEO</span></button>
         <nav className="nav" aria-label="Seções">
-          {SECOES.map(s => (
+          {SECOES.filter(s => !s.oculta).map(s => (
             <button key={s.id} onClick={() => go(s.id)} aria-current={tela === s.id ? 'page' : undefined}>
               <Icon name={s.icon} size={20} /><span className="label" data-curto={s.curto || s.label}><span>{s.label}</span></span>
             </button>
@@ -119,6 +120,7 @@ export default function App() {
         {tela === 'estudos' && <Estudos game={game} />}
         {tela === 'missions' && <Missions P={P} />}
         {tela === 'profile' && <Profile game={game} />}
+        {tela === 'medalhas' && <Medalhas game={game} />}
       </main>
       </div>
 

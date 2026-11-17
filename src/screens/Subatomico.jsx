@@ -1,13 +1,14 @@
 // Modo subatômico: acelerador de partículas, tabela do Modelo Padrão e coleção de descobertas.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { acharReceita, antiDe, cabem, categorias, familias, par, particulas, REC, receitas, statusSub, xpSub } from '../data/subatomico.js';
-import { FUSE_CHARGE, fuseMs, progress } from '../game/logic.js';
+import { acharReceita, antiDe, cabem, categorias, familias, par, particulas, REC, receitas, statusSub } from '../data/subatomico.js';
+import { FUSE_CHARGE, fuseMs } from '../game/logic.js';
 import FusionFX from '../components/FusionFX.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
 import BotaoDica from '../components/BotaoDica.jsx';
 import BotaoDetalhes from '../components/BotaoDetalhes.jsx';
 import NaMao from '../components/NaMao.jsx';
+import { MedalhasDaFicha } from '../components/Medalha.jsx';
 import useMedia from '../hooks/useMedia.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
 
@@ -55,7 +56,7 @@ function Desenho({ r }) {
   );
 }
 
-function Resultado({ r, novo, levelUp, onClose, verColecao }) {
+function Resultado({ r, novo, disc, onClose, verColecao }) {
   const btn = useRef(null);
   useEffect(() => {
     btn.current?.focus({ preventScroll: true });
@@ -86,9 +87,8 @@ function Resultado({ r, novo, levelUp, onClose, verColecao }) {
         <div className="modal-right">
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <div className="badge" style={novo ? { background: 'var(--ok)', color: 'var(--ok-ink)' } : { background: 'oklch(0.28 0.025 265)', color: 'oklch(0.85 0.02 265)' }}>
-              {novo ? `NOVA DESCOBERTA · +${xpSub(r)} XP` : 'JÁ DESCOBERTO'}
+              {novo ? 'NOVA DESCOBERTA' : 'JÁ DESCOBERTO'}
             </div>
-            {levelUp && <div className="badge" style={{ background: 'var(--warn)', color: 'oklch(0.2 0.04 65)' }}>SUBIU PARA O NÍVEL {levelUp}</div>}
           </div>
           <div>
             <div className="display" style={{ fontSize: r.sym.length > 6 ? 34 : 52, fontWeight: 700, lineHeight: 1.1, color: 'var(--accent)' }}>{r.sym}</div>
@@ -108,6 +108,7 @@ function Resultado({ r, novo, levelUp, onClose, verColecao }) {
             <div className="eyebrow" style={{ color: 'var(--accent)' }}>Curiosidade</div>
             <div style={{ textWrap: 'pretty' }}>{r.fato}</div>
           </div>
+          <MedalhasDaFicha modo="sub" chave={r.id} descobertas={disc} />
           <div style={{ display: 'flex', gap: 10, marginTop: 'auto', flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={onClose} ref={btn}>Continuar</button>
             {verColecao && <button className="btn btn-ghost" onClick={verColecao}>Ver descobertas</button>}
@@ -163,9 +164,8 @@ export default function Subatomico({ game }) {
       // As descobertas não mudam durante a colisão, então dá para calcular com o estado de quando ela começou.
       const ja = disc.includes(receita.id);
       const subDisc = ja ? disc : [...disc, receita.id];
-      const antes = progress(st).level, depois = progress({ ...st, subDisc }).level;
       set(s => ({ subDisc, subZone: {}, fusions: s.fusions + 1, revelar: ja ? null : { tipo: 'sub', id: receita.id } }));
-      setRes({ id: receita.id, novo: !ja, levelUp: depois > antes ? depois : null });
+      setRes({ id: receita.id, novo: !ja });
     }, ms);
   };
 
@@ -354,7 +354,7 @@ export default function Subatomico({ game }) {
       )}
 
       {pega.mao && (() => { const p = par(pega.mao.sym); return <NaMao innerRef={pega.maoRef} toque={pega.mao.toque} cor={cor(p.fam)}><Orbe p={p} size={70} /></NaMao>; })()}
-      {r && <Resultado r={r} novo={res.novo} levelUp={res.levelUp} onClose={() => setRes(null)} verColecao={res.daColecao ? null : () => { setRes(null); setAba('Descobertas'); }} />}
+      {r && <Resultado r={r} novo={res.novo} disc={disc} onClose={() => setRes(null)} verColecao={res.daColecao ? null : () => { setRes(null); setAba('Descobertas'); }} />}
     </section>
   );
 }

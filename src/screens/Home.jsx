@@ -59,7 +59,7 @@ export default function Home({ game }) {
 
       <section aria-label="Seções">
         <div className="secoes">
-          {SECOES.filter(s => s.id !== 'home').map(s => <CartaoSecao key={s.id} s={s} info={info[s.id]} onClick={() => go(s.id)} />)}
+          {SECOES.filter(s => s.id !== 'home' && !s.oculta).map(s => <CartaoSecao key={s.id} s={s} info={info[s.id]} onClick={() => go(s.id)} />)}
         </div>
       </section>
 

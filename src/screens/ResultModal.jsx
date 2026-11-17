@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { bySymbolFormula, col, el, geom3d, molarMass, structure, subXP } from '../game/logic.js';
+import { bySymbolFormula, col, el, geom3d, molarMass, structure } from '../game/logic.js';
+import { MedalhasDaFicha } from '../components/Medalha.jsx';
 import Mol3D from '../components/Mol3D.jsx';
 import Foto, { temFoto } from '../components/Foto.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
@@ -93,9 +94,8 @@ export default function ResultModal({ game, onClose, toColl }) {
         <div className="modal-right">
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <div className="badge" style={st.resultNew ? { background: 'var(--ok)', color: 'var(--ok-ink)' } : { background: 'oklch(0.28 0.025 265)', color: 'oklch(0.85 0.02 265)' }}>
-              {st.resultNew ? `NOVA DESCOBERTA · +${subXP(s)} XP` : 'JÁ NA COLEÇÃO'}
+              {st.resultNew ? 'NOVA DESCOBERTA' : 'JÁ NA COLEÇÃO'}
             </div>
-            {st.levelUp && <div className="badge" style={{ background: 'var(--warn)', color: 'oklch(0.2 0.04 65)' }}>SUBIU PARA O NÍVEL {st.levelUp}</div>}
           </div>
           <div>
             <div className="display" style={{ fontSize: 52, fontWeight: 700, lineHeight: 1, color: 'var(--accent)' }}>{s.d}</div>
@@ -114,6 +114,7 @@ export default function ResultModal({ game, onClose, toColl }) {
             <div className="eyebrow" style={{ color: 'var(--accent)' }}>Curiosidade</div>
             <div style={{ textWrap: 'pretty' }}>{s.fact}</div>
           </div>
+          <MedalhasDaFicha modo="mol" chave={s.f} descobertas={st.discovered} />
           <div style={{ display: 'flex', gap: 10, marginTop: 'auto', flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={onClose} ref={cont}>Continuar</button>
             <button className="btn btn-ghost" onClick={toColl}>Ver na coleção</button>

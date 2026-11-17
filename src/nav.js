@@ -9,6 +9,8 @@ export const SECOES = [
   { id: 'estudos', label: 'Estudos', icon: 'estudos', desc: 'Explore a tabela periódica e a ficha de cada elemento.', h: 250 },
   { id: 'missions', label: 'Missões', icon: 'missions', desc: 'Cumpra desafios e ganhe XP extra.', h: 65 },
   { id: 'profile', label: 'Perfil', icon: 'profile', desc: 'Veja seu nível, estatísticas e medalhas.', h: 320 },
+  // Fora do menu: aberta pelo perfil ou pelas medalhas da ficha de uma descoberta.
+  { id: 'medalhas', label: 'Medalhas', icon: 'profile', oculta: true },
 ];
 export const ehSecao = id => SECOES.some(s => s.id === id);
 

@@ -1,6 +1,33 @@
 import { useState } from 'react';
 import { medals as medalList, XP_PER_LEVEL } from '../game/logic.js';
+import { medalhasDe, MEDALHAS, progresso } from '../data/medalhas.js';
+import { useNav } from '../nav.js';
 import PageHeader from '../components/PageHeader.jsx';
+import { MedalhaIcone } from '../components/Medalha.jsx';
+
+/** Cartão de entrada da tela de medalhas, com as conquistadas mais recentemente. */
+function CartaoMedalhas({ st }) {
+  const { go } = useNav();
+  const desc = { mol: new Set(st.discovered), sub: new Set(st.subDisc || []) };
+  const ganhas = MEDALHAS.filter(m => progresso(m, desc[m.modo]).nivel).length;
+  // As mais recentes: medalhas das últimas descobertas, sem repetir.
+  const recentes = [];
+  for (const [modo, lista] of [['mol', st.discovered], ['sub', st.subDisc || []]])
+    for (const k of [...lista].reverse()) for (const m of medalhasDe(modo, k)) if (!recentes.some(x => x.id === m.id)) recentes.push(m);
+  return (
+    <button className="card med-perfil" onClick={() => go('medalhas')}>
+      <span style={{ display: 'flex', flexDirection: 'column', gap: 4, textAlign: 'left' }}>
+        <span className="eyebrow">Coleção de medalhas</span>
+        <b className="display" style={{ fontSize: 22 }}>{ganhas} de {MEDALHAS.length} medalhas</b>
+        <span style={{ fontSize: 13, color: 'var(--muted)' }}>Cada grupo de substâncias tem uma medalha que sobe de nível.</span>
+      </span>
+      <span className="med-perfil-icones">
+        {recentes.slice(0, 6).map(m => <MedalhaIcone key={m.id} m={m} nivel={progresso(m, desc[m.modo]).nivel} tam={44} />)}
+      </span>
+      <span className="btn btn-primary" style={{ pointerEvents: 'none' }}>Ver medalhas</span>
+    </button>
+  );
+}
 
 export default function Profile({ game }) {
   const { st, P, reset } = game;
@@ -35,9 +62,11 @@ export default function Profile({ game }) {
         ))}
       </div>
 
+      <CartaoMedalhas st={st} />
+
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
         <h3 className="display" style={{ fontSize: 20, fontWeight: 600 }}>
-          Medalhas <span className="mono" style={{ fontSize: 13, fontWeight: 400, color: 'var(--muted)' }}>{medals.filter(m => m.on).length}/{medals.length}</span>
+          Conquistas <span className="mono" style={{ fontSize: 13, fontWeight: 400, color: 'var(--muted)' }}>{medals.filter(m => m.on).length}/{medals.length}</span>
         </h3>
         <div className="medals">
           {medals.map(m => {
