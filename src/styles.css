@@ -285,14 +285,28 @@ button.brand { cursor: pointer; }
 .btn-dica { position: absolute; top: 8px; left: 8px; z-index: 3; max-width: calc(100% - 100px); display: flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid color-mix(in oklch, var(--tom) 55%, transparent); background: color-mix(in oklch, var(--tom) 12%, var(--panel)); color: var(--fg); font-size: 12.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
 .btn-dica .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--tom); }
 .dica-painel { position: absolute; inset: auto 8px 8px 8px; z-index: 5; max-height: calc(100% - 52px); overflow: auto; padding: 14px 16px; box-shadow: 0 -10px 40px oklch(0.08 0.02 265 / 0.8); animation: pop .2s ease-out; }
-.ptable-card.compacta { padding: 8px; gap: 0; border-radius: 12px; flex: none; }
-.compacta .ptable-scroll { overflow: visible; padding: 0; margin: 0; }
-.compacta .ptable { min-width: 0; gap: 2px; grid-template-rows: repeat(7, auto) 4px auto auto; }
-.compacta .cell { aspect-ratio: 1; padding: 0; border-radius: 3px; align-items: center; justify-content: center; }
+.ptable-card.compacta { padding: 8px; gap: 0; border-radius: 12px; flex: none; --cel: clamp(26px, calc((100dvh - 440px) / 9.4), 40px); }
+.compacta .ptable-scroll { overflow-x: auto; padding: 0; margin: 0; overscroll-behavior-x: contain; scrollbar-width: none; }
+.compacta .ptable-scroll::-webkit-scrollbar { display: none; }
+.compacta .ptable { min-width: 0; width: calc(18 * var(--cel) + 17 * 3px); gap: 3px; grid-template-columns: repeat(18, var(--cel)); grid-template-rows: repeat(7, var(--cel)) 4px var(--cel) var(--cel); }
+.compacta .cell { aspect-ratio: auto; padding: 0; border-radius: 4px; align-items: center; justify-content: center; }
 .compacta .cell:hover { transform: none; }
 .compacta .cell .z, .compacta .cell .n { display: none; }
-.compacta .cell .s { font-size: 9.5px; letter-spacing: -0.02em; }
-.compacta .series { font-size: 0; border-radius: 3px; }
+.compacta .cell .s { font-size: calc(var(--cel) * .42); }
+.compacta .series { font-size: 0; border-radius: 4px; }
+
+/* ---------- Átomo na mão: pegar um elemento da tabela e soltar no reator ---------- */
+.ptable .cell { -webkit-touch-callout: none; -webkit-user-select: none; }
+.cell.segurando { z-index: 2; animation: segurar var(--segurar) linear forwards; }
+.cell.segurando::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; border: 2px solid var(--accent); clip-path: inset(0 100% 0 0); animation: segurar-borda var(--segurar) linear forwards; }
+@keyframes segurar { to { transform: scale(1.18); box-shadow: 0 0 18px oklch(0.82 0.13 195 / 0.7); } }
+@keyframes segurar-borda { to { clip-path: inset(0 0 0 0); } }
+.cell.na-mao { opacity: .35 !important; transform: scale(.9); }
+.atomo-mao { position: fixed; left: 0; top: 0; z-index: 80; pointer-events: none; will-change: transform; transform: translate(-200px, -200px); }
+.atomo-mao-corpo { position: absolute; left: -58px; top: -58px; width: 116px; height: 116px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, color-mix(in oklch, var(--c) 22%, transparent), oklch(0.14 0.02 265 / .85) 68%); border: 1.5px solid color-mix(in oklch, var(--c) 70%, transparent); box-shadow: 0 14px 40px oklch(0.05 0.02 265 / .7), 0 0 30px color-mix(in oklch, var(--c) 45%, transparent); animation: pegou .28s cubic-bezier(.2, 1.5, .4, 1); }
+.atomo-mao-corpo span { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-size: 13px; font-weight: 700; color: var(--c); text-shadow: 0 1px 6px #000; }
+@keyframes pegou { from { transform: scale(.3); opacity: 0; } }
+body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 
 /* ---------- Estudos ---------- */
 .estudos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }

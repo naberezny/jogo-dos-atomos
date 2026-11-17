@@ -70,16 +70,13 @@ export default function Lab({ game }) {
 
   return (
     <section className={`lab${small ? ' movel' : ''}`} aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Toque num elemento para ver a ficha e adicionar, ou arraste até o reator" />
+      <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Arraste um elemento até o reator, ou clique nele para ver a ficha e adicionar" />
 
       <div className="lab-top">
         <div
           ref={reactor}
           className={`reactor${dragOver ? ' over' : ''}${st.fusing ? ' fusing' : ''}`}
           style={{ '--t-fusao': `${ms}ms`, '--t-carga': `${ms * FUSE_CHARGE}ms` }}
-          onDragOver={e => { e.preventDefault(); if (!dragOver) setDragOver(true); }}
-          onDragLeave={() => setDragOver(false)}
-          onDrop={e => { e.preventDefault(); setDragOver(false); const s = e.dataTransfer.getData('text/plain'); if (s) add(s); }}
         >
           <div className="eyebrow">Área de fusão</div>
           {zoneKeys.length > 0 && !st.fusing && <button className="btn-small" onClick={clearZone}>Limpar</button>}
@@ -89,7 +86,7 @@ export default function Lab({ game }) {
             </button>
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
-          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Toque num elemento da tabela' : 'Solte os átomos aqui'}</div>}
+          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Segure um elemento e arraste até aqui' : 'Arraste os átomos até aqui'}</div>}
           <div className="zone">
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
@@ -122,7 +119,9 @@ export default function Lab({ game }) {
         selected={st.drawer}
         isOff={sym => !acesos.has(sym)}
         isMarked={sym => !!st.zone[sym]}
-        draggable={!small}
+        soltarEm={reactor}
+        onSoltar={sym => { add(sym); setFlash({ sym, k: Date.now() }); }}
+        onSobre={setDragOver}
         compacta={small}
         acao="Ver ficha e adicionar ao reator"
       />
