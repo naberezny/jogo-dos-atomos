@@ -1,4 +1,5 @@
-// Ficha de um elemento: eletrosfera em 3D e as abas Básico e Avançado.
+// Ficha de um elemento: nome com badges das informações básicas e as abas Básico (história, nome,
+// curiosidades) e Avançado (eletrosfera em 3D, distribuição eletrônica e propriedades).
 // É só o conteúdo; quem usa decide a moldura (gaveta no laboratório, painel fixo nos estudos).
 import { useEffect, useState } from 'react';
 import { cats } from '../data/nucleo.js';
@@ -58,19 +59,8 @@ export default function ElementFicha({ sym, discovered }) {
   const si = sel >= 0 ? shellInfo(t, sel) : null;
   const hs = HIST[t.sym], f = ficha(t), cc = f.c;
 
-  return (
-    <>
-    <div style={{ display: 'flex', gap: 16, padding: '4px 20px 20px' }}>
-      <div className="tile" style={{ borderColor: col(t.cat, 0.5), background: col(t.cat, 0.12) }}>
-        <div className="z">{t.z}</div><div className="s" style={{ color: col(t.cat), fontSize: 28 }}>{t.sym}</div><div className="m">{t.mass}</div>
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <div className="display" style={{ fontSize: 24, fontWeight: 600 }}>{t.name}</div>
-        <div style={{ fontSize: 13.5, color: col(t.cat) }}>{tc.name}</div>
-      </div>
-    </div>
-
-    <div style={{ padding: '0 20px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+  const eletrosfera = (
+    <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
         <div className="eyebrow" style={{ fontSize: 10.5 }}>Eletrosfera</div>
         <div className="seg accent">
@@ -101,6 +91,24 @@ export default function ElementFicha({ sym, discovered }) {
       ) : (
         <div style={{ fontSize: 12.5, color: 'oklch(0.66 0.02 265)' }}>Toque em uma órbita (ou em uma camada acima) para ver os detalhes.</div>
       )}
+    </section>
+  );
+
+  return (
+    <>
+    <div className="ef-topo">
+      <div className="tile" style={{ borderColor: col(t.cat, 0.5), background: col(t.cat, 0.12) }}>
+        <div className="z">{t.z}</div><div className="s" style={{ color: col(t.cat), fontSize: 28 }}>{t.sym}</div><div className="m">{t.mass}</div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
+        <div className="display" style={{ fontSize: 24, fontWeight: 600 }}>{t.name}</div>
+        <div style={{ fontSize: 13.5, color: col(t.cat) }}>{tc.name}</div>
+        {/* Informações básicas em badges fininhos, no espaço ao lado do nome. */}
+        <div className="ef-badges" style={{ '--c': col(t.cat, 0.4) }}>
+          <span className="ef-badge">{cc.ano ? `Descoberto em ${cc.ano}` : 'Descoberta: —'}</span>
+          <span className="ef-badge">{f.estado === '—' ? 'Estado desconhecido' : `${f.estado} a 25 °C`}</span>
+        </div>
+      </div>
     </div>
 
     <div className="seg ficha-abas" role="tablist" aria-label="Nível de detalhe">
@@ -109,11 +117,6 @@ export default function ElementFicha({ sym, discovered }) {
 
     {tab === 'Básico' ? (
       <div className="ficha-corpo" role="tabpanel">
-        <div className="dados">
-          <Dado k="Descoberta" v={cc.ano || '—'} />
-          <Dado k="Estado a 25 °C" v={f.estado} />
-          <Dado k="Família" v={tc.name} tom={col(t.cat)} />
-        </div>
         {hs && (
           <>
             <Secao titulo="Como foi descoberto"><p>{hs.h}</p></Secao>
@@ -127,6 +130,7 @@ export default function ElementFicha({ sym, discovered }) {
       </div>
     ) : (
       <div className="ficha-corpo" role="tabpanel">
+        {eletrosfera}
         <Secao titulo="Identidade">
           <div className="dados">
             <Dado k="Número atômico (Z)" v={t.z} />
