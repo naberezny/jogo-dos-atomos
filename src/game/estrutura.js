@@ -4,12 +4,12 @@ import SMILES from '../data/estruturas.js';
 
 const VAL = { B: [3], C: [4], N: [3, 5], O: [2], P: [3, 5], S: [2, 4, 6], F: [1], Cl: [1, 3, 5, 7], Br: [1, 3, 5, 7], I: [1, 3, 5, 7] };
 // Raios covalentes (pm), para o comprimento das ligações em 3D.
-const COV = { H: 31, Li: 128, B: 84, C: 76, N: 71, O: 66, F: 57, Na: 166, Mg: 141, Al: 121, Si: 111, P: 107, S: 105, Cl: 102, K: 203, Ca: 176, Ti: 160, Mn: 139, Fe: 132, Cu: 132, Zn: 122, Br: 120, Ag: 145, I: 139 };
+const COV = { H: 31, Li: 128, B: 84, C: 76, N: 71, O: 66, F: 57, Na: 166, Mg: 141, Al: 121, Si: 111, P: 107, S: 105, Cl: 102, K: 203, Ca: 176, Ti: 160, Mn: 139, Fe: 132, Cu: 132, Zn: 122, Br: 120, Ag: 145, I: 139, Cr: 139, Co: 126, Sr: 195, Sn: 139, Ba: 215, W: 162, Pt: 136, Au: 136, Hg: 132, Pb: 146, U: 196 };
 // Elétrons de valência, para contar pares livres (que entortam H₂O, NH₃...).
 const VE = { H: 1, B: 3, C: 4, N: 5, O: 6, F: 7, Si: 4, P: 5, S: 6, Cl: 7, Br: 7, I: 7 };
 const cov = s => COV[s] || 140;
 // Raios iônicos (pm): íons soltos, sem ligação covalente (Na⁺ é menor que Cl⁻).
-const ION = { Li: 76, Na: 102, K: 138, Mg: 72, Ca: 100, Al: 54, Fe: 65, Cu: 73, Zn: 74, Ag: 115, F: 133, Cl: 181, Br: 196, I: 220, O: 140, S: 184 };
+const ION = { Li: 76, Na: 102, K: 138, Mg: 72, Ca: 100, Al: 54, Fe: 65, Cu: 73, Zn: 74, Ag: 115, F: 133, Cl: 181, Br: 196, I: 220, O: 140, S: 184, Cr: 62, Co: 75, Sr: 118, Ba: 135, Pt: 80, Au: 85, Hg: 102, Pb: 119 };
 /** Raio de cada átomo da molécula: iônico se ele só tem atrações iônicas, covalente nos demais. */
 function raios(mol) {
   return mol.atoms.map((a, i) => {

@@ -41,6 +41,20 @@ export const ARTIGO = {
   C6H8O6: 'Vitamin C', C8H9NO2: 'Paracetamol', C6H8O7: 'Citric acid', C9H8O4: 'Aspirin',
   C10H14N2: 'Nicotine', C10H20O: 'Menthol', C14H18N2O5: 'Aspartame', C12H22O11: 'Sucrose',
   C18H27NO3: 'Capsaicin',
+  CuO: 'Copper(II) oxide', AgCl: 'Silver chloride', ZnS: 'Sphalerite', PbS: 'Galena',
+  HgS: 'Cinnabar', SnO2: 'Cassiterite', MnO2: 'Manganese dioxide', SiC: 'Silicon carbide',
+  WC: 'Tungsten carbide', UO2: 'Uranium dioxide', PbO2: 'Lead dioxide', CoCl2: 'Cobalt(II) chloride',
+  AuCl3: 'Gold(III) chloride', LiCoO2: 'Lithium cobalt oxide', SF6: 'Sulfur hexafluoride', Cr2O3: 'Chromium(III) oxide',
+  BaSO4: 'Baryte', AgNO3: 'Silver nitrate', NH4NO3: 'Ammonium nitrate', H3BO3: 'Boric acid',
+  SrCO3: 'Strontium carbonate', CCl2F2: 'Dichlorodifluoromethane', CHCl3: 'Chloroform', N2H4: 'Hydrazine',
+  CH2O2: 'Formic acid', C2H2O4: 'Oxalic acid', C2H3Cl: 'Vinyl chloride', C2F4: 'Polytetrafluoroethylene',
+  PtCl2N2H6: 'Cisplatin', C3H8O: 'Isopropyl alcohol', C2H6O2: 'Ethylene glycol', C4H8O2: 'Ethyl acetate',
+  C7H8: 'Toluene', C8H8: 'Polystyrene', C6H6O: 'Phenol', C3H7NO2: 'Alanine',
+  C7H6O: 'Benzaldehyde', C7H6O3: 'Salicylic acid', C9H8O: 'Cinnamon', C10H8: 'Naphthalene',
+  C10H12O2: 'Clove', C7H14O2: 'Isoamyl acetate', C4H4N2O2: 'Uracil', C4H5N3O: 'Cytosine',
+  C5H5N5: 'Adenine', C5H6N2O2: 'Thymine', C5H5N5O: 'Guanine', C8H11NO2: 'Dopamine',
+  C3H5N3O9: 'Nitroglycerin', C7H8N4O2: 'Theobromine', C10H16O: 'Camphor', C9H13NO3: 'Adrenaline',
+  C10H12N2O: 'Serotonin', C13H18O2: 'Ibuprofen', C20H30O: 'Retinol',
 };
 
 // Escolhas feitas à mão depois da revisão (arquivo do Commons, sem "File:").

@@ -29,6 +29,10 @@ export const bySymbolFormula = f => substances.find(s => s.f === f);
 
 export const subXP = s => 10 * s.atoms + 20 * s.nEl;
 
+const tem = (c, lista) => c.disc.filter(s => lista.includes(s.f)).length;
+const BASES = ['C5H5N5', 'C5H6N2O2', 'C4H5N3O', 'C5H5N5O', 'C4H4N2O2'];
+const ACIDOS = ['HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
+
 export const MISSIONS = [
   { title: 'Primeiros passos', desc: 'Descubra 5 substâncias.', target: 5, val: c => c.disc.length, reward: 100 },
   { title: 'Sopro de vida', desc: 'Descubra 5 substâncias no estado gasoso.', target: 5, val: c => c.disc.filter(s => s.state === 'gás').length, reward: 150 },
@@ -38,10 +42,21 @@ export const MISSIONS = [
   { title: 'Explorador da tabela', desc: 'Coloque 15 elementos diferentes no reator.', target: 15, val: c => c.usedEls.length, reward: 150 },
   { title: 'Halogênios em ação', desc: 'Descubra 8 substâncias com flúor, cloro, bromo ou iodo.', target: 8, val: c => c.disc.filter(s => s.c.F || s.c.Cl || s.c.Br || s.c.I).length, reward: 150 },
   { title: 'Mineralogista', desc: 'Forme 6 minerais: calcário, quartzo, hematita, coríndon, magnetita, pirita, fluorita ou magnesita.', target: 6, val: c => c.disc.filter(s => ['CaCO3', 'SiO2', 'Fe2O3', 'Al2O3', 'Fe3O4', 'FeS2', 'CaF2', 'MgCO3'].includes(s.f)).length, reward: 200 },
-  { title: 'Metais de transição', desc: 'Descubra 4 substâncias com ferro, zinco, titânio, cobre, prata ou manganês.', target: 4, val: c => c.disc.filter(s => Object.keys(s.c).some(k => el(k).cat === 'tm')).length, reward: 200 },
+  { title: 'Metais de transição', desc: 'Descubra 4 substâncias com metais de transição, como ferro, cobre, zinco ou prata.', target: 4, val: c => c.disc.filter(s => Object.keys(s.c).some(k => el(k).cat === 'tm')).length, reward: 200 },
   { title: 'Farmácia', desc: 'Crie aspirina, paracetamol, vitamina C e leite de magnésia.', target: 4, val: c => c.disc.filter(s => ['C9H8O4', 'C8H9NO2', 'C6H8O6', 'MgH2O2'].includes(s.f)).length, reward: 250 },
   { title: 'Química doce', desc: 'Crie glicose, sacarose, sacarina e aspartame.', target: 4, val: c => c.disc.filter(s => ['C6H12O6', 'C12H22O11', 'C7H5NO3S', 'C14H18N2O5'].includes(s.f)).length, reward: 250 },
   { title: 'Gigantes moleculares', desc: 'Crie 3 substâncias com 20 átomos ou mais.', target: 3, val: c => c.disc.filter(s => s.atoms >= 20).length, reward: 300 },
+  { title: 'Grande explorador', desc: 'Coloque 30 elementos diferentes no reator.', target: 30, val: c => c.usedEls.length, reward: 300 },
+  { title: 'Garimpo', desc: 'Forme 4 minérios de metais: galena, cinábrio, cassiterita, esfalerita (sulfeto de zinco) ou barita (sulfato de bário).', target: 4, val: c => tem(c, ['PbS', 'HgS', 'SnO2', 'ZnS', 'BaSO4']), reward: 200 },
+  { title: 'Metalurgista', desc: 'Descubra 12 substâncias com metais de transição.', target: 12, val: c => c.disc.filter(s => Object.keys(s.c).some(k => el(k).cat === 'tm')).length, reward: 300 },
+  { title: 'Pesados e preciosos', desc: 'Descubra uma substância de cada: ouro, platina, mercúrio, chumbo, tungstênio e urânio.', target: 6, val: c => ['Au', 'Pt', 'Hg', 'Pb', 'W', 'U'].filter(e => c.disc.some(s => s.c[e])).length, reward: 300 },
+  { title: 'Pilhas e baterias', desc: 'Crie dióxido de manganês, dióxido de chumbo, óxido de lítio e cobalto e ácido sulfúrico.', target: 4, val: c => tem(c, ['MnO2', 'PbO2', 'LiCoO2', 'H2SO4']), reward: 200 },
+  { title: 'Era dos plásticos', desc: 'Crie as matérias-primas de quatro plásticos: etileno, cloreto de vinila, estireno e tetrafluoretileno.', target: 4, val: c => tem(c, ['C2H4', 'C2H3Cl', 'C8H8', 'C2F4']), reward: 200 },
+  { title: 'Azedinho', desc: 'Descubra 8 ácidos.', target: 8, val: c => tem(c, ACIDOS), reward: 250 },
+  { title: 'Aromas da cozinha', desc: 'Crie 5 moléculas de aroma: vanilina, mentol, limoneno, cinamaldeído, eugenol, benzaldeído, acetato de isoamila ou cânfora.', target: 5, val: c => tem(c, ['C8H8O3', 'C10H20O', 'C10H16', 'C9H8O', 'C10H12O2', 'C7H6O', 'C7H14O2', 'C10H16O']), reward: 250 },
+  { title: 'Química do cérebro', desc: 'Crie dopamina, adrenalina e serotonina.', target: 3, val: c => tem(c, ['C8H11NO2', 'C9H13NO3', 'C10H12N2O']), reward: 250 },
+  { title: 'Código da vida', desc: 'Crie as cinco bases do DNA e do RNA: adenina, timina, citosina, guanina e uracila.', target: 5, val: c => tem(c, BASES), reward: 300 },
+  { title: 'Centena', desc: 'Descubra 100 substâncias.', target: 100, val: c => c.disc.length, reward: 400 },
   { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 },
 ];
 
@@ -69,7 +84,9 @@ export function medals(st, P) {
     ['10', 'Colecionador', 'Tenha 10 substâncias na coleção.', P.disc.length >= 10, 65],
     ['N5', 'Veterano', 'Alcance o nível 5.', P.level >= 5, 28],
     ['He', 'Curioso nobre', 'Tente fundir um gás nobre.', st.nobleTried, 340],
-    ['50', 'Meio caminho', 'Tenha 50 substâncias na coleção.', P.disc.length >= 50, 250],
+    ['50', 'Grande coleção', 'Tenha 50 substâncias na coleção.', P.disc.length >= 50, 250],
+    ['100', 'Centenário', 'Tenha 100 substâncias na coleção.', P.disc.length >= 100, 60],
+    ['DNA', 'Geneticista', 'Conclua a missão Código da vida.', P.missions.some(m => m.title === 'Código da vida' && m.done), 320],
     ['Rx', 'Farmacêutico', 'Conclua a missão Farmácia.', P.missions.some(m => m.title === 'Farmácia' && m.done), 170],
     ['∞', 'Mente completa', 'Descubra todas as substâncias.', P.disc.length >= substances.length, 105],
   ].map(([glyph, title, desc, on, h]) => ({ glyph, title, desc, on, h }));

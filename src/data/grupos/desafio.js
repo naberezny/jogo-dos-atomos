@@ -14,4 +14,9 @@ export const DESAFIO = [
   S('C14H18N2O5', 'Aspartame', 'sólido', 'Adoçantes e refrigerantes diet.', 'É cerca de 200 vezes mais doce que o açúcar comum.'),
   S('C12H22O11', 'Sacarose', 'sólido', 'Açúcar de mesa, cana-de-açúcar e beterraba.', 'O Brasil é o maior produtor de açúcar de cana do mundo.'),
   S('C18H27NO3', 'Capsaicina', 'sólido', 'Pimentas.', 'Engana o cérebro ativando os sensores de calor; por isso a pimenta "queima" sem queimar.'),
+  S('C10H16O', 'Cânfora', 'sólido', 'Pomadas e descongestionantes.', 'É extraída da madeira da canforeira, uma árvore asiática, e tem cheiro forte e refrescante.'),
+  S('C9H13NO3', 'Adrenalina', 'sólido', 'Glândulas suprarrenais; canetas contra alergias graves.', 'Num susto, acelera o coração e prepara o corpo para lutar ou fugir.'),
+  S('C10H12N2O', 'Serotonina', 'sólido', 'Cérebro e intestino.', 'Cerca de 90% da serotonina do corpo é produzida no intestino.'),
+  S('C13H18O2', 'Ibuprofeno', 'sólido', 'Analgésicos e anti-inflamatórios.', 'Foi criado nos anos 1960 por Stewart Adams, que o testou em si mesmo para curar uma ressaca.'),
+  S('C20H30O', 'Vitamina A', 'sólido', 'Fígado, gema de ovo e leite.', 'O corpo também a produz a partir do betacaroteno da cenoura. Ela é essencial para enxergar com pouca luz.'),
 ];
