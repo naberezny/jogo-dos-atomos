@@ -100,7 +100,7 @@ export default function ElementFicha({ sym, discovered }) {
       <div className="tile" style={{ borderColor: col(t.cat, 0.5), background: col(t.cat, 0.12) }}>
         <div className="z">{t.z}</div><div className="s" style={{ color: col(t.cat), fontSize: 28 }}>{t.sym}</div><div className="m">{t.mass}</div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4, minWidth: 0 }}>
+      <div className="ef-nome">
         <div className="display" style={{ fontSize: 24, fontWeight: 600 }}>{t.name}</div>
         <div style={{ fontSize: 13.5, color: col(t.cat) }}>{tc.name}</div>
         {/* Partículas do átomo neutro, no espaço ao lado do nome. */}
