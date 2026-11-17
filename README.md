@@ -8,7 +8,7 @@ substâncias reais, como água, sal de cozinha, metano, glicose e cafeína.
 ## Como jogar
 
 1. No **Laboratório**, toque num elemento da tabela periódica para colocá-lo no reator, ou arraste-o até lá
-   (no celular, segure o dedo sobre ele por 1 segundo para "pegar" o átomo). O botão **Detalhes** abre a ficha
+   (no celular, segure o dedo sobre ele por meio segundo para "pegar" o átomo). O botão **Detalhes** abre a ficha
    do átomo selecionado no reator.
 2. Ajuste a quantidade de cada átomo com `−`, `+` e `+5`. O painel ao lado diz se falta algum átomo
    (e você pode tocar na dica para adicioná-lo).

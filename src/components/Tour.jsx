@@ -9,7 +9,7 @@ const passos = t => [
   {
     icon: 'lab', h: 145, title: 'Pegue um átomo', anim: 'arrastar',
     text: t
-      ? 'No Laboratório, segure o dedo sobre um elemento por 1 segundo: o átomo sai da tabela e vai para a sua mão. Arraste e solte dentro do reator.'
+      ? 'No Laboratório, segure o dedo sobre um elemento por meio segundo: o átomo sai da tabela e vai para a sua mão. Arraste e solte dentro do reator.'
       : 'No Laboratório, clique num elemento da tabela e arraste: o átomo vai para a sua mão. Solte dentro do reator.',
     extra: t ? 'Com pressa? Um toque rápido já coloca o elemento no reator.' : 'Com pressa? Um clique simples já coloca o elemento no reator.',
   },
