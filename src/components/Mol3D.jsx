@@ -1,11 +1,14 @@
 // Molécula em bolas e varetas, girando sozinha; arraste para girar. Pinça (dois dedos) ou roda do
-// mouse dão zoom; o botão de restaurar só aparece com o zoom alterado.
+// mouse dão zoom. O botão de restaurar aparece quando o zoom ou o ângulo foram mudados pelo jogador
+// e devolve os dois ao padrão, numa animação curta.
 import { useEffect, useRef, useState } from 'react';
 import { cats } from '../data/nucleo.js';
 
 const W = 340, H = 280;
 const ZOOM_MIN = 0.6, ZOOM_MAX = 4;
 const limita = z => Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, z));
+const ANGULO = { yaw: 0.5, pitch: -0.3 }; // vista inicial
+const RESTAURAR_MS = 450;
 // Luz principal presa à molécula: gira junto com ela, então o brilho desliza pela superfície de cada
 // átomo e até o do centro mostra o movimento. (x para a direita, y para baixo, z para a câmera)
 const LUZ = (() => { const v = [-0.55, -0.65, 0.52], n = Math.hypot(...v); return v.map(c => c / n); })();
@@ -18,11 +21,21 @@ export default function Mol3D({ g, label }) {
   const [zoom, setZoomState] = useState(1);
   const setZoom = z => { z = limita(z); if (Math.abs(z - 1) < 0.03) z = 1; zoomRef.current = z; setZoomState(z); };
   const setZoomRef = useRef(setZoom); setZoomRef.current = setZoom;
+  const [girou, setGirou] = useState(false); // o jogador mudou o ângulo com o dedo ou o mouse
+  const girouRef = useRef(setGirou); girouRef.current = setGirou;
+  const restaurarRef = useRef(() => {});
+  const restaurar = () => { setZoomState(1); setGirou(false); restaurarRef.current(); };
 
   useEffect(() => {
     const cv = ref.current, ctx = cv.getContext('2d');
     let raf, last = performance.now();
-    const rot = { yaw: 0.5, pitch: -0.3 }, drag = { on: false, x: 0, y: 0 };
+    const rot = { ...ANGULO }, drag = { on: false, x: 0, y: 0 };
+    // Volta suave ao padrão: zoom 100% e o ângulo inicial, pelo caminho mais curto.
+    let volta = null;
+    restaurarRef.current = () => {
+      const voltas = Math.round((rot.yaw - ANGULO.yaw) / (2 * Math.PI));
+      volta = { t0: performance.now(), y0: rot.yaw, y1: ANGULO.yaw + voltas * 2 * Math.PI, p0: rot.pitch, z0: zoomRef.current };
+    };
     // Dedos na tela: um gira; dois fazem pinça (zoom).
     const dedos = new Map();
     let pinca = null;
@@ -36,8 +49,9 @@ export default function Mol3D({ g, label }) {
     const move = e => {
       if (!dedos.has(e.pointerId)) return;
       dedos.set(e.pointerId, { x: e.clientX, y: e.clientY });
-      if (pinca && dedos.size >= 2) { setZoomRef.current(pinca.z * distancia() / pinca.d); return; }
+      if (pinca && dedos.size >= 2) { volta = null; setZoomRef.current(pinca.z * distancia() / pinca.d); return; }
       if (!drag.on) return;
+      if (e.clientX !== drag.x || e.clientY !== drag.y) { volta = null; girouRef.current(true); }
       rot.yaw += (e.clientX - drag.x) * 0.012;
       rot.pitch = Math.max(-1.5, Math.min(1.5, rot.pitch + (e.clientY - drag.y) * 0.012));
       drag.x = e.clientX; drag.y = e.clientY;
@@ -49,8 +63,8 @@ export default function Mol3D({ g, label }) {
       if (dedos.size === 1) { const [d] = dedos.values(); drag.on = true; drag.x = d.x; drag.y = d.y; return; }
       drag.on = false; cv.style.cursor = 'grab';
     };
-    const roda = e => { e.preventDefault(); setZoomRef.current(zoomRef.current * Math.exp(-e.deltaY * 0.0015)); };
-    const duplo = () => setZoomRef.current(1);
+    const roda = e => { e.preventDefault(); volta = null; setZoomRef.current(zoomRef.current * Math.exp(-e.deltaY * 0.0015)); };
+    const duplo = () => { setZoomRef.current(1); girouRef.current(false); restaurarRef.current(); };
     cv.addEventListener('pointerdown', down); cv.addEventListener('pointermove', move);
     cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
     cv.addEventListener('wheel', roda, { passive: false }); cv.addEventListener('dblclick', duplo);
@@ -59,7 +73,13 @@ export default function Mol3D({ g, label }) {
       const geo = gr.current, dpr = window.devicePixelRatio || 1;
       if (cv.width !== W * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-      if (!drag.on) rot.yaw += (now - last) / 1000 * 0.45;
+      if (volta) {
+        const t = Math.min(1, (now - volta.t0) / RESTAURAR_MS), e = 1 - (1 - t) ** 3;
+        rot.yaw = volta.y0 + (volta.y1 - volta.y0) * e;
+        rot.pitch = volta.p0 + (ANGULO.pitch - volta.p0) * e;
+        zoomRef.current = volta.z0 + (1 - volta.z0) * e;
+        if (t >= 1) { zoomRef.current = 1; volta = null; }
+      } else if (!drag.on) rot.yaw += (now - last) / 1000 * 0.45;
       last = now;
       const cy = Math.cos(rot.yaw), sy = Math.sin(rot.yaw), cp = Math.cos(rot.pitch), sp = Math.sin(rot.pitch);
       const P = geo.atoms.map(a => {
@@ -145,9 +165,9 @@ export default function Mol3D({ g, label }) {
   return (
     <div className="mol3d">
       <canvas ref={ref} role="img" aria-label={label} style={{ width: W + 'px', height: 'auto', aspectRatio: `${W} / ${H}`, maxWidth: '100%', display: 'block', cursor: 'grab', touchAction: 'none' }} />
-      {zoom !== 1 && (
-        <button className="mol3d-reset" onClick={() => setZoom(1)} aria-label={`Restaurar zoom (agora ${Math.round(zoom * 100)}%)`}>
-          <span aria-hidden="true">↺</span> {Math.round(zoom * 100)}%
+      {(zoom !== 1 || girou) && (
+        <button className="mol3d-reset" onClick={restaurar} aria-label="Restaurar zoom e ângulo da molécula">
+          <span aria-hidden="true">↺</span> {zoom !== 1 ? `${Math.round(zoom * 100)}%` : 'Restaurar'}
         </button>
       )}
     </div>
