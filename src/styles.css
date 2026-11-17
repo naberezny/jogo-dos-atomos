@@ -185,7 +185,17 @@ button.brand { cursor: pointer; }
 .sub-card.known .formula { color: var(--accent); }
 .sub-card .thumb { width: calc(100% + 36px); margin: 0 -18px; height: 110px; object-fit: cover; display: block; background: var(--sunken); }
 .foto { margin: 0; display: flex; flex-direction: column; gap: 6px; }
-.foto img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 10px; background: var(--sunken); display: block; }
+.foto-quadro { position: relative; }
+.foto-quadro > img { width: 100%; height: 300px; object-fit: contain; border-radius: 10px; background: var(--sunken); display: block; }
+.foto-seta { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: 0; background: oklch(0.15 0.02 265 / 0.6); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0 0 3px; }
+.foto-seta:hover { background: oklch(0.15 0.02 265 / 0.85); }
+.foto-seta.esq { left: 8px; } .foto-seta.dir { right: 8px; }
+.foto-cont { position: absolute; right: 8px; bottom: 8px; font-size: 11px; font-weight: 600; color: #fff; background: oklch(0.15 0.02 265 / 0.6); border-radius: 999px; padding: 2px 8px; }
+.foto-legenda { font-size: 13px; line-height: 1.4; color: var(--text-2, oklch(0.85 0.02 265)); }
+.foto-miniaturas { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.foto-miniaturas button { flex: 0 0 auto; width: 52px; height: 40px; padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden; background: var(--sunken); cursor: pointer; opacity: 0.6; }
+.foto-miniaturas button[aria-selected="true"] { border-color: var(--accent); opacity: 1; }
+.foto-miniaturas img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .foto figcaption { font-size: 11px; line-height: 1.4; color: oklch(0.66 0.02 265); }
 .foto figcaption a { color: var(--accent); }
 .pill { font-size: 11px; padding: 3px 8px; border-radius: 5px; background: oklch(0.26 0.025 265); color: oklch(0.82 0.02 265); }
@@ -233,6 +243,7 @@ button.brand { cursor: pointer; }
   .mission .reward { grid-column: 2; grid-row: 1; align-self: start; }
 }
 @media (max-width: 640px) {
+  .foto-quadro > img { height: 240px; }
   .hero { padding: 26px 20px; gap: 20px; }
   .hero h1 { font-size: 34px; }
   .secoes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }

@@ -38,7 +38,7 @@ src/data/espectros.json     linhas de emissão visíveis (NIST) de 97 elementos 
 src/data/ciencia.json       dados físico-químicos (PubChem) e cor CPK por elemento
 src/data/subatomico.js      partículas e receitas do modo subatômico
 src/hooks/usePegarElemento.js  gestos da tabela: toque = adiciona, arrastar = pega na hora, segurar 0,45 s = detalhes
-src/components/             Celebracao (revelação + XP em tela cheia), LevelUp, Medalha, Mol3D (3D com zoom),
+src/components/             Celebracao (revelação + XP em tela cheia), LevelUp, Medalha, Mol3D (3D com zoom), Foto (galeria),
                             ElementFicha (ficha do elemento), Espectro, PeriodicTable, Tour (onboarding)
 src/screens/                Lab, Collection (filtros), Subatomico, Estudos, Missions, Profile, Medalhas, ResultModal
 scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia)
@@ -57,10 +57,13 @@ scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST),
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
 - **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar
   a tabela"); botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
-- **Fotos:** 503 das 512 substâncias têm foto (Wikimedia Commons, 500 px), escolhidas à mão:
-  a própria substância ou onde ela é encontrada/usada (água → mar, PVC → cano). As escolhas ficam em
-  `ARQUIVO` de `scripts/baixar-fotos.mjs` (null = sem foto, mostra o 3D). A API da Wikimedia dá muito
-  429 aqui; para buscar candidatas use as páginas HTML (Special:MediaSearch) e miniaturas de thumb.wikimedia.org.
+- **Fotos:** 503 das 512 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas
+  escolhidas à mão e com legenda. A 1ª é a principal (capa, coleção, revelação): a própria substância
+  ou onde ela é encontrada/usada (água → mar, PVC → cano); as outras aparecem na ficha (setas,
+  miniaturas, arrastar para o lado). Lista em `scripts/fotos-escolhidas.mjs` (null = sem foto, mostra
+  o 3D); `scripts/baixar-fotos.mjs` baixa para `public/fotos/<f>.jpg`, `<f>-2.jpg`… A API da Wikimedia
+  dá muito 429 aqui; para buscar candidatas use as páginas HTML (Special:MediaSearch) e miniaturas de
+  thumb.wikimedia.org.
 - **Modelo 3D da molécula:** cores CPK, luz que gira com a molécula, varetas 28% mais curtas
   (`VARETA` em `logic.js`), zoom por pinça/roda (60–400%) e botão ↺ que restaura zoom e ângulo.
 - **Ficha do elemento:** topo com símbolo + prótons/nêutrons/elétrons (alinhados à base do símbolo);
