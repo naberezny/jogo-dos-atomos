@@ -31,10 +31,10 @@ Na primeira visita, um tour de seis passos explica o essencial; ele pode ser rea
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
-- 500 substâncias, de H₂O ao ATP, com estado físico, uso no dia a dia e curiosidade, usando 92 dos 118 elementos
+- 512 substâncias, de H₂O ao ATP, com estado físico, uso no dia a dia e curiosidade, usando 103 dos 118 elementos (os outros 15 ainda não formaram nenhum composto conhecido; o jogo explica o porquê)
 - Foto real de 83 substâncias (Wikimedia Commons, com autor e licença) e molécula em 2D e em 3D
-- 55 missões e 19 conquistas
-- 151 medalhas de descoberta: 106 exclusivas de uma substância ou partícula e 45 de grupo (Bronze, Prata, Ouro e Platina)
+- 58 missões e 21 conquistas
+- 156 medalhas de descoberta: 109 exclusivas de uma substância ou partícula e 47 de grupo (Bronze, Prata, Ouro e Platina)
 - Modo subatômico: as 18 partículas do Modelo Padrão (e suas antipartículas) formam 70 hádrons, átomos, forças e processos e níveis a cada 300 XP
 - Progresso salvo no navegador
 

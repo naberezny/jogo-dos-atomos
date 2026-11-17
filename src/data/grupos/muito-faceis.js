@@ -117,4 +117,11 @@ export const MUITO_FACEIS = [
   S('CsI', 'Iodeto de césio', 'sólido', 'Detectores de raio-X digitais e de radiação.', 'Transforma raio-X em luz, permitindo radiografias digitais com menos radiação.'),
   S('InP', 'Fosfeto de índio', 'sólido', 'Lasers e chips das redes de fibra óptica.', 'Os elétrons correm mais rápido nele do que no silício, por isso aparece em chips de altíssima frequência.'),
   S('FeHO2', 'Goethita', 'sólido', 'Ferrugem, solos avermelhados e pigmento ocre.', 'Batizada em homenagem ao poeta alemão Goethe, que colecionava minerais.', 'FeO(OH)'),
+  // ---- elementos raros, superpesados e íons fugazes ----
+  S('NeH', 'Íon hidreto de neônio', 'gás', 'Descargas elétricas em gás neônio, em laboratório.', 'É a única ligação do neônio já observada, e dura só um instante antes de se desfazer. Até hoje ninguém conseguiu um composto neutro de neônio.', 'NeH⁺'),
+  S('HeH', 'Íon hidreto de hélio', 'gás', 'Nebulosas no espaço e laboratórios.', 'Foi a primeira molécula a se formar no universo, logo depois do Big Bang. Só foi encontrada no espaço em 2019.', 'HeH⁺'),
+  S('AtI', 'Iodeto de astato', 'gás', 'Experimentos com traços de astato.', 'O astato é o elemento natural mais raro da Terra: em toda a crosta existem só alguns gramas dele a cada momento.'),
+  S('BkO2', 'Dióxido de berquélio', 'sólido', 'Pesquisa para criar elementos novos.', 'O berquélio ajudou a criar o tenessino, o elemento 117: 22 miligramas dele foram bombardeados com cálcio.'),
+  S('AcCl3', 'Cloreto de actínio', 'sólido', 'Pesquisa de remédios contra o câncer (actínio-225).', 'O actínio brilha no escuro com uma luz azulada, por causa da própria radioatividade.'),
+  S('EsCl3', 'Cloreto de einstênio', 'sólido', 'Pesquisas com quantidades menores que um grão de poeira.', 'O einstênio foi descoberto nos restos da primeira bomba de hidrogênio, em 1952, e batizado em homenagem a Einstein.'),
 ];

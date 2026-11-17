@@ -63,8 +63,11 @@ export const MISSIONS = [
   { title: 'Código da vida', desc: 'Crie as cinco bases do DNA e do RNA: adenina, timina, citosina, guanina e uracila.', target: 5, val: c => tem(c, BASES), reward: 300 },
   { title: 'Quase a tabela toda', desc: 'Coloque 50 elementos diferentes no reator.', target: 50, val: c => c.usedEls.length, reward: 400 },
   { title: 'Exceção nobre', desc: 'Faça um gás nobre se ligar: crie os dois fluoretos de xenônio.', target: 2, val: c => tem(c, ['XeF2', 'XeF4']), reward: 250 },
-  { title: 'Laboratório nuclear', desc: 'Crie 4 compostos de elementos radioativos, como urânio, tório, plutônio, rádio, polônio, netúnio, cúrio ou califórnio.', target: 4, val: c => tem(c, ['UO2', 'UF6', 'U3O8', 'ThO2', 'PuO2', 'AmO2', 'RaCl2', 'RnF2', 'NaTcO4', 'Pm2O3', 'PoO2', 'NpO2', 'Cm2O3', 'Cf2O3']), reward: 300 },
+  { title: 'Laboratório nuclear', desc: 'Crie 4 compostos de elementos radioativos, como urânio, tório, plutônio, rádio, polônio, netúnio, cúrio ou califórnio.', target: 4, val: c => tem(c, ['UO2', 'UF6', 'U3O8', 'ThO2', 'PuO2', 'AmO2', 'RaCl2', 'RnF2', 'NaTcO4', 'Pm2O3', 'PoO2', 'NpO2', 'Cm2O3', 'Cf2O3', 'AtI', 'AcCl3', 'Pa2O5', 'BkO2', 'EsCl3']), reward: 300 },
   { title: 'Gases nobres rebeldes', desc: 'Faça hélio, argônio e radônio formarem compostos.', target: 3, val: c => tem(c, ['Na2He', 'HArF', 'RnF2']), reward: 350 },
+  { title: 'Nobreza completa', desc: 'Faça os seis gases nobres se ligarem: hélio, neônio, argônio, criptônio, xenônio e radônio.', target: 6, val: c => ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].filter(e => c.disc.some(s => s.c[e])).length, reward: 500 },
+  { title: 'Química no limite', desc: 'Crie 3 compostos de elementos superpesados, feitos átomo por átomo: rutherfórdio, dúbnio, seabórgio, bóhrio ou hássio.', target: 3, val: c => tem(c, ['RfCl4', 'DbOCl3', 'SgC6O6', 'BhO3Cl', 'HsO4']), reward: 400 },
+  { title: 'Tabela viva', desc: 'Descubra substâncias com 100 elementos diferentes.', target: 100, val: c => new Set(c.disc.flatMap(s => Object.keys(s.c))).size, reward: 800 },
   { title: 'Família da platina', desc: 'Crie compostos dos seis metais do grupo da platina: rutênio, ródio, paládio, ósmio, irídio e platina.', target: 6, val: c => ['Ru', 'Rh', 'Pd', 'Os', 'Ir', 'Pt'].filter(e => c.disc.some(s => s.c[e])).length, reward: 400 },
   { title: 'Obra em casa', desc: 'Crie os materiais de uma obra: cimento (silicato tricálcico), gesso, cal virgem, cal hidratada e calcário.', target: 5, val: c => tem(c, ['Ca3SiO5', 'CaH4SO6', 'CaO', 'CaH2O2', 'CaCO3']), reward: 250 },
   { title: 'Era digital', desc: 'Crie 5 materiais da eletrônica: arseneto de gálio, nitreto de gálio, dióxido de germânio, óxido de índio, seleneto de cádmio, telureto de cádmio ou óxido de lítio e cobalto.', target: 5, val: c => tem(c, ['GaAs', 'GaN', 'GeO2', 'In2O3', 'CdSe', 'CdTe', 'LiCoO2']), reward: 300 },
@@ -126,6 +129,8 @@ export function medals(st, P) {
     ['200', 'Bicentenário', 'Tenha 200 substâncias na coleção.', P.disc.length >= 200, 20],
     ['300', 'Tricentenário', 'Tenha 300 substâncias na coleção.', P.disc.length >= 300, 150],
     ['400', 'Quadricentenário', 'Tenha 400 substâncias na coleção.', P.disc.length >= 400, 200],
+    ['Ne', 'Nobreza completa', 'Conclua a missão Nobreza completa.', P.missions.some(m => m.title === 'Nobreza completa' && m.done), 300],
+    ['E100', 'Tabela viva', 'Descubra substâncias com 100 elementos diferentes.', new Set(P.disc.flatMap(s => Object.keys(s.c))).size >= 100, 175],
     ['He', 'Domador de nobres', 'Conclua a missão Gases nobres rebeldes.', P.missions.some(m => m.title === 'Gases nobres rebeldes' && m.done), 340],
     ['Ln', 'Mestre dos lantanídeos', 'Conclua a missão Todos os lantanídeos.', P.missions.some(m => m.title === 'Todos os lantanídeos' && m.done), 330],
     ['Xe', 'Exceção à regra', 'Conclua a missão Exceção nobre.', P.missions.some(m => m.title === 'Exceção nobre' && m.done), 285],
@@ -163,10 +168,7 @@ export function reactorStatus(zone, discovered, showHints) {
     };
   }
   const unused = keys.find(k => !substances.some(s => s.c[k]));
-  // Xenônio e criptônio têm receitas (XeF₂, XeF₄, KrF₂); os outros gases nobres não se ligam a nada.
-  const noble = keys.find(k => el(k).cat === 'ng' && k === unused);
-  if (noble) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(noble).name} não quer se ligar`, text: 'Gases nobres têm a camada de valência completa e quase nunca formam ligações. Remova-o do reator.', missing: [] };
-  if (unused) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(unused).name} ainda não tem receitas`, text: 'Esse elemento não participa de nenhuma substância do catálogo. Tente outros elementos.', missing: [] };
+  if (unused) return { tone: 'bad', tag: 'SEM LIGAÇÃO CONHECIDA', title: `Até hoje ninguém conseguiu formar algo com ${el(unused).name.toLowerCase()}`, text: `${SEM_COMPOSTO[unused] || 'A ciência ainda não conseguiu formar nenhum composto com esse elemento.'} Remova-o do reator.`, missing: [] };
   return { tone: 'bad', tag: 'INSTÁVEL', title: 'Proporção sem correspondência', text: 'Nenhuma substância do catálogo tem essa proporção de átomos. Diminua a quantidade de algum deles.', missing: [] };
 }
 
@@ -180,9 +182,28 @@ export function fusable(zone) {
   return ok;
 }
 
+/** Por que a ciência ainda não conseguiu formar nenhum composto com estes elementos. */
+export const SEM_COMPOSTO = {
+  Fr: 'O frâncio é tão radioativo que metade dele some em 22 minutos: nunca se juntou o suficiente para formar um composto.',
+  Fm: 'O férmio só foi produzido em quantidades invisíveis. Seus íons já foram estudados dissolvidos em água, mas nenhum composto foi isolado.',
+  Md: 'Os experimentos com mendelévio usam poucos átomos de cada vez. Seus íons foram estudados em solução, mas nenhum composto foi isolado.',
+  No: 'O nobélio mais duradouro vive cerca de uma hora. Seus íons foram estudados em solução, mas nenhum composto foi isolado.',
+  Lr: 'O laurêncio só foi feito alguns átomos por vez e dura poucas horas no máximo. Nenhum composto foi isolado.',
+  Mt: 'Só alguns átomos de meitnério já foram feitos, e cada um dura segundos. Ninguém conseguiu testar sua química.',
+  Ds: 'O darmstádio dura segundos e só alguns átomos já existiram. Sua química nunca pôde ser testada.',
+  Rg: 'O roentgênio, primo do ouro, dura segundos. Sua química ainda não foi testada.',
+  Cn: 'Átomos isolados de copernício já foram testados e se comportam quase como um gás nobre, mas nunca formaram um composto.',
+  Nh: 'O nihônio, descoberto no Japão, dura poucos segundos. Os primeiros testes químicos ainda não mostraram nenhum composto.',
+  Fl: 'O fleróvio foi testado átomo por átomo e parece quase não reagir. Nenhum composto foi formado.',
+  Mc: 'O moscóvio dura menos de um segundo. Sua química ainda é um mistério.',
+  Lv: 'O livermório dura milésimos de segundo. Nenhum composto foi feito.',
+  Ts: 'Só algumas dezenas de átomos de tenessino já existiram, cada um por frações de segundo.',
+  Og: 'Só 5 átomos de oganessônio já foram feitos, e cada um durou menos de um milésimo de segundo.',
+};
+
 export function usageText(sym, discovered) {
   const ui = substances.filter(s => s.c[sym]);
-  if (!ui.length) return 'Não aparece nas substâncias do catálogo.';
+  if (!ui.length) return `Até hoje ninguém conseguiu formar uma substância com este elemento. ${SEM_COMPOSTO[sym] || ''}`.trim();
   const shown = ui.slice(0, 4).map(s => (discovered.includes(s.f) ? sub(s.f) : '???')).join(', ');
   return `Aparece em ${ui.length} substância${ui.length > 1 ? 's' : ''} do catálogo: ${shown}${ui.length > 4 ? '…' : ''}`;
 }

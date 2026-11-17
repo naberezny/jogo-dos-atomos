@@ -164,4 +164,6 @@ export const MEDIAS = [
   S('C6H11NOS2', 'Sulforafano', 'líquido', 'Brócolis, couve-de-bruxelas e repolho.', 'Só se forma quando o brócolis é mastigado ou cortado; cozinhar demais diminui a quantidade.'),
   S('C7H14N2O3', 'Teanina', 'sólido', 'Folhas de chá verde e preto.', 'Dá ao chá um sabor umami e um efeito de calma que equilibra a cafeína.'),
   S('C7H5NaO2', 'Benzoato de sódio', 'sólido', 'Conservante de refrigerantes, sucos e molhos.', 'Funciona melhor em alimentos ácidos, impedindo o crescimento de fungos e leveduras.'),
+  // ---- elementos raros, superpesados e íons fugazes ----
+  S('SgC6O6', 'Hexacarbonila de seabórgio', 'gás', 'Experimentos em aceleradores, átomo por átomo.', 'Feita em 2014, foi o primeiro composto de um elemento superpesado ligado ao carbono.', 'Sg(CO)₆'),
 ];

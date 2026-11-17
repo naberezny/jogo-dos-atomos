@@ -513,4 +513,17 @@ export default {
   C9H17NO5: 'CC(C)(CO)C(O)C(=O)NCCC(=O)O',
   C16H18O9: 'OC(=O)C1(O)CC(O)C(O)C(OC(=O)C=CC2=CC(O)=C(O)C=C2)C1',
   C15H14O6: 'OC1=CC(O)=C2CC(O)C(OC2=C1)C3=CC(O)=C(O)C=C3',
+  // ---- elementos raros, superpesados e íons fugazes ----
+  NeH: '[NeH+]',
+  HeH: '[HeH+]',
+  AtI: '[At]I',
+  BkO2: 'O=[Bk]=O',
+  AcCl3: 'Cl[Ac](Cl)Cl',
+  EsCl3: 'Cl[Es](Cl)Cl',
+  RfCl4: 'Cl[Rf](Cl)(Cl)Cl',
+  DbOCl3: 'O=[Db](Cl)(Cl)Cl',
+  BhO3Cl: 'O=[Bh](=O)(=O)Cl',
+  HsO4: 'O=[Hs](=O)(=O)=O',
+  Pa2O5: 'O=[Pa](=O)O[Pa](=O)=O',
+  SgC6O6: '[Sg](~[C-]#[O+])(~[C-]#[O+])(~[C-]#[O+])(~[C-]#[O+])(~[C-]#[O+])~[C-]#[O+]',
 };

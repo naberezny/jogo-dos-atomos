@@ -132,4 +132,10 @@ export const FACEIS = [
   S('LaB6', 'Hexaboreto de lantânio', 'sólido', 'Canhões de elétrons de microscópios eletrônicos.', 'Quente, solta elétrons com muita facilidade e dura muito mais que um filamento comum de tungstênio.'),
   S('Ca3SiO5', 'Silicato tricálcico', 'sólido', 'Principal ingrediente do cimento.', 'Ao reagir com a água, forma cristais que se entrelaçam: é isso que faz o concreto endurecer.'),
   S('NaBH4', 'Boroidreto de sódio', 'sólido', 'Laboratórios de química e pesquisa em hidrogênio.', 'Solta gás hidrogênio na água e já foi testado como "tanque" de hidrogênio para carros.'),
+  // ---- elementos raros, superpesados e íons fugazes ----
+  S('RfCl4', 'Tetracloreto de rutherfórdio', 'gás', 'Experimentos em aceleradores, átomo por átomo.', 'Só algumas moléculas foram feitas, uma de cada vez, e sumiram em segundos. Mesmo assim, deu para ver que ele se comporta como o háfnio.'),
+  S('DbOCl3', 'Oxitricloreto de dúbnio', 'gás', 'Experimentos em aceleradores, átomo por átomo.', 'Cada átomo de dúbnio dura de segundos a algumas horas, então os químicos estudam uma molécula de cada vez.'),
+  S('BhO3Cl', 'Oxicloreto de bóhrio', 'gás', 'Experimentos em aceleradores, átomo por átomo.', 'Em 2000, os químicos estudaram só 6 moléculas dele, e foi o bastante para mostrar que o bóhrio é parente do rênio.'),
+  S('HsO4', 'Tetróxido de hássio', 'gás', 'Experimentos em aceleradores, átomo por átomo.', 'Em 2001, sete moléculas bastaram para mostrar que o hássio age como o ósmio, seu vizinho de cima na tabela.'),
+  S('Pa2O5', 'Pentóxido de protactínio', 'sólido', 'Pesquisa nuclear, em quantidades mínimas.', 'É um dos elementos naturais mais raros: em 1961, 60 toneladas de rejeito de urânio renderam só 125 gramas de protactínio.'),
 ];
