@@ -6,7 +6,7 @@ const SAVE_KEY = 'nucleo-save-v1';
 const SAVED = ['screen', 'discovered', 'fusions', 'atomsUsed', 'usedEls', 'nobleTried', 'subDisc', 'estudo', 'tourVisto', 'sempreRevelar'];
 
 function load() {
-  const base = { screen: 'home', zone: {}, fusing: false, result: null, resultNew: false, levelUp: null, discovered: ['H2O', 'O2', 'CO2'], fusions: 0, atomsUsed: 0, usedEls: ['H', 'O', 'C'], nobleTried: false, subDisc: [], subZone: {} };
+  const base = { screen: 'home', zone: {}, fusing: false, result: null, resultNew: false, levelUp: null, discovered: ['H2O', 'O2', 'CO2'], fusions: 0, atomsUsed: 0, usedEls: ['H', 'O', 'C'], nobleTried: false, subDisc: [], subZone: {}, sempreRevelar: false };
   try {
     const s = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
     if (s) SAVED.forEach(k => { if (s[k] != null) base[k] = s[k]; });
