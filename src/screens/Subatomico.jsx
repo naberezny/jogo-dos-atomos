@@ -9,6 +9,22 @@ import BotaoDica from '../components/BotaoDica.jsx';
 import BotaoDetalhes from '../components/BotaoDetalhes.jsx';
 import NaMao from '../components/NaMao.jsx';
 import { MedalhasDaFicha } from '../components/Medalha.jsx';
+import Espectro from '../components/Espectro.jsx';
+
+// Espectro de emissão das descobertas que são átomos (ou núcleos). As cores vêm dos elétrons pulando
+// entre camadas, então só átomos com elétrons têm linhas visíveis.
+const NUCLEO = 'Sem espectro de linhas: é um núcleo sem elétrons, e as cores de um átomo vêm dos elétrons pulando entre camadas.';
+const ESPECTRO_SUB = {
+  hidrogenio: { sym: 'H', nome: 'hidrogênio' },
+  deuterio: { sym: 'D', nome: 'deutério', nota: 'As linhas ficam cerca de 0,18 nm à esquerda das do hidrogênio, por causa do nêutron a mais no núcleo. Foi por essa diferença que o deutério foi descoberto, em 1931.' },
+  helio: { sym: 'He', nome: 'hélio', nota: 'O hélio foi visto primeiro no espectro do Sol, em 1868: uma linha amarela em 587,6 nm que nenhum elemento conhecido explicava.' },
+  antih: { sym: 'H', nome: 'anti-hidrogênio', nota: 'O espectro do anti-hidrogênio deve ser idêntico ao do hidrogênio (mostrado acima). O CERN já mediu algumas transições dele, e até agora elas batem com as do hidrogênio.' },
+  muonico: { texto: 'Sem linhas visíveis: o múon orbita tão perto do próton que a luz emitida é de raios X.' },
+  protonio: { texto: 'Sem linhas visíveis: as transições do protônio emitem raios X, antes de ele se aniquilar.' },
+  positronio: { texto: 'Sem linhas visíveis: a principal linha do positrônio fica no ultravioleta (243 nm), e logo ele se aniquila em raios gama.' },
+  muonio: { texto: 'Sem linhas visíveis medidas: as transições principais do muônio ficam no ultravioleta, quase iguais às do hidrogênio.' },
+  deuteron: { texto: NUCLEO }, triton: { texto: NUCLEO }, helion: { texto: NUCLEO }, alfa: { texto: NUCLEO },
+};
 import useMedia from '../hooks/useMedia.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
 
@@ -108,6 +124,15 @@ function Resultado({ r, novo, disc, onClose, verColecao }) {
             <div className="eyebrow" style={{ color: 'var(--accent)' }}>Curiosidade</div>
             <div style={{ textWrap: 'pretty' }}>{r.fato}</div>
           </div>
+          {ESPECTRO_SUB[r.id] && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div className="eyebrow">Espectro de emissão</div>
+              {ESPECTRO_SUB[r.id].sym
+                ? <Espectro sym={ESPECTRO_SUB[r.id].sym} nome={ESPECTRO_SUB[r.id].nome} />
+                : <div className="espectro-vazio">{ESPECTRO_SUB[r.id].texto}</div>}
+              {ESPECTRO_SUB[r.id].nota && <div style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--muted)' }}>{ESPECTRO_SUB[r.id].nota}</div>}
+            </div>
+          )}
           <MedalhasDaFicha modo="sub" chave={r.id} descobertas={disc} />
           <div style={{ display: 'flex', gap: 10, marginTop: 'auto', flexWrap: 'wrap' }}>
             <button className="btn btn-primary" onClick={onClose} ref={btn}>Continuar</button>

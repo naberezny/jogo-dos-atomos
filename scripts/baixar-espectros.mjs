@@ -1,6 +1,6 @@
 // Baixa do NIST Atomic Spectra Database (https://physics.nist.gov/asd) as linhas de emissão
 // visíveis (380–750 nm) de cada elemento e grava src/data/espectros.json.
-// Uso: node scripts/baixar-espectros.mjs [símbolos...]   (sem símbolos, baixa todos)
+// Uso: node scripts/baixar-espectros.mjs [símbolos...]   (sem símbolos, baixa todos, mais o deutério D)
 //
 // Regras:
 // - espectro do átomo neutro (I); se ele não tiver linhas com intensidade, usa o do íon (II);
@@ -28,6 +28,21 @@ const url = espectro => 'https://physics.nist.gov/cgi-bin/ASD/lines1.pl?' + new 
 const baixar = espectro => execFileSync('curl', ['-sS', '-m', '90', url(espectro)], { encoding: 'utf8', maxBuffer: 64 << 20 });
 const num = v => { const m = /^[\s"]*([0-9]+(?:\.[0-9]+)?)/.exec(v || ''); return m ? +m[1] : null; };
 
+/**
+ * Isótopo sem intensidades no NIST (deutério): usa os comprimentos de onda medidos dele, com a
+ * intensidade da linha correspondente do elemento comum (a mais próxima, a menos de 0,3 nm).
+ */
+function linhasEmprestadas(tsv, base) {
+  if (!tsv.startsWith('obs_wl') || !base) return [];
+  const [cab, ...resto] = tsv.trim().split('\n');
+  const col = Object.fromEntries(cab.split('\t').map((c, i) => [c.trim(), i]));
+  const nms = resto.map(l => { const c = l.split('\t'); return num(c[col['obs_wl_air(nm)']]) ?? num(c[col['ritz_wl_air(nm)']]); }).filter(v => v != null);
+  return base.map(([b, it]) => {
+    const perto = nms.reduce((m, nm) => (Math.abs(nm - b) < Math.abs(m - b) ? nm : m), Infinity);
+    return Math.abs(perto - b) < 0.3 ? [+perto.toFixed(2), it] : null;
+  }).filter(Boolean);
+}
+
 function linhas(tsv, ionCm) {
   if (!tsv.startsWith('obs_wl')) return [];
   const [cab, ...resto] = tsv.trim().split('\n');
@@ -52,9 +67,12 @@ function linhas(tsv, ionCm) {
 
 const pedidos = process.argv.slice(2);
 const dados = existsSync(SAIDA) ? JSON.parse(readFileSync(SAIDA, 'utf8')) : {};
-const alvo = pedidos.length ? elements.filter(e => pedidos.includes(e.sym)) : elements;
+// Isótopos com espectro próprio no NIST, usados no modo subatômico (energia de ionização igual à do H).
+const ISOTOPOS = [{ sym: 'D', ionDe: 'H', intensDe: 'H' }];
+const alvo = [...elements, ...ISOTOPOS].filter(e => !pedidos.length || pedidos.includes(e.sym));
 for (const e of alvo) {
-  const ionCm = CIENCIA[e.sym]?.ion ? CIENCIA[e.sym].ion * EV_PARA_CM : null;
+  const ion = CIENCIA[e.ionDe || e.sym]?.ion;
+  const ionCm = ion ? ion * EV_PARA_CM : null;
   let res = null;
   for (const nivel of ['I', 'II']) {
     try {
@@ -62,6 +80,10 @@ for (const e of alvo) {
       if (ls.length) { res = { ion: nivel, linhas: ls }; break; }
     } catch (err) { console.log(e.sym, nivel, 'erro:', err.message.split('\n')[0]); }
     await new Promise(r => setTimeout(r, 1000));
+  }
+  if (!res && e.intensDe && dados[e.intensDe]) {
+    const ls = linhasEmprestadas(baixar(`${e.sym} I`), dados[e.intensDe].linhas);
+    if (ls.length) res = { ion: 'I', linhas: ls, intensidadeDe: e.intensDe };
   }
   if (res) dados[e.sym] = res; else delete dados[e.sym];
   console.log(e.sym.padEnd(3), res ? `${res.ion.padEnd(2)} ${res.linhas.length} linhas` : 'sem dados');
