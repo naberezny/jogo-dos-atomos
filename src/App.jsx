@@ -76,13 +76,13 @@ export default function App() {
     if (r?.tipo === 'mol') {
       const s = bySymbolFormula(r.id); if (!s) return null;
       const ks = Object.keys(s.c), principal = ks.find(k => k !== 'H') || ks[0];
-      return { ...fraseSubstancia(s), d: s.d, nome: s.name, foto: temFoto(s.f) ? fotoUrl(s.f) : null, tom: col(el(principal).cat), xp: subXP(s),
+      return { ...fraseSubstancia(s), repetida: r.repetida, d: s.d, nome: s.name, foto: temFoto(s.f) ? fotoUrl(s.f) : null, tom: col(el(principal).cat), xp: subXP(s),
         partes: ks.map(k => ({ sym: k, cor: col(el(k).cat), qtd: s.c[k] })), n: P.disc.length, total: substances.length };
     }
     if (r?.tipo === 'sub') {
       const x = REC.get(r.id); if (!x) return null;
       const ks = Object.keys(x.c);
-      return { ...fraseParticula(x), d: x.sym, nome: x.name, foto: null, tom: corSub(par(ks[0]).fam), xp: xpSub(x),
+      return { ...fraseParticula(x), repetida: r.repetida, d: x.sym, nome: x.name, foto: null, tom: corSub(par(ks[0]).fam), xp: xpSub(x),
         partes: ks.map(k => ({ sym: par(k).sym, cor: corSub(par(k).fam), qtd: x.c[k] })), n: P.sub.length, total: receitas.length };
     }
     return null;

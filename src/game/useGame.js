@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { el, findMatch, fuseMs, progress } from './logic.js';
 
 const SAVE_KEY = 'nucleo-save-v1';
-const SAVED = ['screen', 'discovered', 'fusions', 'atomsUsed', 'usedEls', 'nobleTried', 'subDisc', 'estudo', 'tourVisto'];
+const SAVED = ['screen', 'discovered', 'fusions', 'atomsUsed', 'usedEls', 'nobleTried', 'subDisc', 'estudo', 'tourVisto', 'sempreRevelar'];
 
 function load() {
   const base = { screen: 'home', zone: {}, fusing: false, result: null, resultNew: false, levelUp: null, discovered: ['H2O', 'O2', 'CO2'], fusions: 0, atomsUsed: 0, usedEls: ['H', 'O', 'C'], nobleTried: false, subDisc: [], subZone: {} };
@@ -48,7 +48,7 @@ export function useGame() {
         const isNew = !s.discovered.includes(m.f);
         const discovered = isNew ? [...s.discovered, m.f] : s.discovered;
         const after = progress({ ...s, discovered }).level;
-        return { ...s, discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null, revelar: isNew ? { tipo: 'mol', id: m.f } : null };
+        return { ...s, discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null, revelar: isNew || s.sempreRevelar ? { tipo: 'mol', id: m.f, repetida: !isNew } : null };
       });
     }, fuseMs());
   }, [st.zone, st.fusing, set]);

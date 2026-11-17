@@ -30,7 +30,7 @@ function CartaoMedalhas({ st }) {
 }
 
 export default function Profile({ game }) {
-  const { st, P, reset } = game;
+  const { st, set, P, reset } = game;
   const [confirming, setConfirming] = useState(false);
   const xpIn = P.xp % XP_PER_LEVEL;
   const medals = medalList(st, P);
@@ -81,6 +81,17 @@ export default function Profile({ game }) {
             );
           })}
         </div>
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <h3 className="display" style={{ fontSize: 20, fontWeight: 600 }}>Configurações</h3>
+        <label className="card config-item">
+          <span style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
+            <b className="display" style={{ fontSize: 16 }}>Sempre mostrar a animação de descoberta</b>
+            <span style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.45 }}>A tela "Uau!" também aparece ao formar uma substância ou partícula que já está na sua coleção.</span>
+          </span>
+          <input type="checkbox" className="interruptor" checked={!!st.sempreRevelar} onChange={e => set({ sempreRevelar: e.target.checked })} />
+        </label>
       </div>
 
       <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap', paddingTop: 8 }}>

@@ -14,7 +14,7 @@ export const nivelDe = xp => Math.floor(xp / XPL) + 1;
  * @param d       fórmula ou símbolo em destaque
  * @param partes  [{ sym, cor }] — átomos ou partículas que formam a descoberta (giram em volta)
  */
-export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, total, onContinuar }) {
+export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, total, repetida, onContinuar }) {
   const reduzido = semMovimento();
   const btn = useRef(null);
   const [pronto, setPronto] = useState(reduzido);
@@ -35,7 +35,7 @@ export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, to
       <div className="nivel-raios rev-raios" aria-hidden="true" />
       {!reduzido && <Particulas cores={[tom, 'oklch(0.9 0.08 195)', '#fff', 'oklch(0.85 0.14 90)']} cy={0.36} />}
       <div className="rev-centro">
-        <div className="rev-selo mono">✦ Nova descoberta ✦</div>
+        <div className="rev-selo mono">{repetida ? '✦ Já está na coleção ✦' : '✦ Nova descoberta ✦'}</div>
         <h2 className="rev-titulo display">{titulo}</h2>
         <p className="rev-frase">{texto}</p>
         <div className="rev-orbe" aria-hidden="true">
@@ -52,8 +52,8 @@ export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, to
         <div className="rev-formula display">{d}</div>
         <div className="rev-nome display">{nome}</div>
         <div className="rev-info">
-          <span className="rev-xp mono">+{xp} XP</span>
-          <span className="rev-conta">{n} de {total} na sua coleção</span>
+          {!repetida && <span className="rev-xp mono">+{xp} XP</span>}
+          <span className="rev-conta">{repetida ? `Você já descobriu esta antes · ${n} de ${total} na coleção` : `${n} de ${total} na sua coleção`}</span>
         </div>
         <button ref={btn} className="btn btn-primary rev-btn" onClick={e => { e.stopPropagation(); seguir(); }}>Continuar</button>
       </div>

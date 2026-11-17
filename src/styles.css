@@ -590,3 +590,11 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .med-perfil > span:first-child { flex: 1; min-width: 220px; }
 .med-perfil-icones { display: flex; gap: 12px; flex-wrap: wrap; padding: 6px; }
 @media (max-width: 640px) { .med-grade { grid-template-columns: 1fr; } .med-grade-exc { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Configurações do perfil */
+.config-item { display: flex; align-items: center; gap: 18px; padding: 18px 20px; cursor: pointer; }
+.interruptor { appearance: none; -webkit-appearance: none; flex: none; position: relative; width: 52px; height: 30px; margin: 0; border-radius: 15px; background: oklch(0.3 0.02 265); border: 1px solid var(--line); cursor: pointer; transition: background .2s; }
+.interruptor::after { content: ''; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: oklch(0.85 0.02 265); transition: transform .2s, background .2s; }
+.interruptor:checked { background: var(--accent); border-color: var(--accent); }
+.interruptor:checked::after { transform: translateX(22px); background: var(--accent-ink); }
+.interruptor:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

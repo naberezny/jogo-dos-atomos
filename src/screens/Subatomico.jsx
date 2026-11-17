@@ -164,7 +164,7 @@ export default function Subatomico({ game }) {
       // As descobertas não mudam durante a colisão, então dá para calcular com o estado de quando ela começou.
       const ja = disc.includes(receita.id);
       const subDisc = ja ? disc : [...disc, receita.id];
-      set(s => ({ subDisc, subZone: {}, fusions: s.fusions + 1, revelar: ja ? null : { tipo: 'sub', id: receita.id } }));
+      set(s => ({ subDisc, subZone: {}, fusions: s.fusions + 1, revelar: ja && !s.sempreRevelar ? null : { tipo: 'sub', id: receita.id, repetida: ja } }));
       setRes({ id: receita.id, novo: !ja });
     }, ms);
   };
