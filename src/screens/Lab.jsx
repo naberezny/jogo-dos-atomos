@@ -9,6 +9,7 @@ import PeriodicTable from '../components/PeriodicTable.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
 import BotaoDica from '../components/BotaoDica.jsx';
+import BotaoDetalhes from '../components/BotaoDetalhes.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -26,7 +27,8 @@ export default function Lab({ game }) {
   const reactor = useRef(null);
   const [flash, setFlash] = useState(null);
   const add = (sym, d = 1) => { addAtom(sym, d); setHovered(sym); };
-  const open = sym => { setHovered(sym); set({ drawer: sym }); };
+  // Tocar num elemento da tabela já o coloca no reator; a ficha fica no botão Detalhes.
+  const pegar = sym => { add(sym); setFlash({ sym, k: Date.now() }); };
   // Botão da ficha: adiciona, fecha e, se o reator estiver fora da tela (celular), rola até ele.
   const addFromDrawer = sym => {
     add(sym);
@@ -43,6 +45,8 @@ export default function Lab({ game }) {
     return () => clearTimeout(t);
   }, [flash]);
   const zoneKeys = Object.keys(st.zone);
+  // Átomo em foco no reator: o último tocado ou adicionado; se ele saiu, vale o último que restou.
+  const foco = st.zone[hovered] ? hovered : zoneKeys[zoneKeys.length - 1];
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
@@ -71,7 +75,7 @@ export default function Lab({ game }) {
 
   return (
     <section className={`lab${small ? ' movel' : ''}`} aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-      <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Arraste um elemento até o reator, ou clique nele para ver a ficha e adicionar" />
+      <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Clique num elemento para colocá-lo no reator, ou arraste até lá" />
 
       <div className="lab-top">
         <div
@@ -82,15 +86,18 @@ export default function Lab({ game }) {
           <div className="eyebrow">Área de fusão</div>
           {zoneKeys.length > 0 && !st.fusing && <button className="btn-small" onClick={clearZone}>Limpar</button>}
           {small && !st.fusing && (
-            <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')} onClick={() => setDica(d => !d)} />
+            <div className="reator-acoes">
+              <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')} onClick={() => setDica(d => !d)} />
+              {foco && !dica && <BotaoDetalhes sym={foco} onClick={() => set({ drawer: foco })} />}
+            </div>
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
-          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Segure um elemento e arraste até aqui' : 'Arraste os átomos até aqui'}</div>}
+          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Toque num elemento da tabela, ou segure e arraste até aqui' : 'Clique num elemento da tabela ou arraste até aqui'}</div>}
           <div className="zone">
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
               return (
-                <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym}>
+                <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}${foco === sym && zoneKeys.length > 1 ? ' foco' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym} onClick={() => setHovered(sym)}>
                   <div className="atom-wrap">
                     <Atom3D size={Math.max(small ? 38 : 44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   </div>
@@ -110,19 +117,24 @@ export default function Lab({ game }) {
           {st.fusing && match && <div className="fusion-formula" aria-hidden="true">{sub(match.f)}</div>}
         </div>
 
-        {!small && <div className="lab-side"><StatusPanel {...painel} /></div>}
+        {!small && (
+          <div className="lab-side">
+            <StatusPanel {...painel} />
+            {foco && <BotaoDetalhes largo sym={foco} onClick={() => set({ drawer: foco })} />}
+          </div>
+        )}
       </div>
 
       <PeriodicTable
-        onPick={open}
-        selected={st.drawer}
+        onPick={pegar}
+        selected={foco}
         isOff={sym => !acesos.has(sym)}
         isMarked={sym => !!st.zone[sym]}
         soltarEm={reactor}
-        onSoltar={sym => { add(sym); setFlash({ sym, k: Date.now() }); }}
+        onSoltar={pegar}
         onSobre={setDragOver}
         compacta={small}
-        acao="Ver ficha e adicionar ao reator"
+        acao="Adicionar ao reator"
       />
 
       {st.drawer && <ElementDrawer sym={st.drawer} discovered={st.discovered} onClose={() => set({ drawer: null })} onAdd={() => addFromDrawer(st.drawer)} inZone={st.zone[st.drawer] || 0} />}

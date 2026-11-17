@@ -274,7 +274,7 @@ button.brand { cursor: pointer; }
 .lab.movel .lab-top { flex: 1; min-height: 0; display: flex; }
 .lab.movel .reactor { flex: 1; min-height: 0; padding: 60px 8px 10px; gap: 8px; }
 .lab.movel .reactor > .eyebrow { display: none; }
-.lab.movel .zone { gap: 8px 10px; overflow-y: auto; min-height: 0; max-width: 100%; }
+.lab.movel .zone { gap: 8px 10px; overflow-y: auto; min-height: 0; width: 100%; padding: 6px; box-sizing: border-box; }
 .lab.movel .zone-atom { gap: 3px; }
 .lab.movel .zone-atom .steppers { gap: 4px; }
 .lab.movel .btn-step { width: 30px; height: 28px; font-size: 15px; }
@@ -291,6 +291,17 @@ button.brand { cursor: pointer; }
 .btn-dica.aberto { background: var(--panel); }
 .btn-dica.chama .lampada { animation: lampada 1.8s ease-in-out infinite; }
 .btn-dica.chama { animation: dica-brilho 1.8s ease-in-out infinite; }
+.reator-acoes { position: absolute; top: 8px; left: 8px; z-index: 6; max-width: calc(100% - 100px); display: flex; gap: 6px; }
+.reator-acoes .btn-dica { position: static; max-width: none; min-width: 0; flex: 0 1 auto; }
+.btn-dica.detalhes .lampada { font-size: 13px; font-weight: 700; }
+.btn-dica.detalhes .res { color: var(--fg-2); }
+.btn-dica.largo { position: static; max-width: none; width: 100%; min-height: 56px; padding: 8px 18px 8px 8px; border-radius: 14px; box-shadow: none; }
+.btn-dica.largo .lampada { width: 40px; height: 40px; border-radius: 10px; font-size: 16px; }
+.btn-dica.largo .rot { font-size: 15px; }
+.btn-dica.largo .res { font-size: 13px; }
+.btn-dica.largo:hover { background: color-mix(in oklch, var(--tom) 24%, var(--panel)); transform: translateY(-1px); }
+.zone-atom { cursor: pointer; }
+.zone-atom.foco .atom-wrap { border-radius: 50%; box-shadow: 0 0 0 1.5px oklch(0.82 0.13 195 / .7), 0 0 18px oklch(0.82 0.13 195 / .35); }
 @keyframes lampada { 50% { transform: scale(1.12) rotate(-8deg); } }
 @keyframes dica-brilho { 50% { box-shadow: 0 0 0 5px color-mix(in oklch, var(--tom) 22%, transparent), 0 4px 22px color-mix(in oklch, var(--tom) 45%, transparent); } }
 .dica-painel { position: absolute; inset: auto 8px 8px 8px; z-index: 5; max-height: calc(100% - 68px); overflow: auto; padding: 14px 16px; box-shadow: 0 -10px 40px oklch(0.08 0.02 265 / 0.8); animation: pop .2s ease-out; }

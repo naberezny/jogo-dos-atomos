@@ -11,10 +11,14 @@ const passos = t => [
     text: t
       ? 'No Laboratório, segure o dedo sobre um elemento por 1 segundo: o átomo sai da tabela e vai para a sua mão. Arraste e solte dentro do reator.'
       : 'No Laboratório, clique num elemento da tabela e arraste: o átomo vai para a sua mão. Solte dentro do reator.',
-    extra: t ? 'Um toque rápido abre a ficha do elemento, que também tem o botão Adicionar.' : 'Um clique simples abre a ficha do elemento, que também tem o botão Adicionar.',
+    extra: t ? 'Com pressa? Um toque rápido já coloca o elemento no reator.' : 'Com pressa? Um clique simples já coloca o elemento no reator.',
   },
   { icon: 'coll', h: 65, title: 'Acerte a proporção e funda', anim: 'fundir', text: 'Ajuste a quantidade de cada átomo com − e +. A tabela apaga os elementos que não combinam com o que já está no reator. Quando a proporção forma uma substância, o botão Fundir aparece.' },
-  { icon: 'dica', h: 85, title: 'Travou? Peça uma dica', text: t ? 'O botão Dica, no canto do reator, mostra qual átomo falta para a descoberta mais próxima. Toque no atalho para adicioná-lo na hora.' : 'O painel ao lado do reator mostra qual átomo falta para a descoberta mais próxima. Clique no atalho para adicioná-lo na hora.' },
+  {
+    icon: 'dica', h: 85, title: 'Dicas e detalhes',
+    text: t ? 'O botão Dica, no canto do reator, mostra qual átomo falta para a descoberta mais próxima. Toque no atalho para adicioná-lo na hora.' : 'O painel ao lado do reator mostra qual átomo falta para a descoberta mais próxima. Clique no atalho para adicioná-lo na hora.',
+    extra: 'Ao lado fica o botão Detalhes, com a ficha completa do átomo selecionado no reator. Toque em outro átomo do reator para trocar.',
+  },
   { icon: 'sub', h: 25, title: 'Vá além do átomo', text: 'No modo Subatômico você colide quarks, léptons e bósons para montar prótons, mésons e até as forças da natureza. Em Estudos, explore a ficha de cada um dos 118 elementos.' },
   { icon: 'missions', h: 320, title: 'Colecione e evolua', text: 'Cada descoberta entra na Coleção e rende XP. Cumpra Missões, suba de nível e conquiste medalhas no Perfil.' },
 ];
