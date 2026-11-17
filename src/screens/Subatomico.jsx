@@ -125,6 +125,7 @@ export default function Subatomico({ game }) {
   const [aba, setAba] = useState('Acelerador');
   const [anti, setAnti] = useState(false);
   const [foco, setFoco] = useState('u');
+  const [semSelecao, setSemSelecao] = useState(false); // tocou no espaço vazio do acelerador
   const [fundindo, setFundindo] = useState(false);
   const [res, setRes] = useState(null);
   const reator = useRef(null);
@@ -146,7 +147,7 @@ export default function Subatomico({ game }) {
 
   const add = (id, d = 1) => {
     if (fundindo) return;
-    setFoco(id);
+    setFoco(id); setSemSelecao(false);
     set(s => {
       const z = { ...(s.subZone || {}) };
       z[id] = Math.max(0, Math.min(MAX, (z[id] || 0) + d));
@@ -198,7 +199,7 @@ export default function Subatomico({ game }) {
   const tabela = particulas.filter(p => !p.anti);
   // Em foco: a última partícula tocada. No celular, o botão Detalhes acompanha o que está no acelerador.
   const pFoco = par(foco) || par('u');
-  const focoZona = zona[foco] ? foco : ks[ks.length - 1];
+  const focoZona = semSelecao ? null : zona[foco] ? foco : ks[ks.length - 1];
   const pZona = focoZona && par(focoZona);
   // Com os detalhes abertos, o botão mostra a partícula da ficha (pode ter vindo de segurar na tabela).
   const pBotao = painelAberto === 'detalhes' ? pFoco : pZona;
@@ -243,6 +244,7 @@ export default function Subatomico({ game }) {
           <div className="lab-top">
             <div
               ref={reator}
+              onClick={e => { if (!e.target.closest('.zone-atom, button, .status, .dica-painel, .reator-acoes')) setSemSelecao(true); }}
               className={`reactor${sobre ? ' over' : ''}${fundindo ? ' fusing' : ''}`}
               style={{ '--t-fusao': `${ms}ms`, '--t-carga': `${ms * FUSE_CHARGE}ms` }}
             >
@@ -261,7 +263,7 @@ export default function Subatomico({ game }) {
                 {ks.map(id => {
                   const p = par(id);
                   return (
-                    <div className={`zone-atom${focoZona === id && ks.length > 1 ? ' foco' : ''}${focoZona === id ? ' ativo' : ''}`} key={id} onClick={() => setFoco(id)}>
+                    <div className={`zone-atom${focoZona === id && ks.length > 1 ? ' foco' : ''}${focoZona === id ? ' ativo' : ''}`} key={id} onClick={() => { setFoco(id); setSemSelecao(false); }}>
                       <div className="atom-wrap"><Orbe p={p} size={movel ? 44 : 60} /></div>
                       <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{p.sym} ×{zona[id]}</span>
                       <div className="steppers">

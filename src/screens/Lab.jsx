@@ -46,7 +46,8 @@ export default function Lab({ game }) {
   }, [flash]);
   const zoneKeys = Object.keys(st.zone);
   // Átomo em foco no reator: o último tocado ou adicionado; se ele saiu, vale o último que restou.
-  const foco = st.zone[hovered] ? hovered : zoneKeys[zoneKeys.length - 1];
+  // hovered null = nenhum átomo selecionado (o jogador tocou no espaço vazio do reator).
+  const foco = hovered === null ? null : st.zone[hovered] ? hovered : zoneKeys[zoneKeys.length - 1];
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
@@ -81,6 +82,7 @@ export default function Lab({ game }) {
         <div
           ref={reactor}
           className={`reactor${dragOver ? ' over' : ''}${st.fusing ? ' fusing' : ''}`}
+          onClick={e => { if (!e.target.closest('.zone-atom, button, .status, .dica-painel, .reator-acoes')) setHovered(null); }}
           style={{ '--t-fusao': `${ms}ms`, '--t-carga': `${ms * FUSE_CHARGE}ms` }}
         >
           <div className="eyebrow">Área de fusão</div>
