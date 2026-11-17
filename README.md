@@ -23,7 +23,8 @@ energia de ionização, afinidade eletrônica e estados de oxidação), além do
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
 - 438 substâncias, de H₂O ao ATP, com estado físico, uso no dia a dia e curiosidade
 - Foto real de 83 substâncias (Wikimedia Commons, com autor e licença) e molécula em 2D e em 3D
-- 42 missões, 15 medalhas e níveis a cada 300 XP
+- 49 missões, 16 medalhas
+- Modo subatômico: as 18 partículas do Modelo Padrão (e suas antipartículas) formam 70 hádrons, átomos, forças e processos e níveis a cada 300 XP
 - Progresso salvo no navegador
 
 ## Desenvolvimento

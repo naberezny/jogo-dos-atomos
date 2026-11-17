@@ -1,6 +1,7 @@
 // Regras do jogo, sem interface: combinação de átomos, XP, missões e medalhas.
 import { molecula } from './estrutura.js';
 import { elements, cats, substances } from '../data/nucleo.js';
+import { REC, receitas, xpSub } from '../data/subatomico.js';
 
 export const XP_PER_LEVEL = 300;
 /** Duração da animação de fusão (curta para quem pediu menos movimento) e a fração gasta carregando. */
@@ -29,6 +30,7 @@ export const bySymbolFormula = f => substances.find(s => s.f === f);
 
 export const subXP = s => 10 * s.atoms + 20 * s.nEl;
 
+const temSub = (c, lista) => c.sub.filter(r => lista.includes(r.id)).length;
 const tem = (c, lista) => c.disc.filter(s => lista.includes(s.f)).length;
 const BASES = ['C5H5N5', 'C5H6N2O2', 'C4H5N3O', 'C5H5N5O', 'C4H4N2O2'];
 const AMINO = ['C2H5NO2', 'C3H7NO2', 'C3H7NO3', 'C3H7NO2S', 'C6H13NO2', 'C6H14N2O2', 'C9H11NO2', 'C11H12N2O2', 'C4H7NO4', 'C5H9NO4', 'C9H11NO3', 'C5H11NO2', 'C5H9NO2', 'C5H11NO2S', 'C6H14N4O2', 'C6H9N3O2', 'C5H10N2O3', 'C4H8N2O3'];
@@ -76,20 +78,28 @@ export const MISSIONS = [
   { title: 'Duas centenas', desc: 'Descubra 200 substâncias.', target: 200, val: c => c.disc.length, reward: 600 },
   { title: 'Três centenas', desc: 'Descubra 300 substâncias.', target: 300, val: c => c.disc.length, reward: 800 },
   { title: 'Quatro centenas', desc: 'Descubra 400 substâncias.', target: 400, val: c => c.disc.length, reward: 1000 },
+  { title: 'Dentro do átomo', desc: 'No modo subatômico, monte um próton, um nêutron e um átomo de hidrogênio.', target: 3, val: c => temSub(c, ['p', 'n', 'hidrogenio']), reward: 200 },
+  { title: 'Zoológico de partículas', desc: 'Descubra 15 hádrons (bárions e mésons) no modo subatômico.', target: 15, val: c => c.sub.filter(r => r.cat === 'barion' || r.cat === 'meson').length, reward: 300 },
+  { title: 'As quatro forças', desc: 'Descubra a força eletromagnética, a força forte, a força fraca e a gravidade.', target: 4, val: c => temSub(c, ['eletromag', 'forte', 'fraca', 'gravidade']), reward: 300 },
+  { title: 'Espelho da matéria', desc: 'Crie antipróton, antinêutron, anti-hidrogênio e positrônio.', target: 4, val: c => temSub(c, ['pbar', 'nbar', 'antih', 'positronio']), reward: 300 },
+  { title: 'Caçador do Higgs', desc: 'Descubra o campo de Higgs, a fusão de glúons e os três decaimentos do Higgs.', target: 5, val: c => temSub(c, ['yukawa', 'ggh', 'hgg', 'hzz', 'hbb']), reward: 350 },
+  { title: 'Matéria exótica', desc: 'Crie os dois tetraquarks, o pentaquark e o plasma de quarks e glúons.', target: 4, val: c => temSub(c, ['tetra', 'tcc', 'penta', 'qgp']), reward: 350 },
+  { title: 'Modelo Padrão completo', desc: 'Faça todas as descobertas do modo subatômico.', target: receitas.length, val: c => c.sub.length, reward: 800 },
   { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 },
 ];
 
 /** XP, nível e missões a partir do progresso salvo. */
 export function progress(st) {
   const disc = st.discovered.map(bySymbolFormula).filter(Boolean);
-  const ctx = { disc, usedEls: st.usedEls, total: substances.length };
+  const sub = (st.subDisc || []).map(id => REC.get(id)).filter(Boolean);
+  const ctx = { disc, sub, usedEls: st.usedEls, total: substances.length };
   const missions = MISSIONS.map(m => {
     const t = typeof m.target === 'function' ? m.target(ctx) : m.target;
     const v = Math.min(m.val(ctx), t);
     return { ...m, t, v, done: v >= t };
   });
-  const xp = 50 + disc.reduce((a, s) => a + subXP(s), 0) + missions.filter(m => m.done).reduce((a, m) => a + m.reward, 0);
-  return { disc, missions, xp, level: Math.floor(xp / XP_PER_LEVEL) + 1 };
+  const xp = 50 + disc.reduce((a, s) => a + subXP(s), 0) + sub.reduce((a, r) => a + xpSub(r), 0) + missions.filter(m => m.done).reduce((a, m) => a + m.reward, 0);
+  return { disc, sub, missions, xp, level: Math.floor(xp / XP_PER_LEVEL) + 1 };
 }
 
 export function medals(st, P) {
@@ -108,6 +118,7 @@ export function medals(st, P) {
     ['200', 'Bicentenário', 'Tenha 200 substâncias na coleção.', P.disc.length >= 200, 20],
     ['300', 'Tricentenário', 'Tenha 300 substâncias na coleção.', P.disc.length >= 300, 150],
     ['Xe', 'Exceção à regra', 'Conclua a missão Exceção nobre.', P.missions.some(m => m.title === 'Exceção nobre' && m.done), 285],
+    ['p⁺', 'Físico de partículas', 'Faça 20 descobertas no modo subatômico.', P.sub.length >= 20, 25],
     ['DNA', 'Geneticista', 'Conclua a missão Código da vida.', P.missions.some(m => m.title === 'Código da vida' && m.done), 320],
     ['Rx', 'Farmacêutico', 'Conclua a missão Farmácia.', P.missions.some(m => m.title === 'Farmácia' && m.done), 170],
     ['∞', 'Mente completa', 'Descubra todas as substâncias.', P.disc.length >= substances.length, 105],

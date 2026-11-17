@@ -6,6 +6,7 @@ import Home from './screens/Home.jsx';
 import Lab from './screens/Lab.jsx';
 import ResultModal from './screens/ResultModal.jsx';
 import Collection from './screens/Collection.jsx';
+import Subatomico from './screens/Subatomico.jsx';
 import Missions from './screens/Missions.jsx';
 import Profile from './screens/Profile.jsx';
 
@@ -13,8 +14,9 @@ const NAV = [
   ['home', 'Início', '00'],
   ['lab', 'Laboratório', '01'],
   ['coll', 'Coleção', '02'],
-  ['missions', 'Missões', '03'],
-  ['profile', 'Perfil', '04'],
+  ['sub', 'Subatômico', '03'],
+  ['missions', 'Missões', '04'],
+  ['profile', 'Perfil', '05'],
 ];
 
 export default function App() {
@@ -59,6 +61,7 @@ export default function App() {
         {st.screen === 'home' && <Home P={P} go={go} />}
         {st.screen === 'lab' && <Lab game={game} />}
         {st.screen === 'coll' && <Collection game={game} />}
+        {st.screen === 'sub' && <Subatomico game={game} />}
         {st.screen === 'missions' && <Missions P={P} />}
         {st.screen === 'profile' && <Profile game={game} />}
       </main>
