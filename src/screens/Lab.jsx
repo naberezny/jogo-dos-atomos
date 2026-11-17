@@ -88,7 +88,7 @@ export default function Lab({ game }) {
           {small && !st.fusing && (
             <div className="reator-acoes">
               <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')} onClick={() => setDica(d => !d)} />
-              {foco && !dica && <BotaoDetalhes sym={foco} onClick={() => set({ drawer: foco })} />}
+              {foco && !dica && <BotaoDetalhes simbolo={foco} nome={el(foco).name} cor={col(el(foco).cat)} onClick={() => set({ drawer: foco })} />}
             </div>
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
@@ -120,7 +120,7 @@ export default function Lab({ game }) {
         {!small && (
           <div className="lab-side">
             <StatusPanel {...painel} />
-            {foco && <BotaoDetalhes largo sym={foco} onClick={() => set({ drawer: foco })} />}
+            {foco && <BotaoDetalhes largo simbolo={foco} nome={el(foco).name} cor={col(el(foco).cat)} onClick={() => set({ drawer: foco })} />}
           </div>
         )}
       </div>

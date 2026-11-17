@@ -6,6 +6,7 @@ import FusionFX from '../components/FusionFX.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
 import BotaoDica from '../components/BotaoDica.jsx';
+import BotaoDetalhes from '../components/BotaoDetalhes.jsx';
 import NaMao from '../components/NaMao.jsx';
 import useMedia from '../hooks/useMedia.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
@@ -127,7 +128,8 @@ export default function Subatomico({ game }) {
   const [res, setRes] = useState(null);
   const reator = useRef(null);
   const [sobre, setSobre] = useState(false);
-  const [dica, setDica] = useState(false);
+  const [painelAberto, setPainelAberto] = useState(null); // 'dica' | 'detalhes' | null
+  const alternar = qual => setPainelAberto(a => (a === qual ? null : qual));
   // No celular, acelerador e tabela dividem a tela (como no laboratório) e as dicas ficam num botão.
   const pequeno = useMedia('(max-width: 640px)');
   const timer = useRef(null);
@@ -193,10 +195,14 @@ export default function Subatomico({ game }) {
     </div>
   );
   const tabela = particulas.filter(p => !p.anti);
+  // Em foco: a última partícula tocada. No celular, o botão Detalhes acompanha o que está no acelerador.
   const pFoco = par(foco) || par('u');
-  const painel = onClose => (
+  const focoZona = zona[foco] ? foco : ks[ks.length - 1];
+  const pZona = focoZona && par(focoZona);
+  const painel = (onClose, className) => (
     <StatusPanel
       onClose={onClose}
+      className={className}
       tom={tone}
       destacado={ks.length > 0}
       tag={fundindo ? 'COLISÃO EM ANDAMENTO' : status.tag}
@@ -240,20 +246,19 @@ export default function Subatomico({ game }) {
               <div className="eyebrow">Ponto de colisão</div>
               {ks.length > 0 && !fundindo && <button className="btn-small" onClick={limpar}>Limpar</button>}
               {movel && !fundindo && (
-                <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')} onClick={() => setDica(d => !d)} />
-              )}
-              {movel && dica && !fundindo && (
-                <div className="dica-painel dica-dupla">
-                  {painel(() => setDica(false))}
-                  {fichaParticula}
+                <div className="reator-acoes">
+                  {painelAberto !== 'detalhes' && <BotaoDica tom={tone} aberto={painelAberto === 'dica'} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')} onClick={() => alternar('dica')} />}
+                  {pZona && painelAberto !== 'dica' && <BotaoDetalhes simbolo={pZona.sym} nome={pZona.name} cor={cor(pZona.fam)} aberto={painelAberto === 'detalhes'} onClick={() => { setFoco(focoZona); alternar('detalhes'); }} />}
                 </div>
               )}
+              {movel && painelAberto === 'dica' && !fundindo && painel(() => setPainelAberto(null), 'dica-painel')}
+              {movel && painelAberto === 'detalhes' && pZona && !fundindo && <div className="dica-painel dica-dupla">{fichaParticula}</div>}
               {ks.length === 0 && <div className="drop-hint">{movel ? 'Toque numa partícula, ou segure e arraste até aqui' : 'Arraste ou toque nas partículas da tabela'}</div>}
               <div className="zone">
                 {ks.map(id => {
                   const p = par(id);
                   return (
-                    <div className="zone-atom" key={id}>
+                    <div className={`zone-atom${focoZona === id && ks.length > 1 ? ' foco' : ''}`} key={id} onClick={() => setFoco(id)}>
                       <div className="atom-wrap"><Orbe p={p} size={movel ? 44 : 60} /></div>
                       <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{p.sym} ×{zona[id]}</span>
                       <div className="steppers">
