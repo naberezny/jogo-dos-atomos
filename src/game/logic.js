@@ -256,14 +256,19 @@ export function structure(s) {
 
 /** Modelo de bolas e varetas em 3D com a geometria real (ângulos VSEPR). */
 const G3 = {};
+/** Fração da distância real entre os átomos no modelo 3D: menos de 1 encurta as varetas. */
+const VARETA = 0.72;
+
 export function geom3d(s) {
   if (G3[s.f]) return G3[s.f];
   const m = molecula(s.f), n = m.atoms.length;
   const c = m.p3.reduce((a, p) => [a[0] + p[0] / n, a[1] + p[1] / n, a[2] + p[2] / n], [0, 0, 0]);
-  const ext = Math.max(0.5, ...m.p3.map((p, i) => Math.hypot(p[0] - c[0], p[1] - c[1], p[2] - c[2]) + m.r3[i]));
+  // Átomos um pouco mais próximos (bolas do mesmo tamanho): as varetas ficam mais curtas.
+  const P = m.p3.map(p => [(p[0] - c[0]) * VARETA, (p[1] - c[1]) * VARETA, (p[2] - c[2]) * VARETA]);
+  const ext = Math.max(0.5, ...P.map((p, i) => Math.hypot(p[0], p[1], p[2]) + m.r3[i]));
   const sc = Math.min(75, 100 / ext);
   G3[s.f] = {
-    atoms: m.atoms.map((a, i) => ({ sym: a.sym, cat: el(a.sym).cat, r: m.r3[i] * sc, x: (m.p3[i][0] - c[0]) * sc, y: (m.p3[i][1] - c[1]) * sc, z: (m.p3[i][2] - c[2]) * sc })),
+    atoms: m.atoms.map((a, i) => ({ sym: a.sym, cat: el(a.sym).cat, r: m.r3[i] * sc, x: P[i][0] * sc, y: P[i][1] * sc, z: P[i][2] * sc })),
     bonds: m.bonds,
   };
   return G3[s.f];
