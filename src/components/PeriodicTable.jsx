@@ -1,22 +1,18 @@
 // Tabela periódica com legenda que filtra por família. Usada no laboratório e nos estudos.
 import { useState } from 'react';
-import { createPortal } from 'react-dom';
 import { elements, cats } from '../data/nucleo.js';
 import { col, el } from '../game/logic.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
 import Atom3D from './Atom3D.jsx';
+import NaMao from './NaMao.jsx';
 
 /** Miniatura 3D do átomo que acompanha o dedo ou o mouse enquanto ele está "na mão". */
 function AtomoNaMao({ sym, toque, innerRef }) {
   const e = el(sym), c = cats[e.cat];
-  return createPortal(
-    <div ref={innerRef} className={`atomo-mao${toque ? ' toque' : ''}`} aria-hidden="true">
-      <div className="atomo-mao-corpo" style={{ '--c': col(e.cat) }}>
-        <Atom3D size={92} shells={e.shells} h={c.h} c={c.c} fusing title="" />
-        <span className="display">{sym}</span>
-      </div>
-    </div>,
-    document.body,
+  return (
+    <NaMao innerRef={innerRef} toque={toque} cor={col(e.cat)} rotulo={sym}>
+      <Atom3D size={92} shells={e.shells} h={c.h} c={c.c} fusing title="" />
+    </NaMao>
   );
 }
 

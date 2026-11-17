@@ -5,6 +5,9 @@ import { FUSE_CHARGE, fuseMs, progress } from '../game/logic.js';
 import FusionFX from '../components/FusionFX.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
+import NaMao from '../components/NaMao.jsx';
+import useMedia from '../hooks/useMedia.js';
+import usePegarElemento from '../hooks/usePegarElemento.js';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
 const MAX = 6;
@@ -122,6 +125,10 @@ export default function Subatomico({ game }) {
   const [fundindo, setFundindo] = useState(false);
   const [res, setRes] = useState(null);
   const reator = useRef(null);
+  const [sobre, setSobre] = useState(false);
+  const [dica, setDica] = useState(false);
+  // No celular, acelerador e tabela dividem a tela (como no laboratório) e as dicas ficam num botão.
+  const pequeno = useMedia('(max-width: 640px)');
   const timer = useRef(null);
   useEffect(() => () => clearTimeout(timer.current), []);
 
@@ -171,35 +178,84 @@ export default function Subatomico({ game }) {
     });
   }, [fundindo]);
 
+  const pega = usePegarElemento({ alvo: reator, onSoltar: id => add(id), onSobre: setSobre });
+  const movel = pequeno && aba === 'Acelerador';
+  const abas = (
+    <div className="seg">
+      {['Acelerador', 'Descobertas'].map(l => <button key={l} aria-pressed={aba === l} onClick={() => setAba(l)}>{l}</button>)}
+    </div>
+  );
+  const antimateria = (
+    <div className="seg accent" role="group" aria-label="Matéria ou antimatéria">
+      <button aria-pressed={!anti} onClick={() => setAnti(false)}>Matéria</button>
+      <button aria-pressed={anti} onClick={() => setAnti(true)}>Antimatéria</button>
+    </div>
+  );
   const tabela = particulas.filter(p => !p.anti);
   const pFoco = par(foco) || par('u');
+  const painel = onClose => (
+    <StatusPanel
+      onClose={onClose}
+      tom={tone}
+      destacado={ks.length > 0}
+      tag={fundindo ? 'COLISÃO EM ANDAMENTO' : status.tag}
+      title={fundindo ? 'Energia suficiente' : status.title}
+      text={fundindo ? 'As partículas estão se encontrando…' : status.text}
+      chips={fundindo ? [] : status.missing.map(m => { const p = par(m.id); return { key: m.id, label: `+${m.n} ${p.sym}`, cor: cor(p.fam), onClick: () => add(m.id, m.n), aria: `Adicionar ${m.n} de ${p.name}` }; })}
+    />
+  );
+  const fichaParticula = (
+    <div className="status sub-ficha" style={{ borderColor: cor(pFoco.fam, 0.35) }}>
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <Orbe p={pFoco} size={46} />
+        <div>
+          <div className="display" style={{ fontSize: 17, fontWeight: 600 }}>{pFoco.name}</div>
+          <div style={{ fontSize: 12.5, color: cor(pFoco.fam) }}>{familias[pFoco.fam].name}{pFoco.anti ? ' · antimatéria' : ''}</div>
+        </div>
+      </div>
+      <div className="sub-dados">
+        <span>Carga <b>{pFoco.carga}</b></span><span>Spin <b>{pFoco.spin}</b></span><span>Massa <b>{pFoco.massa}</b></span><span>Descoberta <b>{pFoco.ano}</b></span>
+      </div>
+      <p style={{ margin: 0 }}>{pFoco.fato}</p>
+    </div>
+  );
   const r = res && REC.get(res.id);
 
   return (
-    <section aria-label="Modo subatômico" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <section className={`lab sub${movel ? ' movel' : ''}`} aria-label="Modo subatômico" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <PageHeader eyebrow="Modo subatômico" title="Acelerador de partículas" sub={`${disc.length} de ${receitas.length} descobertas · quarks, léptons e bósons formam tudo o que existe`}>
-        <div className="seg">
-          {['Acelerador', 'Descobertas'].map(l => <button key={l} aria-pressed={aba === l} onClick={() => setAba(l)}>{l}</button>)}
-        </div>
+        {abas}
       </PageHeader>
+      {movel && <div className="sub-abas">{abas}{antimateria}</div>}
 
       {aba === 'Acelerador' ? (
         <>
           <div className="lab-top">
             <div
               ref={reator}
-              className={`reactor${fundindo ? ' fusing' : ''}`}
+              className={`reactor${sobre ? ' over' : ''}${fundindo ? ' fusing' : ''}`}
               style={{ '--t-fusao': `${ms}ms`, '--t-carga': `${ms * FUSE_CHARGE}ms` }}
             >
               <div className="eyebrow">Ponto de colisão</div>
               {ks.length > 0 && !fundindo && <button className="btn-small" onClick={limpar}>Limpar</button>}
-              {ks.length === 0 && <div className="drop-hint">Toque nas partículas da tabela</div>}
+              {movel && !fundindo && (
+                <button className="btn-dica" onClick={() => setDica(d => !d)} aria-expanded={dica} style={{ '--tom': tone }}>
+                  <span className="dot" />{status.missing.length ? `Dica: ${status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')}` : 'Dica'}
+                </button>
+              )}
+              {movel && dica && !fundindo && (
+                <div className="dica-painel dica-dupla">
+                  {painel(() => setDica(false))}
+                  {fichaParticula}
+                </div>
+              )}
+              {ks.length === 0 && <div className="drop-hint">{movel ? 'Toque numa partícula, ou segure e arraste até aqui' : 'Arraste ou toque nas partículas da tabela'}</div>}
               <div className="zone">
                 {ks.map(id => {
                   const p = par(id);
                   return (
                     <div className="zone-atom" key={id}>
-                      <div className="atom-wrap"><Orbe p={p} size={60} /></div>
+                      <div className="atom-wrap"><Orbe p={p} size={movel ? 44 : 60} /></div>
                       <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{p.sym} ×{zona[id]}</span>
                       <div className="steppers">
                         <button className="btn-step" onClick={() => add(id, -1)} aria-label={`Remover ${p.name}`}>−</button>
@@ -215,45 +271,23 @@ export default function Subatomico({ game }) {
               {fundindo && receita && <div className="fusion-formula" aria-hidden="true" style={{ fontSize: receita.sym.length > 6 ? 'clamp(22px, 4vw, 38px)' : undefined }}>{receita.sym}</div>}
             </div>
 
-            <div className="lab-side">
-              <StatusPanel
-                tom={tone}
-                destacado={ks.length > 0}
-                tag={fundindo ? 'COLISÃO EM ANDAMENTO' : status.tag}
-                title={fundindo ? 'Energia suficiente' : status.title}
-                text={fundindo ? 'As partículas estão se encontrando…' : status.text}
-                chips={fundindo ? [] : status.missing.map(m => { const p = par(m.id); return { key: m.id, label: `+${m.n} ${p.sym}`, cor: cor(p.fam), onClick: () => add(m.id, m.n), aria: `Adicionar ${m.n} de ${p.name}` }; })}
-              />
-              <div className="status sub-ficha" style={{ borderColor: cor(pFoco.fam, 0.35) }}>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <Orbe p={pFoco} size={46} />
-                  <div>
-                    <div className="display" style={{ fontSize: 17, fontWeight: 600 }}>{pFoco.name}</div>
-                    <div style={{ fontSize: 12.5, color: cor(pFoco.fam) }}>{familias[pFoco.fam].name}{pFoco.anti ? ' · antimatéria' : ''}</div>
-                  </div>
-                </div>
-                <div className="sub-dados">
-                  <span>Carga <b>{pFoco.carga}</b></span><span>Spin <b>{pFoco.spin}</b></span><span>Massa <b>{pFoco.massa}</b></span><span>Descoberta <b>{pFoco.ano}</b></span>
-                </div>
-                <p style={{ margin: 0 }}>{pFoco.fato}</p>
-              </div>
-            </div>
+            {!movel && <div className="lab-side">
+              {painel()}
+              {fichaParticula}
+            </div>}
           </div>
 
-          <div className="ptable-card">
-            <div className="page-head" style={{ alignItems: 'center' }}>
+          <div className="ptable-card sm-card">
+            {!movel && <div className="page-head" style={{ alignItems: 'center' }}>
               <div className="display" style={{ fontSize: 18, fontWeight: 600 }}>Modelo Padrão</div>
               <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
                 <div className="sm-legenda">
                   {Object.keys(familias).map(k => <span key={k} className="sm-leg"><span className="sw" style={{ background: cor(k) }} />{familias[k].name}</span>)}
                 </div>
-                <div className="seg accent" role="group" aria-label="Matéria ou antimatéria">
-                  <button aria-pressed={!anti} onClick={() => setAnti(false)}>Matéria</button>
-                  <button aria-pressed={anti} onClick={() => setAnti(true)}>Antimatéria</button>
-                </div>
+                {antimateria}
               </div>
-            </div>
-            <div className="sm-table">
+            </div>}
+            <div className="sm-table" ref={pega.gradeRef} style={{ '--segurar': `${pega.segurarMs}ms` }}>
               {['1ª geração', '2ª geração', '3ª geração', 'Forças', 'Massa'].map((t, i) => <div key={t} className="sm-head" style={{ gridColumn: i + 1 }}>{t}</div>)}
               {tabela.map(b => {
                 const p = anti ? par(antiDe(b.id)) : b;
@@ -261,8 +295,9 @@ export default function Subatomico({ game }) {
                 return (
                   <button
                     key={p.id}
-                    className={`sm-cell${apagada ? ' off' : ''}`}
-                    onClick={() => add(p.id)}
+                    className={`sm-cell${apagada ? ' off' : ''}${pega.segurando === p.id ? ' segurando' : ''}${pega.mao?.sym === p.id ? ' na-mao' : ''}`}
+                    {...pega.celula(p.id)}
+                    onClick={() => { if (pega.cliqueValido()) add(p.id); }}
                     onMouseEnter={() => setFoco(p.id)}
                     onFocus={() => setFoco(p.id)}
                     aria-label={`${p.name}. ${apagada ? 'Não combina com o que está no acelerador' : 'Adicionar ao acelerador'}`}
@@ -280,7 +315,7 @@ export default function Subatomico({ game }) {
                 );
               })}
             </div>
-            <div style={{ fontSize: 12.5, color: 'var(--muted)' }}>
+            <div className="sm-nota" style={{ fontSize: 12.5, color: 'var(--muted)' }}>
               Três quarks formam um bárion; um quark e um antiquark formam um méson. Junte partículas com um bóson para descobrir as forças.
             </div>
           </div>
@@ -314,6 +349,7 @@ export default function Subatomico({ game }) {
         </div>
       )}
 
+      {pega.mao && (() => { const p = par(pega.mao.sym); return <NaMao innerRef={pega.maoRef} toque={pega.mao.toque} cor={cor(p.fam)}><Orbe p={p} size={70} /></NaMao>; })()}
       {r && <Resultado r={r} novo={res.novo} levelUp={res.levelUp} onClose={() => setRes(null)} verColecao={res.daColecao ? null : () => { setRes(null); setAba('Descobertas'); }} />}
     </section>
   );

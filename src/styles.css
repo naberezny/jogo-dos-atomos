@@ -295,10 +295,25 @@ button.brand { cursor: pointer; }
 .compacta .cell .s { font-size: calc(var(--cel) * .42); }
 .compacta .series { font-size: 0; border-radius: 4px; }
 
+/* Modo subatômico no celular: mesma ideia, com as abas e o seletor de antimatéria numa linha fina */
+.sub-abas { display: flex; gap: 8px; flex: none; }
+.sub-abas .seg { flex: 1; }
+.sub-abas .seg button { padding: 6px 4px; font-size: 12px; }
+.lab.movel .sm-card { padding: 8px; gap: 0; border-radius: 12px; flex: none; }
+.lab.movel .sm-table { max-width: none; gap: 4px; }
+.lab.movel .sm-cell { padding: 5px 2px; gap: 1px; border-radius: 8px; }
+.lab.movel .sm-cell .m, .lab.movel .sm-cell .q, .lab.movel .sm-nota { display: none; }
+.lab.movel .sm-cell .s { font-size: clamp(16px, calc((100dvh - 470px) / 9), 24px); }
+.dica-dupla { display: flex; flex-direction: column; gap: 8px; padding: 0; border: none; background: none; box-shadow: none; }
+.dica-dupla > .status { padding: 12px 14px; box-shadow: 0 -10px 40px oklch(0.08 0.02 265 / 0.8); }
+.sm-cell { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.sm-cell.segurando, .sm-cell.na-mao { position: relative; }
+.sm-cell.na-mao { opacity: .35 !important; transform: scale(.94); }
+
 /* ---------- Átomo na mão: pegar um elemento da tabela e soltar no reator ---------- */
 .ptable .cell { -webkit-touch-callout: none; -webkit-user-select: none; }
-.cell.segurando { z-index: 2; animation: segurar var(--segurar) linear forwards; }
-.cell.segurando::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; border: 2px solid var(--accent); clip-path: inset(0 100% 0 0); animation: segurar-borda var(--segurar) linear forwards; }
+.cell.segurando, .sm-cell.segurando { z-index: 2; animation: segurar var(--segurar) linear forwards; }
+.cell.segurando::after, .sm-cell.segurando::after { content: ''; position: absolute; inset: -3px; border-radius: inherit; border: 2px solid var(--accent); clip-path: inset(0 100% 0 0); animation: segurar-borda var(--segurar) linear forwards; }
 @keyframes segurar { to { transform: scale(1.18); box-shadow: 0 0 18px oklch(0.82 0.13 195 / 0.7); } }
 @keyframes segurar-borda { to { clip-path: inset(0 0 0 0); } }
 .cell.na-mao { opacity: .35 !important; transform: scale(.9); }

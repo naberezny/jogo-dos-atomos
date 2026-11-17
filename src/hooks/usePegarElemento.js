@@ -18,7 +18,8 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
   const [segurando, setSegurando] = useState(null); // símbolo que está sendo pressionado
   const g = useRef({ sobre: false, bloquearClique: 0 });
   const maoRef = useRef(null);
-  const gradeRef = useRef(null);
+  // ref de callback: se a tabela sair da tela e voltar, os ouvintes de toque são religados
+  const [grade, gradeRef] = useState(null);
   const cb = useRef({});
   cb.current = { onSoltar, onSobre };
 
@@ -50,7 +51,7 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
     if (s.naMao) {
       if (s.sobre) cb.current.onSoltar?.(s.naMao);
       if (s.sobre) cb.current.onSobre?.(false);
-      s.bloquearClique = Date.now() + 400;
+      s.bloquearClique = Date.now() + 250;
       s.naMao = null; s.sobre = false;
       setMao(null);
     }
@@ -59,7 +60,7 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
 
   // Toque: os eventos de movimento precisam ser não passivos para impedir a rolagem com o átomo na mão.
   useEffect(() => {
-    const el = gradeRef.current;
+    const el = grade;
     if (!el || !ativo) return;
     const move = e => {
       const s = g.current, t = e.touches[0];
@@ -73,7 +74,7 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
     el.addEventListener('touchend', fim, { passive: false });
     el.addEventListener('touchcancel', fim);
     return () => { el.removeEventListener('touchmove', move); el.removeEventListener('touchend', fim); el.removeEventListener('touchcancel', fim); };
-  }, [ativo, mover, largar]);
+  }, [grade, ativo, mover, largar]);
   useEffect(() => () => clearTimeout(g.current.timer), []);
 
   /** Propriedades para espalhar em cada célula da tabela. */
