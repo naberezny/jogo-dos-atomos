@@ -21,9 +21,9 @@ energia de ionização, afinidade eletrônica e estados de oxidação), além do
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
-- 150 substâncias, de H₂O à vitamina A, com estado físico, uso no dia a dia e curiosidade
+- 326 substâncias, de H₂O ao ATP, com estado físico, uso no dia a dia e curiosidade
 - Foto real de 83 substâncias (Wikimedia Commons, com autor e licença) e molécula em 2D e em 3D
-- 24 missões, 12 medalhas e níveis a cada 300 XP
+- 35 missões, 14 medalhas e níveis a cada 300 XP
 - Progresso salvo no navegador
 
 ## Desenvolvimento

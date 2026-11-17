@@ -31,7 +31,7 @@ export const subXP = s => 10 * s.atoms + 20 * s.nEl;
 
 const tem = (c, lista) => c.disc.filter(s => lista.includes(s.f)).length;
 const BASES = ['C5H5N5', 'C5H6N2O2', 'C4H5N3O', 'C5H5N5O', 'C4H4N2O2'];
-const ACIDOS = ['HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
+const ACIDOS = ['HBr', 'HClO', 'C3H6O2', 'C3H4O3', 'C4H6O6', 'C4H6O5', 'C6H8O2', 'C7H6O2', 'C8H6O4', 'C12H24O2', 'C5H4N4O3', 'HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
 
 export const MISSIONS = [
   { title: 'Primeiros passos', desc: 'Descubra 5 substâncias.', target: 5, val: c => c.disc.length, reward: 100 },
@@ -56,7 +56,18 @@ export const MISSIONS = [
   { title: 'Aromas da cozinha', desc: 'Crie 5 moléculas de aroma: vanilina, mentol, limoneno, cinamaldeído, eugenol, benzaldeído, acetato de isoamila ou cânfora.', target: 5, val: c => tem(c, ['C8H8O3', 'C10H20O', 'C10H16', 'C9H8O', 'C10H12O2', 'C7H6O', 'C7H14O2', 'C10H16O']), reward: 250 },
   { title: 'Química do cérebro', desc: 'Crie dopamina, adrenalina e serotonina.', target: 3, val: c => tem(c, ['C8H11NO2', 'C9H13NO3', 'C10H12N2O']), reward: 250 },
   { title: 'Código da vida', desc: 'Crie as cinco bases do DNA e do RNA: adenina, timina, citosina, guanina e uracila.', target: 5, val: c => tem(c, BASES), reward: 300 },
+  { title: 'Quase a tabela toda', desc: 'Coloque 50 elementos diferentes no reator.', target: 50, val: c => c.usedEls.length, reward: 400 },
+  { title: 'Exceção nobre', desc: 'Faça um gás nobre se ligar: crie os dois fluoretos de xenônio.', target: 2, val: c => tem(c, ['XeF2', 'XeF4']), reward: 250 },
+  { title: 'Laboratório nuclear', desc: 'Crie 4 compostos de elementos radioativos: urânio, tório, plutônio, amerício ou rádio.', target: 4, val: c => tem(c, ['UO2', 'UF6', 'ThO2', 'PuO2', 'AmO2', 'RaCl2']), reward: 300 },
+  { title: 'Era digital', desc: 'Crie 5 materiais da eletrônica: arseneto de gálio, nitreto de gálio, dióxido de germânio, óxido de índio, seleneto de cádmio, telureto de cádmio ou óxido de lítio e cobalto.', target: 5, val: c => tem(c, ['GaAs', 'GaN', 'GeO2', 'In2O3', 'CdSe', 'CdTe', 'LiCoO2']), reward: 300 },
+  { title: 'Fogos de artifício', desc: 'Crie 5 ingredientes de fogos: nitrato de potássio, clorato de potássio, carbonato de estrôncio, nitrato de bário, cloreto de cobre(II) ou perclorato de amônio.', target: 5, val: c => tem(c, ['KNO3', 'KClO3', 'SrCO3', 'BaN2O6', 'CuCl2', 'NH4ClO4']), reward: 250 },
+  { title: 'Blocos da vida', desc: 'Crie 6 aminoácidos: glicina, alanina, serina, cisteína, leucina, lisina, fenilalanina ou triptofano.', target: 6, val: c => tem(c, ['C2H5NO2', 'C3H7NO2', 'C3H7NO3', 'C3H7NO2S', 'C6H13NO2', 'C6H14N2O2', 'C9H11NO2', 'C11H12N2O2']), reward: 300 },
+  { title: 'Hormônios', desc: 'Crie adrenalina, melatonina, testosterona e estradiol.', target: 4, val: c => tem(c, ['C9H13NO3', 'C13H16N2O2', 'C19H28O2', 'C18H24O2']), reward: 300 },
+  { title: 'Vitaminas', desc: 'Crie as vitaminas A, C, B3 (niacina) e B6 (piridoxina).', target: 4, val: c => tem(c, ['C20H30O', 'C6H8O6', 'C6H5NO2', 'C8H11NO3']), reward: 250 },
+  { title: 'Prateleira de temperos', desc: 'Crie 6 moléculas de temperos: capsaicina, piperina, gingerol, curcumina, alicina, anetol, timol ou isotiocianato de alila.', target: 6, val: c => tem(c, ['C18H27NO3', 'C17H19NO3', 'C17H26O4', 'C21H20O6', 'C6H10OS2', 'C10H12O', 'C10H14O', 'C4H5NS']), reward: 300 },
+  { title: 'Hospital', desc: 'Crie 5 remédios: penicilina, amoxicilina, ibuprofeno, lidocaína, cisplatina ou ácido salicílico.', target: 5, val: c => tem(c, ['C16H18N2O4S', 'C16H19N3O5S', 'C13H18O2', 'C14H22N2O', 'PtCl2N2H6', 'C7H6O3']), reward: 300 },
   { title: 'Centena', desc: 'Descubra 100 substâncias.', target: 100, val: c => c.disc.length, reward: 400 },
+  { title: 'Duas centenas', desc: 'Descubra 200 substâncias.', target: 200, val: c => c.disc.length, reward: 600 },
   { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 },
 ];
 
@@ -86,6 +97,8 @@ export function medals(st, P) {
     ['He', 'Curioso nobre', 'Tente fundir um gás nobre.', st.nobleTried, 340],
     ['50', 'Grande coleção', 'Tenha 50 substâncias na coleção.', P.disc.length >= 50, 250],
     ['100', 'Centenário', 'Tenha 100 substâncias na coleção.', P.disc.length >= 100, 60],
+    ['200', 'Bicentenário', 'Tenha 200 substâncias na coleção.', P.disc.length >= 200, 20],
+    ['Xe', 'Exceção à regra', 'Conclua a missão Exceção nobre.', P.missions.some(m => m.title === 'Exceção nobre' && m.done), 285],
     ['DNA', 'Geneticista', 'Conclua a missão Código da vida.', P.missions.some(m => m.title === 'Código da vida' && m.done), 320],
     ['Rx', 'Farmacêutico', 'Conclua a missão Farmácia.', P.missions.some(m => m.title === 'Farmácia' && m.done), 170],
     ['∞', 'Mente completa', 'Descubra todas as substâncias.', P.disc.length >= substances.length, 105],
@@ -118,8 +131,9 @@ export function reactorStatus(zone, discovered, showHints) {
       missing: showHints ? Object.keys(best.c).filter(k => best.c[k] > (zone[k] || 0)).map(k => ({ sym: k, n: best.c[k] - (zone[k] || 0), cat: el(k).cat })) : [],
     };
   }
-  const noble = keys.find(k => el(k).cat === 'ng');
   const unused = keys.find(k => !substances.some(s => s.c[k]));
+  // Xenônio tem receitas (XeF₂, XeF₄); os outros gases nobres não se ligam a nada.
+  const noble = keys.find(k => el(k).cat === 'ng' && k === unused);
   if (noble) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(noble).name} não quer se ligar`, text: 'Gases nobres têm a camada de valência completa e quase nunca formam ligações. Remova-o do reator.', missing: [] };
   if (unused) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(unused).name} ainda não tem receitas`, text: 'Esse elemento não participa de nenhuma substância do catálogo. Tente outros elementos.', missing: [] };
   return { tone: 'bad', tag: 'INSTÁVEL', title: 'Proporção sem correspondência', text: 'Nenhuma substância do catálogo tem essa proporção de átomos. Diminua a quantidade de algum deles.', missing: [] };

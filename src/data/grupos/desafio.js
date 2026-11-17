@@ -1,4 +1,4 @@
-// Moléculas famosas e grandes (17 a 49 átomos).
+// Moléculas famosas e grandes (17 átomos ou mais).
 import { S } from '../substancia.js';
 
 export const DESAFIO = [
@@ -19,4 +19,25 @@ export const DESAFIO = [
   S('C10H12N2O', 'Serotonina', 'sólido', 'Cérebro e intestino.', 'Cerca de 90% da serotonina do corpo é produzida no intestino.'),
   S('C13H18O2', 'Ibuprofeno', 'sólido', 'Analgésicos e anti-inflamatórios.', 'Foi criado nos anos 1960 por Stewart Adams, que o testou em si mesmo para curar uma ressaca.'),
   S('C20H30O', 'Vitamina A', 'sólido', 'Fígado, gema de ovo e leite.', 'O corpo também a produz a partir do betacaroteno da cenoura. Ela é essencial para enxergar com pouca luz.'),
+  S('C8H20Pb', 'Chumbo tetraetila', 'líquido', 'Antigo aditivo da gasolina.', 'Foi banido da gasolina em quase todo o mundo por espalhar chumbo tóxico pelo ar.'),
+  S('C12H24O2', 'Ácido láurico', 'sólido', 'Óleo de coco e sabonetes.', 'É a gordura mais abundante do óleo de coco.'),
+  S('C11H12N2O2', 'Triptofano', 'sólido', 'Leite, ovos, banana e chocolate.', 'O corpo o usa para fabricar serotonina e melatonina.'),
+  S('C10H16N5O13P3', 'ATP', 'sólido', 'Todas as células vivas.', 'É a "moeda de energia" da vida: o corpo recicla por dia o equivalente ao próprio peso em ATP.'),
+  S('C10H18O', 'Eucaliptol', 'líquido', 'Folhas de eucalipto; pastilhas e pomadas.', 'É a molécula que dá a sensação de "nariz aberto" das pastilhas de eucalipto.'),
+  S('C12H22O', 'Geosmina', 'líquido', 'Cheiro de terra molhada depois da chuva.', 'O nariz humano a percebe em concentrações de poucas partes por trilhão.'),
+  S('C11H14O3', 'Zingerona', 'sólido', 'Gengibre cozido ou seco.', 'Forma-se quando o gengibre é aquecido e é mais suave que a molécula ardida do gengibre fresco.'),
+  S('C17H26O4', 'Gingerol', 'líquido', 'Gengibre fresco.', 'Ativa na boca os mesmos sensores de calor que a capsaicina da pimenta.'),
+  S('C17H19NO3', 'Piperina', 'sólido', 'Pimenta-do-reino.', 'É ela que faz a pimenta-do-reino arder. Não tem parentesco com a capsaicina das pimentas vermelhas.'),
+  S('C21H20O6', 'Curcumina', 'sólido', 'Cúrcuma (açafrão-da-terra) e curry.', 'É o pigmento amarelo da cúrcuma; fica vermelho em contato com bicarbonato ou sabão.'),
+  S('C16H10N2O2', 'Índigo', 'sólido', 'Corante azul do jeans.', 'Era extraído de plantas e valia tanto que foi chamado de "ouro azul".'),
+  S('C16H18N2O4S', 'Penicilina G', 'sólido', 'Antibióticos.', 'Fleming a descobriu em 1928, ao notar que um mofo matava as bactérias de uma placa esquecida.'),
+  S('C16H19N3O5S', 'Amoxicilina', 'sólido', 'Antibióticos.', 'Antibióticos só agem contra bactérias: não funcionam contra vírus, como os da gripe.'),
+  S('C14H22N2O', 'Lidocaína', 'sólido', 'Anestésico local de dentistas.', 'Bloqueia por algumas horas os sinais de dor nos nervos, sem tirar a consciência.'),
+  S('C14H9Cl5', 'DDT', 'sólido', 'Inseticida hoje proibido em quase todo o mundo.', 'O livro Primavera Silenciosa (1962) mostrou seus danos às aves e impulsionou o movimento ambiental.'),
+  S('C19H28O2', 'Testosterona', 'sólido', 'Hormônio produzido principalmente nos testículos.', 'Homens e mulheres a produzem, em quantidades diferentes.'),
+  S('C18H24O2', 'Estradiol', 'sólido', 'Principal hormônio feminino, produzido nos ovários.', 'O corpo o fabrica a partir da testosterona, com uma única enzima.'),
+  S('C13H16N2O2', 'Melatonina', 'sólido', 'Glândula pineal, no cérebro.', 'O cérebro a libera quando escurece, avisando o corpo de que é hora de dormir.'),
+  S('C15H16O2', 'Bisfenol A', 'sólido', 'Plásticos de policarbonato e resinas.', 'Foi proibido em mamadeiras em vários países, entre eles o Brasil, em 2012.'),
+  S('C12H25NaO4S', 'Lauril sulfato de sódio', 'sólido', 'Xampus, cremes dentais e detergentes.', 'Uma ponta da molécula gosta de água e a outra de gordura: é assim que os detergentes limpam.'),
+  S('C12H19Cl3O8', 'Sucralose', 'sólido', 'Adoçantes.', 'É feita a partir do açúcar comum, trocando três grupos por cloro; fica cerca de 600 vezes mais doce.'),
 ];
