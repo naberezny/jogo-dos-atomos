@@ -5,6 +5,7 @@ import { FUSE_CHARGE, fuseMs, progress } from '../game/logic.js';
 import FusionFX from '../components/FusionFX.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
+import BotaoDica from '../components/BotaoDica.jsx';
 import NaMao from '../components/NaMao.jsx';
 import useMedia from '../hooks/useMedia.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
@@ -239,9 +240,7 @@ export default function Subatomico({ game }) {
               <div className="eyebrow">Ponto de colisão</div>
               {ks.length > 0 && !fundindo && <button className="btn-small" onClick={limpar}>Limpar</button>}
               {movel && !fundindo && (
-                <button className="btn-dica" onClick={() => setDica(d => !d)} aria-expanded={dica} style={{ '--tom': tone }}>
-                  <span className="dot" />{status.missing.length ? `Dica: ${status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')}` : 'Dica'}
-                </button>
+                <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')} onClick={() => setDica(d => !d)} />
               )}
               {movel && dica && !fundindo && (
                 <div className="dica-painel dica-dupla">

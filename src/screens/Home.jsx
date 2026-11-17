@@ -82,10 +82,11 @@ export default function Home({ game }) {
         <div className="card steps">
           <div className="eyebrow">Como jogar</div>
           <ol>
-            <li><span className="n">01</span><span>No laboratório, toque num elemento da tabela periódica.</span></li>
-            <li><span className="n">02</span><span>Adicione-o ao reator e ajuste a quantidade de cada átomo.</span></li>
-            <li><span className="n">03</span><span>Com a proporção certa, o botão Fundir aparece. Toque nele para criar a substância.</span></li>
+            <li><span className="n">01</span><span>No laboratório, pegue um elemento da tabela e solte no reator.</span></li>
+            <li><span className="n">02</span><span>Ajuste a quantidade de cada átomo.</span></li>
+            <li><span className="n">03</span><span>Com a proporção certa, o botão Fundir aparece.</span></li>
           </ol>
+          <button className="btn-small" style={{ alignSelf: 'flex-start', marginTop: 'auto' }} onClick={() => game.set({ tourVisto: false })}>Ver o tour de novo</button>
         </div>
       </div>
     </div>

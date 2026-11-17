@@ -8,6 +8,7 @@ import FusionFX from '../components/FusionFX.jsx';
 import PeriodicTable from '../components/PeriodicTable.jsx';
 import PageHeader from '../components/PageHeader.jsx';
 import StatusPanel from '../components/StatusPanel.jsx';
+import BotaoDica from '../components/BotaoDica.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -81,9 +82,7 @@ export default function Lab({ game }) {
           <div className="eyebrow">Área de fusão</div>
           {zoneKeys.length > 0 && !st.fusing && <button className="btn-small" onClick={clearZone}>Limpar</button>}
           {small && !st.fusing && (
-            <button className="btn-dica" onClick={() => setDica(d => !d)} aria-expanded={dica} style={{ '--tom': tone }}>
-              <span className="dot" />{status.missing.length ? `Dica: ${status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')}` : 'Dica'}
-            </button>
+            <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')} onClick={() => setDica(d => !d)} />
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
           {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Segure um elemento e arraste até aqui' : 'Arraste os átomos até aqui'}</div>}

@@ -13,7 +13,7 @@ const ACIMA_DO_DEDO = 58; // no toque, o átomo aparece acima do dedo para não 
  * @param segurarMs tempo de toque parado até pegar o átomo (o mouse pega na hora)
  * @returns { mao, segurando, celula(sym), maoRef, gradeRef, cliqueValido() }
  */
-export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 1500, ativo = true }) {
+export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 1000, ativo = true }) {
   const [mao, setMao] = useState(null);       // { sym, toque } enquanto o átomo está na mão
   const [segurando, setSegurando] = useState(null); // símbolo que está sendo pressionado
   const g = useRef({ sobre: false, bloquearClique: 0 });

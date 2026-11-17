@@ -9,6 +9,7 @@ import Collection from './screens/Collection.jsx';
 import Subatomico from './screens/Subatomico.jsx';
 import Estudos from './screens/Estudos.jsx';
 import Icon from './components/Icon.jsx';
+import Tour from './components/Tour.jsx';
 import { ehSecao, NavCtx, SECOES } from './nav.js';
 import Missions from './screens/Missions.jsx';
 import Profile from './screens/Profile.jsx';
@@ -93,6 +94,7 @@ export default function App() {
       </div>
 
       {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => go('coll', { result: null, collFilter: 'Todas' })} />}
+      {!st.tourVisto && !st.result && <Tour onClose={() => set({ tourVisto: true })} onStart={() => go('lab', { tourVisto: true })} />}
     </div>
     </NavCtx.Provider>
   );
