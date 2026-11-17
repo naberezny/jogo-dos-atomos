@@ -5,15 +5,17 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 const FOLGA_TOQUE = 10; // px que o dedo pode tremer enquanto segura, antes de virar rolagem
 const FOLGA_MOUSE = 6;  // px de movimento para o clique virar arrasto
 const ACIMA_DO_DEDO = 58; // no toque, o átomo aparece acima do dedo para não ficar escondido
+const semMovimento = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
  * @param alvo      ref do elemento onde se pode soltar
  * @param onSoltar  (sym) => void, chamado ao soltar dentro do alvo
  * @param onSobre   (bool) => void, avisa quando o átomo entra ou sai do alvo
- * @param segurarMs tempo de toque parado até pegar o átomo (o mouse pega na hora)
+ * @param segurarMs tempo de toque parado até pegar o átomo (o mouse pega na hora). O átomo sai da tabela
+ *                  no instante em que o contorno da célula termina de carregar, que dura esse mesmo tempo.
  * @returns { mao, segurando, celula(sym), maoRef, gradeRef, cliqueValido() }
  */
-export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 500, ativo = true }) {
+export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 200, ativo = true }) {
   const [mao, setMao] = useState(null);       // { sym, toque } enquanto o átomo está na mão
   const [segurando, setSegurando] = useState(null); // símbolo que está sendo pressionado
   const g = useRef({ sobre: false, bloquearClique: 0 });
@@ -37,6 +39,8 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
   }, []);
   const pegar = useCallback((sym, x, y, toque) => {
     const s = g.current;
+    if (s.naMao) return;
+    clearTimeout(s.timer);
     s.naMao = sym; s.toque = toque; s.sobre = false;
     setSegurando(null);
     setMao({ sym, toque });
@@ -83,9 +87,17 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, segurarMs = 
       const t = e.touches[0], s = g.current;
       if (e.touches.length > 1) { clearTimeout(s.timer); setSegurando(null); return; }
       s.inicio = { x: t.clientX, y: t.clientY }; s.ux = t.clientX; s.uy = t.clientY; s.usouToque = Date.now();
+      s.segurado = sym;
       setSegurando(sym);
       clearTimeout(s.timer);
-      s.timer = setTimeout(() => pegar(sym, s.ux, s.uy, true), segurarMs);
+      // Quem decide o momento é o fim da animação do contorno (onAnimationEnd abaixo), assim os dois
+      // andam juntos mesmo se a tela demorar a desenhar. O cronômetro é só reserva: vale direto quando
+      // as animações estão desligadas e, nos outros casos, se o navegador não avisar o fim da animação.
+      s.timer = setTimeout(() => { if (s.inicio) pegar(sym, s.ux, s.uy, true); }, semMovimento() ? segurarMs : segurarMs + 300);
+    },
+    onAnimationEnd: e => {
+      const s = g.current;
+      if (e.animationName === 'segurar-borda' && s.segurado === sym && s.inicio && !s.naMao) pegar(sym, s.ux, s.uy, true);
     },
     onPointerDown: e => {
       if (e.pointerType !== 'mouse' || e.button !== 0) return;
