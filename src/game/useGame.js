@@ -48,7 +48,7 @@ export function useGame() {
         const isNew = !s.discovered.includes(m.f);
         const discovered = isNew ? [...s.discovered, m.f] : s.discovered;
         const after = progress({ ...s, discovered }).level;
-        return { ...s, discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null };
+        return { ...s, discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null, revelar: isNew ? { tipo: 'mol', id: m.f } : null };
       });
     }, fuseMs());
   }, [st.zone, st.fusing, set]);

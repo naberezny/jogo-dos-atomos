@@ -13,7 +13,7 @@ import usePegarElemento from '../hooks/usePegarElemento.js';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
 const MAX = 6;
-const cor = (fam, a, L = 0.8) => { const f = familias[fam]; return `oklch(${fam === 'hip' ? 0.72 : L} ${f.c} ${f.h}${a != null ? ' / ' + a : ''})`; };
+export const cor = (fam, a, L = 0.8) => { const f = familias[fam]; return `oklch(${fam === 'hip' ? 0.72 : L} ${f.c} ${f.h}${a != null ? ' / ' + a : ''})`; };
 // "Cores" da força forte, só para o desenho dos hádrons.
 const CARGA_COR = ['oklch(0.7 0.19 25)', 'oklch(0.78 0.17 145)', 'oklch(0.72 0.14 250)'];
 
@@ -164,7 +164,7 @@ export default function Subatomico({ game }) {
       const ja = disc.includes(receita.id);
       const subDisc = ja ? disc : [...disc, receita.id];
       const antes = progress(st).level, depois = progress({ ...st, subDisc }).level;
-      set(s => ({ subDisc, subZone: {}, fusions: s.fusions + 1 }));
+      set(s => ({ subDisc, subZone: {}, fusions: s.fusions + 1, revelar: ja ? null : { tipo: 'sub', id: receita.id } }));
       setRes({ id: receita.id, novo: !ja, levelUp: depois > antes ? depois : null });
     }, ms);
   };

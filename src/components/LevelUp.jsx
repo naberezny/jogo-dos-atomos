@@ -5,17 +5,18 @@ const DURA = 4200;
 const CORES = ['oklch(0.82 0.13 195)', 'oklch(0.82 0.15 145)', 'oklch(0.82 0.14 65)', 'oklch(0.8 0.13 340)', 'oklch(0.8 0.12 250)', '#fff'];
 const rnd = (a, b) => a + Math.random() * (b - a);
 
-function Particulas() {
+/** Chuva de confete que explode de um ponto da tela (cy = altura relativa) e cai com a gravidade. */
+export function Particulas({ cores = CORES, cy: cyRel = 0.42, dura = DURA }) {
   const ref = useRef(null);
   useEffect(() => {
     const cv = ref.current, ctx = cv.getContext('2d');
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const W = cv.clientWidth, H = cv.clientHeight;
     cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
-    const cx = W / 2, cy = H * 0.42, forca = Math.min(W, H);
+    const cx = W / 2, cy = H * cyRel, forca = Math.min(W, H);
     const lote = (n, atraso) => Array.from({ length: n }, (_, i) => {
       const a = rnd(0, Math.PI * 2), v = rnd(0.25, 1) * forca * 1.5;
-      return { t0: atraso, vx: Math.cos(a) * v, vy: Math.sin(a) * v - forca * 0.35, k: rnd(1.6, 3), w: rnd(4, 9), h: rnd(3, 6), giro: rnd(-9, 9), a0: rnd(0, 6), cor: CORES[i % CORES.length], vida: rnd(1.6, 2.8), redonda: i % 3 === 0 };
+      return { t0: atraso, vx: Math.cos(a) * v, vy: Math.sin(a) * v - forca * 0.35, k: rnd(1.6, 3), w: rnd(4, 9), h: rnd(3, 6), giro: rnd(-9, 9), a0: rnd(0, 6), cor: cores[i % cores.length], vida: rnd(1.6, 2.8), redonda: i % 3 === 0 };
     });
     const ps = [...lote(130, 0.25), ...lote(90, 0.75)];
     let raf, ini = null;
@@ -38,10 +39,12 @@ function Particulas() {
         else ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(s * 6 + p.a0)) + 1);
         ctx.restore();
       }
-      if (t < DURA / 1000) raf = requestAnimationFrame(quadro);
+      if (t < dura / 1000 + 1) raf = requestAnimationFrame(quadro);
     };
     raf = requestAnimationFrame(quadro);
     return () => cancelAnimationFrame(raf);
+    // Só a primeira configuração vale: re-renderizações não recomeçam a explosão.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <canvas ref={ref} className="nivel-particulas" aria-hidden="true" />;
 }
