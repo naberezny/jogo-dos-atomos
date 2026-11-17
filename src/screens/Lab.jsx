@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 function useMedia(q) {
   const [on, setOn] = useState(() => window.matchMedia(q).matches);
@@ -10,8 +10,9 @@ function useMedia(q) {
   return on;
 }
 import { elements, cats } from '../data/nucleo.js';
-import { col, el, findMatch, reactorStatus, sub } from '../game/logic.js';
+import { col, el, findMatch, FUSE_CHARGE, fuseMs, reactorStatus, sub } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
+import FusionFX from '../components/FusionFX.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -48,6 +49,19 @@ export default function Lab({ game }) {
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
+  const reduced = useMedia('(prefers-reduced-motion: reduce)');
+  const ms = fuseMs();
+  // Ao fundir, cada átomo é puxado até o centro do reator: mede a distância que cada um precisa percorrer.
+  useLayoutEffect(() => {
+    if (!st.fusing || !reactor.current) return;
+    const r = reactor.current.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    reactor.current.querySelectorAll('.atom-wrap').forEach((a, i) => {
+      const b = a.getBoundingClientRect();
+      a.style.setProperty('--dx', `${cx - (b.left + b.width / 2)}px`);
+      a.style.setProperty('--dy', `${cy - (b.top + b.height / 2)}px`);
+      a.style.setProperty('--giro', `${i % 2 ? -260 : 260}deg`);
+    });
+  }, [st.fusing]);
 
   return (
     <section className="lab" aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -60,6 +74,7 @@ export default function Lab({ game }) {
         <div
           ref={reactor}
           className={`reactor${dragOver ? ' over' : ''}${st.fusing ? ' fusing' : ''}`}
+          style={{ '--t-fusao': `${ms}ms`, '--t-carga': `${ms * FUSE_CHARGE}ms` }}
           onDragOver={e => { e.preventDefault(); if (!dragOver) setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onDrop={e => { e.preventDefault(); setDragOver(false); const s = e.dataTransfer.getData('text/plain'); if (s) add(s); }}
@@ -72,7 +87,9 @@ export default function Lab({ game }) {
               const e = el(sym), cat = cats[e.cat];
               return (
                 <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym}>
-                  <Atom3D size={Math.max(44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
+                  <div className="atom-wrap">
+                    <Atom3D size={Math.max(44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
+                  </div>
                   <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{sym} ×{st.zone[sym]}</span>
                   <div className="steppers">
                     <button className="btn-step" onClick={() => add(sym, -1)} aria-label={`Remover um átomo de ${e.name}`}>−</button>
@@ -85,6 +102,8 @@ export default function Lab({ game }) {
           </div>
           <div className="zone-formula" aria-live="polite">{zoneKeys.length ? sub(zoneKeys.map(k => k + (st.zone[k] > 1 ? st.zone[k] : '')).join('')) : ''}</div>
           {match && <button className="btn-fuse" onClick={fuse} disabled={st.fusing}>{st.fusing ? 'FUNDINDO…' : 'FUNDIR'}</button>}
+          {st.fusing && !reduced && <FusionFX ms={ms} charge={FUSE_CHARGE} hues={zoneKeys.map(k => cats[el(k).cat])} />}
+          {st.fusing && match && <div className="fusion-formula" aria-hidden="true">{sub(match.f)}</div>}
         </div>
 
         <div className="lab-side">

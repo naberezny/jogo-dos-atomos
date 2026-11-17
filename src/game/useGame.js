@@ -1,6 +1,6 @@
 // Estado do jogo com salvamento no navegador.
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { el, findMatch, progress } from './logic.js';
+import { el, findMatch, fuseMs, progress } from './logic.js';
 
 const SAVE_KEY = 'nucleo-save-v1';
 const SAVED = ['screen', 'discovered', 'fusions', 'atomsUsed', 'usedEls', 'nobleTried'];
@@ -50,7 +50,7 @@ export function useGame() {
         const after = progress({ ...s, discovered }).level;
         return { ...s, discovered, fusions: s.fusions + 1, atomsUsed: s.atomsUsed + m.atoms, zone: {}, fusing: false, result: m.f, resultNew: isNew, levelUp: after > before ? after : null };
       });
-    }, 1000);
+    }, fuseMs());
   }, [st.zone, st.fusing, set]);
 
   const reset = useCallback(() => {

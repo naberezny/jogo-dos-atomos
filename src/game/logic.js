@@ -3,6 +3,9 @@ import { molecula } from './estrutura.js';
 import { elements, cats, substances } from '../data/nucleo.js';
 
 export const XP_PER_LEVEL = 300;
+/** Duração da animação de fusão (curta para quem pediu menos movimento) e a fração gasta carregando. */
+export const fuseMs = () => (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches ? 500 : 2700);
+export const FUSE_CHARGE = 0.5;
 const BY_SYM = new Map(elements.map(e => [e.sym, e]));
 
 export const el = sym => BY_SYM.get(sym);
