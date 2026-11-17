@@ -9,15 +9,16 @@ import { col } from '../game/logic.js';
  * @param isOff       sym => true para apagar o elemento (sem receita, fora da busca...)
  * @param isMarked    sym => true para contornar o elemento (ex.: já está no reator)
  * @param draggable   permite arrastar os elementos (o símbolo vai em text/plain)
+ * @param compacta    versão mínima para celular: só os símbolos, sem título nem legenda, cabe sem rolar
  * @param acao        complemento do rótulo de acessibilidade ("Ver ficha")
  * @param children    conteúdo extra no cabeçalho, antes da legenda
  */
-export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, selected, isOff, isMarked, draggable = false, acao = 'Ver ficha', children }) {
+export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, selected, isOff, isMarked, draggable = false, compacta = false, acao = 'Ver ficha', children }) {
   const [hovered, setHovered] = useState(null);
   const [filterCat, setFilterCat] = useState(null);
   return (
-    <div className="ptable-card">
-      <div className="page-head" style={{ alignItems: 'center' }}>
+    <div className={`ptable-card${compacta ? ' compacta' : ''}`}>
+      {!compacta && <div className="page-head" style={{ alignItems: 'center' }}>
         <div className="display" style={{ fontSize: 18, fontWeight: 600 }}>{titulo}</div>
         {children}
         <div className="legend">
@@ -30,7 +31,7 @@ export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, se
             );
           })}
         </div>
-      </div>
+      </div>}
       <div className="ptable-scroll">
         <div className="ptable" onMouseLeave={() => setHovered(null)}>
           {elements.map(e => {

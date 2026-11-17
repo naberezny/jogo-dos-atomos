@@ -267,6 +267,33 @@ button.brand { cursor: pointer; }
 @keyframes chegou { 0% { transform: scale(.4); opacity: 0; } 55% { transform: scale(1.12); opacity: 1; } 100% { transform: none; } }
 .zone-atom.just-added { animation: chegou .6s ease-out; }
 .zone-atom.just-added .mono { color: var(--accent) !important; }
+/* ---------- Laboratório no celular: reator e tabela na mesma tela, sem rolar ---------- */
+.main:has(.lab.movel) { padding: 10px 10px calc(72px + env(safe-area-inset-bottom)); }
+.lab.movel { gap: 10px !important; height: calc(100dvh - 142px - env(safe-area-inset-bottom)); min-height: 420px; }
+.lab.movel .page-head { display: none; }
+.lab.movel .lab-top { flex: 1; min-height: 0; display: flex; }
+.lab.movel .reactor { flex: 1; min-height: 0; padding: 44px 8px 10px; gap: 8px; }
+.lab.movel .reactor > .eyebrow { display: none; }
+.lab.movel .zone { gap: 8px 10px; overflow-y: auto; min-height: 0; max-width: 100%; }
+.lab.movel .zone-atom { gap: 3px; }
+.lab.movel .zone-atom .steppers { gap: 4px; }
+.lab.movel .btn-step { width: 30px; height: 28px; font-size: 15px; }
+.lab.movel .btn-step.wide { width: auto; padding: 0 6px; font-size: 11px; }
+.lab.movel .zone-formula { font-size: 17px; min-height: 0; }
+.lab.movel .btn-fuse { padding: 10px 30px; font-size: 15px; flex: none; }
+.lab.movel .drop-hint { width: 130px; height: 130px; padding: 16px; font-size: 12px; }
+.btn-dica { position: absolute; top: 8px; left: 8px; z-index: 3; max-width: calc(100% - 100px); display: flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid color-mix(in oklch, var(--tom) 55%, transparent); background: color-mix(in oklch, var(--tom) 12%, var(--panel)); color: var(--fg); font-size: 12.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.btn-dica .dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--tom); }
+.dica-painel { position: absolute; inset: auto 8px 8px 8px; z-index: 5; max-height: calc(100% - 52px); overflow: auto; padding: 14px 16px; box-shadow: 0 -10px 40px oklch(0.08 0.02 265 / 0.8); animation: pop .2s ease-out; }
+.ptable-card.compacta { padding: 8px; gap: 0; border-radius: 12px; flex: none; }
+.compacta .ptable-scroll { overflow: visible; padding: 0; margin: 0; }
+.compacta .ptable { min-width: 0; gap: 2px; grid-template-rows: repeat(7, auto) 4px auto auto; }
+.compacta .cell { aspect-ratio: 1; padding: 0; border-radius: 3px; align-items: center; justify-content: center; }
+.compacta .cell:hover { transform: none; }
+.compacta .cell .z, .compacta .cell .n { display: none; }
+.compacta .cell .s { font-size: 9.5px; letter-spacing: -0.02em; }
+.compacta .series { font-size: 0; border-radius: 3px; }
+
 /* ---------- Estudos ---------- */
 .estudos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
 .estudos.largo { grid-template-columns: minmax(0, 1fr) 420px; }

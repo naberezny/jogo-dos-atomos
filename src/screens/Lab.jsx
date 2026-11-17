@@ -7,6 +7,7 @@ import Atom3D from '../components/Atom3D.jsx';
 import FusionFX from '../components/FusionFX.jsx';
 import PeriodicTable from '../components/PeriodicTable.jsx';
 import PageHeader from '../components/PageHeader.jsx';
+import StatusPanel from '../components/StatusPanel.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -17,7 +18,9 @@ export default function Lab({ game }) {
   const [hovered, setHovered] = useState('C');
   const [dragOver, setDragOver] = useState(false);
   const small = useMedia('(max-width: 640px)');
-  const atomScale = small ? 0.5 : ATOM_SCALE;
+  const atomScale = small ? 0.4 : ATOM_SCALE;
+  // No celular as dicas ficam recolhidas num botão, para o reator e a tabela caberem juntos na tela.
+  const [dica, setDica] = useState(false);
 
   const reactor = useRef(null);
   const [flash, setFlash] = useState(null);
@@ -43,6 +46,14 @@ export default function Lab({ game }) {
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
   const acesos = useMemo(() => fusable(st.zone), [st.zone]);
+  const painel = {
+    tom: tone,
+    destacado: zoneKeys.length > 0,
+    tag: st.fusing ? 'FUSÃO EM ANDAMENTO' : status.tag,
+    title: st.fusing ? 'Combinação estável encontrada' : status.title,
+    text: st.fusing ? 'Os átomos estão se ligando…' : status.text,
+    chips: st.fusing ? [] : status.missing.map(m => ({ key: m.sym, label: `+${m.n} ${m.sym}`, cor: col(m.cat), onClick: () => add(m.sym, m.n), aria: `Adicionar ${m.n} de ${el(m.sym).name}` })),
+  };
   const reduced = useMedia('(prefers-reduced-motion: reduce)');
   const ms = fuseMs();
   // Ao fundir, cada átomo é puxado até o centro do reator: mede a distância que cada um precisa percorrer.
@@ -58,7 +69,7 @@ export default function Lab({ game }) {
   }, [st.fusing]);
 
   return (
-    <section className="lab" aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <section className={`lab${small ? ' movel' : ''}`} aria-label="Laboratório" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <PageHeader eyebrow="Laboratório" title="Reator de fusão" sub="Toque num elemento para ver a ficha e adicionar, ou arraste até o reator" />
 
       <div className="lab-top">
@@ -72,14 +83,20 @@ export default function Lab({ game }) {
         >
           <div className="eyebrow">Área de fusão</div>
           {zoneKeys.length > 0 && !st.fusing && <button className="btn-small" onClick={clearZone}>Limpar</button>}
-          {zoneKeys.length === 0 && <div className="drop-hint">Solte os átomos aqui</div>}
+          {small && !st.fusing && (
+            <button className="btn-dica" onClick={() => setDica(d => !d)} aria-expanded={dica} style={{ '--tom': tone }}>
+              <span className="dot" />{status.missing.length ? `Dica: ${status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')}` : 'Dica'}
+            </button>
+          )}
+          {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
+          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Toque num elemento da tabela' : 'Solte os átomos aqui'}</div>}
           <div className="zone">
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
               return (
                 <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym}>
                   <div className="atom-wrap">
-                    <Atom3D size={Math.max(44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
+                    <Atom3D size={Math.max(small ? 38 : 44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   </div>
                   <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{sym} ×{st.zone[sym]}</span>
                   <div className="steppers">
@@ -97,20 +114,7 @@ export default function Lab({ game }) {
           {st.fusing && match && <div className="fusion-formula" aria-hidden="true">{sub(match.f)}</div>}
         </div>
 
-        <div className="lab-side">
-          <div className="status" style={{ borderColor: zoneKeys.length ? `color-mix(in oklch, ${tone} 45%, transparent)` : undefined }} aria-live="polite">
-            <div className="tag" style={{ color: tone }}><span className="dot" />{st.fusing ? 'FUSÃO EM ANDAMENTO' : status.tag}</div>
-            <h3>{st.fusing ? 'Combinação estável encontrada' : status.title}</h3>
-            <p>{st.fusing ? 'Os átomos estão se ligando…' : status.text}</p>
-            {status.missing.length > 0 && (
-              <div className="chips">
-                {status.missing.map(m => (
-                  <button key={m.sym} className="chip" onClick={() => add(m.sym, m.n)} style={{ borderColor: col(m.cat, 0.4), background: col(m.cat, 0.1), color: col(m.cat), cursor: 'pointer' }} aria-label={`Adicionar ${m.n} de ${el(m.sym).name}`}>+{m.n} {m.sym}</button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
+        {!small && <div className="lab-side"><StatusPanel {...painel} /></div>}
       </div>
 
       <PeriodicTable
@@ -118,7 +122,8 @@ export default function Lab({ game }) {
         selected={st.drawer}
         isOff={sym => !acesos.has(sym)}
         isMarked={sym => !!st.zone[sym]}
-        draggable
+        draggable={!small}
+        compacta={small}
         acao="Ver ficha e adicionar ao reator"
       />
 

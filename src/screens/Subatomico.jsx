@@ -4,6 +4,7 @@ import { acharReceita, antiDe, cabem, categorias, familias, par, particulas, REC
 import { FUSE_CHARGE, fuseMs, progress } from '../game/logic.js';
 import FusionFX from '../components/FusionFX.jsx';
 import PageHeader from '../components/PageHeader.jsx';
+import StatusPanel from '../components/StatusPanel.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
 const MAX = 6;
@@ -215,19 +216,14 @@ export default function Subatomico({ game }) {
             </div>
 
             <div className="lab-side">
-              <div className="status" style={{ borderColor: ks.length ? `color-mix(in oklch, ${tone} 45%, transparent)` : undefined }} aria-live="polite">
-                <div className="tag" style={{ color: tone }}><span className="dot" />{fundindo ? 'COLISÃO EM ANDAMENTO' : status.tag}</div>
-                <h3>{fundindo ? 'Energia suficiente' : status.title}</h3>
-                <p>{fundindo ? 'As partículas estão se encontrando…' : status.text}</p>
-                {!fundindo && status.missing.length > 0 && (
-                  <div className="chips">
-                    {status.missing.map(m => {
-                      const p = par(m.id);
-                      return <button key={m.id} className="chip" onClick={() => add(m.id, m.n)} style={{ borderColor: cor(p.fam, 0.4), background: cor(p.fam, 0.1), color: cor(p.fam), cursor: 'pointer' }} aria-label={`Adicionar ${m.n} de ${p.name}`}>+{m.n} {p.sym}</button>;
-                    })}
-                  </div>
-                )}
-              </div>
+              <StatusPanel
+                tom={tone}
+                destacado={ks.length > 0}
+                tag={fundindo ? 'COLISÃO EM ANDAMENTO' : status.tag}
+                title={fundindo ? 'Energia suficiente' : status.title}
+                text={fundindo ? 'As partículas estão se encontrando…' : status.text}
+                chips={fundindo ? [] : status.missing.map(m => { const p = par(m.id); return { key: m.id, label: `+${m.n} ${p.sym}`, cor: cor(p.fam), onClick: () => add(m.id, m.n), aria: `Adicionar ${m.n} de ${p.name}` }; })}
+              />
               <div className="status sub-ficha" style={{ borderColor: cor(pFoco.fam, 0.35) }}>
                 <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                   <Orbe p={pFoco} size={46} />
