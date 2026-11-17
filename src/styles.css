@@ -431,7 +431,6 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 @keyframes rev-foco { from { transform: scale(1.8); filter: blur(12px); opacity: 0; } }
 .rev-nome { font-size: clamp(20px, 5.5vw, 28px); font-weight: 600; color: var(--fg); animation: nivel-sobe .5s ease-out .95s both; }
 .rev-info { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 4px; font-size: 14px; color: oklch(0.8 0.03 220); animation: nivel-sobe .5s ease-out 1.3s both; }
-.rev-xp { padding: 5px 11px; border-radius: 7px; font-size: 14px; font-weight: 600; background: var(--ok); color: var(--ok-ink); box-shadow: 0 0 18px oklch(0.82 0.15 145 / .5); }
 .rev-btn { margin-top: 12px; min-width: 200px; min-height: 50px; font-size: 17px; box-shadow: 0 0 30px oklch(0.82 0.13 195 / .45); animation: nivel-sobe .5s ease-out 1.5s both, rev-chama 2s ease-in-out 2.2s infinite; }
 @keyframes rev-chama { 50% { box-shadow: 0 0 0 6px oklch(0.82 0.13 195 / .18), 0 0 40px oklch(0.82 0.13 195 / .7); } }
 @media (max-width: 640px) { .rev-orbe { width: 160px; height: 160px; margin-top: 8px; } .rev-foto, .rev-nucleo { width: 118px; height: 118px; } .rev-nucleo { font-size: 30px; } .rev-atomo { width: 26px; height: 26px; margin: -13px; transform: rotate(var(--a)) translateY(-82px) rotate(calc(-1 * var(--a))); } .rev-atomo > span { font-size: 11px; } .rev-frase { font-size: 15px; } }

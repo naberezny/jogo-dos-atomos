@@ -14,7 +14,7 @@ export const nivelDe = xp => Math.floor(xp / XPL) + 1;
  * @param d       fórmula ou símbolo em destaque
  * @param partes  [{ sym, cor }] — átomos ou partículas que formam a descoberta (giram em volta)
  */
-export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, total, repetida, onContinuar }) {
+export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, n, total, repetida, onContinuar }) {
   const reduzido = semMovimento();
   const btn = useRef(null);
   const [pronto, setPronto] = useState(reduzido);
@@ -52,7 +52,6 @@ export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, to
         <div className="rev-formula display">{d}</div>
         <div className="rev-nome display">{nome}</div>
         <div className="rev-info">
-          {!repetida && <span className="rev-xp mono">+{xp} XP</span>}
           <span className="rev-conta">{repetida ? `Você já descobriu esta antes · ${n} de ${total} na coleção` : `${n} de ${total} na sua coleção`}</span>
         </div>
         <button ref={btn} className="btn btn-primary rev-btn" onClick={e => { e.stopPropagation(); seguir(); }}>Continuar</button>
