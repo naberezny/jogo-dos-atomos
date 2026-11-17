@@ -18,8 +18,8 @@ Todo o jogo, o código, os comentários e os commits são em **português do Bra
   sempre que mexer em substâncias.
 - **Dados científicos devem ser reais.** Não inventar linhas de espectro, valores ou fatos; na dúvida,
   buscar a fonte (NIST, PubChem) ou deixar de fora.
-- **Rede:** o ambiente de nuvem "jogo-dos-atomos" libera `physics.nist.gov` (usado pelo script de
-  espectros). O ambiente "Default" não libera.
+- **Rede:** o ambiente de nuvem "jogo-dos-atomos" libera `physics.nist.gov` (script de espectros) e
+  Wikimedia (commons, en.wikipedia, upload, thumb). No Node, rodar com `NODE_USE_ENV_PROXY=1`. O ambiente "Default" não libera.
 
 ## Mapa do código
 
@@ -57,6 +57,10 @@ scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST),
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
 - **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar
   a tabela"); botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
+- **Fotos:** 503 das 512 substâncias têm foto (Wikimedia Commons, 500 px), escolhidas à mão:
+  a própria substância ou onde ela é encontrada/usada (água → mar, PVC → cano). As escolhas ficam em
+  `ARQUIVO` de `scripts/baixar-fotos.mjs` (null = sem foto, mostra o 3D). A API da Wikimedia dá muito
+  429 aqui; para buscar candidatas use as páginas HTML (Special:MediaSearch) e miniaturas de thumb.wikimedia.org.
 - **Modelo 3D da molécula:** cores CPK, luz que gira com a molécula, varetas 28% mais curtas
   (`VARETA` em `logic.js`), zoom por pinça/roda (60–400%) e botão ↺ que restaura zoom e ângulo.
 - **Ficha do elemento:** topo com símbolo + prótons/nêutrons/elétrons (alinhados à base do símbolo);
@@ -73,4 +77,3 @@ scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST),
   no laboratório esses dois foram removidos a pedido. Perguntar antes de remover.
 - Sons curtos nas comemorações (com opção de desligar) e raridade das substâncias ("Rara", "Lendária")
   foram sugeridos e ainda não pedidos.
-- Fotos: só ~83 substâncias têm foto; as 74 adicionadas por último não têm.

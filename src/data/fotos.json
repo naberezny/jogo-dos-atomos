@@ -1,9 +1,9 @@
 {
   "H2O": {
-    "arquivo": "TapWater-china.JPG",
-    "autor": "Shizhao2005年摄于诸暨乡间。",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:TapWater-china.JPG"
+    "arquivo": "Waves_of_Luputhana_11.jpg",
+    "autor": "Thomas Fuhrmann",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Waves_of_Luputhana_11.jpg"
   },
   "O2": {
     "arquivo": "Liquid_oxygen_in_a_beaker_(cropped_and_retouched).jpg",
@@ -12,22 +12,28 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Liquid_oxygen_in_a_beaker_(cropped_and_retouched).jpg"
   },
   "CO2": {
-    "arquivo": "Dry_ice_pellet_subliming_in_water.jpg",
-    "autor": "Steve Jurvetson",
-    "licenca": "CC BY 2.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Dry_ice_pellet_subliming_in_water.jpg"
+    "arquivo": "Dry_ice_in_cup.jpg",
+    "autor": "Shawn Henning",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dry_ice_in_cup.jpg"
   },
   "H2": {
-    "arquivo": "Hydrogen_discharge_tube.jpg",
-    "autor": "Alchemist-hp (talk) (www.pse-mendelejew.de)",
-    "licenca": "FAL",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_discharge_tube.jpg"
+    "arquivo": "Space_Shuttle_Columbia_launching.jpg",
+    "autor": "NASA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Space_Shuttle_Columbia_launching.jpg"
   },
   "N2": {
-    "arquivo": "Liquidnitrogen.jpg",
-    "autor": "Cory Doctorow aka gruntzoki on Flickr",
-    "licenca": "CC BY-SA 2.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Liquidnitrogen.jpg"
+    "arquivo": "2007TaipeiITMonth_IntelOCLiveTest_Overclocking-6.jpg",
+    "autor": "Rico Shen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2007TaipeiITMonth_IntelOCLiveTest_Overclocking-6.jpg"
+  },
+  "O3": {
+    "arquivo": "NASA_and_NOAA_Announce_Ozone_Hole_is_a_Double_Record_Breaker.png",
+    "autor": "NASA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:NASA_and_NOAA_Announce_Ozone_Hole_is_a_Double_Record_Breaker.png"
   },
   "NaCl": {
     "arquivo": "Piles_of_Salt_Salar_de_Uyuni_Bolivia_Luca_Galuzzi_2006_a.jpg",
@@ -36,16 +42,16 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Piles_of_Salt_Salar_de_Uyuni_Bolivia_Luca_Galuzzi_2006_a.jpg"
   },
   "KCl": {
-    "arquivo": "Potassium_chloride.jpg",
-    "autor": "Desconhecido",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_chloride.jpg"
+    "arquivo": "Sylvin_(aka).jpg",
+    "autor": "André Karwath aka Aka",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sylvin_(aka).jpg"
   },
   "CH4": {
-    "arquivo": "Frozen_Methane_Bubbles_(11927906233).jpg",
-    "autor": "U.S. Geological Survey from Reston, VA, USA",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Frozen_Methane_Bubbles_(11927906233).jpg"
+    "arquivo": "Gas_stove_blue_flames.jpg",
+    "autor": "Marina Burity from Santo André, Brazil",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gas_stove_blue_flames.jpg"
   },
   "C3H8": {
     "arquivo": "Propane_tank_20lb.jpg",
@@ -54,64 +60,70 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Propane_tank_20lb.jpg"
   },
   "NH3": {
-    "arquivo": "Liquid_ammonia_bottle.jpg",
-    "autor": "real name: Nadina Wiórkiewicz pl.wiki: Nadine90 commons: Nadine90",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Liquid_ammonia_bottle.jpg"
+    "arquivo": "Fertilizer_applied_to_corn_field.jpg",
+    "autor": "Lynn Betts",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fertilizer_applied_to_corn_field.jpg"
   },
   "H2O2": {
-    "arquivo": "Hydrogen_Peroxide_Bottle.jpg",
-    "autor": "ThatOneEli",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_Peroxide_Bottle.jpg"
+    "arquivo": "Elephant_Toothpaste_Denver_JDS_Labs.jpg",
+    "autor": "https://www.flickr.com/photos/eigenadam/",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Elephant_Toothpaste_Denver_JDS_Labs.jpg"
+  },
+  "CO": {
+    "arquivo": "Automobile_exhaust_gas.jpg",
+    "autor": "Ruben de Rijcke",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Automobile_exhaust_gas.jpg"
   },
   "HCl": {
-    "arquivo": "Hydrochloric_acid_30_percent.jpg",
-    "autor": "W. Oelen",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrochloric_acid_30_percent.jpg"
+    "arquivo": "Hydrochloric_acid_05.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrochloric_acid_05.jpg"
   },
   "H2SO4": {
-    "arquivo": "Sulphuric_acid_96_percent_extra_pure.jpg",
-    "autor": "W. Oelen",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sulphuric_acid_96_percent_extra_pure.jpg"
+    "arquivo": "Batterie_TUNDRA_EFB.jpg",
+    "autor": "Rombat france",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Batterie_TUNDRA_EFB.jpg"
   },
   "NaOH": {
-    "arquivo": "NaOH_beads.jpg",
-    "autor": "Findleby",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:NaOH_beads.jpg"
+    "arquivo": "SodiumHydroxide.jpg",
+    "autor": "Walkerma",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:SodiumHydroxide.jpg"
   },
   "NaHCO3": {
-    "arquivo": "Hydrogenuhličitan_sodný.jpg",
-    "autor": "Milda 444",
+    "arquivo": "Cupcake2020.jpg",
+    "autor": "me",
     "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogenuhli%C4%8Ditan_sodn%C3%BD.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cupcake2020.jpg"
   },
   "CaCO3": {
-    "arquivo": "Calcium_carbonate_chunks.JPG",
-    "autor": "Chemicalinterest",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Calcium_carbonate_chunks.JPG"
+    "arquivo": "Møns_Klint_chalk_cliffs_1.jpg",
+    "autor": "kallerna",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:M%C3%B8ns_Klint_chalk_cliffs_1.jpg"
   },
   "CaO": {
-    "arquivo": "Calcium_oxide_powder.JPG",
-    "autor": "Leiem",
+    "arquivo": "LimestoneKilnsTalybont.jpg",
+    "autor": "Martinvl",
     "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Calcium_oxide_powder.JPG"
+    "pagina": "https://commons.wikimedia.org/wiki/File:LimestoneKilnsTalybont.jpg"
   },
   "SiO2": {
-    "arquivo": "00026_40_mm_quartz.jpg",
-    "autor": "Siim Sepp (Sandatlas)",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:00026_40_mm_quartz.jpg"
+    "arquivo": "Quartz_Brésil.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Quartz_Br%C3%A9sil.jpg"
   },
   "Fe2O3": {
-    "arquivo": "Rust_on_iron.jpg",
-    "autor": "Laitr Keiows",
+    "arquivo": "RustyChainEdit1.jpg",
+    "autor": "Marlith",
     "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Rust_on_iron.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:RustyChainEdit1.jpg"
   },
   "NaClO": {
     "arquivo": "Clorox_Bleach_products.jpg",
@@ -120,46 +132,46 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Clorox_Bleach_products.jpg"
   },
   "C2H6O": {
-    "arquivo": "Ethyl_alcohol_usp_grade.jpg",
-    "autor": "Diane A. Reid, Photographer",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Ethyl_alcohol_usp_grade.jpg"
+    "arquivo": "Ethanol_fuel_pump_Brazil.jpg",
+    "autor": "Harry Wood",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ethanol_fuel_pump_Brazil.jpg"
   },
   "C2H4O2": {
-    "arquivo": "Raisinvinegar.jpg",
-    "autor": "Badagnani",
-    "licenca": "CC BY 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Raisinvinegar.jpg"
+    "arquivo": "Eguilles_20110828_14.jpg",
+    "autor": "Georges Seguin (Okki)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Eguilles_20110828_14.jpg"
   },
   "C6H12O6": {
-    "arquivo": "Glucose_2.jpg",
-    "autor": "Paul Nasca",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Glucose_2.jpg"
+    "arquivo": "Close_up_grapes.jpg",
+    "autor": "fir0002 flagstaffotos [at] gmail.com Canon 20D + Tamron 28-75mm f/2.8",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Close_up_grapes.jpg"
   },
   "C8H10N4O2": {
-    "arquivo": "Coffee_beans2.jpg",
-    "autor": "Popo le Chien",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Coffee_beans2.jpg"
+    "arquivo": "A_small_cup_of_coffee.JPG",
+    "autor": "Julius Schorzman",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:A_small_cup_of_coffee.JPG"
   },
   "Cl2": {
-    "arquivo": "Chlorine_in_bottle.jpg",
-    "autor": "W. Oelen",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Chlorine_in_bottle.jpg"
+    "arquivo": "Chlorine_gas_in_high_concentration.jpg",
+    "autor": "Larenmclane",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chlorine_gas_in_high_concentration.jpg"
   },
   "I2": {
-    "arquivo": "Sample_of_iodine.jpg",
-    "autor": "LHcheM",
+    "arquivo": "IodoAtomico.JPG",
+    "autor": "Matias Molnar",
     "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sample_of_iodine.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:IodoAtomico.JPG"
   },
   "Br2": {
-    "arquivo": "Bromine_vial_in_acrylic_cube.jpg",
-    "autor": "Alchemist-hp (pse-mendelejew.de)",
-    "licenca": "CC BY-SA 3.0 de",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Bromine_vial_in_acrylic_cube.jpg"
+    "arquivo": "Bromine_trifluoride.png",
+    "autor": "AdvancedTinkering",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bromine_trifluoride.png"
   },
   "P4": {
     "arquivo": "Weißer_Phosphor.JPG",
@@ -167,11 +179,17 @@
     "licenca": "CC BY-SA 3.0",
     "pagina": "https://commons.wikimedia.org/wiki/File:Wei%C3%9Fer_Phosphor.JPG"
   },
+  "NO": {
+    "arquivo": "Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg",
+    "autor": "Maxime Raynal from France",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Port_and_lighthouse_overnight_storm_with_lightning_in_Port-la-Nouvelle.jpg"
+  },
   "MgO": {
-    "arquivo": "Magnesium_oxide.jpg",
-    "autor": "No machine-readable author provided. Walkerma assumed (based on copyright claims).",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesium_oxide.jpg"
+    "arquivo": "Magnesium_ribbon_burning.jpg",
+    "autor": "Capt. John Yossarian",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesium_ribbon_burning.jpg"
   },
   "ZnO": {
     "arquivo": "Zinc_oxide.jpg",
@@ -180,22 +198,28 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Zinc_oxide.jpg"
   },
   "HF": {
-    "arquivo": "Hydrogen_fluoride.JPG",
-    "autor": "User:Dorgan",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_fluoride.JPG"
+    "arquivo": "Etched_glass_on_a_mortuary_coach_01.jpg",
+    "autor": "Kritzolina",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Etched_glass_on_a_mortuary_coach_01.jpg"
   },
   "NaF": {
-    "arquivo": "Sodium_fluoride.jpg",
-    "autor": "Leiem",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sodium_fluoride.jpg"
+    "arquivo": "Toothpasteonbrush.jpg",
+    "autor": "Thegreenj",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Toothpasteonbrush.jpg"
   },
   "KI": {
-    "arquivo": "Potassium_iodide.jpg",
-    "autor": "Desconhecido",
+    "arquivo": "110404-F-AM028-036_packs_of_IOSAT_potassium_iodide_tablets.jpg",
+    "autor": "U.S. Air Force photo/Senior Airman Michael J. Veloz",
     "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_iodide.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:110404-F-AM028-036_packs_of_IOSAT_potassium_iodide_tablets.jpg"
+  },
+  "AgBr": {
+    "arquivo": "Used_135_film_cartridges.jpg",
+    "autor": "Petar Milošević",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Used_135_film_cartridges.jpg"
   },
   "NO2": {
     "arquivo": "Nitrogen_dioxide_at_different_temperatures.jpg",
@@ -204,46 +228,46 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Nitrogen_dioxide_at_different_temperatures.jpg"
   },
   "N2O": {
-    "arquivo": "N2O_Medical_Tanks.jpg",
-    "autor": "Photographer: William Rafti of the William Rafti Institute",
-    "licenca": "Attribution",
-    "pagina": "https://commons.wikimedia.org/wiki/File:N2O_Medical_Tanks.jpg"
+    "arquivo": "Whip-it's-Brand-Whip-Cream-Chargers.jpg",
+    "autor": "Wonderfeel",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Whip-it%27s-Brand-Whip-Cream-Chargers.jpg"
   },
   "SO2": {
-    "arquivo": "20180519_USGS_Leilani_Estates_Hawaii_Volcanic_EruptionDSC_0411_medium.jpg",
-    "autor": "Grace Simoneau/FEMA",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:20180519_USGS_Leilani_Estates_Hawaii_Volcanic_EruptionDSC_0411_medium.jpg"
+    "arquivo": "001_Volcano_eruption_of_Litli-Hrútur_in_Iceland_in_2023_Photo_by_Giles_Laurent.jpg",
+    "autor": "Giles Laurent",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:001_Volcano_eruption_of_Litli-Hr%C3%BAtur_in_Iceland_in_2023_Photo_by_Giles_Laurent.jpg"
   },
   "TiO2": {
-    "arquivo": "Titanium(IV)_oxide.jpg",
-    "autor": "The original uploader was Walkerma at English Wikipedia.",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Titanium(IV)_oxide.jpg"
+    "arquivo": "Silver_necklace_with_white_paint_and_a_paint_brush_by_ASQ.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Silver_necklace_with_white_paint_and_a_paint_brush_by_ASQ.jpg"
   },
   "H2S": {
-    "arquivo": "Deposit_from_hydrogen_sulphide.jpg",
-    "autor": "Stan Zurek",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Deposit_from_hydrogen_sulphide.jpg"
+    "arquivo": "Sulfur_Fumarole_(23998018863).jpg",
+    "autor": "U.S. Geological Survey from Reston, VA, USA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sulfur_Fumarole_(23998018863).jpg"
   },
   "HCN": {
-    "arquivo": "Hydrogen_cyanide.jpg",
-    "autor": "Pok",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_cyanide.jpg"
+    "arquivo": "Apricot_and_cross_section.jpg",
+    "autor": "Fir0002",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Apricot_and_cross_section.jpg"
   },
   "KOH": {
-    "arquivo": "Potassium_hydroxide.jpg",
-    "autor": "No machine-readable author provided. Walkerma assumed (based on copyright claims).",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_hydroxide.jpg"
+    "arquivo": "Golden_Power_Power_Plus_AA_alkaline_batteries.jpg",
+    "autor": "Multicherry",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Golden_Power_Power_Plus_AA_alkaline_batteries.jpg"
   },
   "CaF2": {
-    "arquivo": "Closeup_of_Fluorite.jpg",
-    "autor": "Brocken Inaglory",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Closeup_of_Fluorite.jpg"
+    "arquivo": "9104_-_Milano_-_Museo_storia_naturale_-_Fluorite_-_Foto_Giovanni_Dall'Orto_22-Apr-2007.jpg",
+    "autor": "Giovanni Dall'Orto",
+    "licenca": "CC BY-SA 2.5 it",
+    "pagina": "https://commons.wikimedia.org/wiki/File:9104_-_Milano_-_Museo_storia_naturale_-_Fluorite_-_Foto_Giovanni_Dall%27Orto_22-Apr-2007.jpg"
   },
   "CaCl2": {
     "arquivo": "Calcium_chloride_CaCl2.jpg",
@@ -252,16 +276,16 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Calcium_chloride_CaCl2.jpg"
   },
   "MgCl2": {
-    "arquivo": "Magnesium_chloride.jpg",
-    "autor": "Desconhecido",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesium_chloride.jpg"
+    "arquivo": "עץ_על_אי_מלח_באמצע_ים_המלח.jpg",
+    "autor": "ערן רזניק",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:%D7%A2%D7%A5_%D7%A2%D7%9C_%D7%90%D7%99_%D7%9E%D7%9C%D7%97_%D7%91%D7%90%D7%9E%D7%A6%D7%A2_%D7%99%D7%9D_%D7%94%D7%9E%D7%9C%D7%97.jpg"
   },
   "FeS2": {
-    "arquivo": "Pyrite_from_Ampliación_a_Victoria_Mine,_Navajún,_La_Rioja,_Spain_2.jpg",
-    "autor": "JJ Harrison (https://www.jjharrison.com.au/)",
+    "arquivo": "2780M-pyrite1.jpg",
+    "autor": "CarlesMillan",
     "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Pyrite_from_Ampliaci%C3%B3n_a_Victoria_Mine,_Navaj%C3%BAn,_La_Rioja,_Spain_2.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:2780M-pyrite1.jpg"
   },
   "SO3": {
     "arquivo": "Schwefeltrioxid_Ampulle.jpg",
@@ -270,16 +294,586 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Schwefeltrioxid_Ampulle.jpg"
   },
   "C2H2": {
+    "arquivo": "Oxy-fuel_welding_MINI_DM_273.jpg",
+    "autor": "Konstantin Brizhnichenko",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Oxy-fuel_welding_MINI_DM_273.jpg"
+  },
+  "CH2O": {
+    "arquivo": "Wet-preserved_anatomical_specimen.jpg",
+    "autor": "Noukayami",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Wet-preserved_anatomical_specimen.jpg"
+  },
+  "CuO": {
+    "arquivo": "Copper(II)_oxide_sample.jpg",
+    "autor": "Adam Rędzikowski",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Copper(II)_oxide_sample.jpg"
+  },
+  "AgCl": {
+    "arquivo": "Silver_chloride.jpg",
+    "autor": "Vano3333",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Silver_chloride.jpg"
+  },
+  "ZnS": {
+    "arquivo": "Glow_In_The_Dark_D20_Dice.jpg",
+    "autor": "Dark Elf Dice",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Glow_In_The_Dark_D20_Dice.jpg"
+  },
+  "PbS": {
+    "arquivo": "Galena_Sweetwater_Minéraux_SU.jpg",
+    "autor": "Marie-Lan Taÿ Pamart",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Galena_Sweetwater_Min%C3%A9raux_SU.jpg"
+  },
+  "HgS": {
+    "arquivo": "Cinnabar_on_Dolomite.jpg",
+    "autor": "JJ Harrison (https://www.jjharrison.com.au/)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cinnabar_on_Dolomite.jpg"
+  },
+  "SnO2": {
+    "arquivo": "Cassiterite_-_Mt_Bischoff_mine,_Waratah,_Tasmania,_Australia.jpg",
+    "autor": "Ralph Bottrill",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cassiterite_-_Mt_Bischoff_mine,_Waratah,_Tasmania,_Australia.jpg"
+  },
+  "MnO2": {
+    "arquivo": "Kodak_AAA_alkaline_and_zinc_batteries.jpg",
+    "autor": "Multicherry",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kodak_AAA_alkaline_and_zinc_batteries.jpg"
+  },
+  "SiC": {
+    "arquivo": "Schleifpapier_verschiedene_Sorten.jpg",
+    "autor": "Simon Eugster – Simon / ?! 12:43, 14 May 2008 (UTC)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Schleifpapier_verschiedene_Sorten.jpg"
+  },
+  "WC": {
+    "arquivo": "Drill_tip_masonry.jpg",
+    "autor": "Emrys2 at English Wikipedia",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Drill_tip_masonry.jpg"
+  },
+  "UO2": {
+    "arquivo": "UO2_Pellet.jpg",
+    "autor": "Chemolunatic",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:UO2_Pellet.jpg"
+  },
+  "PbO2": {
+    "arquivo": "Photo-CarBattery.jpg",
+    "autor": "No machine-readable author provided. Shaddack assumed (based on copyright claims).",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Photo-CarBattery.jpg"
+  },
+  "CoCl2": {
+    "arquivo": "Blue_silica_gel.jpg",
+    "autor": "Mauro Cateb",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Blue_silica_gel.jpg"
+  },
+  "AuCl3": {
+    "arquivo": "Gold(III)_chloride_solution.jpg",
+    "autor": "User:Walkerma",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gold(III)_chloride_solution.jpg"
+  },
+  "LiCoO2": {
+    "arquivo": "18650_and_21700_lithium_ion_battery_cell.jpg",
+    "autor": "Sevenethics",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:18650_and_21700_lithium_ion_battery_cell.jpg"
+  },
+  "F2": {
+    "arquivo": "Fluoro_liquido_a_-196°C_1.jpg",
+    "autor": "Fulvio314",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fluoro_liquido_a_-196%C2%B0C_1.jpg"
+  },
+  "HBr": {
+    "arquivo": "Hydrobromic_Acid_reagent.jpg",
+    "autor": "范皓程",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrobromic_Acid_reagent.jpg"
+  },
+  "LiCl": {
+    "arquivo": "Flammenfärbung_Lithium_(Li).jpg",
+    "autor": "S k y r",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Flammenf%C3%A4rbung_Lithium_(Li).jpg"
+  },
+  "LiOH": {
+    "arquivo": "Lithium_hydroxide.jpg",
+    "autor": "Mondalor",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lithium_hydroxide.jpg"
+  },
+  "KBr": {
+    "arquivo": "Potassium_bromide.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_bromide.jpg"
+  },
+  "NaNO2": {
+    "arquivo": "Embutidos_en_una_carniceria_del_Mercado_Municipal_de_Sao_Paulo.jpg",
+    "autor": "Wilfredor",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Embutidos_en_una_carniceria_del_Mercado_Municipal_de_Sao_Paulo.jpg"
+  },
+  "CaC2": {
     "arquivo": "Carbide_lamp_lit.jpg",
     "autor": "Scott Ehardt",
     "licenca": "Public domain",
     "pagina": "https://commons.wikimedia.org/wiki/File:Carbide_lamp_lit.jpg"
   },
-  "Al2O3": {
-    "arquivo": "Ruby_cristal.jpg",
-    "autor": "Desconhecido",
+  "AlCl3": {
+    "arquivo": "2023_Dezodoranty.jpg",
+    "autor": "Jacek Halicki",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2023_Dezodoranty.jpg"
+  },
+  "PH3": {
+    "arquivo": "Fumigation_Tent_Riverside_2011.jpg",
+    "autor": "Dyanega",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fumigation_Tent_Riverside_2011.jpg"
+  },
+  "ClO2": {
+    "arquivo": "Chlorine_dioxide_gas_and_solution.jpg",
+    "autor": "W. Oelen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chlorine_dioxide_gas_and_solution.jpg"
+  },
+  "FeCl3": {
+    "arquivo": "Etched_circuit_board_after_cleaning.jpg",
+    "autor": "Tinux",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Etched_circuit_board_after_cleaning.jpg"
+  },
+  "CuCl2": {
+    "arquivo": "CuCl2_equilibrium.JPG",
+    "autor": "Chemicalinterest",
     "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Ruby_cristal.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:CuCl2_equilibrium.JPG"
+  },
+  "Cu2O": {
+    "arquivo": "Cuprite-66649.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cuprite-66649.jpg"
+  },
+  "CuFeS2": {
+    "arquivo": "Chalcopyrite-199453.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chalcopyrite-199453.jpg"
+  },
+  "GaAs": {
+    "arquivo": "Gallium_Arsenide_(GaAs)_2\"_wafer.jpg",
+    "autor": "La2O3",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gallium_Arsenide_(GaAs)_2%22_wafer.jpg"
+  },
+  "GaN": {
+    "arquivo": "RGB_LED_5mm.jpg",
+    "autor": "Mister rf",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:RGB_LED_5mm.jpg"
+  },
+  "GeO2": {
+    "arquivo": "SC-APC_fiber_optic_cable.jpg",
+    "autor": "Alexceltare2",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:SC-APC_fiber_optic_cable.jpg"
+  },
+  "CdS": {
+    "arquivo": "Cadmiumgelb-_Pigment.JPG",
+    "autor": "Marco Almbauer",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cadmiumgelb-_Pigment.JPG"
+  },
+  "CdTe": {
+    "arquivo": "Thin_Film_Flexible_Solar_PV_Installation_2.JPG",
+    "autor": "Fieldsken Ken Fields",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thin_Film_Flexible_Solar_PV_Installation_2.JPG"
+  },
+  "CdSe": {
+    "arquivo": "QD_S.jpg",
+    "autor": "Walkman16",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:QD_S.jpg"
+  },
+  "ZrO2": {
+    "arquivo": "CZ_brilliant.jpg",
+    "autor": "Gregory Phillips",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:CZ_brilliant.jpg"
+  },
+  "MoS2": {
+    "arquivo": "Molybdenite_quebec2.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Molybdenite_quebec2.jpg"
+  },
+  "AgI": {
+    "arquivo": "Cessna_210_Hagelflieger_Detail.jpg",
+    "autor": "Christian Jansky (User:Tschaensky)",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cessna_210_Hagelflieger_Detail.jpg"
+  },
+  "Ag2S": {
+    "arquivo": "Acanthite_-_Imiter_mine,_Jbel_Saghro,_Tinghir,_Drâa-Tafilalet,_Morocco.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Acanthite_-_Imiter_mine,_Jbel_Saghro,_Tinghir,_Dr%C3%A2a-Tafilalet,_Morocco.jpg"
+  },
+  "SnF2": {
+    "arquivo": "Toothbrush,_Toothpaste,_Dental_Care_(571741).jpg",
+    "autor": "Steve Buissinne, South Africa",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Toothbrush,_Toothpaste,_Dental_Care_(571741).jpg"
+  },
+  "CsCl": {
+    "arquivo": "Tabletop_centrifuge.jpg",
+    "autor": "Magnus Manske",
+    "licenca": "CC BY 1.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tabletop_centrifuge.jpg"
+  },
+  "CeO2": {
+    "arquivo": "Cerium(IV)_oxide.jpg",
+    "autor": "User:Walkerma.",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cerium(IV)_oxide.jpg"
+  },
+  "HgO": {
+    "arquivo": "HgOpowder.jpg",
+    "autor": "Materialscientist (talk)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:HgOpowder.jpg"
+  },
+  "PbO": {
+    "arquivo": "Cut_crystal_wine_glasses_in_the_Fakiris_series_by_German_glassworks_Knittel_5.jpg",
+    "autor": "Photo: W.carter Research: Aristeas",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cut_crystal_wine_glasses_in_the_Fakiris_series_by_German_glassworks_Knittel_5.jpg"
+  },
+  "BiOCl": {
+    "arquivo": "Zoya_Nail_Polish_Erin_Sally_and_Lauren.jpg",
+    "autor": "Artbeauty",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Zoya_Nail_Polish_Erin_Sally_and_Lauren.jpg"
+  },
+  "ThO2": {
+    "arquivo": "Glowing_gas_mantle.jpg",
+    "autor": "Fourpointsix at English Wikipedia",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Glowing_gas_mantle.jpg"
+  },
+  "PuO2": {
+    "arquivo": "Plutonium_pellet.jpg",
+    "autor": "Department of Energy",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Plutonium_pellet.jpg"
+  },
+  "AmO2": {
+    "arquivo": "Smoke_detector_(1).JPG",
+    "autor": "Georg Pik",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Smoke_detector_(1).JPG"
+  },
+  "RaCl2": {
+    "arquivo": "Radium_Dial_UV.jpg",
+    "autor": "Arma95",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Radium_Dial_UV.jpg"
+  },
+  "XeF2": {
+    "arquivo": "XeF2_kristalle.png",
+    "autor": "Andif1",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:XeF2_kristalle.png"
+  },
+  "BN": {
+    "arquivo": "BNcrucible.jpg",
+    "autor": "Materialscientist",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:BNcrucible.jpg"
+  },
+  "NaN3": {
+    "arquivo": "Peugeot_306_airbags_deployed.jpg",
+    "autor": "Janipewter at English Wikipedia",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Peugeot_306_airbags_deployed.jpg"
+  },
+  "CS2": {
+    "arquivo": "Rayon_sample.jpg",
+    "autor": "Arkirkland",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rayon_sample.jpg"
+  },
+  "NaCN": {
+    "arquivo": "Sodium_Cyanide.jpg",
+    "autor": "L26",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sodium_Cyanide.jpg"
+  },
+  "HClO": {
+    "arquivo": "Swimming_pool_at_Hotel_Terra_Barichara.jpg",
+    "autor": "Bernard Gagnon",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Swimming_pool_at_Hotel_Terra_Barichara.jpg"
+  },
+  "TiN": {
+    "arquivo": "Titanium_nitride_coating_90.jpg",
+    "autor": "Peter Binter Original uploader was Binter at de.wikipedia",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Titanium_nitride_coating_90.jpg"
+  },
+  "KO2": {
+    "arquivo": "Potassium_superoxide_powder.png",
+    "autor": "ChemicalForce",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_superoxide_powder.png"
+  },
+  "HI": {
+    "arquivo": "Oxidized_Hydriodic_Acid.jpg",
+    "autor": "Adrián Gallardo Loya",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Oxidized_Hydriodic_Acid.jpg"
+  },
+  "NaI": {
+    "arquivo": "NaI-Tl-crystals.jpg",
+    "autor": "Materialscientist",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:NaI-Tl-crystals.jpg"
+  },
+  "MgF2": {
+    "arquivo": "Praktica_MTL_3_SLR_camera_with_Pentacon_50mm_f1.8_auto_multi_coating_lens.jpg",
+    "autor": "Ian Muttoo from Mississauga, Canada",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Praktica_MTL_3_SLR_camera_with_Pentacon_50mm_f1.8_auto_multi_coating_lens.jpg"
+  },
+  "NF3": {
+    "arquivo": "Apple_IIc_Flat_Panel_Display_Module.jpg",
+    "autor": "DWmFrancis",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Apple_IIc_Flat_Panel_Display_Module.jpg"
+  },
+  "Ag2O": {
+    "arquivo": "LR44_Button_Cell_Battery_IEC_Standard_Version.jpg",
+    "autor": "Lead holder",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:LR44_Button_Cell_Battery_IEC_Standard_Version.jpg"
+  },
+  "HfO2": {
+    "arquivo": "Amdahl_5860_Computer_Air_Cooled_Logic_processor_die.jpg",
+    "autor": "Mister rf",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Amdahl_5860_Computer_Air_Cooled_Logic_processor_die.jpg"
+  },
+  "WO3": {
+    "arquivo": "Tungsten_trioxide.png",
+    "autor": "ChemicalForce",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tungsten_trioxide.png"
+  },
+  "PbI2": {
+    "arquivo": "Lead_(II)_iodide_precipitating_out_of_solution.JPG",
+    "autor": "PRHaney",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lead_(II)_iodide_precipitating_out_of_solution.JPG"
+  },
+  "KrF2": {
+    "arquivo": "Electra_Laser_System_NRL_2013.png",
+    "autor": "Obenschain, Stephen, et al. \"High-energy krypton fluoride lasers for inertial fusion.\" Applied optics 54.31 (2015): F103-F122.",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Electra_Laser_System_NRL_2013.png"
+  },
+  "KSCN": {
+    "arquivo": "Thiokyanatan_draselný.JPG",
+    "autor": "O.Luci",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thiokyanatan_draseln%C3%BD.JPG"
+  },
+  "NH2Cl": {
+    "arquivo": "Water_tower_Mittweida.jpg",
+    "autor": "Kyriondaniel",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Water_tower_Mittweida.jpg"
+  },
+  "COS": {
+    "arquivo": "Tavurvur_volcano_edit.jpg",
+    "autor": "Taro Taylor edit by Richard Bartz",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tavurvur_volcano_edit.jpg"
+  },
+  "Na2He": {
+    "arquivo": "First_diamond_anvil_cell.jpg",
+    "autor": "Gasper J. Piermarini",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:First_diamond_anvil_cell.jpg"
+  },
+  "HArF": {
+    "arquivo": "Argon_discharge_tube_cropped.jpg",
+    "autor": "Alchemist-hp (talk) (www.pse-mendelejew.de)",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Argon_discharge_tube_cropped.jpg"
+  },
+  "RnF2": {
+    "arquivo": "NSA_Naples,_Italy_Radon_Detector_Collection_(9333290).jpg",
+    "autor": "U.S. Navy photo by Petty Officer 1st Class Sean P Rinner",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:NSA_Naples,_Italy_Radon_Detector_Collection_(9333290).jpg"
+  },
+  "BeO": {
+    "arquivo": "Оксид_бериллия_99,9_%.jpg",
+    "autor": "Original uploader was User:333 in ru-wikipedia",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%BA%D1%81%D0%B8%D0%B4_%D0%B1%D0%B5%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%8F_99,9_%25.jpg"
+  },
+  "ScI3": {
+    "arquivo": "Nizhny_Novgorod_Stadium_asv2019-05.jpg",
+    "autor": "A.Savin",
+    "licenca": "FAL",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Nizhny_Novgorod_Stadium_asv2019-05.jpg"
+  },
+  "RbCl": {
+    "arquivo": "Flammenfärbung_Rubidium_(Rb).jpg",
+    "autor": "S k y r",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Flammenf%C3%A4rbung_Rubidium_(Rb).jpg"
+  },
+  "Nb3Sn": {
+    "arquivo": "ITER_construction_in_2018_(41809718461).jpg",
+    "autor": "Oak Ridge National Laboratory",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ITER_construction_in_2018_(41809718461).jpg"
+  },
+  "RuO2": {
+    "arquivo": "898-3-R33.jpg",
+    "autor": "Mister rf",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:898-3-R33.jpg"
+  },
+  "RhCl3": {
+    "arquivo": "Catalytic_converter_20230510.jpg",
+    "autor": "Santeri Viinamäki",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Catalytic_converter_20230510.jpg"
+  },
+  "PdCl2": {
+    "arquivo": "Paladio_(II)_kloruroa.png",
+    "autor": "Jone osuna",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Paladio_(II)_kloruroa.png"
+  },
+  "YbF3": {
+    "arquivo": "Tetric_Ceram_Composite_20090914_01.JPG",
+    "autor": "Politikaner",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tetric_Ceram_Composite_20090914_01.JPG"
+  },
+  "ReB2": {
+    "arquivo": "Rhenium_Diboride.jpg",
+    "autor": "UCLA (© Richard B. Kaner/Jonathan B. Levine/UCLA, https://www.newscientist.com/article/dn11670-super-tough-material-mimics-metal-and-crystal/)",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rhenium_Diboride.jpg"
+  },
+  "PoO2": {
+    "arquivo": "2019-11-22_Spark_plugs_and_static_eliminators_with_radioactive_polonium_at_museum_display.jpg",
+    "autor": "Maksym Kozlenko",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2019-11-22_Spark_plugs_and_static_eliminators_with_radioactive_polonium_at_museum_display.jpg"
+  },
+  "NpO2": {
+    "arquivo": "Neptunium(IV)-oxid.jpg",
+    "autor": "Neptuniumagier",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Neptunium(IV)-oxid.jpg"
+  },
+  "VO2": {
+    "arquivo": "VO2_crystal.jpg",
+    "autor": "Ding-Shyue Yang, Peter Baum, and Ahmed H. Zewail",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:VO2_crystal.jpg"
+  },
+  "TaC": {
+    "arquivo": "Tantalum_carbide_TaC.JPG",
+    "autor": "Sa123",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tantalum_carbide_TaC.JPG"
+  },
+  "HfC": {
+    "arquivo": "255-GRC-1994-C-04463_Hafnium_Carbide-Tantalum_Carbide_CMC_rocket_chamber.jpg",
+    "autor": "Photographer: QUENTIN SCHWINN",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:255-GRC-1994-C-04463_Hafnium_Carbide-Tantalum_Carbide_CMC_rocket_chamber.jpg"
+  },
+  "CsI": {
+    "arquivo": "Kristall-CsI(Tl)_mit_Skala.jpg",
+    "autor": "MyName (A1000)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kristall-CsI(Tl)_mit_Skala.jpg"
+  },
+  "InP": {
+    "arquivo": "InP_Mult-Project_Wafer.jpg",
+    "autor": "JonathanMarks",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:InP_Mult-Project_Wafer.jpg"
+  },
+  "FeHO2": {
+    "arquivo": "Goethite-169735.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Goethite-169735.jpg"
+  },
+  "NeH": {
+    "arquivo": "NeTube.jpg",
+    "autor": "User:Pslawinski",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:NeTube.jpg"
+  },
+  "HeH": {
+    "arquivo": "Planetary_Nebula_NGC_7027_(opo9811e).jpg",
+    "autor": "William B. Latter (SIRTF Science Center/Caltech) and NASA/ESA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Planetary_Nebula_NGC_7027_(opo9811e).jpg"
+  },
+  "AtI": {
+    "arquivo": "Cyclotron_ARRONAX.jpg",
+    "autor": "Popocatomar",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cyclotron_ARRONAX.jpg"
+  },
+  "BkO2": {
+    "arquivo": "Berkelium_metal.jpg",
+    "autor": "Oak Ridge National Laboratory, US Department of Energy",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Berkelium_metal.jpg"
+  },
+  "AcCl3": {
+    "arquivo": "Actinium_sample_(31481701837).png",
+    "autor": "Oak Ridge National Laboratory",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Actinium_sample_(31481701837).png"
+  },
+  "EsCl3": {
+    "arquivo": "Einsteinium.jpg",
+    "autor": "Haire, R. G., US Department of Energy. Touched up by Materialscientist at en.wikipedia.",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Einsteinium.jpg"
+  },
+  "Al2O3": {
+    "arquivo": "Ruby_crystal_1.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ruby_crystal_1.jpg"
   },
   "HNO3": {
     "arquivo": "Fuming_nitric_acid_40ml.jpg",
@@ -288,64 +882,64 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Fuming_nitric_acid_40ml.jpg"
   },
   "CaH2O2": {
-    "arquivo": "Calcium_hydroxide.jpg",
-    "autor": "Picture taken by w:User:Walkerma in June 2005.",
+    "arquivo": "Three_old_bricks_held_together_with_mortar.jpg",
+    "autor": "Desconhecido",
     "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Calcium_hydroxide.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Three_old_bricks_held_together_with_mortar.jpg"
   },
   "MgH2O2": {
-    "arquivo": "Brucite-169935.jpg",
-    "autor": "Robert M. Lavinsky",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Brucite-169935.jpg"
+    "arquivo": "Earle's_Mint-O-Mag.jpeg",
+    "autor": "Nosferattus",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Earle%27s_Mint-O-Mag.jpeg"
   },
   "MgCO3": {
-    "arquivo": "Magnesite-121892.jpg",
-    "autor": "Robert M. Lavinsky",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesite-121892.jpg"
+    "arquivo": "Climbing_Shoes_and_Chalk_Bag_-_02.jpg",
+    "autor": "Brett Jordan",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Climbing_Shoes_and_Chalk_Bag_-_02.jpg"
   },
   "KNO3": {
-    "arquivo": "Potassium_nitrate.jpg",
-    "autor": "w:User:Walkerma",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_nitrate.jpg"
+    "arquivo": "2023_Czarny_proch_Vesuvit_LC_(3).jpg",
+    "autor": "Jacek Halicki",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2023_Czarny_proch_Vesuvit_LC_(3).jpg"
   },
   "KIO3": {
-    "arquivo": "Jodičnan_draselný.JPG",
-    "autor": "Ondřej Mangl",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Jodi%C4%8Dnan_draseln%C3%BD.JPG"
+    "arquivo": "Iodized_salt_packet.jpg",
+    "autor": "Ethantrott",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Iodized_salt_packet.jpg"
   },
   "CH2O3": {
-    "arquivo": "SiphonSeltzerAnchorBWks001.jpg",
-    "autor": "Pbroks13 at English Wikipedia",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:SiphonSeltzerAnchorBWks001.jpg"
+    "arquivo": "Sparkling_Water_(4675945072).jpg",
+    "autor": "Vancouver Bites! from Vancouver, Canada",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sparkling_Water_(4675945072).jpg"
   },
   "NH4Cl": {
-    "arquivo": "Ammoniumchlorid_Kristalle.jpg",
-    "autor": "Ichwarsnur",
+    "arquivo": "Pirkka_Salmiakki_sokeriton.jpg",
+    "autor": "Tiia Monto",
     "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Ammoniumchlorid_Kristalle.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pirkka_Salmiakki_sokeriton.jpg"
   },
   "Na2CO3": {
-    "arquivo": "Uhličitan_sodný.JPG",
-    "autor": "Ondřej Mangl",
+    "arquivo": "Beer_bottles_2018_G1.jpg",
+    "autor": "George Chernilevsky",
     "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Uhli%C4%8Ditan_sodn%C3%BD.JPG"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Beer_bottles_2018_G1.jpg"
   },
   "Li2CO3": {
-    "arquivo": "Lithium_carbonate_A.jpg",
-    "autor": "Aariuser I",
+    "arquivo": "Lithium_mine_at_Bolivia´s_Uyuni_Salt_Flat,_on_a_CBERS4_MUX_yesterday´s_image.jpg",
+    "autor": "Oton Barros (DSR/OBT/INPE), Coordenação-Geral de Observação da Terra/INPE, http://www.dsr.inpe.br",
     "licenca": "CC BY-SA 2.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Lithium_carbonate_A.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lithium_mine_at_Bolivia%C2%B4s_Uyuni_Salt_Flat,_on_a_CBERS4_MUX_yesterday%C2%B4s_image.jpg"
   },
   "MgSO4": {
-    "arquivo": "Magnesium_sulfate_crystals.jpg",
-    "autor": "KarlGaff",
-    "licenca": "CC BY 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesium_sulfate_crystals.jpg"
+    "arquivo": "Magnesium_sulfate.JPG",
+    "autor": "Chemicalinterest at en.wikipedia",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Magnesium_sulfate.JPG"
   },
   "CaSO4": {
     "arquivo": "Cristales_cueva_de_Naica.JPG",
@@ -359,11 +953,17 @@
     "licenca": "CC BY-SA 3.0",
     "pagina": "https://commons.wikimedia.org/wiki/File:Copper_sulfate.jpg"
   },
+  "C2H4": {
+    "arquivo": "Ripe_bananas_in_West_Bengal,_India.jpg",
+    "autor": "Billjones94",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ripe_bananas_in_West_Bengal,_India.jpg"
+  },
   "CH4O": {
-    "arquivo": "Methanol_by_Danny_S._-_001.JPG",
-    "autor": "Danny S.",
+    "arquivo": "Man_pouring_windshield_washer_fluid.jpg",
+    "autor": "Hamedog at English Wikipedia",
     "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Methanol_by_Danny_S._-_001.JPG"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Man_pouring_windshield_washer_fluid.jpg"
   },
   "Fe3O4": {
     "arquivo": "Magnetite_sample_with_neodymium_magnet.jpg",
@@ -372,16 +972,28 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Magnetite_sample_with_neodymium_magnet.jpg"
   },
   "AlH3O3": {
-    "arquivo": "Gibbsite-fiu14a.jpg",
-    "autor": "Robert M. Lavinsky",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Gibbsite-fiu14a.jpg"
+    "arquivo": "Bauxite_hérault.JPG",
+    "autor": "saphon",
+    "licenca": "CC BY-SA 1.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bauxite_h%C3%A9rault.JPG"
   },
   "S8": {
-    "arquivo": "Sulfur_-_El_Desierto_mine,_San_Pablo_de_Napa,_Daniel_Campos_Province,_Potosí,_Bolivia.jpg",
-    "autor": "Ivar Leidus",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sulfur_-_El_Desierto_mine,_San_Pablo_de_Napa,_Daniel_Campos_Province,_Potos%C3%AD,_Bolivia.jpg"
+    "arquivo": "Kawah-Ijen_Indonesia_Ijen-Sulfur-Miner-01.jpg",
+    "autor": "CEphoto, Uwe Aranas",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kawah-Ijen_Indonesia_Ijen-Sulfur-Miner-01.jpg"
+  },
+  "H3PO4": {
+    "arquivo": "Cola_(soft_drink)_cropped.png",
+    "autor": "National Institute of Korean Language",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cola_(soft_drink)_cropped.png"
+  },
+  "C2H6": {
+    "arquivo": "Natural_Gas_flaring.jpg",
+    "autor": "sirdle",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Natural_Gas_flaring.jpg"
   },
   "CH4N2O": {
     "arquivo": "Sample_of_Urea.jpg",
@@ -390,28 +1002,682 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Sample_of_Urea.jpg"
   },
   "KMnO4": {
-    "arquivo": "Potassium-permanganate-sample.jpg",
+    "arquivo": "Difuzija_KMN05.JPG",
+    "autor": "Asistent ISP",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Difuzija_KMN05.JPG"
+  },
+  "SF6": {
+    "arquivo": "High-voltage_switchgear_06.jpg",
+    "autor": "Novoklimov",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:High-voltage_switchgear_06.jpg"
+  },
+  "Cr2O3": {
+    "arquivo": "Chromium(III)-oxide_pigment.jpg",
+    "autor": "FK1954",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chromium(III)-oxide_pigment.jpg"
+  },
+  "BaSO4": {
+    "arquivo": "Ascaris_infection_in_X-ray_image-_Pica,_the_practice_of_eating_soil_(South_Africa)_(16424840111).jpg",
+    "autor": "SuSanA Secretariat",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ascaris_infection_in_X-ray_image-_Pica,_the_practice_of_eating_soil_(South_Africa)_(16424840111).jpg"
+  },
+  "AgNO3": {
+    "arquivo": "Mirror.jpg",
+    "autor": "Cgs",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mirror.jpg"
+  },
+  "NH4NO3": {
+    "arquivo": "Calcium_Ammonium_Nitrate_Pellets.png",
+    "autor": "Dawid3030",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Calcium_Ammonium_Nitrate_Pellets.png"
+  },
+  "H3BO3": {
+    "arquivo": "Boric_acid.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Boric_acid.jpg"
+  },
+  "SrCO3": {
+    "arquivo": "Red_fireworks,_Rostov-on-Don,_Russia.jpg",
+    "autor": "Vyacheslav Argenberg",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Red_fireworks,_Rostov-on-Don,_Russia.jpg"
+  },
+  "CCl2F2": {
+    "arquivo": "Aerosol.png",
+    "autor": "PiccoloNamek",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Aerosol.png"
+  },
+  "CHCl3": {
+    "arquivo": "Bottle_of_chloroform,_United_Kingdom,_1896-1945_Wellcome_L0058271.jpg",
+    "autor": "Desconhecido",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bottle_of_chloroform,_United_Kingdom,_1896-1945_Wellcome_L0058271.jpg"
+  },
+  "N2H4": {
+    "arquivo": "Rendering_of_Orbion's_Aurora_Hall-effect_thruster_on_a_satellite.png",
+    "autor": "Adam Johnson",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rendering_of_Orbion%27s_Aurora_Hall-effect_thruster_on_a_satellite.png"
+  },
+  "CH2O2": {
+    "arquivo": "Plectroctena_sp_ants.jpg",
+    "autor": "Muhammad Mahdi Karim",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Plectroctena_sp_ants.jpg"
+  },
+  "C2H2O4": {
+    "arquivo": "Rheum_rhabarbarum.2006-04-27.uellue.jpg",
+    "autor": "Dieter Weber (User:Uellue)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rheum_rhabarbarum.2006-04-27.uellue.jpg"
+  },
+  "C2H3Cl": {
+    "arquivo": "Pvc-o-pipes.jpg",
+    "autor": "Yamiyami123",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pvc-o-pipes.jpg"
+  },
+  "C2F4": {
+    "arquivo": "Blintzes_in_frying_pan.jpg",
+    "autor": "Andrevan",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Blintzes_in_frying_pan.jpg"
+  },
+  "Na2SO4": {
+    "arquivo": "Sodium_sulfate.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sodium_sulfate.jpg"
+  },
+  "NaNO3": {
+    "arquivo": "Advert_for_Sodium_nitrate_Portugal_19_November_2012.JPG",
+    "autor": "stavros1",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Advert_for_Sodium_nitrate_Portugal_19_November_2012.JPG"
+  },
+  "K2CO3": {
+    "arquivo": "Potassium_carbonate.jpg",
+    "autor": "No machine-readable author provided. Walkerma assumed (based on copyright claims).",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_carbonate.jpg"
+  },
+  "CaCl2O2": {
+    "arquivo": "Calcium-Hypochlorite.jpg",
+    "autor": "CCPCIRAN",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Calcium-Hypochlorite.jpg"
+  },
+  "KClO3": {
+    "arquivo": "Friction_d'une_allumette.jpg",
+    "autor": "Yann SEGALEN",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Friction_d%27une_allumette.jpg"
+  },
+  "V2O5": {
+    "arquivo": "V2O5powder.jpg",
+    "autor": "Materialscientist (talk)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:V2O5powder.jpg"
+  },
+  "FeSO4": {
+    "arquivo": "Iron(II)-sulfate-heptahydrate-sample.jpg",
     "autor": "Benjah-bmm27",
     "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium-permanganate-sample.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Iron(II)-sulfate-heptahydrate-sample.jpg"
+  },
+  "NiC4O4": {
+    "arquivo": "Nickel_kugeln.jpg",
+    "autor": "René Rausch",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Nickel_kugeln.jpg"
+  },
+  "As2O3": {
+    "arquivo": "Arsenic_trioxide.jpg",
+    "autor": "Picture taken by w:User:Walkerma in June 2005.",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Arsenic_trioxide.jpg"
+  },
+  "ZrSiO4": {
+    "arquivo": "ZirkonBlau.jpg",
+    "autor": "DonGuennie - G-Empire The World of Gems - Die Welt der Edelsteine",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ZirkonBlau.jpg"
+  },
+  "Sb2S3": {
+    "arquivo": "Stibnite_-_Herja_mine,_Maramures,_Romania.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Stibnite_-_Herja_mine,_Maramures,_Romania.jpg"
+  },
+  "BaN2O6": {
+    "arquivo": "Dusičnan_barnatý.JPG",
+    "autor": "Ondřej Mangl",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dusi%C4%8Dnan_barnat%C3%BD.JPG"
+  },
+  "Eu2O3": {
+    "arquivo": "500euro-uv-front.jpg",
+    "autor": "Banca Centrale Europea",
+    "licenca": "ECB decisions ECB/2003/4 and ECB/2003/5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:500euro-uv-front.jpg"
+  },
+  "Pb3O4": {
+    "arquivo": "Red_lead.jpg",
+    "autor": "BXXXD at German Wikipedia (Original text: BXXXD)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Red_lead.jpg"
+  },
+  "UF6": {
+    "arquivo": "Gas_centrifuge_cascade.jpg",
+    "autor": "U.S. Department of Energy",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gas_centrifuge_cascade.jpg"
+  },
+  "XeF4": {
+    "arquivo": "HD.6B.090_(10578112165).jpg",
+    "autor": "ENERGY.GOV",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:HD.6B.090_(10578112165).jpg"
+  },
+  "Na2S2O3": {
+    "arquivo": "Sodium_thiosulfate_pentahydrate.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sodium_thiosulfate_pentahydrate.jpg"
+  },
+  "CCl4": {
+    "arquivo": "Snohomish_-_Blackman_House_Museum_-_Comet_fire_extinguisher_02A.jpg",
+    "autor": "Joe Mabel",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Snohomish_-_Blackman_House_Museum_-_Comet_fire_extinguisher_02A.jpg"
+  },
+  "CH3Cl": {
+    "arquivo": "WomenWorking_SeaweedZanzibar_4.jpg",
+    "autor": "Rachel Clara Reed",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:WomenWorking_SeaweedZanzibar_4.jpg"
+  },
+  "CH2Cl2": {
+    "arquivo": "Wet_Palette_(Paleta_Húmeda),_Barníz,_Imprimador_y_Quita_Pintura.jpg",
+    "autor": "Sarabng02",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Wet_Palette_(Paleta_H%C3%BAmeda),_Barn%C3%ADz,_Imprimador_y_Quita_Pintura.jpg"
+  },
+  "CHI3": {
+    "arquivo": "Triiodomethane_(iodoform).jpg",
+    "autor": "Opotan",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Triiodomethane_(iodoform).jpg"
+  },
+  "C2Cl4": {
+    "arquivo": "Dry_clean_rack.jpg",
+    "autor": "Simon Law from Montréal, QC, Canada",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dry_clean_rack.jpg"
+  },
+  "C2H5Cl": {
+    "arquivo": "Norway_Italy_-_June_2025_B_40.jpg",
+    "autor": "MichaelEmilio",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Norway_Italy_-_June_2025_B_40.jpg"
+  },
+  "C2H2F4": {
+    "arquivo": "Freon_134a_refrigerant_for_car_AC_001_(cropped).jpg",
+    "autor": "Suyash.dwivedi",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Freon_134a_refrigerant_for_car_AC_001_(cropped).jpg"
+  },
+  "CH5N": {
+    "arquivo": "Ensenada_fish_market_2.jpg",
+    "autor": "Tomascastelazo",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ensenada_fish_market_2.jpg"
+  },
+  "C3H6": {
+    "arquivo": "Tupperware-PP.jpg",
+    "autor": "Serg!o",
+    "licenca": "CC BY-SA 3.0 es",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tupperware-PP.jpg"
+  },
+  "C2H4O": {
+    "arquivo": "Red_Apple.jpg",
+    "autor": "Abhijit Tembhekar from Mumbai, India",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Red_Apple.jpg"
+  },
+  "C2H6S": {
+    "arquivo": "Flame_from_the_burner_of_a_gas_stove.jpg",
+    "autor": "BogTar201213",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Flame_from_the_burner_of_a_gas_stove.jpg"
+  },
+  "CH4S": {
+    "arquivo": "Asparagus-Bundle.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Asparagus-Bundle.jpg"
+  },
+  "C3H3N": {
+    "arquivo": "14-05-28-LEGO-by-RalfR-053.jpg",
+    "autor": "Ralf Roletschek",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:14-05-28-LEGO-by-RalfR-053.jpg"
+  },
+  "C2H3NaO2": {
+    "arquivo": "Hand_warmer.jpg",
+    "autor": "No machine-readable author provided. Velela assumed (based on copyright claims).",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Hand_warmer.jpg"
+  },
+  "CaC2O4": {
+    "arquivo": "Kidney_stone_4mm_05.jpg",
+    "autor": "Jacek Proszyk",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kidney_stone_4mm_05.jpg"
+  },
+  "Mg2SiO4": {
+    "arquivo": "Papakōlea_Green_Sand_Beach,_Hawaii.jpg",
+    "autor": "Pedro Szekely",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Papak%C5%8Dlea_Green_Sand_Beach,_Hawaii.jpg"
+  },
+  "LiFePO4": {
+    "arquivo": "VDL_Citea_SLF-120_Electric_in_Nes_(Ameland).jpg",
+    "autor": "JoachimKohler-HB",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:VDL_Citea_SLF-120_Electric_in_Nes_(Ameland).jpg"
+  },
+  "K2S2O5": {
+    "arquivo": "Yerevan,_Brandy_barrels,_Armenia.jpg",
+    "autor": "Vyacheslav Argenberg",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Yerevan,_Brandy_barrels,_Armenia.jpg"
+  },
+  "Na2PO3F": {
+    "arquivo": "Crystal_White_Toothpaste_Supermarket.jpg",
+    "autor": "Wikilebs",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Crystal_White_Toothpaste_Supermarket.jpg"
+  },
+  "In2O3": {
+    "arquivo": "Touchscreen_IMG_2796.jpg",
+    "autor": "Eddau",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Touchscreen_IMG_2796.jpg"
+  },
+  "NH5O": {
+    "arquivo": "Ammonia_smoke.JPG",
+    "autor": "Chemicalinterest",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ammonia_smoke.JPG"
+  },
+  "C3H4O": {
+    "arquivo": "Korean_barbecue_-_smoke_extractor.jpg",
+    "autor": "대경라이프",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Korean_barbecue_-_smoke_extractor.jpg"
+  },
+  "CH3NO2": {
+    "arquivo": "Nitro_Buggy_RC_Car.jpg",
+    "autor": "Quist",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Nitro_Buggy_RC_Car.jpg"
+  },
+  "SiH4": {
+    "arquivo": "Ground_mounted_solar_panels.gk.jpg",
+    "autor": "Grendelkhan",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ground_mounted_solar_panels.gk.jpg"
+  },
+  "N2O4": {
+    "arquivo": "Apollo_CSM_lunar_orbit.jpg",
+    "autor": "NASA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Apollo_CSM_lunar_orbit.jpg"
+  },
+  "HClO4": {
+    "arquivo": "Perchloric_acid_60_percent.jpg",
+    "autor": "W. Oelen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Perchloric_acid_60_percent.jpg"
+  },
+  "KBrO3": {
+    "arquivo": "Potassium_bromate_by_Danny_S._-_001.JPG",
+    "autor": "Danny S.",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_bromate_by_Danny_S._-_001.JPG"
+  },
+  "TiCl4": {
+    "arquivo": "Sky_writer_painted_the_sky_at_Arctic_Thunder_Open_House,_Joint_Base_Elmendorf-Richardson,_Alaska,_July_1,_2018.jpg",
+    "autor": "Jamal Wilson",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sky_writer_painted_the_sky_at_Arctic_Thunder_Open_House,_Joint_Base_Elmendorf-Richardson,_Alaska,_July_1,_2018.jpg"
+  },
+  "PbCrO4": {
+    "arquivo": "Superior_IHC_Loadstar_school_bus_in_Rodeberg_(Be)_(2).jpg",
+    "autor": "Pierre André Leclercq",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Superior_IHC_Loadstar_school_bus_in_Rodeberg_(Be)_(2).jpg"
+  },
+  "FeTiO3": {
+    "arquivo": "Ilmenite-155036.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ilmenite-155036.jpg"
+  },
+  "CoAl2O4": {
+    "arquivo": "Cobalt_Blue.JPG",
+    "autor": "FK1954",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cobalt_Blue.JPG"
+  },
+  "NiH2O2": {
+    "arquivo": "IKEA_LADDA_rechargeable_AA-batteries.jpg",
+    "autor": "RAIL P (RAIL.PHOTOGRAPHY)",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:IKEA_LADDA_rechargeable_AA-batteries.jpg"
+  },
+  "CuH2O2": {
+    "arquivo": "Bourdeaux_mixture.jpg",
+    "autor": "Pg1945",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bourdeaux_mixture.jpg"
+  },
+  "Na2SeO3": {
+    "arquivo": "Bertholletia_excelsa_seeds_closeup.jpg",
+    "autor": "רנדום",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bertholletia_excelsa_seeds_closeup.jpg"
+  },
+  "SrAl2O4": {
+    "arquivo": "Phosphorescent.jpg",
+    "autor": "Splarka at English Wikipedia",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Phosphorescent.jpg"
+  },
+  "Sb2O3": {
+    "arquivo": "Antimony_trioxide.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Antimony_trioxide.jpg"
+  },
+  "BaTiO3": {
+    "arquivo": "Ceramic_capacitors_mounted_on_a_PCB.jpg",
+    "autor": "Giovanna 27",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ceramic_capacitors_mounted_on_a_PCB.jpg"
+  },
+  "La2O3": {
+    "arquivo": "Lens_Nikkor_50mm.jpg",
+    "autor": "André Karwath aka Aka",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lens_Nikkor_50mm.jpg"
+  },
+  "Nd2O3": {
+    "arquivo": "Neodymium_glass_light_bulb_under_fluorescent_and_incandescent_light.jpg",
+    "autor": "Scientific29",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Neodymium_glass_light_bulb_under_fluorescent_and_incandescent_light.jpg"
+  },
+  "Ta2O5": {
+    "arquivo": "Tantalum_capacitors.jpg",
+    "autor": "Mataresephotos",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tantalum_capacitors.jpg"
+  },
+  "OsO4": {
+    "arquivo": "Fingerprint_Developed_Using_Magnetic_Powder.jpg",
+    "autor": "Meganmwolf",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fingerprint_Developed_Using_Magnetic_Powder.jpg"
+  },
+  "KAuC2N2": {
+    "arquivo": "Gold-plated_electrical_connectors.jpg",
+    "autor": "Cjp24",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Gold-plated_electrical_connectors.jpg"
+  },
+  "Bi2Te3": {
+    "arquivo": "Peltierelement_16x16.jpg",
+    "autor": "No machine-readable author provided. Bye~commonswiki assumed (based on copyright claims).",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Peltierelement_16x16.jpg"
+  },
+  "B2O3": {
+    "arquivo": "Pyrex_and_PYREX.jpg",
+    "autor": "Picofluidicist at English Wikipedia",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pyrex_and_PYREX.jpg"
+  },
+  "B4C": {
+    "arquivo": "Ranger_Body_Armor_-_SAPI_plates.jpg",
+    "autor": "Collectorofinsignia",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ranger_Body_Armor_-_SAPI_plates.jpg"
+  },
+  "CaTiO3": {
+    "arquivo": "Perovskite-155026.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Perovskite-155026.jpg"
+  },
+  "CaWO4": {
+    "arquivo": "Scheelite-184002.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Scheelite-184002.jpg"
+  },
+  "CaN2O6": {
+    "arquivo": "Cherry-Tomatoes-Greenhouse-Sitia-Crete-Greece-3.jpg",
+    "autor": "Petro Stelte",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cherry-Tomatoes-Greenhouse-Sitia-Crete-Greece-3.jpg"
+  },
+  "KHCO3": {
+    "arquivo": "Potassium_bicarbonate_purple-K.jpg",
+    "autor": "U.S. Navy",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_bicarbonate_purple-K.jpg"
+  },
+  "Na2SiO3": {
+    "arquivo": "Chemical_garden_-_UFCH_JH_(2020).jpg",
+    "autor": "Tadeáš Bednarz",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chemical_garden_-_UFCH_JH_(2020).jpg"
+  },
+  "NaBO3": {
+    "arquivo": "Plastic_spoon_n_Laundry_detergent_n_Washing_powder_in_white.jpg",
+    "autor": "Lebacno",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Plastic_spoon_n_Laundry_detergent_n_Washing_powder_in_white.jpg"
+  },
+  "CF4": {
+    "arquivo": "Etchedwafer.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Etchedwafer.jpg"
+  },
+  "CHClF2": {
+    "arquivo": "LG_AIR_CONDITIONER_OUTDOOR_UNIT,_Panasonic_AIR_CONDITIONER_OUTDOOR_UNIT,_National_(Panasonic)_AIR_CONDITIONER_OUTDOOR_UNIT_&_DAIKIN_AIR_CONDITIONER_OUTDOOR_UNIT.jpg",
+    "autor": "Dinkun Chen",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:LG_AIR_CONDITIONER_OUTDOOR_UNIT,_Panasonic_AIR_CONDITIONER_OUTDOOR_UNIT,_National_(Panasonic)_AIR_CONDITIONER_OUTDOOR_UNIT_%26_DAIKIN_AIR_CONDITIONER_OUTDOOR_UNIT.jpg"
+  },
+  "C2HBrClF3": {
+    "arquivo": "Halothane_container.jpg",
+    "autor": "The chemistds",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Halothane_container.jpg"
+  },
+  "C2H4O3": {
+    "arquivo": "Sugarcane_jbi_gallery.jpg",
+    "autor": "Jubair Bin Iqbal",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sugarcane_jbi_gallery.jpg"
+  },
+  "C3H4O2": {
+    "arquivo": "Haltern_am_See,_Lavesum,_Künstlerhof,_Acrylfarbe_--_2021_--_5730.jpg",
+    "autor": "Dietmar Rabich",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Haltern_am_See,_Lavesum,_K%C3%BCnstlerhof,_Acrylfarbe_--_2021_--_5730.jpg"
+  },
+  "LiNbO3": {
+    "arquivo": "Lithium_niobate_crystal.jpg",
+    "autor": "Unknown authorUnknown author",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lithium_niobate_crystal.jpg"
+  },
+  "NaTcO4": {
+    "arquivo": "ADAC_Laboratories_Vertex_MCD_gamma_camera_with_automatic_exchanger.jpg",
+    "autor": "TheRealSteelskin",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ADAC_Laboratories_Vertex_MCD_gamma_camera_with_automatic_exchanger.jpg"
+  },
+  "Pm2O3": {
+    "arquivo": "Luminescent_paint_pigment_applied_on_a_diver’s_watch_to_make_it_readable_in_low_light_conditions..jpg",
+    "autor": "Francis Flinch",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Luminescent_paint_pigment_applied_on_a_diver%E2%80%99s_watch_to_make_it_readable_in_low_light_conditions..jpg"
+  },
+  "SmCo5": {
+    "arquivo": "Alnico_magnet_assortment.jpg",
+    "autor": "Unknown authorUnknown author",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Alnico_magnet_assortment.jpg"
+  },
+  "Gd2O2S": {
+    "arquivo": "Roentgenfilmkassette_offen.jpg",
+    "autor": "EinAnonymerBenutzerVonVielen",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Roentgenfilmkassette_offen.jpg"
+  },
+  "Dy2O3": {
+    "arquivo": "Dy2O3powder.jpg",
+    "autor": "Materialscientist",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dy2O3powder.jpg"
+  },
+  "Ho2O3": {
+    "arquivo": "Holmium(III)_oxide.jpg",
+    "autor": "wiki[ät]filousoph.sent.com",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Holmium(III)_oxide.jpg"
+  },
+  "Er2O3": {
+    "arquivo": "Erbium(III)_oxide_sample_(cropped).jpg",
+    "autor": "Leiem",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Erbium(III)_oxide_sample_(cropped).jpg"
+  },
+  "Lu2SiO5": {
+    "arquivo": "FZU_scintillators_1.jpg",
+    "autor": "René Volfík",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:FZU_scintillators_1.jpg"
+  },
+  "Re2O7": {
+    "arquivo": "Rhenium_heptoxide.png",
+    "autor": "ChemicalForce",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rhenium_heptoxide.png"
+  },
+  "Cm2O3": {
+    "arquivo": "PIA16160-Mars_Curiosity_Rover-APXS.jpg",
+    "autor": "NASA/JPL-Caltech/MSSS",
+    "licenca": "Ver página",
+    "pagina": "https://commons.wikimedia.org/wiki/File:PIA16160-Mars_Curiosity_Rover-APXS.jpg"
+  },
+  "Cf2O3": {
+    "arquivo": "Metal_pellets_of_californium-252(cropped).jpg",
+    "autor": "Copper29Cu",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Metal_pellets_of_californium-252(cropped).jpg"
+  },
+  "LaB6": {
+    "arquivo": "LaB6HotCathode.jpg",
+    "autor": "The original uploader was Ahecht at English Wikipedia.",
+    "licenca": "Attribution",
+    "pagina": "https://commons.wikimedia.org/wiki/File:LaB6HotCathode.jpg"
+  },
+  "Ca3SiO5": {
+    "arquivo": "Portland_Cement_Bags.jpg",
+    "autor": "KVDP",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Portland_Cement_Bags.jpg"
+  },
+  "NaBH4": {
+    "arquivo": "Sodium_borohydride.jpg",
+    "autor": "W. Oelen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sodium_borohydride.jpg"
+  },
+  "RfCl4": {
+    "arquivo": "RIAN_archive_612388_Joint_Institute_for_Nuclear_Research_in_Dubna_hosts_seminar_on_Physics_on_Large_Hadron_Collider.jpg",
+    "autor": "Sergey Pyatakov / Сергей Пятаков",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:RIAN_archive_612388_Joint_Institute_for_Nuclear_Research_in_Dubna_hosts_seminar_on_Physics_on_Large_Hadron_Collider.jpg"
+  },
+  "DbOCl3": {
+    "arquivo": "Dubna_Stele_Dubnium.jpg",
+    "autor": "Yokki",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dubna_Stele_Dubnium.jpg"
+  },
+  "BhO3Cl": {
+    "arquivo": "Luftbild_PSI_Mai_2016.jpg",
+    "autor": "PSI",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Luftbild_PSI_Mai_2016.jpg"
+  },
+  "HsO4": {
+    "arquivo": "GSI-Darmstadt-Südbau.jpg",
+    "autor": "commander-pirx",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:GSI-Darmstadt-S%C3%BCdbau.jpg"
+  },
+  "Pa2O5": {
+    "arquivo": "Protactinium_(Element_-_91)_2.jpg",
+    "autor": "James St. John",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Protactinium_(Element_-_91)_2.jpg"
   },
   "C3H6O": {
-    "arquivo": "Sample_of_Acetone.jpg",
-    "autor": "LHcheM",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sample_of_Acetone.jpg"
+    "arquivo": "Nail_polish_remover.jpg",
+    "autor": "Kaushik Narasimhan",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Nail_polish_remover.jpg"
+  },
+  "C2H5NO2": {
+    "arquivo": "2019-10-10_22_15_43_Gelatin_from_a_single_opened_cup_of_Jell-O_strawberry_gelatin_snack_being_lifted_by_a_spoon_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+    "autor": "Famartin",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2019-10-10_22_15_43_Gelatin_from_a_single_opened_cup_of_Jell-O_strawberry_gelatin_snack_being_lifted_by_a_spoon_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg"
   },
   "C6H6": {
-    "arquivo": "Benzene_sample.jpg",
-    "autor": "Saint concrete",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Benzene_sample.jpg"
+    "arquivo": "Anacortes_Refinery_31911.JPG",
+    "autor": "Walter Siegmund (talk)",
+    "licenca": "CC BY 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Anacortes_Refinery_31911.JPG"
+  },
+  "C3H6O3": {
+    "arquivo": "Joghurt.jpg",
+    "autor": "No machine-readable author provided. Rainer Zenz assumed (based on copyright claims).",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Joghurt.jpg"
   },
   "Ca3P2O8": {
-    "arquivo": "Tricalcium_Phosphate.jpg",
-    "autor": "Oxetane lacx",
-    "licenca": "CC BY 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Tricalcium_Phosphate.jpg"
+    "arquivo": "Avahi4_perspective_noir.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Avahi4_perspective_noir.jpg"
   },
   "C4H10": {
     "arquivo": "The_Green_Lighter_1_cropped.jpg",
@@ -420,16 +1686,916 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:The_Green_Lighter_1_cropped.jpg"
   },
   "C3H8O3": {
-    "arquivo": "Sample_of_Glycerine.jpg",
-    "autor": "LHcheM",
+    "arquivo": "Soap_and_sachets.jpg",
+    "autor": "Durova",
     "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sample_of_Glycerine.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Soap_and_sachets.jpg"
+  },
+  "C8H18": {
+    "arquivo": "MA.SS._2018-08-15_filling-station_1415_3x2-R_5K.jpg",
+    "autor": "Roy Egloff",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:MA.SS._2018-08-15_filling-station_1415_3x2-R_5K.jpg"
   },
   "C10H16": {
-    "arquivo": "Limonene.jpg",
-    "autor": "Aleksander Sobolewski",
+    "arquivo": "Oranges_-_whole-halved-segment.jpg",
+    "autor": "Ivar Leidus",
     "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Limonene.jpg"
+    "pagina": "https://commons.wikimedia.org/wiki/File:Oranges_-_whole-halved-segment.jpg"
+  },
+  "PtCl2N2H6": {
+    "arquivo": "R-CHOP_infusion_(R,C,H,O_components).jpg",
+    "autor": "Retired electrician",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:R-CHOP_infusion_(R,C,H,O_components).jpg"
+  },
+  "C3H8O": {
+    "arquivo": "Rubbing_Alcohol_(51013600587).jpg",
+    "autor": "ajay_suresh",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rubbing_Alcohol_(51013600587).jpg"
+  },
+  "C2H6O2": {
+    "arquivo": "Engine_coolant.jpg",
+    "autor": "fir0002",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Engine_coolant.jpg"
+  },
+  "C4H8O2": {
+    "arquivo": "Colourful_nail_polishes.jpg",
+    "autor": "Etsy Ketsy",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Colourful_nail_polishes.jpg"
+  },
+  "C7H8": {
+    "arquivo": "Thinner_premium,_in_bottle.jpg",
+    "autor": "Trecex materiales SRL",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thinner_premium,_in_bottle.jpg"
+  },
+  "C8H8": {
+    "arquivo": "Flickr_-_cyclonebill_-_Kaffe_(13).jpg",
+    "autor": "cyclonebill",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Flickr_-_cyclonebill_-_Kaffe_(13).jpg"
+  },
+  "C6H6O": {
+    "arquivo": "Phenol_2_grams.jpg",
+    "autor": "W. Oelen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Phenol_2_grams.jpg"
+  },
+  "C3H7NO2": {
+    "arquivo": "Drying_the_cotton_silk_fabric.jpg",
+    "autor": "Sopyaylynn",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Drying_the_cotton_silk_fabric.jpg"
+  },
+  "C7H6O": {
+    "arquivo": "Almonds_-_in_shell,_shell_cracked_open,_shelled,_blanched.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Almonds_-_in_shell,_shell_cracked_open,_shelled,_blanched.jpg"
+  },
+  "C7H6O3": {
+    "arquivo": "Thomé_Salix_alba_clean.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thom%C3%A9_Salix_alba_clean.jpg"
+  },
+  "C9H8O": {
+    "arquivo": "Baton_de_cannelle.jpg",
+    "autor": "Thiry",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Baton_de_cannelle.jpg"
+  },
+  "C10H8": {
+    "arquivo": "Naftalen.jpg",
+    "autor": "Momčilostokanovic",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Naftalen.jpg"
+  },
+  "C10H12O2": {
+    "arquivo": "ClovesDried.jpg",
+    "autor": "Brian Arthur",
+    "licenca": "CC BY 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:ClovesDried.jpg"
+  },
+  "C7H14O2": {
+    "arquivo": "Bananas_on_black_background_02.jpg",
+    "autor": "Krzysztof Golik",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bananas_on_black_background_02.jpg"
+  },
+  "C4H5N3O": {
+    "arquivo": "Brno_Kralovopolska_135_plastika.jpg",
+    "autor": "JiriMatejicek",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Brno_Kralovopolska_135_plastika.jpg"
+  },
+  "C5H5N5": {
+    "arquivo": "Dna-helix.jpg",
+    "autor": "The original uploader was Karl Wick at English Wikibooks.",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dna-helix.jpg"
+  },
+  "C5H6N2O2": {
+    "arquivo": "Dna-163466.jpg",
+    "autor": "PublicDomainPictures",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dna-163466.jpg"
+  },
+  "C5H5N5O": {
+    "arquivo": "Fish_scales.jpg",
+    "autor": "Rajesh dangi at English Wikipedia",
+    "licenca": "CC BY 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fish_scales.jpg"
+  },
+  "C8H11NO2": {
+    "arquivo": "Brain_MRI_0145_02.jpg",
+    "autor": "Nevit Dilmen (talk)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Brain_MRI_0145_02.jpg"
+  },
+  "C3H5N3O9": {
+    "arquivo": "Nitroglycerin_(1).JPG",
+    "autor": "Intropin",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Nitroglycerin_(1).JPG"
+  },
+  "C7H8N4O2": {
+    "arquivo": "Green_and_Black's_dark_chocolate_bar_2.jpg",
+    "autor": "Mx. Granger",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Green_and_Black%27s_dark_chocolate_bar_2.jpg"
+  },
+  "K2Cr2O7": {
+    "arquivo": "Potassium-dichromate-sample.jpg",
+    "autor": "Benjah-bmm27",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium-dichromate-sample.jpg"
+  },
+  "Al2S3O12": {
+    "arquivo": "The_coagulation_and_filtration_processes_at_a_drinking_water_treatment_plant._(14868618507).jpg",
+    "autor": "USEPA Environmental-Protection-Agency",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:The_coagulation_and_filtration_processes_at_a_drinking_water_treatment_plant._(14868618507).jpg"
+  },
+  "P4O10": {
+    "arquivo": "Desiccator.jpg",
+    "autor": "The original uploader was Rifleman 82 at English Wikipedia.",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Desiccator.jpg"
+  },
+  "NH4ClO4": {
+    "arquivo": "SLS_FSB1_test_booster.jpg",
+    "autor": "NASA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:SLS_FSB1_test_booster.jpg"
+  },
+  "Cu2CH2O5": {
+    "arquivo": "Tumble-polished_malachite_1.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tumble-polished_malachite_1.jpg"
+  },
+  "Na2B4O7": {
+    "arquivo": "Green_Slime_in_hand.JPG",
+    "autor": "Ciphers",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Green_Slime_in_hand.JPG"
+  },
+  "C3H9N": {
+    "arquivo": "Oweston_sting_fish_for_sale_at_Tsukiji_Fishmarket,_Tokyo-30.jpg",
+    "autor": "MichaelMaggs",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Oweston_sting_fish_for_sale_at_Tsukiji_Fishmarket,_Tokyo-30.jpg"
+  },
+  "C6H7N": {
+    "arquivo": "2,6-(iPr)2C6H3NH2sample.jpg",
+    "autor": "Smokefoot",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2,6-(iPr)2C6H3NH2sample.jpg"
+  },
+  "C5H5N": {
+    "arquivo": "Pyridine_sample.jpg",
+    "autor": "LHcheM",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pyridine_sample.jpg"
+  },
+  "C4H6": {
+    "arquivo": "Stack_of_tires_in_the_sun.jpg",
+    "autor": "PheobeLongneck",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Stack_of_tires_in_the_sun.jpg"
+  },
+  "C5H12": {
+    "arquivo": "Petroleum_ether.JPG",
+    "autor": "Seilvorbau",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Petroleum_ether.JPG"
+  },
+  "C6H14": {
+    "arquivo": "Soybean_Oil,_Meal_and_Beans_(10059732523).jpg",
+    "autor": "United Soybean Board",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Soybean_Oil,_Meal_and_Beans_(10059732523).jpg"
+  },
+  "C7H16": {
+    "arquivo": "Mature_Jeffrey_Pine.JPG",
+    "autor": "Jhodlof",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mature_Jeffrey_Pine.JPG"
+  },
+  "C6H12": {
+    "arquivo": "Cyclohexane.jpg",
+    "autor": "بیسموت",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cyclohexane.jpg"
+  },
+  "C5H8": {
+    "arquivo": "Rubber_tapping_(48058).jpg",
+    "autor": "Manukrishnan80",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rubber_tapping_(48058).jpg"
+  },
+  "C8H10": {
+    "arquivo": "Histologic_Slide_under_MIcroscope.jpg",
+    "autor": "Ed Uthman from Houston, TX, USA",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Histologic_Slide_under_MIcroscope.jpg"
+  },
+  "C14H10": {
+    "arquivo": "Fluorescence_of_Anthracene_under_UV_light.jpg",
+    "autor": "TimJW12",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fluorescence_of_Anthracene_under_UV_light.jpg"
+  },
+  "C4H10O": {
+    "arquivo": "The_First_Operation_Under_Ether_-_Robert_Hinckley.jpg",
+    "autor": "Robert Cutler Hinckley",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:The_First_Operation_Under_Ether_-_Robert_Hinckley.jpg"
+  },
+  "C3H8O2": {
+    "arquivo": "Smoke_Machine_engineer.jpg",
+    "autor": "Desconhecido",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Smoke_Machine_engineer.jpg"
+  },
+  "C6H14O6": {
+    "arquivo": "Sorbus_aucuparia_2022_G1.jpg",
+    "autor": "George Chernilevsky",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sorbus_aucuparia_2022_G1.jpg"
+  },
+  "C5H12O5": {
+    "arquivo": "Xylitol_chewing_gums.jpg",
+    "autor": "Tiia Monto",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Xylitol_chewing_gums.jpg"
+  },
+  "C2H6OS": {
+    "arquivo": "Sample_of_Dimethyl_sulfoxide_01.jpg",
+    "autor": "Σ64",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sample_of_Dimethyl_sulfoxide_01.jpg"
+  },
+  "C6H10OS2": {
+    "arquivo": "Garlic_bulbs_and_cloves.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg"
+  },
+  "C3H6OS": {
+    "arquivo": "Onion_and_a_group_of_vegetables_on_a_cutting_board.jpg",
+    "autor": "Webvilla on Unsplash",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Onion_and_a_group_of_vegetables_on_a_cutting_board.jpg"
+  },
+  "C4H5NS": {
+    "arquivo": "Senf-Variationen.jpg",
+    "autor": "Rainer Zenz",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Senf-Variationen.jpg"
+  },
+  "C3H6O2": {
+    "arquivo": "Emmental_(fromage)_01.jpg",
+    "autor": "Coyau",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Emmental_(fromage)_01.jpg"
+  },
+  "C4H6O6": {
+    "arquivo": "Javier_shows_part_of_the_grape_harvest_in_his_Lysekil_vineyard_1_-_cropped.jpg",
+    "autor": "W.carter",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Javier_shows_part_of_the_grape_harvest_in_his_Lysekil_vineyard_1_-_cropped.jpg"
+  },
+  "C4H5KO6": {
+    "arquivo": "Weinstein.jpg",
+    "autor": "Awakening",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Weinstein.jpg"
+  },
+  "C4H6O5": {
+    "arquivo": "Green_apples_(Bangalore,_2026).jpg",
+    "autor": "Gpkp",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Green_apples_(Bangalore,_2026).jpg"
+  },
+  "C7H6O2": {
+    "arquivo": "Kemenyan_110112-11054_tdp.jpg",
+    "autor": "Wibowo Djatmiko (Wie146)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kemenyan_110112-11054_tdp.jpg"
+  },
+  "C8H6O4": {
+    "arquivo": "Plastic_bottles_before_processing.jpg",
+    "autor": "dierk schaefer",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Plastic_bottles_before_processing.jpg"
+  },
+  "C6H8O2": {
+    "arquivo": "Sorbus_aucuparia_Tauerntal_20220824.jpg",
+    "autor": "Uoaei1",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sorbus_aucuparia_Tauerntal_20220824.jpg"
+  },
+  "C3H4O3": {
+    "arquivo": "Mitochondria,_mammalian_lung_-_TEM.jpg",
+    "autor": "Louisa Howard",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mitochondria,_mammalian_lung_-_TEM.jpg"
+  },
+  "C6H13NO2": {
+    "arquivo": "Optimus_nutrition_gold_standard_whey_protein_with_creatine_monohydrate.jpg",
+    "autor": "Ganesh Mohan T",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Optimus_nutrition_gold_standard_whey_protein_with_creatine_monohydrate.jpg"
+  },
+  "C3H7NO3": {
+    "arquivo": "Glycine_max_kz03.jpg",
+    "autor": "Krzysztof Ziarnek, Kenraiz",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Glycine_max_kz03.jpg"
+  },
+  "C3H7NO2S": {
+    "arquivo": "Blond_hair_going_gray_01.jpg",
+    "autor": "Kritzolina",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Blond_hair_going_gray_01.jpg"
+  },
+  "C9H11NO2": {
+    "arquivo": "Can_of_Diet_Sierra_Mist_lemon-lime_soda,_2011.jpg",
+    "autor": "DimiTalen",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Can_of_Diet_Sierra_Mist_lemon-lime_soda,_2011.jpg"
+  },
+  "C6H14N2O2": {
+    "arquivo": "3_types_of_lentil.jpg",
+    "autor": "User:Justinc",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:3_types_of_lentil.jpg"
+  },
+  "C5H10O4": {
+    "arquivo": "3_Strawberry_DNA_Extraction.jpg",
+    "autor": "Sheila Richards",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:3_Strawberry_DNA_Extraction.jpg"
+  },
+  "C10H14O": {
+    "arquivo": "Thymian_(Thymus_vulgaris),_Nationalpark_Hohe_Tauern.jpg",
+    "autor": "Naturpuur",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thymian_(Thymus_vulgaris),_Nationalpark_Hohe_Tauern.jpg"
+  },
+  "C9H10O2": {
+    "arquivo": "(MHNT)_Jasminum_polyanthum_–_flowers_and_buds.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:(MHNT)_Jasminum_polyanthum_%E2%80%93_flowers_and_buds.jpg"
+  },
+  "C6H12O2": {
+    "arquivo": "Ananas_comosus,_Dole_Pineapple_Plantation,_Oahu,_Hawaii,_USA2.jpg",
+    "autor": "Diego Delso",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ananas_comosus,_Dole_Pineapple_Plantation,_Oahu,_Hawaii,_USA2.jpg"
+  },
+  "C4H6O2": {
+    "arquivo": "Popcorn_11.jpg",
+    "autor": "Gaurav Dhwaj Khadka",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Popcorn_11.jpg"
+  },
+  "C9H6O2": {
+    "arquivo": "Tonka_Beans.jpg",
+    "autor": "Mecredis / Fred Benenson",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tonka_Beans.jpg"
+  },
+  "C10H12O": {
+    "arquivo": "Dried_Star_Anise_Fruit_Seeds.jpg",
+    "autor": "Sanjay Acharya",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dried_Star_Anise_Fruit_Seeds.jpg"
+  },
+  "C8H7N": {
+    "arquivo": "Orange_Blossom.JPG",
+    "autor": "Alexander Hardin",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Orange_Blossom.JPG"
+  },
+  "C6H10O": {
+    "arquivo": "Lawn_Mowing_DVIDS119604.jpg",
+    "autor": "Staff Sgt. Brian Jopek",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lawn_Mowing_DVIDS119604.jpg"
+  },
+  "C8H10O": {
+    "arquivo": "Comestible_rose_in_the_Laquenexy_orchard_garden,_Moselle,_France_(01).jpg",
+    "autor": "M0tty",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Comestible_rose_in_the_Laquenexy_orchard_garden,_Moselle,_France_(01).jpg"
+  },
+  "C6H8O3": {
+    "arquivo": "Still_life_with_strawberries_in_a_crystal_bowl.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Still_life_with_strawberries_in_a_crystal_bowl.jpg"
+  },
+  "C7H5N3O6": {
+    "arquivo": "Trinitrotoluen.JPG",
+    "autor": "Daniel Grohmann",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Trinitrotoluen.JPG"
+  },
+  "C4H9NO2": {
+    "arquivo": "PLoSBiol4.e126.Fig6fNeuron.jpg",
+    "autor": "Wei-Chung Allen Lee, Hayden Huang, Guoping Feng, Joshua R. Sanes, Emery N. Brown, Peter T. So, Elly Nedivi",
+    "licenca": "CC BY 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:PLoSBiol4.e126.Fig6fNeuron.jpg"
+  },
+  "C5H9N3": {
+    "arquivo": "Mosquito_bite_from_Flickr.jpg",
+    "autor": "WildTurkey",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mosquito_bite_from_Flickr.jpg"
+  },
+  "C4H9N3O2": {
+    "arquivo": "Rio_2016_-_Weightlifting_men's_69_kg_(29049391600).jpg",
+    "autor": "Sander van Ginkel",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Rio_2016_-_Weightlifting_men%27s_69_kg_(29049391600).jpg"
+  },
+  "C5H4N4O3": {
+    "arquivo": "Larus_michahellis_atlantis_at_Playa_del_Confital_(47206133632)_2_March_2019.jpg",
+    "autor": "Bengt Nyman from Vaxholm, Sweden",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Larus_michahellis_atlantis_at_Playa_del_Confital_(47206133632)_2_March_2019.jpg"
+  },
+  "C6H5NO2": {
+    "arquivo": "Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg"
+  },
+  "C8H11NO3": {
+    "arquivo": "Green_raw_bananas.jpg",
+    "autor": "Vitaium",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Green_raw_bananas.jpg"
+  },
+  "C5H8O2": {
+    "arquivo": "Coloured_cast_acrylic_by_Midton_Acrylics.jpg",
+    "autor": "Craig Cameron",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Coloured_cast_acrylic_by_Midton_Acrylics.jpg"
+  },
+  "C6H11NO": {
+    "arquivo": "Jana_nylon_stockings_in_packaging.jpg",
+    "autor": "Bevaringstenestene / Museumssenteret i Hordaland",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Jana_nylon_stockings_in_packaging.jpg"
+  },
+  "C3H6N6": {
+    "arquivo": "Melamine_dinnerware.JPG",
+    "autor": "Dwight Burdette",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Melamine_dinnerware.JPG"
+  },
+  "Ca5P3O13H": {
+    "arquivo": "Dent_STS_1881.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dent_STS_1881.jpg"
+  },
+  "KAlS2O8": {
+    "arquivo": "Alaunblocknebenrasiermesser.JPG",
+    "autor": "M. Leupold",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Alaunblocknebenrasiermesser.JPG"
+  },
+  "Na3AlF6": {
+    "arquivo": "816-_Ivigtut_-_cryolite.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:816-_Ivigtut_-_cryolite.jpg"
+  },
+  "Al2Si2O9H4": {
+    "arquivo": "Service_dessert_Victoria_Franz-Joseph_Vienna_inv_191.jpg",
+    "autor": "Jebulon",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Service_dessert_Victoria_Franz-Joseph_Vienna_inv_191.jpg"
+  },
+  "CaMgC2O6": {
+    "arquivo": "Frea_pass_Sella_group_Pisciadu_Dolomites_South_Tyrol.jpg",
+    "autor": "This Photo was taken by Wolfgang Moroder. Feel free to use my photos, but please mention me as the author and send me a message. This image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here are not appropriate. Please do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Frea_pass_Sella_group_Pisciadu_Dolomites_South_Tyrol.jpg"
+  },
+  "N2H8SO4": {
+    "arquivo": "Ammonium_sulfate_sample.jpg",
+    "autor": "Adam Rędzikowski",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ammonium_sulfate_sample.jpg"
+  },
+  "NH5CO3": {
+    "arquivo": "Koekjestrommel_open.jpg",
+    "autor": "Pudding4brains",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Koekjestrommel_open.jpg"
+  },
+  "C6H6O2": {
+    "arquivo": "Hydroquinone_crystal.jpg",
+    "autor": "W. Oelen",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Hydroquinone_crystal.jpg"
+  },
+  "C6H4Cl2": {
+    "arquivo": "1,4_dichlorobenzene_crystallised.jpg",
+    "autor": "Saint concrete",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:1,4_dichlorobenzene_crystallised.jpg"
+  },
+  "C6H12NNaO3S": {
+    "arquivo": "SweetnLowSweetener.JPG",
+    "autor": "Raysonho @ Open Grid Scheduler / Grid Engine",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:SweetnLowSweetener.JPG"
+  },
+  "C3H5NO": {
+    "arquivo": "Potato-Chips.jpg",
+    "autor": "Evan-Amos for those who dont know, this guy wrote this",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Potato-Chips.jpg"
+  },
+  "CaH4P2O8": {
+    "arquivo": "Tripelsuperfosfaat_(triple_phosphate).jpg",
+    "autor": "Rasbak",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tripelsuperfosfaat_(triple_phosphate).jpg"
+  },
+  "YBa2Cu3O7": {
+    "arquivo": "Superconductor-levitation.jpg",
+    "autor": "Pongkaew",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Superconductor-levitation.jpg"
+  },
+  "PbC4H6O4": {
+    "arquivo": "Lead(II)Acetate.jpg",
+    "autor": "Dormroomchemist at English Wikipedia",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lead(II)Acetate.jpg"
+  },
+  "U3O8": {
+    "arquivo": "Yellowcake.jpg",
+    "autor": "Desconhecido",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Yellowcake.jpg"
+  },
+  "Mg3Si4O12H2": {
+    "arquivo": "Talc-177589.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Talc-177589.jpg"
+  },
+  "NH6PO4": {
+    "arquivo": "Ammoniumdihydrogenphosphat_crystal_step_(GeoMuseum_Cologne).JPG",
+    "autor": "Ra'ike (Wikipedia)",
+    "licenca": "CC BY-SA 3.0 de",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ammoniumdihydrogenphosphat_crystal_step_(GeoMuseum_Cologne).JPG"
+  },
+  "N2H8Cr2O7": {
+    "arquivo": "Маленький_вулкан.JPG",
+    "autor": "Наталия",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D0%BB%D0%B5%D0%BD%D1%8C%D0%BA%D0%B8%D0%B9_%D0%B2%D1%83%D0%BB%D0%BA%D0%B0%D0%BD.JPG"
+  },
+  "C4H3F7O": {
+    "arquivo": "Sevoflurane.jpg",
+    "autor": "SIMV 40% 500 ml",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sevoflurane.jpg"
+  },
+  "C5H10": {
+    "arquivo": "LG_refrigerator_interior.jpg",
+    "autor": "Milad Mosapoor",
+    "licenca": "Attribution",
+    "pagina": "https://commons.wikimedia.org/wiki/File:LG_refrigerator_interior.jpg"
+  },
+  "C7H8O": {
+    "arquivo": "Cananga_odorata_02.JPG",
+    "autor": "Prenn",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cananga_odorata_02.JPG"
+  },
+  "C7H8O2": {
+    "arquivo": "Starting_the_charcoal.jpg",
+    "autor": "Tomascastelazo",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Starting_the_charcoal.jpg"
+  },
+  "C4H8O": {
+    "arquivo": "Stanley-Hot-Glue-Gun-GR35K.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Stanley-Hot-Glue-Gun-GR35K.jpg"
+  },
+  "C5H4O2": {
+    "arquivo": "Air_fried_corn-on-the-cob_(United_States).jpg",
+    "autor": "NeoBatfreak",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Air_fried_corn-on-the-cob_(United_States).jpg"
+  },
+  "C7H6O5": {
+    "arquivo": "Oak_galls_and_iron(II)_sulfate_-_California_State_Archives.jpg",
+    "autor": "vlasta2, bluefootedbooby on flickr.com",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Oak_galls_and_iron(II)_sulfate_-_California_State_Archives.jpg"
+  },
+  "C4H6O4": {
+    "arquivo": "Tumble-polished_Baltic_amber_1.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tumble-polished_Baltic_amber_1.jpg"
+  },
+  "C6H10O4": {
+    "arquivo": "Adipic_acid.jpg",
+    "autor": "Dima Minyailo",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Adipic_acid.jpg"
+  },
+  "C5H10O2": {
+    "arquivo": "Valeriana_officinalis_inflorescence_-_Niitvälja.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Valeriana_officinalis_inflorescence_-_Niitv%C3%A4lja.jpg"
+  },
+  "C8H8O2": {
+    "arquivo": "Feijoa_sellowiana_.jpg",
+    "autor": "Didier Descouens",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Feijoa_sellowiana_.jpg"
+  },
+  "C6H8N2": {
+    "arquivo": "Dyeing_hair_purple.png",
+    "autor": "WhatamIdoing",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dyeing_hair_purple.png"
+  },
+  "C3H8NO5P": {
+    "arquivo": "Herbicide_spraying.jpg",
+    "autor": "Korbla Johnny",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Herbicide_spraying.jpg"
+  },
+  "C4H10O4": {
+    "arquivo": "Erythrit.jpg",
+    "autor": "Thomas Kniess",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Erythrit.jpg"
+  },
+  "C6H13NO5": {
+    "arquivo": "Shrimp_shells_in_Tuntorp_1.jpg",
+    "autor": "W.carter",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Shrimp_shells_in_Tuntorp_1.jpg"
+  },
+  "C4H7NO4": {
+    "arquivo": "Asparagus-Bundle.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Asparagus-Bundle.jpg"
+  },
+  "C5H9NO4": {
+    "arquivo": "Parmigiano_Reggiano_meules_MIN_Rungis.jpg",
+    "autor": "Myrabella",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Parmigiano_Reggiano_meules_MIN_Rungis.jpg"
+  },
+  "C9H11NO3": {
+    "arquivo": "Meule_du_Plateau_cheese_wheels_in_the_ripening_cellar,_Terre_de_fromages,_Herve,_2025.jpg",
+    "autor": "DimiTalen",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Meule_du_Plateau_cheese_wheels_in_the_ripening_cellar,_Terre_de_fromages,_Herve,_2025.jpg"
+  },
+  "C5H11NO2": {
+    "arquivo": "Chickens_in_market.jpg",
+    "autor": "Tomás Castelazo",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chickens_in_market.jpg"
+  },
+  "C5H9NO2": {
+    "arquivo": "Broken_Glass_Gelatin.jpg",
+    "autor": "Jennifer Hasegawa",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Broken_Glass_Gelatin.jpg"
+  },
+  "C5H11NO2S": {
+    "arquivo": "Eggs_in_basket_2020_G1.jpg",
+    "autor": "George Chernilevsky",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Eggs_in_basket_2020_G1.jpg"
+  },
+  "C6H14N4O2": {
+    "arquivo": "Pumpkin_Seeds_macro_1.jpg",
+    "autor": "Daniel Schwen",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Pumpkin_Seeds_macro_1.jpg"
+  },
+  "C6H9N3O2": {
+    "arquivo": "Tuna_assortment.png",
+    "autor": "NOAA",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tuna_assortment.png"
+  },
+  "C5H10N2O3": {
+    "arquivo": "Sergio_Oliva_Arm(n_o_n_a_m_e).jpg",
+    "autor": "n-o-n-a-m-e",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sergio_Oliva_Arm(n_o_n_a_m_e).jpg"
+  },
+  "C4H8N2O3": {
+    "arquivo": "Asparagus-Bundle.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Asparagus-Bundle.jpg"
+  },
+  "C2H7NO3S": {
+    "arquivo": "Energy_Drink_Battery_Cans.jpg",
+    "autor": "Klooni",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Energy_Drink_Battery_Cans.jpg"
+  },
+  "C4H6N4O3": {
+    "arquivo": "Symphytum_officinale_RF.jpg",
+    "autor": "Robert Flogaus-Faust",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Symphytum_officinale_RF.jpg"
+  },
+  "C5H12S": {
+    "arquivo": "Striped_Skunk.jpg",
+    "autor": "http://www.birdphotos.com",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Striped_Skunk.jpg"
+  },
+  "C4H5Cl": {
+    "arquivo": "A_surfer_at_the_wave_edit.jpg",
+    "autor": "Brocken Inaglory edit by user:Kallerna",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:A_surfer_at_the_wave_edit.jpg"
+  },
+  "C14H8O4": {
+    "arquivo": "Madder_as_a_natural_dye.jpg",
+    "autor": "Sailesh Patnaik",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Madder_as_a_natural_dye.jpg"
+  },
+  "C12H4Cl4O2": {
+    "arquivo": "US-Huey-helicopter-spraying-Agent-Orange-in-Vietnam.jpg",
+    "autor": "US Army",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:US-Huey-helicopter-spraying-Agent-Orange-in-Vietnam.jpg"
+  },
+  "C6H12N4": {
+    "arquivo": "Vařič_na_pevný_líh.jpg",
+    "autor": "GeXeS",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Va%C5%99i%C4%8D_na_pevn%C3%BD_l%C3%ADh.jpg"
+  },
+  "C3Cl3N3O3": {
+    "arquivo": "Swimming_pool_at_Hotel_Terra_Barichara.jpg",
+    "autor": "Bernard Gagnon",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Swimming_pool_at_Hotel_Terra_Barichara.jpg"
+  },
+  "C12H7Cl3O2": {
+    "arquivo": "Equate_antibacterial_liquid_hand_soap.jpg",
+    "autor": "NeoBatfreak",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Equate_antibacterial_liquid_hand_soap.jpg"
+  },
+  "Pr6O11": {
+    "arquivo": "Praseodymium(III)_oxide_(sample).jpg",
+    "autor": "Leiem",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Praseodymium(III)_oxide_(sample).jpg"
+  },
+  "Tb4O7": {
+    "arquivo": "Lamp_harp_with_fluorescent_bulb.jpg",
+    "autor": "Verne Equinox",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lamp_harp_with_fluorescent_bulb.jpg"
+  },
+  "Y3Al5O12": {
+    "arquivo": "Ti_Sapph_YAG_supercontinnum.jpg",
+    "autor": "Neath g",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ti_Sapph_YAG_supercontinnum.jpg"
+  },
+  "CaH4SO6": {
+    "arquivo": "Cristales_cueva_de_Naica.JPG",
+    "autor": "Alexander Van Driessche",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cristales_cueva_de_Naica.JPG"
+  },
+  "Ca5P3O12F": {
+    "arquivo": "Fluorapatite-Muscovite-tuc8-098a.jpg",
+    "autor": "Robert M. Lavinsky",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Fluorapatite-Muscovite-tuc8-098a.jpg"
+  },
+  "Cu3C2H2O8": {
+    "arquivo": "Azurite_-_New_Nevada_Lode,_La_Sal,_Utah,_USA.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Azurite_-_New_Nevada_Lode,_La_Sal,_Utah,_USA.jpg"
+  },
+  "C5H5NO2": {
+    "arquivo": "2g_ACE_All-Purpose_Super_Glue_tube.png",
+    "autor": "JayCubby",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2g_ACE_All-Purpose_Super_Glue_tube.png"
+  },
+  "C9H9N": {
+    "arquivo": "Asian_Palm_Civet_Over_A_Tree.jpg",
+    "autor": "Praveenp",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Asian_Palm_Civet_Over_A_Tree.jpg"
+  },
+  "C4H12N2": {
+    "arquivo": "Moldy_chicken.JPG",
+    "autor": "BrokenSphere",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Moldy_chicken.JPG"
+  },
+  "C8H16O2": {
+    "arquivo": "Geitenmelk.jpg",
+    "autor": "Teunie",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Geitenmelk.jpg"
+  },
+  "CH8N2O3": {
+    "arquivo": "Ammonia_inhalants,_to_revive_patient_from_fainting_of_shock,_to_be_used_as_smelling_salts,_front_side.JPG",
+    "autor": "KingaNBM",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ammonia_inhalants,_to_revive_patient_from_fainting_of_shock,_to_be_used_as_smelling_salts,_front_side.JPG"
+  },
+  "C4H11N5": {
+    "arquivo": "Metformin_500mg_Tablets.jpg",
+    "autor": "User:Ash",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Metformin_500mg_Tablets.jpg"
+  },
+  "C4H7N3O": {
+    "arquivo": "2026_-_Blood_test_samples.jpg",
+    "autor": "Oleg Yunakov",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:2026_-_Blood_test_samples.jpg"
+  },
+  "C6H11NOS2": {
+    "arquivo": "Broccoli_and_cross_section_edit.jpg",
+    "autor": "Fir0002",
+    "licenca": "GFDL 1.2",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Broccoli_and_cross_section_edit.jpg"
+  },
+  "C7H14N2O3": {
+    "arquivo": "Tea_garden_at_Nagri_in_the_Kangra_Valley_of_Himachal_Pradesh,_India.jpg",
+    "autor": "UnpetitproleX",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tea_garden_at_Nagri_in_the_Kangra_Valley_of_Himachal_Pradesh,_India.jpg"
+  },
+  "C7H5NaO2": {
+    "arquivo": "Soft_drink_shelf_2.jpg",
+    "autor": "Wilfredor",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Soft_drink_shelf_2.jpg"
+  },
+  "SgC6O6": {
+    "arquivo": "RIKEN_RIBF_P4208166.jpg",
+    "autor": "Kestrel",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:RIKEN_RIBF_P4208166.jpg"
   },
   "C7H5NO3S": {
     "arquivo": "Saccharin-Na_substance_photo.jpg",
@@ -438,28 +2604,28 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Saccharin-Na_substance_photo.jpg"
   },
   "C8H8O3": {
-    "arquivo": "Vanlilin_vzorek.jpg",
-    "autor": "Milda 444",
-    "licenca": "CC BY-SA 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Vanlilin_vzorek.jpg"
+    "arquivo": "Vanilla_6beans.JPG",
+    "autor": "B.navez",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Vanilla_6beans.JPG"
   },
   "C5H8NNaO4": {
-    "arquivo": "Monosodium_glutamate_crystals.jpg",
-    "autor": "Ragesoss",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Monosodium_glutamate_crystals.jpg"
+    "arquivo": "Ramen_Jump_002.jpg",
+    "autor": "Ocdp",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ramen_Jump_002.jpg"
   },
   "C6H8O6": {
-    "arquivo": "Vitamin_C_supplements_1.jpg",
-    "autor": "Mx. Granger",
-    "licenca": "CC0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Vitamin_C_supplements_1.jpg"
+    "arquivo": "Kiwi_(Actinidia_chinensis)_1_Luc_Viatour.jpg",
+    "autor": "Luc Viatour",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kiwi_(Actinidia_chinensis)_1_Luc_Viatour.jpg"
   },
   "C8H9NO2": {
-    "arquivo": "Paracetamol_substance_photo.jpg",
-    "autor": "Rillke",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Paracetamol_substance_photo.jpg"
+    "arquivo": "Tylenol_paracetamol_sustained_release_tablets,_Chinese_version_(20221212120513).jpg",
+    "autor": "N509FZ",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tylenol_paracetamol_sustained_release_tablets,_Chinese_version_(20221212120513).jpg"
   },
   "C6H8O7": {
     "arquivo": "Citrus_fruits.jpg",
@@ -468,33 +2634,387 @@
     "pagina": "https://commons.wikimedia.org/wiki/File:Citrus_fruits.jpg"
   },
   "C9H8O4": {
-    "arquivo": "Acetylsalicylic_acid.jpg",
-    "autor": "Oxetane lacx",
-    "licenca": "CC BY 4.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Acetylsalicylic_acid.jpg"
+    "arquivo": "Regular_strength_enteric_coated_aspirin_tablets.jpg",
+    "autor": "Ragesoss",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Regular_strength_enteric_coated_aspirin_tablets.jpg"
+  },
+  "C10H14N2": {
+    "arquivo": "Patch_of_Tobacco_(Nicotiana_tabacum_)_in_a_field_in_Intercourse,_Pennsylvania..jpg",
+    "autor": "Photo by and (c)2006 Derek Ramsey (Ram-Man)",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Patch_of_Tobacco_(Nicotiana_tabacum_)_in_a_field_in_Intercourse,_Pennsylvania..jpg"
   },
   "C10H20O": {
-    "arquivo": "Menthol_Crystals.JPG",
-    "autor": "Miansari66",
-    "licenca": "Public domain",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Menthol_Crystals.JPG"
+    "arquivo": "Mint_leaves_(Mentha_spicata).jpg",
+    "autor": "Commonists",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mint_leaves_(Mentha_spicata).jpg"
   },
   "C14H18N2O5": {
-    "arquivo": "Aspartame_sample_recrystallised.jpg",
-    "autor": "LHcheM",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Aspartame_sample_recrystallised.jpg"
+    "arquivo": "Can_of_Diet_Sierra_Mist_lemon-lime_soda,_2011.jpg",
+    "autor": "DimiTalen",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Can_of_Diet_Sierra_Mist_lemon-lime_soda,_2011.jpg"
   },
   "C12H22O11": {
-    "arquivo": "Sugar_2xmacro.jpg",
-    "autor": "Lauri Andler (Phantom)",
-    "licenca": "CC BY-SA 3.0",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Sugar_2xmacro.jpg"
+    "arquivo": "Würfelzucker_--_2018_--_3582.jpg",
+    "autor": "Dietmar Rabich",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:W%C3%BCrfelzucker_--_2018_--_3582.jpg"
   },
   "C18H27NO3": {
-    "arquivo": "Habanero_closeup_edit2.jpg",
-    "autor": "The original uploader was Fir0002 at English Wikipedia.",
-    "licenca": "CC BY 2.5",
-    "pagina": "https://commons.wikimedia.org/wiki/File:Habanero_closeup_edit2.jpg"
+    "arquivo": "BhutJolokia09_Asit.jpg",
+    "autor": "Asit K. ghosh Thaumaturgist",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:BhutJolokia09_Asit.jpg"
+  },
+  "C10H16O": {
+    "arquivo": "Camphor_tree_and_Merlin.jpg",
+    "autor": "Iankcook",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Camphor_tree_and_Merlin.jpg"
+  },
+  "C9H13NO3": {
+    "arquivo": "Adrenalina_autoinyector9.JPG",
+    "autor": "AngelHM",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Adrenalina_autoinyector9.JPG"
+  },
+  "C10H12N2O": {
+    "arquivo": "Sa-sleeping-koala.JPG",
+    "autor": "Sanjay ach",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sa-sleeping-koala.JPG"
+  },
+  "C13H18O2": {
+    "arquivo": "Ibuprofen_tablets_in_palm_of_hand.jpg",
+    "autor": "Derrick Coetzee (User:Dcoetzee)",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ibuprofen_tablets_in_palm_of_hand.jpg"
+  },
+  "C20H30O": {
+    "arquivo": "Carrots_of_many_colors.jpg",
+    "autor": "Stephen Ausmus",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Carrots_of_many_colors.jpg"
+  },
+  "C8H20Pb": {
+    "arquivo": "EthylCorporationSign.jpg",
+    "autor": "Plazak",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:EthylCorporationSign.jpg"
+  },
+  "C12H24O2": {
+    "arquivo": "Coconuts_-_single_and_cracked_open.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Coconuts_-_single_and_cracked_open.jpg"
+  },
+  "C11H12N2O2": {
+    "arquivo": "Glass_of_Milk_(33657535532).jpg",
+    "autor": "NIAID",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Glass_of_Milk_(33657535532).jpg"
+  },
+  "C10H16N5O13P3": {
+    "arquivo": "Firefly_Nevit_02670_cr.jpg",
+    "autor": "Nevit Dilmen (talk)",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Firefly_Nevit_02670_cr.jpg"
+  },
+  "C10H18O": {
+    "arquivo": "Eucalyptus_punctata_-_adult_leaves.jpg",
+    "autor": "Geekstreet",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Eucalyptus_punctata_-_adult_leaves.jpg"
+  },
+  "C12H22O": {
+    "arquivo": "Petrichor_The_Smell_of_Rain.png",
+    "autor": "2140261AishwaryaShinde",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Petrichor_The_Smell_of_Rain.png"
+  },
+  "C11H14O3": {
+    "arquivo": "Candied_Ginger_(IMG_7223).jpg",
+    "autor": "Marc Majcher",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Candied_Ginger_(IMG_7223).jpg"
+  },
+  "C17H26O4": {
+    "arquivo": "Ginger_rhizomes.jpg",
+    "autor": "Judethedeus",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Ginger_rhizomes.jpg"
+  },
+  "C17H19NO3": {
+    "arquivo": "Black_Pepper_-_Piper_nigrum_-_Le_Jardin_du_Roi_-_01.jpg",
+    "autor": "NorbertNagel",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Black_Pepper_-_Piper_nigrum_-_Le_Jardin_du_Roi_-_01.jpg"
+  },
+  "C21H20O6": {
+    "arquivo": "Curcuma_longa_roots.jpg",
+    "autor": "Simon A. Eugster",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Curcuma_longa_roots.jpg"
+  },
+  "C16H10N2O2": {
+    "arquivo": "Indian_indigo_dye_lump.jpg",
+    "autor": "Photo by Evan Izer (Palladian)",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Indian_indigo_dye_lump.jpg"
+  },
+  "C16H18N2O4S": {
+    "arquivo": "Penicillium_digitatum,_Penicillium_italicum_(Green_Mold,_Blue_Mold)_on_Squash_(51822354805).jpg",
+    "autor": "gailhampshire",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Penicillium_digitatum,_Penicillium_italicum_(Green_Mold,_Blue_Mold)_on_Squash_(51822354805).jpg"
+  },
+  "C16H19N3O5S": {
+    "arquivo": "Amoxicillin_500mg_capsules_on_a_plate_(Sandoz).jpg",
+    "autor": "Henrysz",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Amoxicillin_500mg_capsules_on_a_plate_(Sandoz).jpg"
+  },
+  "C14H22N2O": {
+    "arquivo": "Lidocaine_hci.jpg",
+    "autor": "JL Johnson",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Lidocaine_hci.jpg"
+  },
+  "C14H9Cl5": {
+    "arquivo": "DDT_spray_1958.jpg",
+    "autor": "Content Providers(s):CDC",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:DDT_spray_1958.jpg"
+  },
+  "C19H28O2": {
+    "arquivo": "Depo-testosterone_200_mg_ml_crop.jpg",
+    "autor": "U.S. Drug Enforcement Administration",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Depo-testosterone_200_mg_ml_crop.jpg"
+  },
+  "C18H24O2": {
+    "arquivo": "Zumenon_(estradiol_hemihydrate)_tablets_in_Australia,_with_one_unopened_blister_pack.jpg",
+    "autor": "BlankEclair",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Zumenon_(estradiol_hemihydrate)_tablets_in_Australia,_with_one_unopened_blister_pack.jpg"
+  },
+  "C13H16N2O2": {
+    "arquivo": "Stars_in_the_night_sky_above_the_boreal_forest,_Chisasibi,_Quebec,_Canada.jpg",
+    "autor": "Carl Young",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Stars_in_the_night_sky_above_the_boreal_forest,_Chisasibi,_Quebec,_Canada.jpg"
+  },
+  "C15H16O2": {
+    "arquivo": "Thermal_paper_rolls_with_red_alert_line.jpg",
+    "autor": "Acheolg",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Thermal_paper_rolls_with_red_alert_line.jpg"
+  },
+  "C12H25NaO4S": {
+    "arquivo": "Foam_-_big.jpg",
+    "autor": "André Karwath aka Aka",
+    "licenca": "CC BY-SA 2.5",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Foam_-_big.jpg"
+  },
+  "C12H19Cl3O8": {
+    "arquivo": "Sucrin_tabletop_sweetener_packets.jpg",
+    "autor": "Gemma Rubio",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Sucrin_tabletop_sweetener_packets.jpg"
+  },
+  "C10H22": {
+    "arquivo": "Kerosene_bottle.jpg",
+    "autor": "Longhair at English Wikipedia",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Kerosene_bottle.jpg"
+  },
+  "C20H12": {
+    "arquivo": "Exhaling_cloud_of_cigarette_smoke_(50652653823).png",
+    "autor": "Ben Schumin from Montgomery Village, Maryland, USA",
+    "licenca": "CC BY-SA 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Exhaling_cloud_of_cigarette_smoke_(50652653823).png"
+  },
+  "C15H24O": {
+    "arquivo": "Froot-Loops-Cereal-Bowl.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Froot-Loops-Cereal-Bowl.jpg"
+  },
+  "C13H20O": {
+    "arquivo": "Viola_reichenbachiana_001.jpg",
+    "autor": "H. Zell",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Viola_reichenbachiana_001.jpg"
+  },
+  "C14H12O3": {
+    "arquivo": "Red_Wine_Glass.jpg",
+    "autor": "André Karwath aka Aka",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Red_Wine_Glass.jpg"
+  },
+  "C15H10O7": {
+    "arquivo": "Capparis_spinosa-IMG_3417.jpg",
+    "autor": "C T Johansson",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Capparis_spinosa-IMG_3417.jpg"
+  },
+  "C18H30O2": {
+    "arquivo": "Brown_Flax_Seeds.jpg",
+    "autor": "Sanjay Acharya",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Brown_Flax_Seeds.jpg"
+  },
+  "C20H30O2": {
+    "arquivo": "Omega_3_Fish_oil_softgel_capsules.jpg",
+    "autor": "Gpkp",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Omega_3_Fish_oil_softgel_capsules.jpg"
+  },
+  "C10H20O2": {
+    "arquivo": "Orange-Fruit-Pieces.jpg",
+    "autor": "Evan-Amos",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Orange-Fruit-Pieces.jpg"
+  },
+  "C20H24N2O2": {
+    "arquivo": "Non-UV_vs._UV_illuminated_tonic_water.jpg",
+    "autor": "Joseph Blosser",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Non-UV_vs._UV_illuminated_tonic_water.jpg"
+  },
+  "C14H11Cl2NO2": {
+    "arquivo": "Diclofenac_Topical_Gel.jpg",
+    "autor": "Group29",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Diclofenac_Topical_Gel.jpg"
+  },
+  "C17H19N3O3S": {
+    "arquivo": "Omeprazol_Activis_capsules.jpg",
+    "autor": "W.carter",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Omeprazol_Activis_capsules.jpg"
+  },
+  "C12H17NO": {
+    "arquivo": "Girl_applies_Insect_spray.jpg",
+    "autor": "Paul Budd",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Girl_applies_Insect_spray.jpg"
+  },
+  "C10H13N5O4": {
+    "arquivo": "Roasted_coffee_beans.jpg",
+    "autor": "MarkSweep",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Roasted_coffee_beans.jpg"
+  },
+  "C8H24O4Si4": {
+    "arquivo": "Cosmetics-1078712_1280.jpg",
+    "autor": "camillaperrucci",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Cosmetics-1078712_1280.jpg"
+  },
+  "C16H18ClN3S": {
+    "arquivo": "Bleu_de_méthylène.jpg",
+    "autor": "WikiProfPC",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Bleu_de_m%C3%A9thyl%C3%A8ne.jpg"
+  },
+  "C20H12O5": {
+    "arquivo": "Chicago_River_dyed_green,_buildings_more_prominent.jpg",
+    "autor": "Knowledge Seeker",
+    "licenca": "Public domain",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Chicago_River_dyed_green,_buildings_more_prominent.jpg"
+  },
+  "C16H8Br2N2O2": {
+    "arquivo": "Brandhorn_Bolinus_brandaris.jpg",
+    "autor": "Holger Krisp",
+    "licenca": "CC BY 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Brandhorn_Bolinus_brandaris.jpg"
+  },
+  "C18H29NaO3S": {
+    "arquivo": "Afwasmiddel_Una_Aldi.JPG",
+    "autor": "Onderwijsgek",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Afwasmiddel_Una_Aldi.JPG"
+  },
+  "C12H23NaO2": {
+    "arquivo": "Aleppo_soap_01.jpg",
+    "autor": "Bernard Gagnon",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Aleppo_soap_01.jpg"
+  },
+  "C10H16N2O8": {
+    "arquivo": "Mayonnaise_(1).jpg",
+    "autor": "jules",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Mayonnaise_(1).jpg"
+  },
+  "C12H17ClN4OS": {
+    "arquivo": "Home_made_whole_grain_bread.jpg",
+    "autor": "Tomascastelazo",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Home_made_whole_grain_bread.jpg"
+  },
+  "C17H20N4O6": {
+    "arquivo": "RiboflavinSolutionAndBlueLaser.JPG",
+    "autor": "Sbharris",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:RiboflavinSolutionAndBlueLaser.JPG"
+  },
+  "C10H16N2O3S": {
+    "arquivo": "Double_and_single_yolk_hen_eggs.png",
+    "autor": "WhatamIdoing",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Double_and_single_yolk_hen_eggs.png"
+  },
+  "C19H19N7O6": {
+    "arquivo": "Salad_greens_and_vegetables_-_Cambridge,_MA.jpg",
+    "autor": "Daderot",
+    "licenca": "CC0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Salad_greens_and_vegetables_-_Cambridge,_MA.jpg"
+  },
+  "Be3Al2Si6O18": {
+    "arquivo": "Natural_Zambian_Emerald_Gemstone_Gems_International.jpg",
+    "autor": "Gems International",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Natural_Zambian_Emerald_Gemstone_Gems_International.jpg"
+  },
+  "C13H16N3NaO4S": {
+    "arquivo": "Metamizole_500mg-1ml_vials_yellow_background.jpg",
+    "autor": "Wesalius",
+    "licenca": "CC BY 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Metamizole_500mg-1ml_vials_yellow_background.jpg"
+  },
+  "C17H19ClF3NO": {
+    "arquivo": "Prozac_pills_cropped.jpg",
+    "autor": "Tom Varco",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Prozac_pills_cropped.jpg"
+  },
+  "C21H30O5": {
+    "arquivo": "Tube_of_hydrocortisone_cream.jpg",
+    "autor": "Father Goose",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Tube_of_hydrocortisone_cream.jpg"
+  },
+  "C9H17NO5": {
+    "arquivo": "Avocado_Hass_-_single_and_halved.jpg",
+    "autor": "Ivar Leidus",
+    "licenca": "CC BY-SA 4.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Avocado_Hass_-_single_and_halved.jpg"
+  },
+  "C16H18O9": {
+    "arquivo": "75_degrees_green_coffee.png",
+    "autor": "Dan Bollinger",
+    "licenca": "CC BY-SA 3.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:75_degrees_green_coffee.png"
+  },
+  "C15H14O6": {
+    "arquivo": "Dutch_process_and_natural_cocoa.jpg",
+    "autor": "F_A",
+    "licenca": "CC BY 2.0",
+    "pagina": "https://commons.wikimedia.org/wiki/File:Dutch_process_and_natural_cocoa.jpg"
   }
 }
