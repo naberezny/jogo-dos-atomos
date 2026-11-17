@@ -625,3 +625,16 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
   .filtro-chips:not(.grupos) { flex-wrap: nowrap; overflow-x: auto; margin: 0 -18px; padding: 0 18px 2px; scrollbar-width: none; }
   .filtro-chips:not(.grupos)::-webkit-scrollbar { display: none; }
 }
+
+/* Tabela: no celular, as células são pegas ao arrastar; o espaço vazio do topo rola a tabela. */
+.ptable.pegavel .cell { touch-action: none; }
+/* A primeira linha (entre H e He) é vazia de ponta a ponta e sempre tem um pedaço à vista; a pílula gruda na parte dela que estiver visível enquanto a tabela rola. */
+.ptable-rolar { grid-column: 2 / 18; grid-row: 1; display: flex; align-items: center; pointer-events: none; user-select: none; }
+.ptable-rolar-pilula { position: sticky; left: 10px; right: 10px; margin: 0 auto; display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-radius: 999px; border: 1px dashed oklch(0.82 0.13 195 / .35); background: oklch(0.82 0.13 195 / .06); color: oklch(0.78 0.05 200); font-size: 13px; line-height: 1.25; text-align: center; pointer-events: none; user-select: none; }
+.ptable-rolar .seta { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--accent); animation: rolar-seta 1.6s ease-in-out infinite; }
+.ptable-rolar .seta:first-child { animation-name: rolar-seta-esq; }
+@keyframes rolar-seta { 50% { transform: translateX(5px); opacity: .55; } }
+@keyframes rolar-seta-esq { 50% { transform: translateX(-5px); opacity: .55; } }
+.ptable-scroll:has(.ptable-rolar) { cursor: grab; }
+.ptable-scroll:has(.ptable-rolar):active { cursor: grabbing; }
+.compacta .ptable-rolar-pilula { font-size: calc(var(--cel) * .36); padding: 6px 12px; }

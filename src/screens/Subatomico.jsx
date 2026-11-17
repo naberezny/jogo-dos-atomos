@@ -181,7 +181,8 @@ export default function Subatomico({ game }) {
     });
   }, [fundindo]);
 
-  const pega = usePegarElemento({ alvo: reator, onSoltar: id => add(id), onSobre: setSobre });
+  // Segurar uma partícula da tabela mostra a ficha dela (no celular, abre o painel de detalhes).
+  const pega = usePegarElemento({ alvo: reator, onSoltar: id => add(id), onSobre: setSobre, onSegurar: id => { setFoco(id); if (pequeno) setPainelAberto('detalhes'); } });
   const movel = pequeno && aba === 'Acelerador';
   const abas = (
     <div className="seg">
@@ -199,6 +200,8 @@ export default function Subatomico({ game }) {
   const pFoco = par(foco) || par('u');
   const focoZona = zona[foco] ? foco : ks[ks.length - 1];
   const pZona = focoZona && par(focoZona);
+  // Com os detalhes abertos, o botão mostra a partícula da ficha (pode ter vindo de segurar na tabela).
+  const pBotao = painelAberto === 'detalhes' ? pFoco : pZona;
   const painel = (onClose, className) => (
     <StatusPanel
       onClose={onClose}
@@ -248,12 +251,12 @@ export default function Subatomico({ game }) {
               {movel && !fundindo && (
                 <div className="reator-acoes">
                   {painelAberto !== 'detalhes' && <BotaoDica tom={tone} aberto={painelAberto === 'dica'} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${par(m.id).sym}`).join(' ')} onClick={() => alternar('dica')} />}
-                  {pZona && painelAberto !== 'dica' && <BotaoDetalhes simbolo={pZona.sym} nome={pZona.name} cor={cor(pZona.fam)} aberto={painelAberto === 'detalhes'} onClick={() => { setFoco(focoZona); alternar('detalhes'); }} />}
+                  {pBotao && painelAberto !== 'dica' && <BotaoDetalhes simbolo={pBotao.sym} nome={pBotao.name} cor={cor(pBotao.fam)} aberto={painelAberto === 'detalhes'} onClick={() => { if (painelAberto !== 'detalhes') setFoco(focoZona); alternar('detalhes'); }} />}
                 </div>
               )}
               {movel && painelAberto === 'dica' && !fundindo && painel(() => setPainelAberto(null), 'dica-painel')}
-              {movel && painelAberto === 'detalhes' && pZona && !fundindo && <div className="dica-painel dica-dupla">{fichaParticula}</div>}
-              {ks.length === 0 && <div className="drop-hint">{movel ? 'Toque numa partícula, ou segure e arraste até aqui' : 'Arraste ou toque nas partículas da tabela'}</div>}
+              {movel && painelAberto === 'detalhes' && !fundindo && <div className="dica-painel dica-dupla">{fichaParticula}</div>}
+              {ks.length === 0 && <div className="drop-hint">{movel ? 'Toque numa partícula ou arraste até aqui. Segure para ver os detalhes' : 'Clique ou arraste as partículas da tabela. Segure para ver os detalhes'}</div>}
               <div className="zone">
                 {ks.map(id => {
                   const p = par(id);

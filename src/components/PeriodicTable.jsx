@@ -1,5 +1,5 @@
 // Tabela periódica com legenda que filtra por família. Usada no laboratório e nos estudos.
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { elements, cats } from '../data/nucleo.js';
 import { col, el } from '../game/logic.js';
 import usePegarElemento from '../hooks/usePegarElemento.js';
@@ -22,17 +22,37 @@ function AtomoNaMao({ sym, toque, innerRef }) {
  * @param isOff       sym => true para apagar o elemento (sem receita, fora da busca...)
  * @param isMarked    sym => true para contornar o elemento (ex.: já está no reator)
  * @param soltarEm    ref de onde os elementos podem ser soltos; liga o gesto de pegar e arrastar
- *                    (no toque, segurando por `segurarMs`; no mouse, arrastando direto)
+ *                    (arrastar o elemento já o põe na mão, no dedo e no mouse)
+ * @param onSegurar   sym => void, ao segurar um elemento parado (abre os detalhes)
  * @param onSoltar    sym => void, ao soltar um elemento dentro de `soltarEm`
  * @param onSobre     bool => void, quando o elemento entra ou sai de `soltarEm`
  * @param compacta    versão mínima para celular: só os símbolos, sem título nem legenda, cabe sem rolar
  * @param acao        complemento do rótulo de acessibilidade ("Ver ficha")
  * @param children    conteúdo extra no cabeçalho, antes da legenda
  */
-export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, selected, isOff, isMarked, soltarEm, onSoltar, onSobre, segurarMs, compacta = false, acao = 'Ver ficha', children }) {
+export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, selected, isOff, isMarked, soltarEm, onSoltar, onSobre, onSegurar, segurarMs, compacta = false, acao = 'Ver ficha', children }) {
   const [hovered, setHovered] = useState(null);
   const [filterCat, setFilterCat] = useState(null);
-  const pega = usePegarElemento({ alvo: soltarEm, onSoltar, onSobre, segurarMs, ativo: !!soltarEm });
+  const pega = usePegarElemento({ alvo: soltarEm, onSoltar, onSobre, onSegurar, segurarMs, ativo: !!soltarEm });
+  // A tabela não cabe na tela (celular): o espaço vazio do topo vira a "alça" para rolá-la.
+  const rolagem = useRef(null);
+  const [rola, setRola] = useState(false);
+  useEffect(() => {
+    const el = rolagem.current;
+    if (!el || typeof ResizeObserver !== 'function') return;
+    const medir = () => setRola(el.scrollWidth > el.clientWidth + 4);
+    const ro = new ResizeObserver(medir); ro.observe(el); medir();
+    return () => ro.disconnect();
+  }, []);
+  // No mouse não existe arrastar para rolar: arrastar o espaço vazio faz isso.
+  const arrastarRolagem = e => {
+    if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest('.cell')) return;
+    const el = rolagem.current, x0 = e.clientX, s0 = el.scrollLeft;
+    const move = ev => { el.scrollLeft = s0 - (ev.clientX - x0); };
+    const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
   const escolher = sym => { if (pega.cliqueValido()) onPick(sym); };
   return (
     <div className={`ptable-card${compacta ? ' compacta' : ''}`}>
@@ -50,8 +70,8 @@ export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, se
           })}
         </div>
       </div>}
-      <div className="ptable-scroll">
-        <div className="ptable" ref={pega.gradeRef} onMouseLeave={() => setHovered(null)} style={{ '--segurar': `${pega.segurarMs}ms` }}>
+      <div className="ptable-scroll" ref={rolagem} onPointerDown={rola ? arrastarRolagem : undefined}>
+        <div className={`ptable${soltarEm ? ' pegavel' : ''}`} ref={pega.gradeRef} onMouseLeave={() => setHovered(null)} style={{ '--segurar': `${pega.segurarMs}ms` }}>
           {elements.map(e => {
             const apagado = isOff ? isOff(e.sym) : false;
             const dim = apagado || (filterCat && filterCat !== e.cat);
@@ -84,6 +104,15 @@ export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, se
               </div>
             );
           })}
+          {rola && (
+            <div className="ptable-rolar" aria-hidden="true">
+              <div className="ptable-rolar-pilula">
+                <span className="seta">‹</span>
+                <span>Arraste aqui para rolar a tabela</span>
+                <span className="seta">›</span>
+              </div>
+            </div>
+          )}
           <div className="series" style={{ gridColumn: 3, gridRow: 6, borderColor: 'oklch(0.8 0.13 340 / 0.4)', color: 'oklch(0.8 0.13 340)' }}>57–71</div>
           <div className="series" style={{ gridColumn: 3, gridRow: 7, borderColor: 'oklch(0.8 0.14 5 / 0.4)', color: 'oklch(0.8 0.14 5)' }}>89–103</div>
         </div>

@@ -92,7 +92,7 @@ export default function Lab({ game }) {
             </div>
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
-          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Toque num elemento da tabela, ou segure e arraste até aqui' : 'Clique num elemento da tabela ou arraste até aqui'}</div>}
+          {zoneKeys.length === 0 && <div className="drop-hint">{small ? 'Toque num elemento ou arraste até aqui. Segure para ver os detalhes' : 'Clique num elemento ou arraste até aqui. Segure para ver os detalhes'}</div>}
           <div className="zone">
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
@@ -133,6 +133,7 @@ export default function Lab({ game }) {
         soltarEm={reactor}
         onSoltar={pegar}
         onSobre={setDragOver}
+        onSegurar={sym => { setHovered(sym); set({ drawer: sym }); }}
         compacta={small}
         acao="Adicionar ao reator"
       />

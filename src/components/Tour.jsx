@@ -9,9 +9,9 @@ const passos = t => [
   {
     icon: 'lab', h: 145, title: 'Pegue um átomo', anim: 'arrastar',
     text: t
-      ? 'No Laboratório, segure o dedo sobre um elemento por um instante: o átomo sai da tabela e vai para a sua mão. Arraste e solte dentro do reator.'
+      ? 'No Laboratório, arraste um elemento da tabela: o átomo vai para a sua mão. Solte dentro do reator.'
       : 'No Laboratório, clique num elemento da tabela e arraste: o átomo vai para a sua mão. Solte dentro do reator.',
-    extra: t ? 'Com pressa? Um toque rápido já coloca o elemento no reator.' : 'Com pressa? Um clique simples já coloca o elemento no reator.',
+    extra: t ? 'Um toque rápido coloca o elemento no reator. Segure o dedo parado para ver os detalhes dele. Para rolar a tabela, arraste o espaço vazio no topo dela.' : 'Um clique simples coloca o elemento no reator. Segure o botão parado para ver os detalhes dele.',
   },
   { icon: 'coll', h: 65, title: 'Acerte a proporção e funda', anim: 'fundir', text: 'Ajuste a quantidade de cada átomo com − e +. A tabela apaga os elementos que não combinam com o que já está no reator. Quando a proporção forma uma substância, o botão Fundir aparece.' },
   {
