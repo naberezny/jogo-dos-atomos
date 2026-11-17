@@ -1,18 +1,11 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
-function useMedia(q) {
-  const [on, setOn] = useState(() => window.matchMedia(q).matches);
-  useEffect(() => {
-    const m = window.matchMedia(q), f = () => setOn(m.matches);
-    m.addEventListener('change', f);
-    return () => m.removeEventListener('change', f);
-  }, [q]);
-  return on;
-}
-import { elements, cats } from '../data/nucleo.js';
+import { cats } from '../data/nucleo.js';
+import useMedia from '../hooks/useMedia.js';
 import { col, el, findMatch, FUSE_CHARGE, fusable, fuseMs, reactorStatus, sub } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
 import FusionFX from '../components/FusionFX.jsx';
+import PeriodicTable from '../components/PeriodicTable.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
 
 const TONE = { idle: 'var(--muted)', ok: 'var(--accent)', near: 'var(--warn)', bad: 'var(--bad)' };
@@ -21,7 +14,6 @@ const ATOM_SCALE = 0.85;
 export default function Lab({ game }) {
   const { st, set, addAtom, clearZone, fuse } = game;
   const [hovered, setHovered] = useState('C');
-  const [filterCat, setFilterCat] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const small = useMedia('(max-width: 640px)');
   const atomScale = small ? 0.5 : ATOM_SCALE;
@@ -123,57 +115,14 @@ export default function Lab({ game }) {
         </div>
       </div>
 
-      <div className="ptable-card">
-        <div className="page-head" style={{ alignItems: 'center' }}>
-          <div className="display" style={{ fontSize: 18, fontWeight: 600 }}>Tabela periódica</div>
-          <div className="legend">
-            {Object.keys(cats).map(k => {
-              const on = filterCat === k;
-              return (
-                <button key={k} aria-pressed={on} onClick={() => setFilterCat(on ? null : k)} style={on ? { background: col(k, 0.18), borderColor: col(k, 0.6) } : undefined}>
-                  <span className="sw" style={{ background: col(k) }} />{cats[k].name}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-        <div className="ptable-scroll">
-          <div className="ptable">
-            {elements.map(e => {
-              const apagado = !acesos.has(e.sym);
-              const dim = apagado || (filterCat && filterCat !== e.cat);
-              return (
-                <div
-                  key={e.sym}
-                  className={`cell${apagado ? ' off' : ''}`}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${e.name}, ${e.z}. ${apagado ? 'Não se liga à combinação atual. Ver ficha' : 'Ver ficha e adicionar ao reator'}`}
-                  draggable
-                  onDragStart={ev => { ev.dataTransfer.setData('text/plain', e.sym); ev.dataTransfer.effectAllowed = 'copy'; }}
-                  onClick={() => open(e.sym)}
-                  onKeyDown={ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(e.sym); } }}
-                  onMouseEnter={() => setHovered(e.sym)}
-                  onFocus={() => setHovered(e.sym)}
-                  style={{
-                    gridColumn: e.col, gridRow: e.row,
-                    borderColor: col(e.cat, 0.35),
-                    background: col(e.cat, hovered === e.sym ? 0.24 : 0.09),
-                    opacity: dim ? 0.18 : 1,
-                    outline: st.zone[e.sym] ? `1.5px solid ${col(e.cat)}` : undefined,
-                  }}
-                >
-                  <span className="z">{e.z}</span>
-                  <span className="s" style={{ color: col(e.cat) }}>{e.sym}</span>
-                  <span className="n">{e.name}</span>
-                </div>
-              );
-            })}
-            <div className="series" style={{ gridColumn: 3, gridRow: 6, borderColor: 'oklch(0.8 0.13 340 / 0.4)', color: 'oklch(0.8 0.13 340)' }}>57–71</div>
-            <div className="series" style={{ gridColumn: 3, gridRow: 7, borderColor: 'oklch(0.8 0.14 5 / 0.4)', color: 'oklch(0.8 0.14 5)' }}>89–103</div>
-          </div>
-        </div>
-      </div>
+      <PeriodicTable
+        onPick={open}
+        selected={st.drawer}
+        isOff={sym => !acesos.has(sym)}
+        isMarked={sym => !!st.zone[sym]}
+        draggable
+        acao="Ver ficha e adicionar ao reator"
+      />
 
       {st.drawer && <ElementDrawer sym={st.drawer} discovered={st.discovered} onClose={() => set({ drawer: null })} onAdd={() => addFromDrawer(st.drawer)} inZone={st.zone[st.drawer] || 0} />}
     </section>

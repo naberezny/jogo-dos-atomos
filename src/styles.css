@@ -235,6 +235,17 @@ h1, h2, h3 { margin: 0; }
 @keyframes chegou { 0% { transform: scale(.4); opacity: 0; } 55% { transform: scale(1.12); opacity: 1; } 100% { transform: none; } }
 .zone-atom.just-added { animation: chegou .6s ease-out; }
 .zone-atom.just-added .mono { color: var(--accent) !important; }
+/* ---------- Estudos ---------- */
+.estudos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+.estudos.largo { grid-template-columns: minmax(0, 1fr) 420px; }
+.ficha-painel { position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow: auto; border-radius: 16px; border: 1px solid; background: var(--panel); display: flex; flex-direction: column; }
+.cell.sel { box-shadow: 0 0 0 1.5px currentColor, 0 0 14px oklch(0.82 0.13 195 / 0.35); z-index: 1; }
+.busca { display: flex; align-items: center; gap: 8px; padding: 0 12px; height: 40px; min-width: min(320px, 100%); border-radius: 10px; border: 1px solid var(--line-strong); background: var(--sunken); }
+.busca:focus-within { border-color: var(--accent); }
+.busca input { flex: 1; min-width: 0; border: none; outline: none; background: transparent; color: var(--fg); font: inherit; font-size: 14px; }
+.busca input::placeholder { color: var(--muted); }
+.busca .mono { font-size: 12px; color: var(--muted); }
+
 /* ---------- Modo subatômico ---------- */
 .orbe { border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; font-family: var(--display); font-weight: 700; color: oklch(0.14 0.02 265); white-space: nowrap; background: radial-gradient(circle at 34% 30%, #fff 0%, var(--c) 34%, color-mix(in oklch, var(--c) 45%, #000) 100%); box-shadow: 0 0 18px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 8px rgb(255 255 255 / .25); animation: pulsar 2.6s ease-in-out infinite; }
 .orbe.anti { color: var(--c); background: radial-gradient(circle at 34% 30%, color-mix(in oklch, var(--c) 35%, #000) 0%, oklch(0.16 0.02 265) 70%); border: 2px solid var(--c); }

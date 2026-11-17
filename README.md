@@ -18,6 +18,9 @@ as abas **Básico** (como foi descoberto, origem do nome e curiosidades) e **Ava
 bloco, partículas, distribuição eletrônica, pontos de fusão e ebulição, densidade, eletronegatividade,
 energia de ionização, afinidade eletrônica e estados de oxidação), além do botão para adicioná-lo ao reator.
 
+Na aba **Estudos**, a tabela periódica e a ficha completa de cada elemento ficam lado a lado, com busca
+por nome, símbolo ou número, sem o reator.
+
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
@@ -54,8 +57,9 @@ Sobe o jogo com nginx na porta 8096 (mude com `PORTA=9000 docker compose up -d -
 prototipo/        protótipo original feito no Claude Design (referência)
 src/data/         elementos e substâncias
 src/game/         regras do jogo (combinação, XP, missões) e estado salvo
-src/components/   átomo e molécula animados em canvas
-src/screens/      telas: início, laboratório, ficha do elemento, resultado, coleção, missões, perfil
+src/components/   peças reutilizáveis: tabela periódica, ficha do elemento, átomo e molécula em canvas
+src/hooks/        hooks compartilhados
+src/screens/      telas: início, laboratório, coleção, subatômico, estudos, missões, perfil
 ```
 
 ## Créditos das fotos
