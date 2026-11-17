@@ -88,7 +88,6 @@ export default function Lab({ game }) {
           {small && !st.fusing && (
             <div className="reator-acoes">
               <BotaoDica tom={tone} aberto={dica} chama={status.tone === 'near' || status.tone === 'bad'} resumo={status.missing.map(m => `+${m.n} ${m.sym}`).join(' ')} onClick={() => setDica(d => !d)} />
-              {foco && !dica && <BotaoDetalhes simbolo={foco} nome={el(foco).name} cor={col(el(foco).cat)} onClick={() => set({ drawer: foco })} />}
             </div>
           )}
           {small && dica && !st.fusing && <StatusPanel {...painel} className="dica-painel" onClose={() => setDica(false)} />}
@@ -111,7 +110,6 @@ export default function Lab({ game }) {
               );
             })}
           </div>
-          <div className="zone-formula" aria-live="polite">{zoneKeys.length ? sub(zoneKeys.map(k => k + (st.zone[k] > 1 ? st.zone[k] : '')).join('')) : ''}</div>
           {match && <button className="btn-fuse" onClick={fuse} disabled={st.fusing}>{st.fusing ? 'FUNDINDO…' : 'FUNDIR'}</button>}
           {st.fusing && !reduced && <FusionFX ms={ms} charge={FUSE_CHARGE} hues={zoneKeys.map(k => cats[el(k).cat])} />}
           {st.fusing && match && <div className="fusion-formula" aria-hidden="true">{sub(match.f)}</div>}
