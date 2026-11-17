@@ -44,7 +44,8 @@ function Secao({ titulo, children }) {
   );
 }
 
-export default function ElementDrawer({ sym, discovered, onClose, onAdd, inZone = 0 }) {
+/** Com `onBack`, a ficha abre por cima de outra tela e ganha o botão Voltar; sem `onAdd`, não mostra o rodapé de adicionar. */
+export default function ElementDrawer({ sym, discovered, onClose, onAdd, onBack, inZone = 0 }) {
   const t = el(sym), tc = cats[t.cat];
   const [tab, setTab] = useState('Básico');
   const [view, setView] = useState('3D');
@@ -63,10 +64,12 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd, inZone 
 
   return (
     <>
-      <div className="scrim" onClick={onClose} />
-      <aside className="drawer" role="dialog" aria-modal="true" aria-label={`Ficha de ${t.name}`} style={{ borderColor: col(t.cat, 0.5) }}>
+      <div className={`scrim${onBack ? ' over' : ''}`} onClick={onClose} />
+      <aside className={`drawer${onBack ? ' over' : ''}`} role="dialog" aria-modal="true" aria-label={`Ficha de ${t.name}`} style={{ borderColor: col(t.cat, 0.5) }}>
         <div className="drawer-head">
-          <div className="eyebrow">Ficha do elemento</div>
+          {onBack
+            ? <button className="btn-small" onClick={onBack} autoFocus>← Voltar</button>
+            : <div className="eyebrow">Ficha do elemento</div>}
           <button className="icon-btn" onClick={onClose} aria-label="Fechar">✕</button>
         </div>
         <div style={{ display: 'flex', gap: 16, padding: '4px 20px 20px' }}>
@@ -184,10 +187,10 @@ export default function ElementDrawer({ sym, discovered, onClose, onAdd, inZone 
           </div>
         )}
 
-        <div className="drawer-foot">
+        {onAdd && <div className="drawer-foot">
           {inZone > 0 && <div style={{ fontSize: 12.5, color: 'var(--muted)', textAlign: 'center' }}>Já há {inZone} {inZone > 1 ? 'átomos' : 'átomo'} de {t.sym} no reator</div>}
           <button className="btn btn-primary" style={{ width: '100%' }} onClick={onAdd}>Adicionar {t.sym} ao reator</button>
-        </div>
+        </div>}
       </aside>
     </>
   );

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { bySymbolFormula, col, el, geom3d, molarMass, structure, subXP } from '../game/logic.js';
 import Mol3D from '../components/Mol3D.jsx';
 import Foto, { temFoto } from '../components/Foto.jsx';
+import ElementDrawer from './ElementDrawer.jsx';
 
 const STATE = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 
@@ -41,7 +42,9 @@ export default function ResultModal({ game, onClose, toColl }) {
   const [escolha, setView] = useState(null);
   const view = escolha === 'Foto' && !foto ? '3D' : escolha || (foto ? 'Foto' : '3D');
   const views = foto ? ['Foto', '2D', '3D'] : ['2D', '3D'];
-  useEffect(() => setView(null), [st.result]);
+  const [elem, setElem] = useState(null);
+  const voltar = () => setElem(null);
+  useEffect(() => { setView(null); setElem(null); }, [st.result]);
   const wrap = useRef(null);
   const cont = useRef(null);
   useEffect(() => {
@@ -49,10 +52,11 @@ export default function ResultModal({ game, onClose, toColl }) {
     cont.current?.focus({ preventScroll: true });
   }, [st.result]);
   useEffect(() => {
-    const k = e => { if (e.key === 'Escape') onClose(); };
+    // Com a ficha de um elemento aberta por cima, Esc só volta para cá (a própria ficha trata a tecla).
+    const k = e => { if (e.key === 'Escape' && !elem) onClose(); };
     window.addEventListener('keydown', k);
     return () => window.removeEventListener('keydown', k);
-  }, [onClose]);
+  }, [onClose, elem]);
   if (!s) return null;
 
   return (
@@ -81,7 +85,7 @@ export default function ResultModal({ game, onClose, toColl }) {
             <div className="chips">
               {Object.keys(s.c).map(k => {
                 const e = el(k);
-                return <div key={k} className="chip" style={{ borderColor: col(e.cat, 0.3), background: col(e.cat, 0.08), fontFamily: 'inherit', whiteSpace: 'nowrap' }}><span className="display" style={{ fontWeight: 600, color: col(e.cat) }}>{k}</span> {e.name} ×{s.c[k]}</div>;
+                return <button key={k} className="chip chip-btn" onClick={() => setElem(k)} aria-label={`Ver ficha de ${e.name}`} style={{ borderColor: col(e.cat, 0.3), background: col(e.cat, 0.08), fontFamily: 'inherit', whiteSpace: 'nowrap' }}><span className="display" style={{ fontWeight: 600, color: col(e.cat) }}>{k}</span> {e.name} ×{s.c[k]}</button>;
               })}
             </div>
           </div>
@@ -116,6 +120,7 @@ export default function ResultModal({ game, onClose, toColl }) {
           </div>
         </div>
       </div>
+      {elem && <div onClick={e => e.stopPropagation()}><ElementDrawer sym={elem} discovered={st.discovered} onClose={voltar} onBack={voltar} /></div>}
     </div>
   );
 }
