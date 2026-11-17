@@ -3,6 +3,7 @@ import { bySymbolFormula, col, el, subXP } from './game/logic.js';
 import { substances } from './data/nucleo.js';
 import { par, REC, receitas, xpSub } from './data/subatomico.js';
 import { fotoUrl, temFoto } from './components/Foto.jsx';
+import { fraseParticula, fraseSubstancia } from './data/frases.js';
 import { useGame } from './game/useGame.js';
 import Home from './screens/Home.jsx';
 import Lab from './screens/Lab.jsx';
@@ -74,13 +75,13 @@ export default function App() {
     if (r?.tipo === 'mol') {
       const s = bySymbolFormula(r.id); if (!s) return null;
       const ks = Object.keys(s.c), principal = ks.find(k => k !== 'H') || ks[0];
-      return { d: s.d, nome: s.name, fato: s.fact, foto: temFoto(s.f) ? fotoUrl(s.f) : null, tom: col(el(principal).cat), xp: subXP(s),
+      return { ...fraseSubstancia(s), d: s.d, nome: s.name, foto: temFoto(s.f) ? fotoUrl(s.f) : null, tom: col(el(principal).cat), xp: subXP(s),
         partes: ks.map(k => ({ sym: k, cor: col(el(k).cat), qtd: s.c[k] })), n: P.disc.length, total: substances.length };
     }
     if (r?.tipo === 'sub') {
       const x = REC.get(r.id); if (!x) return null;
       const ks = Object.keys(x.c);
-      return { d: x.sym, nome: x.name, fato: x.fato, foto: null, tom: corSub(par(ks[0]).fam), xp: xpSub(x), tipo: 'partícula',
+      return { ...fraseParticula(x), d: x.sym, nome: x.name, foto: null, tom: corSub(par(ks[0]).fam), xp: xpSub(x),
         partes: ks.map(k => ({ sym: par(k).sym, cor: corSub(par(k).fam), qtd: x.c[k] })), n: P.sub.length, total: receitas.length };
     }
     return null;

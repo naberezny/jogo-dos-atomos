@@ -10,11 +10,11 @@ const semMovimento = () => typeof matchMedia === 'function' && matchMedia('(pref
 export const nivelDe = xp => Math.floor(xp / XPL) + 1;
 
 /**
- * Tela "Uau!" da primeira vez que algo é descoberto.
+ * Tela "Uau!" da primeira vez que algo é descoberto, com título e frase do grupo da descoberta.
  * @param d       fórmula ou símbolo em destaque
  * @param partes  [{ sym, cor }] — átomos ou partículas que formam a descoberta (giram em volta)
  */
-export function Revelacao({ d, nome, fato, foto, tom, partes, xp, n, total, tipo = 'substância', onContinuar }) {
+export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, xp, n, total, onContinuar }) {
   const reduzido = semMovimento();
   const btn = useRef(null);
   const [pronto, setPronto] = useState(reduzido);
@@ -35,8 +35,9 @@ export function Revelacao({ d, nome, fato, foto, tom, partes, xp, n, total, tipo
       <div className="nivel-raios rev-raios" aria-hidden="true" />
       {!reduzido && <Particulas cores={[tom, 'oklch(0.9 0.08 195)', '#fff', 'oklch(0.85 0.14 90)']} cy={0.36} />}
       <div className="rev-centro">
-        <div className="rev-selo mono">✦ Uau! Nova descoberta ✦</div>
-        <div className="rev-frase">Você acaba de descobrir {tipo === 'partícula' ? 'a partícula' : 'a substância'}</div>
+        <div className="rev-selo mono">✦ Nova descoberta ✦</div>
+        <h2 className="rev-titulo display">{titulo}</h2>
+        <p className="rev-frase">{texto}</p>
         <div className="rev-orbe" aria-hidden="true">
           <span className="rev-halo" />
           {foto
@@ -50,7 +51,6 @@ export function Revelacao({ d, nome, fato, foto, tom, partes, xp, n, total, tipo
         </div>
         <div className="rev-formula display">{d}</div>
         <div className="rev-nome display">{nome}</div>
-        {fato && <p className="rev-fato">{fato}</p>}
         <div className="rev-info">
           <span className="rev-xp mono">+{xp} XP</span>
           <span className="rev-conta">{n} de {total} na sua coleção</span>
