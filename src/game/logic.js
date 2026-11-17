@@ -31,7 +31,8 @@ export const subXP = s => 10 * s.atoms + 20 * s.nEl;
 
 const tem = (c, lista) => c.disc.filter(s => lista.includes(s.f)).length;
 const BASES = ['C5H5N5', 'C5H6N2O2', 'C4H5N3O', 'C5H5N5O', 'C4H4N2O2'];
-const ACIDOS = ['HBr', 'HClO', 'C3H6O2', 'C3H4O3', 'C4H6O6', 'C4H6O5', 'C6H8O2', 'C7H6O2', 'C8H6O4', 'C12H24O2', 'C5H4N4O3', 'HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
+const AMINO = ['C2H5NO2', 'C3H7NO2', 'C3H7NO3', 'C3H7NO2S', 'C6H13NO2', 'C6H14N2O2', 'C9H11NO2', 'C11H12N2O2', 'C4H7NO4', 'C5H9NO4', 'C9H11NO3', 'C5H11NO2', 'C5H9NO2', 'C5H11NO2S', 'C6H14N4O2', 'C6H9N3O2', 'C5H10N2O3', 'C4H8N2O3'];
+const ACIDOS = ['HI', 'HClO4', 'C7H6O5', 'C2H4O3', 'C4H6O4', 'C6H10O4', 'C3H4O2', 'C5H10O2', 'C18H30O2', 'C20H30O2', 'C4H7NO4', 'C5H9NO4', 'C19H19N7O6', 'HBr', 'HClO', 'C3H6O2', 'C3H4O3', 'C4H6O6', 'C4H6O5', 'C6H8O2', 'C7H6O2', 'C8H6O4', 'C12H24O2', 'C5H4N4O3', 'HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
 
 export const MISSIONS = [
   { title: 'Primeiros passos', desc: 'Descubra 5 substâncias.', target: 5, val: c => c.disc.length, reward: 100 },
@@ -67,7 +68,14 @@ export const MISSIONS = [
   { title: 'Prateleira de temperos', desc: 'Crie 6 moléculas de temperos: capsaicina, piperina, gingerol, curcumina, alicina, anetol, timol ou isotiocianato de alila.', target: 6, val: c => tem(c, ['C18H27NO3', 'C17H19NO3', 'C17H26O4', 'C21H20O6', 'C6H10OS2', 'C10H12O', 'C10H14O', 'C4H5NS']), reward: 300 },
   { title: 'Hospital', desc: 'Crie 5 remédios: penicilina, amoxicilina, ibuprofeno, lidocaína, cisplatina ou ácido salicílico.', target: 5, val: c => tem(c, ['C16H18N2O4S', 'C16H19N3O5S', 'C13H18O2', 'C14H22N2O', 'PtCl2N2H6', 'C7H6O3']), reward: 300 },
   { title: 'Centena', desc: 'Descubra 100 substâncias.', target: 100, val: c => c.disc.length, reward: 400 },
+  { title: 'Complexo B', desc: 'Crie as vitaminas B1 (tiamina), B2 (riboflavina), B3 (niacina), B6 (piridoxina), B7 (biotina) e B9 (ácido fólico).', target: 6, val: c => tem(c, ['C12H17ClN4OS', 'C17H20N4O6', 'C6H5NO2', 'C8H11NO3', 'C10H16N2O3S', 'C19H19N7O6']), reward: 350 },
+  { title: 'Proteína completa', desc: 'Crie 15 dos 18 aminoácidos do catálogo.', target: 15, val: c => tem(c, AMINO), reward: 400 },
+  { title: 'Paleta de cores', desc: 'Crie 7 pigmentos e corantes: índigo, púrpura de Tiro, alizarina, azul de metileno, fluoresceína, curcumina, cinábrio, azul de cobalto, cromato de chumbo, sulfeto de cádmio ou óxido de cromo(III).', target: 7, val: c => tem(c, ['C16H10N2O2', 'C16H8Br2N2O2', 'C14H8O4', 'C16H18ClN3S', 'C20H12O5', 'C21H20O6', 'HgS', 'CoAl2O4', 'PbCrO4', 'CdS', 'Cr2O3']), reward: 350 },
+  { title: 'Terras-raras', desc: 'Crie 4 compostos de terras-raras: cério, európio, lantânio, neodímio ou ítrio.', target: 4, val: c => tem(c, ['CeO2', 'Eu2O3', 'La2O3', 'Nd2O3', 'YBa2Cu3O7']), reward: 300 },
+  { title: 'Limpeza geral', desc: 'Crie 6 produtos de limpeza: hipoclorito de sódio, hidróxido de sódio, hidróxido de amônio, lauril sulfato de sódio, laurato de sódio, alquilbenzeno sulfonato de sódio, perborato de sódio ou bórax.', target: 6, val: c => tem(c, ['NaClO', 'NaOH', 'NH5O', 'C12H25NaO4S', 'C12H23NaO2', 'C18H29NaO3S', 'NaBO3', 'Na2B4O7']), reward: 300 },
   { title: 'Duas centenas', desc: 'Descubra 200 substâncias.', target: 200, val: c => c.disc.length, reward: 600 },
+  { title: 'Três centenas', desc: 'Descubra 300 substâncias.', target: 300, val: c => c.disc.length, reward: 800 },
+  { title: 'Quatro centenas', desc: 'Descubra 400 substâncias.', target: 400, val: c => c.disc.length, reward: 1000 },
   { title: 'Enciclopédia completa', desc: 'Descubra todas as substâncias do catálogo.', target: c => c.total, val: c => c.disc.length, reward: 500 },
 ];
 
@@ -98,6 +106,7 @@ export function medals(st, P) {
     ['50', 'Grande coleção', 'Tenha 50 substâncias na coleção.', P.disc.length >= 50, 250],
     ['100', 'Centenário', 'Tenha 100 substâncias na coleção.', P.disc.length >= 100, 60],
     ['200', 'Bicentenário', 'Tenha 200 substâncias na coleção.', P.disc.length >= 200, 20],
+    ['300', 'Tricentenário', 'Tenha 300 substâncias na coleção.', P.disc.length >= 300, 150],
     ['Xe', 'Exceção à regra', 'Conclua a missão Exceção nobre.', P.missions.some(m => m.title === 'Exceção nobre' && m.done), 285],
     ['DNA', 'Geneticista', 'Conclua a missão Código da vida.', P.missions.some(m => m.title === 'Código da vida' && m.done), 320],
     ['Rx', 'Farmacêutico', 'Conclua a missão Farmácia.', P.missions.some(m => m.title === 'Farmácia' && m.done), 170],
@@ -132,7 +141,7 @@ export function reactorStatus(zone, discovered, showHints) {
     };
   }
   const unused = keys.find(k => !substances.some(s => s.c[k]));
-  // Xenônio tem receitas (XeF₂, XeF₄); os outros gases nobres não se ligam a nada.
+  // Xenônio e criptônio têm receitas (XeF₂, XeF₄, KrF₂); os outros gases nobres não se ligam a nada.
   const noble = keys.find(k => el(k).cat === 'ng' && k === unused);
   if (noble) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(noble).name} não quer se ligar`, text: 'Gases nobres têm a camada de valência completa e quase nunca formam ligações. Remova-o do reator.', missing: [] };
   if (unused) return { tone: 'bad', tag: 'INSTÁVEL', title: `${el(unused).name} ainda não tem receitas`, text: 'Esse elemento não participa de nenhuma substância do catálogo. Tente outros elementos.', missing: [] };
