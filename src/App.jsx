@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGame } from './game/useGame.js';
 import { XP_PER_LEVEL } from './game/logic.js';
 import { substances } from './data/nucleo.js';
@@ -10,6 +10,7 @@ import Subatomico from './screens/Subatomico.jsx';
 import Estudos from './screens/Estudos.jsx';
 import Icon from './components/Icon.jsx';
 import Tour from './components/Tour.jsx';
+import LevelUp from './components/LevelUp.jsx';
 import { ehSecao, NavCtx, SECOES } from './nav.js';
 import Missions from './screens/Missions.jsx';
 import Profile from './screens/Profile.jsx';
@@ -46,6 +47,15 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const nav = useMemo(() => ({ go, back }), [go, back]);
+
+  // Comemora quando o nível sobe (não ao carregar o jogo salvo nem ao recomeçar).
+  const nivelAnterior = useRef(P.level);
+  const [subiu, setSubiu] = useState(null);
+  useEffect(() => {
+    if (P.level > nivelAnterior.current) setSubiu(P.level);
+    nivelAnterior.current = P.level;
+  }, [P.level]);
+  const fecharNivel = useCallback(() => setSubiu(null), []);
 
   useEffect(() => { window.scrollTo(0, 0); }, [tela]);
 
@@ -94,6 +104,7 @@ export default function App() {
       </div>
 
       {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => go('coll', { result: null, collFilter: 'Todas' })} />}
+      {subiu && <LevelUp key={subiu} nivel={subiu} onClose={fecharNivel} />}
       {!st.tourVisto && !st.result && <Tour onClose={() => set({ tourVisto: true })} onStart={() => go('lab', { tourVisto: true })} />}
     </div>
     </NavCtx.Provider>
