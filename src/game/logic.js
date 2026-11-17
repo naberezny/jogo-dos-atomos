@@ -108,6 +108,16 @@ export function reactorStatus(zone, discovered, showHints) {
   return { tone: 'bad', tag: 'INSTÁVEL', title: 'Proporção sem correspondência', text: 'Nenhuma substância do catálogo tem essa proporção de átomos. Diminua a quantidade de algum deles.', missing: [] };
 }
 
+/** Elementos que ainda cabem no reator: somar mais um átomo deles mantém alguma substância do catálogo ao alcance. */
+export function fusable(zone) {
+  const keys = Object.keys(zone), ok = new Set();
+  for (const s of substances) {
+    if (!keys.every(k => (s.c[k] || 0) >= zone[k])) continue;
+    for (const k in s.c) if (s.c[k] > (zone[k] || 0)) ok.add(k);
+  }
+  return ok;
+}
+
 export function usageText(sym, discovered) {
   const ui = substances.filter(s => s.c[sym]);
   if (!ui.length) return 'Não aparece nas substâncias do catálogo.';

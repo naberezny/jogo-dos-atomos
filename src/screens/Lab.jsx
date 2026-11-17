@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 function useMedia(q) {
   const [on, setOn] = useState(() => window.matchMedia(q).matches);
@@ -10,7 +10,7 @@ function useMedia(q) {
   return on;
 }
 import { elements, cats } from '../data/nucleo.js';
-import { col, el, findMatch, FUSE_CHARGE, fuseMs, reactorStatus, sub } from '../game/logic.js';
+import { col, el, findMatch, FUSE_CHARGE, fusable, fuseMs, reactorStatus, sub } from '../game/logic.js';
 import Atom3D from '../components/Atom3D.jsx';
 import FusionFX from '../components/FusionFX.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
@@ -49,6 +49,7 @@ export default function Lab({ game }) {
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
+  const acesos = useMemo(() => fusable(st.zone), [st.zone]);
   const reduced = useMedia('(prefers-reduced-motion: reduce)');
   const ms = fuseMs();
   // Ao fundir, cada átomo é puxado até o centro do reator: mede a distância que cada um precisa percorrer.
@@ -139,14 +140,15 @@ export default function Lab({ game }) {
         <div className="ptable-scroll">
           <div className="ptable">
             {elements.map(e => {
-              const dim = filterCat && filterCat !== e.cat;
+              const apagado = !acesos.has(e.sym);
+              const dim = apagado || (filterCat && filterCat !== e.cat);
               return (
                 <div
                   key={e.sym}
-                  className="cell"
+                  className={`cell${apagado ? ' off' : ''}`}
                   role="button"
                   tabIndex={0}
-                  aria-label={`${e.name}, ${e.z}. Ver ficha e adicionar ao reator`}
+                  aria-label={`${e.name}, ${e.z}. ${apagado ? 'Não se liga à combinação atual. Ver ficha' : 'Ver ficha e adicionar ao reator'}`}
                   draggable
                   onDragStart={ev => { ev.dataTransfer.setData('text/plain', e.sym); ev.dataTransfer.effectAllowed = 'copy'; }}
                   onClick={() => open(e.sym)}

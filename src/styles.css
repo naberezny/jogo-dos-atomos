@@ -109,8 +109,9 @@ h1, h2, h3 { margin: 0; }
 .legend .sw { width: 8px; height: 8px; border-radius: 2px; }
 .ptable-scroll { overflow-x: auto; padding-top: 12px; margin-top: -12px; }
 .ptable { display: grid; grid-template-columns: repeat(18, minmax(0, 1fr)); grid-template-rows: repeat(7, auto) 14px auto auto; gap: 4px; }
-.cell { position: relative; aspect-ratio: 1 / 1.08; min-width: 0; padding: 3px 4px; border-radius: 5px; border: 1px solid; display: flex; flex-direction: column; justify-content: space-between; cursor: grab; user-select: none; transition: opacity .2s, transform .15s; text-align: left; font: inherit; }
+.cell { position: relative; aspect-ratio: 1 / 1.08; min-width: 0; padding: 3px 4px; border-radius: 5px; border: 1px solid; display: flex; flex-direction: column; justify-content: space-between; cursor: grab; user-select: none; transition: opacity .35s, filter .35s, transform .15s; text-align: left; font: inherit; }
 .cell:hover { transform: translateY(-2px); }
+.cell.off { filter: grayscale(.85); }
 .cell .z { font-family: var(--mono); font-size: 9px; color: oklch(0.78 0.01 265); line-height: 1; }
 .cell .s { font-family: var(--display); font-size: clamp(11px, 1.25vw, 18px); font-weight: 600; line-height: 1; text-align: center; }
 .cell .n { font-size: 8px; line-height: 1.1; color: oklch(0.76 0.01 265); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
