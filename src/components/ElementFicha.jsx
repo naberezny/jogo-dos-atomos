@@ -1,5 +1,6 @@
 // Ficha de um elemento: nome com badges das informações básicas e as abas Básico (história, nome,
-// curiosidades) e Avançado (eletrosfera em 3D, distribuição eletrônica e propriedades).
+// curiosidades) e Avançado (distribuição eletrônica e propriedades). A eletrosfera em 3D e as camadas
+// ficam sempre à vista, entre o topo e as abas.
 // É só o conteúdo; quem usa decide a moldura (gaveta no laboratório, painel fixo nos estudos).
 import { useEffect, useState } from 'react';
 import { cats } from '../data/nucleo.js';
@@ -60,14 +61,12 @@ export default function ElementFicha({ sym, discovered }) {
   const hs = HIST[t.sym], f = ficha(t), cc = f.c;
 
   const eletrosfera = (
-    <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-        <div className="eyebrow" style={{ fontSize: 10.5 }}>Eletrosfera</div>
-        <div className="seg accent">
+    <section className="ef-eletrosfera" aria-label="Eletrosfera">
+      <div className="atom-stage">
+        {/* Controle da vista dentro do quadro do átomo, para economizar espaço. */}
+        <div className="seg accent ef-vista">
           {[['3D', '3D livre'], ['Topo', 'Vista de topo']].map(([id, l]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{l}</button>)}
         </div>
-      </div>
-      <div className="atom-stage">
         <Atom3D key={'drawer-' + t.sym} own size={300} shells={t.shells} h={tc.h} c={tc.c} fusing={false} top={view === 'Topo'} sel={sel} onPick={i => setShell(i)} title={`Eletrosfera de ${t.name}`} />
       </div>
       <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
@@ -111,6 +110,9 @@ export default function ElementFicha({ sym, discovered }) {
       </div>
     </div>
 
+    {/* O átomo e as camadas ficam sempre à vista, fora das abas. */}
+    {eletrosfera}
+
     <div className="seg ficha-abas" role="tablist" aria-label="Nível de detalhe">
       {['Básico', 'Avançado'].map(l => <button key={l} role="tab" aria-selected={tab === l} aria-pressed={tab === l} onClick={() => setTab(l)}>{l}</button>)}
     </div>
@@ -130,7 +132,6 @@ export default function ElementFicha({ sym, discovered }) {
       </div>
     ) : (
       <div className="ficha-corpo" role="tabpanel">
-        {eletrosfera}
         <Secao titulo="Identidade">
           <div className="dados">
             <Dado k="Número atômico (Z)" v={t.z} />

@@ -677,3 +677,9 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .ef-topo { display: flex; gap: 16px; align-items: flex-start; padding: 4px 20px 18px; }
 .ef-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
 .ef-badge { padding: 2px 9px; border-radius: 999px; border: 1px solid var(--c); font-size: 11.5px; line-height: 1.5; color: oklch(0.84 0.02 265); white-space: nowrap; }
+
+/* Ficha do elemento: eletrosfera fixa, com o seletor de vista dentro do quadro do átomo */
+.ef-eletrosfera { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 18px; }
+.ef-eletrosfera .atom-stage { position: relative; }
+.ef-vista { position: absolute; top: 8px; right: 8px; z-index: 1; background: oklch(0.16 0.02 265 / .8); backdrop-filter: blur(6px); }
+.ef-vista button { padding: 5px 10px; font-size: 12px; }
