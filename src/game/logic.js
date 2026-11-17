@@ -36,6 +36,8 @@ const BASES = ['C5H5N5', 'C5H6N2O2', 'C4H5N3O', 'C5H5N5O', 'C4H4N2O2'];
 const AMINO = ['C2H5NO2', 'C3H7NO2', 'C3H7NO3', 'C3H7NO2S', 'C6H13NO2', 'C6H14N2O2', 'C9H11NO2', 'C11H12N2O2', 'C4H7NO4', 'C5H9NO4', 'C9H11NO3', 'C5H11NO2', 'C5H9NO2', 'C5H11NO2S', 'C6H14N4O2', 'C6H9N3O2', 'C5H10N2O3', 'C4H8N2O3'];
 const ACIDOS = ['HI', 'HClO4', 'C7H6O5', 'C2H4O3', 'C4H6O4', 'C6H10O4', 'C3H4O2', 'C5H10O2', 'C18H30O2', 'C20H30O2', 'C4H7NO4', 'C5H9NO4', 'C19H19N7O6', 'HBr', 'HClO', 'C3H6O2', 'C3H4O3', 'C4H6O6', 'C4H6O5', 'C6H8O2', 'C7H6O2', 'C8H6O4', 'C12H24O2', 'C5H4N4O3', 'HCl', 'HF', 'H2SO4', 'HNO3', 'H3PO4', 'H3BO3', 'CH2O3', 'CH2O2', 'C2H4O2', 'C2H2O4', 'C3H6O3', 'C6H8O7', 'C6H8O6', 'C7H6O3', 'C9H8O4'];
 
+const TERRAS_RARAS = ['Sc', 'Y', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu'];
+
 export const MISSIONS = [
   { title: 'Primeiros passos', desc: 'Descubra 5 substâncias.', target: 5, val: c => c.disc.length, reward: 100 },
   { title: 'Sopro de vida', desc: 'Descubra 5 substâncias no estado gasoso.', target: 5, val: c => c.disc.filter(s => s.state === 'gás').length, reward: 150 },
@@ -61,7 +63,10 @@ export const MISSIONS = [
   { title: 'Código da vida', desc: 'Crie as cinco bases do DNA e do RNA: adenina, timina, citosina, guanina e uracila.', target: 5, val: c => tem(c, BASES), reward: 300 },
   { title: 'Quase a tabela toda', desc: 'Coloque 50 elementos diferentes no reator.', target: 50, val: c => c.usedEls.length, reward: 400 },
   { title: 'Exceção nobre', desc: 'Faça um gás nobre se ligar: crie os dois fluoretos de xenônio.', target: 2, val: c => tem(c, ['XeF2', 'XeF4']), reward: 250 },
-  { title: 'Laboratório nuclear', desc: 'Crie 4 compostos de elementos radioativos: urânio, tório, plutônio, amerício ou rádio.', target: 4, val: c => tem(c, ['UO2', 'UF6', 'ThO2', 'PuO2', 'AmO2', 'RaCl2']), reward: 300 },
+  { title: 'Laboratório nuclear', desc: 'Crie 4 compostos de elementos radioativos, como urânio, tório, plutônio, rádio, polônio, netúnio, cúrio ou califórnio.', target: 4, val: c => tem(c, ['UO2', 'UF6', 'U3O8', 'ThO2', 'PuO2', 'AmO2', 'RaCl2', 'RnF2', 'NaTcO4', 'Pm2O3', 'PoO2', 'NpO2', 'Cm2O3', 'Cf2O3']), reward: 300 },
+  { title: 'Gases nobres rebeldes', desc: 'Faça hélio, argônio e radônio formarem compostos.', target: 3, val: c => tem(c, ['Na2He', 'HArF', 'RnF2']), reward: 350 },
+  { title: 'Família da platina', desc: 'Crie compostos dos seis metais do grupo da platina: rutênio, ródio, paládio, ósmio, irídio e platina.', target: 6, val: c => ['Ru', 'Rh', 'Pd', 'Os', 'Ir', 'Pt'].filter(e => c.disc.some(s => s.c[e])).length, reward: 400 },
+  { title: 'Obra em casa', desc: 'Crie os materiais de uma obra: cimento (silicato tricálcico), gesso, cal virgem, cal hidratada e calcário.', target: 5, val: c => tem(c, ['Ca3SiO5', 'CaH4SO6', 'CaO', 'CaH2O2', 'CaCO3']), reward: 250 },
   { title: 'Era digital', desc: 'Crie 5 materiais da eletrônica: arseneto de gálio, nitreto de gálio, dióxido de germânio, óxido de índio, seleneto de cádmio, telureto de cádmio ou óxido de lítio e cobalto.', target: 5, val: c => tem(c, ['GaAs', 'GaN', 'GeO2', 'In2O3', 'CdSe', 'CdTe', 'LiCoO2']), reward: 300 },
   { title: 'Fogos de artifício', desc: 'Crie 5 ingredientes de fogos: nitrato de potássio, clorato de potássio, carbonato de estrôncio, nitrato de bário, cloreto de cobre(II) ou perclorato de amônio.', target: 5, val: c => tem(c, ['KNO3', 'KClO3', 'SrCO3', 'BaN2O6', 'CuCl2', 'NH4ClO4']), reward: 250 },
   { title: 'Blocos da vida', desc: 'Crie 6 aminoácidos: glicina, alanina, serina, cisteína, leucina, lisina, fenilalanina ou triptofano.', target: 6, val: c => tem(c, ['C2H5NO2', 'C3H7NO2', 'C3H7NO3', 'C3H7NO2S', 'C6H13NO2', 'C6H14N2O2', 'C9H11NO2', 'C11H12N2O2']), reward: 300 },
@@ -73,11 +78,14 @@ export const MISSIONS = [
   { title: 'Complexo B', desc: 'Crie as vitaminas B1 (tiamina), B2 (riboflavina), B3 (niacina), B6 (piridoxina), B7 (biotina) e B9 (ácido fólico).', target: 6, val: c => tem(c, ['C12H17ClN4OS', 'C17H20N4O6', 'C6H5NO2', 'C8H11NO3', 'C10H16N2O3S', 'C19H19N7O6']), reward: 350 },
   { title: 'Proteína completa', desc: 'Crie 15 dos 18 aminoácidos do catálogo.', target: 15, val: c => tem(c, AMINO), reward: 400 },
   { title: 'Paleta de cores', desc: 'Crie 7 pigmentos e corantes: índigo, púrpura de Tiro, alizarina, azul de metileno, fluoresceína, curcumina, cinábrio, azul de cobalto, cromato de chumbo, sulfeto de cádmio ou óxido de cromo(III).', target: 7, val: c => tem(c, ['C16H10N2O2', 'C16H8Br2N2O2', 'C14H8O4', 'C16H18ClN3S', 'C20H12O5', 'C21H20O6', 'HgS', 'CoAl2O4', 'PbCrO4', 'CdS', 'Cr2O3']), reward: 350 },
-  { title: 'Terras-raras', desc: 'Crie 4 compostos de terras-raras: cério, európio, lantânio, neodímio ou ítrio.', target: 4, val: c => tem(c, ['CeO2', 'Eu2O3', 'La2O3', 'Nd2O3', 'YBa2Cu3O7']), reward: 300 },
+  { title: 'Terras-raras', desc: 'Crie 4 compostos de terras-raras, como cério, európio, lantânio, neodímio ou ítrio.', target: 4, val: c => c.disc.filter(s => Object.keys(s.c).some(k => TERRAS_RARAS.includes(k))).length, reward: 300 },
+  { title: 'Todos os lantanídeos', desc: 'Descubra compostos de 12 lantanídeos diferentes (a linha de baixo da tabela, do lantânio ao lutécio).', target: 12, val: c => [...new Set(c.disc.flatMap(s => Object.keys(s.c)).filter(k => el(k).cat === 'la'))].length, reward: 500 },
   { title: 'Limpeza geral', desc: 'Crie 6 produtos de limpeza: hipoclorito de sódio, hidróxido de sódio, hidróxido de amônio, lauril sulfato de sódio, laurato de sódio, alquilbenzeno sulfonato de sódio, perborato de sódio ou bórax.', target: 6, val: c => tem(c, ['NaClO', 'NaOH', 'NH5O', 'C12H25NaO4S', 'C12H23NaO2', 'C18H29NaO3S', 'NaBO3', 'Na2B4O7']), reward: 300 },
   { title: 'Duas centenas', desc: 'Descubra 200 substâncias.', target: 200, val: c => c.disc.length, reward: 600 },
   { title: 'Três centenas', desc: 'Descubra 300 substâncias.', target: 300, val: c => c.disc.length, reward: 800 },
   { title: 'Quatro centenas', desc: 'Descubra 400 substâncias.', target: 400, val: c => c.disc.length, reward: 1000 },
+  { title: 'Quatrocentas e cinquenta', desc: 'Descubra 450 substâncias.', target: 450, val: c => c.disc.length, reward: 1100 },
+  { title: 'Química da saúde', desc: 'Crie 4 substâncias de exames e remédios: creatinina, cortisol, dipirona, metformina ou fluoxetina.', target: 4, val: c => tem(c, ['C4H7N3O', 'C21H30O5', 'C13H16N3NaO4S', 'C4H11N5', 'C17H19ClF3NO']), reward: 300 },
   { title: 'Dentro do átomo', desc: 'No modo subatômico, monte um próton, um nêutron e um átomo de hidrogênio.', target: 3, val: c => temSub(c, ['p', 'n', 'hidrogenio']), reward: 200 },
   { title: 'Zoológico de partículas', desc: 'Descubra 15 hádrons (bárions e mésons) no modo subatômico.', target: 15, val: c => c.sub.filter(r => r.cat === 'barion' || r.cat === 'meson').length, reward: 300 },
   { title: 'As quatro forças', desc: 'Descubra a força eletromagnética, a força forte, a força fraca e a gravidade.', target: 4, val: c => temSub(c, ['eletromag', 'forte', 'fraca', 'gravidade']), reward: 300 },
@@ -117,6 +125,9 @@ export function medals(st, P) {
     ['100', 'Centenário', 'Tenha 100 substâncias na coleção.', P.disc.length >= 100, 60],
     ['200', 'Bicentenário', 'Tenha 200 substâncias na coleção.', P.disc.length >= 200, 20],
     ['300', 'Tricentenário', 'Tenha 300 substâncias na coleção.', P.disc.length >= 300, 150],
+    ['400', 'Quadricentenário', 'Tenha 400 substâncias na coleção.', P.disc.length >= 400, 200],
+    ['He', 'Domador de nobres', 'Conclua a missão Gases nobres rebeldes.', P.missions.some(m => m.title === 'Gases nobres rebeldes' && m.done), 340],
+    ['Ln', 'Mestre dos lantanídeos', 'Conclua a missão Todos os lantanídeos.', P.missions.some(m => m.title === 'Todos os lantanídeos' && m.done), 330],
     ['Xe', 'Exceção à regra', 'Conclua a missão Exceção nobre.', P.missions.some(m => m.title === 'Exceção nobre' && m.done), 285],
     ['p⁺', 'Físico de partículas', 'Faça 20 descobertas no modo subatômico.', P.sub.length >= 20, 25],
     ['DNA', 'Geneticista', 'Conclua a missão Código da vida.', P.missions.some(m => m.title === 'Código da vida' && m.done), 320],

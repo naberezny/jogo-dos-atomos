@@ -65,4 +65,12 @@ export const DESAFIO = [
   S('C17H20N4O6', 'Riboflavina', 'sólido', 'Vitamina B2: leite, ovos e fígado.', 'É amarela e fluorescente: deixa a urina amarelo-vivo depois de um polivitamínico.'),
   S('C10H16N2O3S', 'Biotina', 'sólido', 'Vitamina B7: ovos e castanhas.', 'A clara de ovo crua tem uma proteína que agarra a biotina e impede sua absorção.'),
   S('C19H19N7O6', 'Ácido fólico', 'sólido', 'Vitamina B9: folhas verdes, feijão e farinhas enriquecidas.', 'Tomado antes e no início da gravidez, previne defeitos na formação do bebê.'),
+  // ---- novas: elementos inéditos e substâncias do dia a dia ----
+  S('Be3Al2Si6O18', 'Berilo (esmeralda)', 'sólido', 'Esmeraldas, águas-marinhas e minério de berílio.', 'Puro é incolor. Com um pouco de cromo vira a esmeralda verde; com ferro, a água-marinha azul.', 'Be₃Al₂Si₆O₁₈'),
+  S('C13H16N3NaO4S', 'Dipirona', 'sólido', 'Remédio para dor e febre, muito usado no Brasil.', 'É proibida nos Estados Unidos e em outros países, mas está em quase toda farmácia brasileira.'),
+  S('C17H19ClF3NO', 'Fluoxetina', 'sólido', 'Antidepressivo, conhecido pelo nome comercial Prozac.', 'Ajuda o cérebro a manter mais serotonina entre os neurônios.'),
+  S('C21H30O5', 'Cortisol', 'sólido', 'Produzido pelas glândulas suprarrenais.', 'É o hormônio do estresse: sobe de manhã para te acordar e em momentos de tensão.'),
+  S('C9H17NO5', 'Ácido pantotênico', 'líquido', 'Vitamina B5, presente em quase todos os alimentos.', 'O nome vem do grego "pantothen", "de todos os lados", porque está em quase toda comida.'),
+  S('C16H18O9', 'Ácido clorogênico', 'sólido', 'Café, maçã e berinjela.', 'É um dos responsáveis pelo amargor do café; a torra quebra boa parte dele.'),
+  S('C15H14O6', 'Catequina', 'sólido', 'Chá verde, cacau e uvas.', 'É um antioxidante; substâncias parecidas com ela, reagindo com o ar, deixam a maçã cortada marrom.'),
 ];
