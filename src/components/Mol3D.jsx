@@ -91,7 +91,8 @@ export default function Mol3D({ g, label }) {
           ctx.setLineDash([]);
           return;
         }
-        const q = it.atom, r = q.a.r * q.s, c = cats[q.a.cat], f = 0.5 + 0.5 * Math.max(-1, Math.min(1, q.z / 120));
+        // Cor do átomo no padrão dos químicos (CPK); a luz clareia ou escurece a partir dela.
+        const q = it.atom, r = q.a.r * q.s, k = q.a.cor || { L: 0.75, C: cats[q.a.cat].c, h: cats[q.a.cat].h }, f = 0.5 + 0.5 * Math.max(-1, Math.min(1, q.z / 120));
         // Lado iluminado: para onde a luz aponta na tela (ponto que acompanha a rotação).
         const hx = q.x + Lx * r * 0.55, hy = q.y + Ly * r * 0.55;
         // Os de trás ficam mais escuros, para dar profundidade.
@@ -99,9 +100,9 @@ export default function Mol3D({ g, label }) {
         ctx.save(); ctx.beginPath(); ctx.arc(q.x, q.y, r, 0, Math.PI * 2); ctx.clip();
         // 1) corpo: claro do lado da luz, escuro do lado oposto; nunca apaga de vez (luz ambiente).
         const corpo = ctx.createRadialGradient(hx, hy, r * 0.05, q.x - Lx * r * 0.2, q.y - Ly * r * 0.2, r * 1.35);
-        corpo.addColorStop(0, `oklch(${(0.74 + 0.22 * frente) * prof} ${c.c * 0.9} ${c.h})`);
-        corpo.addColorStop(0.45, `oklch(${(0.6 + 0.14 * frente) * prof} ${c.c} ${c.h})`);
-        corpo.addColorStop(1, `oklch(${0.28 * prof} ${c.c * 0.85} ${c.h})`);
+        corpo.addColorStop(0, `oklch(${Math.min(0.99, k.L + 0.16 + 0.12 * frente) * prof} ${k.C * 0.6} ${k.h})`);
+        corpo.addColorStop(0.45, `oklch(${k.L * (0.84 + 0.16 * frente) * prof} ${k.C} ${k.h})`);
+        corpo.addColorStop(1, `oklch(${k.L * 0.36 * prof} ${k.C * 0.85} ${k.h})`);
         ctx.fillStyle = corpo; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
         // 2) reflexo: ponto branco que corre pela bola; some quando a luz passa para trás.
         if (frente > 0.05) {
@@ -121,12 +122,12 @@ export default function Mol3D({ g, label }) {
         if (tras > 0.05) {
           const ex = q.x + Lx * r, ey = q.y + Ly * r;
           const rim = ctx.createRadialGradient(ex, ey, 0, ex, ey, r * 1.1);
-          rim.addColorStop(0, `oklch(0.96 0.07 ${c.h} / ${0.95 * tras})`); rim.addColorStop(0.6, `oklch(0.85 0.1 ${c.h} / 0)`);
+          rim.addColorStop(0, `oklch(0.96 ${Math.min(0.07, k.C)} ${k.h} / ${0.95 * tras})`); rim.addColorStop(0.6, `oklch(0.85 ${Math.min(0.1, k.C)} ${k.h} / 0)`);
           ctx.fillStyle = rim; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
         }
         ctx.restore();
         if (r > 11) {
-          ctx.fillStyle = 'oklch(0.15 0.02 265 / 0.85)'; ctx.font = `600 ${Math.round(r * 0.62)}px 'Chakra Petch', sans-serif`;
+          ctx.fillStyle = k.L > 0.55 ? 'oklch(0.15 0.02 265 / 0.85)' : 'oklch(0.97 0.01 265 / 0.9)'; ctx.font = `600 ${Math.round(r * 0.62)}px 'Chakra Petch', sans-serif`;
           ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(q.a.sym, q.x, q.y + 1);
         }
       });

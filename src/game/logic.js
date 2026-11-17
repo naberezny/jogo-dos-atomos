@@ -2,6 +2,7 @@
 import { molecula } from './estrutura.js';
 import { elements, cats, substances } from '../data/nucleo.js';
 import { REC, receitas, xpSub } from '../data/subatomico.js';
+import { corAtomo } from './cor.js';
 
 export const XP_PER_LEVEL = 300;
 /** Duração da animação de fusão (curta para quem pediu menos movimento) e a fração gasta carregando. */
@@ -268,7 +269,7 @@ export function geom3d(s) {
   const ext = Math.max(0.5, ...P.map((p, i) => Math.hypot(p[0], p[1], p[2]) + m.r3[i]));
   const sc = Math.min(75, 100 / ext);
   G3[s.f] = {
-    atoms: m.atoms.map((a, i) => ({ sym: a.sym, cat: el(a.sym).cat, r: m.r3[i] * sc, x: P[i][0] * sc, y: P[i][1] * sc, z: P[i][2] * sc })),
+    atoms: m.atoms.map((a, i) => ({ sym: a.sym, cat: el(a.sym).cat, cor: corAtomo(a.sym), r: m.r3[i] * sc, x: P[i][0] * sc, y: P[i][1] * sc, z: P[i][2] * sc })),
     bonds: m.bonds,
   };
   return G3[s.f];

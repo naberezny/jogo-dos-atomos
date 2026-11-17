@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { bySymbolFormula, col, el, geom3d, molarMass, structure } from '../game/logic.js';
 import { MedalhasDaFicha } from '../components/Medalha.jsx';
+import { corAtomo } from '../game/cor.js';
 import Mol3D from '../components/Mol3D.jsx';
 import Foto, { temFoto } from '../components/Foto.jsx';
 import ElementDrawer from './ElementDrawer.jsx';
@@ -27,7 +28,7 @@ function Mol2D({ s }) {
         ));
       })}
       {nodes.map((n, i) => (
-        <div key={'a' + i} className="display" style={{ position: 'absolute', left: n.x, top: n.y, width: n.r * 2, height: n.r * 2, transform: 'translate(-50%,-50%)', borderRadius: '50%', border: `2px solid ${col(n.cat)}`, background: 'oklch(0.2 0.025 265)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: Math.max(8, n.r * (n.sym === 'H' ? 0.8 : 0.68)), fontWeight: 600, color: col(n.cat) }}>
+        <div key={'a' + i} className="display" style={{ position: 'absolute', left: n.x, top: n.y, width: n.r * 2, height: n.r * 2, transform: 'translate(-50%,-50%)', borderRadius: '50%', border: `2px solid ${corAtomo(n.sym).hex}`, background: 'oklch(0.2 0.025 265)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: Math.max(8, n.r * (n.sym === 'H' ? 0.8 : 0.68)), fontWeight: 600, color: corAtomo(n.sym).hex }}>
           {n.sym}
           {n.charge !== 0 && <span style={{ position: 'absolute', top: -n.r * 0.35, right: -n.r * 0.55, fontSize: Math.max(9, n.r * 0.55), color: 'var(--text-2, #cbd5e1)' }}>{CARGA(n.charge)}</span>}
         </div>
