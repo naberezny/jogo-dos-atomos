@@ -79,12 +79,21 @@ export function reactorStatus(zone, discovered, showHints) {
   if (findMatch(zone)) return { tone: 'ok', tag: 'FUSÃO DISPONÍVEL', title: 'Fusão disponível', text: 'Esses átomos podem formar uma substância. Clique em Fundir para descobrir qual, ou continue adicionando átomos.', missing: [] };
   const cands = substances.filter(s => keys.every(k => (s.c[k] || 0) >= zone[k]));
   if (cands.length) {
+    // A dica aponta para a substância mais próxima que ainda não foi descoberta.
+    const novas = cands.filter(s => !discovered.includes(s.f));
+    if (!novas.length) {
+      return {
+        tone: 'near', tag: 'JÁ DESCOBERTO', title: 'Nada novo por aqui',
+        text: `Você já descobriu ${cands.length > 1 ? `as ${cands.length} substâncias` : 'a única substância'} do catálogo que ${cands.length > 1 ? 'começam' : 'começa'} com essa combinação. Experimente outros elementos.`,
+        missing: [],
+      };
+    }
     const miss = s => Object.keys(s.c).reduce((a, k) => a + s.c[k] - (zone[k] || 0), 0);
-    const best = cands.slice().sort((a, b) => miss(a) - miss(b))[0];
+    const best = novas.slice().sort((a, b) => miss(a) - miss(b))[0];
     return {
       tone: 'near', tag: 'QUASE LÁ', title: 'Faltam átomos',
       text: showHints
-        ? `Adicione os átomos abaixo para completar a ligação.${cands.length > 1 ? ` ${cands.length} substâncias do catálogo começam com essa combinação.` : ''}`
+        ? `Adicione os átomos abaixo para completar a ligação.${novas.length > 1 ? ` ${novas.length} substâncias ainda não descobertas começam com essa combinação.` : ''}`
         : 'A combinação ainda não está completa.',
       missing: showHints ? Object.keys(best.c).filter(k => best.c[k] > (zone[k] || 0)).map(k => ({ sym: k, n: best.c[k] - (zone[k] || 0), cat: el(k).cat })) : [],
     };
