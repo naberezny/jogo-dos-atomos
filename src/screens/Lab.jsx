@@ -96,7 +96,7 @@ export default function Lab({ game }) {
             {zoneKeys.map(sym => {
               const e = el(sym), cat = cats[e.cat];
               return (
-                <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}${foco === sym && zoneKeys.length > 1 ? ' foco' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym} onClick={() => setHovered(sym)}>
+                <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}${foco === sym && zoneKeys.length > 1 ? ' foco' : ''}${foco === sym ? ' ativo' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym} onClick={() => setHovered(sym)}>
                   <div className="atom-wrap">
                     <Atom3D size={Math.max(small ? 38 : 44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   </div>

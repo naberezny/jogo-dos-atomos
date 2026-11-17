@@ -261,7 +261,7 @@ export default function Subatomico({ game }) {
                 {ks.map(id => {
                   const p = par(id);
                   return (
-                    <div className={`zone-atom${focoZona === id && ks.length > 1 ? ' foco' : ''}`} key={id} onClick={() => setFoco(id)}>
+                    <div className={`zone-atom${focoZona === id && ks.length > 1 ? ' foco' : ''}${focoZona === id ? ' ativo' : ''}`} key={id} onClick={() => setFoco(id)}>
                       <div className="atom-wrap"><Orbe p={p} size={movel ? 44 : 60} /></div>
                       <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{p.sym} ×{zona[id]}</span>
                       <div className="steppers">

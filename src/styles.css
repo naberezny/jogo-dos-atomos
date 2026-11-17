@@ -661,3 +661,8 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 @keyframes tour-segurar-casa { 0%, 12% { transform: none; box-shadow: none; } 45%, 52% { transform: scale(1.15); box-shadow: 0 0 16px var(--c); } 62%, 100% { transform: none; box-shadow: none; } }
 @keyframes tour-segurar-borda { 0%, 12% { clip-path: inset(0 100% 0 0); opacity: 1; } 45% { clip-path: inset(0 0 0 0); opacity: 1; } 55%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
 @keyframes tour-ficha { 0%, 45% { opacity: 0; transform: translateY(14px) scale(.85); } 55%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; transform: none; } }
+
+/* Reator: os botões − + +5 só aparecem no átomo ativo (o último adicionado ou o tocado). O espaço
+   continua reservado para os átomos não pularem de lugar ao trocar a seleção. */
+.zone-atom .steppers { transition: opacity .2s; }
+.zone-atom:not(.ativo) .steppers { visibility: hidden; opacity: 0; pointer-events: none; }
