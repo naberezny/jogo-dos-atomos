@@ -124,7 +124,7 @@ export default function App() {
       </main>
       </div>
 
-      {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => go('coll', { result: null, collFilter: 'Todas' })} />}
+      {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => go('coll', { result: null, collFiltro: null })} />}
       {rev && <Revelacao key={st.revelar.id} {...rev} onContinuar={fecharRevelacao} />}
       {fase?.tipo === 'xp' && <XpTela key={fase.de} de={fase.de} ate={fase.ate} onFim={fimXp} />}
       {fase?.tipo === 'nivel' && <LevelUp key={fase.nivel} nivel={fase.nivel} onClose={fecharNivel} />}

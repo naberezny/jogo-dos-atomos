@@ -597,3 +597,31 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .interruptor:checked { background: var(--accent); border-color: var(--accent); }
 .interruptor:checked::after { transform: translateX(22px); background: var(--accent-ink); }
 .interruptor:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Filtros da coleção */
+.filtro-base button { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; font-size: 13.5px; }
+.filtro-n { font-size: 11px; opacity: .7; }
+.filtros { display: flex; flex-direction: column; gap: 14px; padding: 16px 18px; }
+.filtro-topo { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.filtro-busca { flex: 1; min-width: 200px; padding: 10px 14px; border-radius: 9px; border: 1px solid var(--line); background: var(--sunken); color: var(--fg); font: inherit; font-size: 14px; }
+.filtro-busca:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.filtro-linha { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 6px 14px; align-items: start; }
+.filtro-linha > .eyebrow { padding-top: 8px; }
+.filtro-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.filtro-chips.grupos:not(.abertos) { max-height: 74px; overflow: hidden; }
+.fchip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line); background: var(--sunken); color: var(--fg-2); font: inherit; font-size: 13px; white-space: nowrap; cursor: pointer; transition: border-color .15s, background .15s; }
+.fchip:hover { border-color: oklch(0.82 0.13 195 / .5); }
+.fchip[aria-pressed='true'] { border-color: var(--accent); background: oklch(0.82 0.13 195 / .16); color: var(--fg); }
+.filtro-mais { grid-column: 2; justify-self: start; padding: 0; border: 0; background: none; font: inherit; font-size: 13px; color: var(--accent); cursor: pointer; }
+.filtro-resultado { font-size: 12.5px; color: var(--muted); margin-top: -4px; }
+.filtro-resultado b { color: var(--fg-2); font-family: var(--display); }
+.filtro-vazio { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding: 36px 20px; }
+@media (max-width: 640px) {
+  .filtro-base { width: 100%; }
+  .filtro-linha { grid-template-columns: minmax(0, 1fr); }
+  .filtro-linha > .eyebrow { padding-top: 0; }
+  .filtro-mais { grid-column: 1; }
+  /* No celular, as linhas curtas rolam para o lado em vez de quebrar. */
+  .filtro-chips:not(.grupos) { flex-wrap: nowrap; overflow-x: auto; margin: 0 -18px; padding: 0 18px 2px; scrollbar-width: none; }
+  .filtro-chips:not(.grupos)::-webkit-scrollbar { display: none; }
+}
