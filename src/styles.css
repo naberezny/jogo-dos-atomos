@@ -638,3 +638,26 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .ptable-scroll:has(.ptable-rolar) { cursor: grab; }
 .ptable-scroll:has(.ptable-rolar):active { cursor: grabbing; }
 .compacta .ptable-rolar-pilula { font-size: calc(var(--cel) * .36); padding: 6px 12px; }
+
+/* Tour: rolar a tabela pela faixa vazia e segurar para ver os detalhes */
+.tour-anim.rolar { overflow: hidden; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-side); }
+.tour-anim.rolar .faixa { position: absolute; inset: 0; animation: tour-rolar 3.6s ease-in-out infinite; }
+.tour-anim.rolar .pilula { position: absolute; z-index: 1; left: 50%; transform: translateX(-50%); top: 12px; padding: 5px 12px; border-radius: 999px; border: 1px dashed oklch(0.82 0.13 195 / .45); background: oklch(0.82 0.13 195 / .08); color: var(--accent); font-size: 12px; white-space: nowrap; }
+.tour-anim.rolar .cel { position: absolute; top: 56px; width: 30px; height: 30px; border-radius: 6px; border: 1px solid oklch(0.75 0.11 250 / .45); background: oklch(0.75 0.11 250 / .1); color: oklch(0.8 0.11 250); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 12px; font-weight: 600; }
+.tour-anim.rolar .cel.l2 { top: 92px; }
+.tour-anim .dedo { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: oklch(1 0 0 / .28); border: 2px solid oklch(1 0 0 / .75); box-shadow: 0 0 14px oklch(1 0 0 / .35); }
+.tour-anim.rolar .dedo { z-index: 2; left: 200px; top: 26px; animation: tour-dedo-rolar 3.6s ease-in-out infinite; }
+@keyframes tour-rolar { 0%, 15% { transform: none; } 55%, 70% { transform: translateX(-200px); } 100% { transform: none; } }
+@keyframes tour-dedo-rolar { 0%, 8% { opacity: 0; transform: scale(1.4); } 15% { opacity: 1; transform: none; } 55% { opacity: 1; transform: translateX(-140px); } 62%, 100% { opacity: 0; transform: translateX(-140px) scale(1.4); } }
+.tour-anim.segurar .casa { left: 40px; bottom: 44px; width: 52px; height: 52px; font-size: 20px; animation: tour-segurar-casa 3.4s ease-in-out infinite; }
+.tour-anim.segurar .borda { position: absolute; inset: -4px; border-radius: 10px; border: 2.5px solid var(--accent); clip-path: inset(0 100% 0 0); animation: tour-segurar-borda 3.4s linear infinite; }
+.tour-anim.segurar .dedo { left: 66px; top: 70px; animation: tour-dedo-segurar 3.4s ease-in-out infinite; }
+.tour-anim.segurar .ficha { position: absolute; right: 12px; top: 14px; width: 120px; padding: 10px 12px; border-radius: 12px; border: 1px solid oklch(0.82 0.13 195 / .5); background: var(--panel); box-shadow: 0 8px 26px oklch(0 0 0 / .5); display: flex; flex-direction: column; gap: 6px; text-align: left; animation: tour-ficha 3.4s ease-in-out infinite; }
+.tour-anim.segurar .ficha b { font-family: var(--display); font-size: 22px; color: var(--accent); line-height: 1; }
+.tour-anim.segurar .ficha span { font-size: 12px; color: var(--fg-2); }
+.tour-anim.segurar .ficha i { height: 5px; border-radius: 3px; background: var(--line-strong); }
+.tour-anim.segurar .ficha i:nth-of-type(2) { width: 75%; } .tour-anim.segurar .ficha i:nth-of-type(3) { width: 55%; }
+@keyframes tour-dedo-segurar { 0%, 6% { opacity: 0; transform: scale(1.5); } 12%, 52% { opacity: 1; transform: scale(.9); } 60%, 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes tour-segurar-casa { 0%, 12% { transform: none; box-shadow: none; } 45%, 52% { transform: scale(1.15); box-shadow: 0 0 16px var(--c); } 62%, 100% { transform: none; box-shadow: none; } }
+@keyframes tour-segurar-borda { 0%, 12% { clip-path: inset(0 100% 0 0); opacity: 1; } 45% { clip-path: inset(0 0 0 0); opacity: 1; } 55%, 100% { clip-path: inset(0 0 0 0); opacity: 0; } }
+@keyframes tour-ficha { 0%, 45% { opacity: 0; transform: translateY(14px) scale(.85); } 55%, 90% { opacity: 1; transform: none; } 100% { opacity: 0; transform: none; } }

@@ -11,13 +11,26 @@ const passos = t => [
     text: t
       ? 'No Laboratório, arraste um elemento da tabela: o átomo vai para a sua mão. Solte dentro do reator.'
       : 'No Laboratório, clique num elemento da tabela e arraste: o átomo vai para a sua mão. Solte dentro do reator.',
-    extra: t ? 'Um toque rápido coloca o elemento no reator. Segure o dedo parado para ver os detalhes dele. Para rolar a tabela, arraste o espaço vazio no topo dela.' : 'Um clique simples coloca o elemento no reator. Segure o botão parado para ver os detalhes dele.',
+    extra: t ? 'Com pressa? Um toque rápido já coloca o elemento no reator.' : 'Com pressa? Um clique simples já coloca o elemento no reator.',
+  },
+  // No celular a tabela não cabe na tela: ensina a rolar pela faixa vazia do topo.
+  ...(t ? [{
+    icon: 'lab', h: 195, title: 'Role a tabela', anim: 'rolar',
+    text: 'A tabela é maior que a tela. Para ver o resto, arraste para os lados a faixa vazia do topo, onde aparece "Arraste aqui para rolar a tabela".',
+    extra: 'Arrastar em cima de um elemento pega o átomo; arrastar no espaço vazio rola a tabela.',
+  }] : []),
+  {
+    icon: 'estudos', h: 250, title: 'Veja os detalhes do átomo', anim: 'segurar',
+    text: t
+      ? 'Segure o dedo parado sobre um elemento da tabela. Quando o contorno completar a volta, abre a ficha dele: elétrons, propriedades, história e em quais substâncias ele aparece.'
+      : 'Segure o botão do mouse parado sobre um elemento da tabela. Quando o contorno completar a volta, abre a ficha dele: elétrons, propriedades, história e em quais substâncias ele aparece.',
+    extra: 'Na ficha também há um botão para colocar o elemento no reator.',
   },
   { icon: 'coll', h: 65, title: 'Acerte a proporção e funda', anim: 'fundir', text: 'Ajuste a quantidade de cada átomo com − e +. A tabela apaga os elementos que não combinam com o que já está no reator. Quando a proporção forma uma substância, o botão Fundir aparece.' },
   {
-    icon: 'dica', h: 85, title: 'Dicas e detalhes',
+    icon: 'dica', h: 85, title: 'Peça uma dica',
     text: t ? 'O botão Dica, no canto do reator, mostra qual átomo falta para a descoberta mais próxima. Toque no atalho para adicioná-lo na hora.' : 'O painel ao lado do reator mostra qual átomo falta para a descoberta mais próxima. Clique no atalho para adicioná-lo na hora.',
-    extra: 'Ao lado fica o botão Detalhes, com a ficha completa do átomo selecionado no reator. Toque em outro átomo do reator para trocar.',
+    extra: 'Os elementos que não combinam com o que já está no reator ficam apagados na tabela.',
   },
   { icon: 'sub', h: 25, title: 'Vá além do átomo', text: 'No modo Subatômico você colide quarks, léptons e bósons para montar prótons, mésons e até as forças da natureza. Em Estudos, explore a ficha de cada um dos 118 elementos.' },
   { icon: 'missions', h: 320, title: 'Colecione e evolua', text: 'Cada descoberta entra na Coleção e rende XP. Cumpra Missões, suba de nível e conquiste medalhas no Perfil.' },
@@ -46,6 +59,21 @@ export default function Tour({ onClose, onStart }) {
         <div className="tour-arte" key={i}>
           {p.anim === 'arrastar' ? (
             <div className="tour-anim arrastar" aria-hidden="true"><span className="casa">O</span><span className="atomo" /><span className="alvo" /></div>
+          ) : p.anim === 'rolar' ? (
+            <div className="tour-anim rolar" aria-hidden="true">
+              <span className="pilula">‹ Arraste aqui ›</span>
+              <div className="faixa">
+                {['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se'].map((s, k) => <span key={s} className="cel" style={{ left: 8 + k * 34 }}>{s}</span>)}
+                {['Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te'].map((s, k) => <span key={s} className="cel l2" style={{ left: 8 + k * 34 }}>{s}</span>)}
+              </div>
+              <span className="dedo" />
+            </div>
+          ) : p.anim === 'segurar' ? (
+            <div className="tour-anim segurar" aria-hidden="true">
+              <span className="casa">O<span className="borda" /></span>
+              <span className="dedo" />
+              <span className="ficha"><b>O</b><span>Oxigênio</span><i /><i /><i /></span>
+            </div>
           ) : p.anim === 'fundir' ? (
             <div className="tour-anim fundir" aria-hidden="true"><span className="a a1">H</span><span className="a a2">H</span><span className="a a3">O</span><span className="res">H₂O</span></div>
           ) : (
