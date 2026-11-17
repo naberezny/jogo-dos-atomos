@@ -31,6 +31,7 @@ Na primeira visita, um tour de seis passos explica o essencial; ele pode ser rea
 ## Conteúdo
 
 - 118 elementos com massa, raio atômico, categoria e distribuição eletrônica (com as exceções do Cr, Cu, Mo, Pd, Ag, Pt e Au)
+- Espectro de emissão visível de 97 elementos, com as linhas reais do NIST Atomic Spectra Database (`node scripts/baixar-espectros.mjs` atualiza os dados)
 - 512 substâncias, de H₂O ao ATP, com estado físico, uso no dia a dia e curiosidade, usando 103 dos 118 elementos (os outros 15 ainda não formaram nenhum composto conhecido; o jogo explica o porquê)
 - Foto real de 83 substâncias (Wikimedia Commons, com autor e licença) e molécula em 2D e em 3D
 - 58 missões e 21 conquistas

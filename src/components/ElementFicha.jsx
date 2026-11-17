@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { cats } from '../data/nucleo.js';
 import { col, el, electronInfo, shellInfo, SHELL_LETTERS, usageText } from '../game/logic.js';
 import Atom3D from './Atom3D.jsx';
+import Espectro from './Espectro.jsx';
 import HIST from '../data/historia/index.js';
 import CIENCIA from '../data/ciencia.json';
 
@@ -132,6 +133,10 @@ export default function ElementFicha({ sym, discovered }) {
       </div>
     ) : (
       <div className="ficha-corpo" role="tabpanel">
+        <Secao titulo="Espectro de emissão">
+          <p style={{ fontSize: 13 }}>Aquecido ou atravessado por eletricidade, cada elemento brilha só em algumas cores. Esse padrão de linhas é a impressão digital do átomo: é assim que se descobre do que são feitas as estrelas.</p>
+          <Espectro sym={t.sym} nome={t.name} />
+        </Secao>
         <Secao titulo="Identidade">
           <div className="dados">
             <Dado k="Número atômico (Z)" v={t.z} />
@@ -176,7 +181,7 @@ export default function ElementFicha({ sym, discovered }) {
             <Dado k="Estados de oxidação" v={cc.ox || '—'} />
           </div>
         </Secao>
-        <div style={{ fontSize: 11.5, color: 'var(--muted)' }}>Dados físicos e químicos: PubChem (NIH). Traço (—) = valor desconhecido; em muitos elementos sintéticos essas medidas nunca foram feitas.</div>
+        <div style={{ fontSize: 11.5, color: 'var(--muted)' }}>Espectro: NIST Atomic Spectra Database (linhas visíveis do átomo neutro, intensidade relativa). Dados físicos e químicos: PubChem (NIH). Traço (—) = valor desconhecido; em muitos elementos sintéticos essas medidas nunca foram feitas.</div>
       </div>
     )}
     </>

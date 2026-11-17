@@ -683,3 +683,11 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .ef-eletrosfera .atom-stage { position: relative; }
 .ef-vista { position: absolute; top: 8px; right: 8px; z-index: 1; background: oklch(0.16 0.02 265 / .8); backdrop-filter: blur(6px); }
 .ef-vista button { padding: 5px 10px; font-size: 12px; }
+
+/* Espectro de emissão (ficha do elemento, aba Avançado) */
+.espectro { display: flex; flex-direction: column; gap: 8px; color: var(--muted); }
+.espectro svg { width: 100%; height: auto; display: block; }
+.espectro-fortes { display: flex; flex-wrap: wrap; gap: 6px; }
+.espectro-chip { display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--sunken); font-family: var(--mono); font-size: 11.5px; color: var(--fg-2); }
+.espectro-chip i { width: 9px; height: 9px; border-radius: 50%; }
+.espectro-vazio { padding: 12px 14px; border-radius: 10px; border: 1px dashed var(--line); font-size: 13px; color: var(--muted); }
