@@ -76,13 +76,14 @@ async function main() {
   const antigo = existsSync(META) ? JSON.parse(await readFile(META, 'utf8')) : {};
   // Arquivo local de cada foto: <f>.jpg (principal), <f>-2.jpg, <f>-3.jpg...
   const nome = (f, i) => f + (i ? '-' + (i + 1) : '') + '.jpg';
-  const lista = Object.entries(FOTOS).flatMap(([f, fotos]) => (fotos || []).map(([arquivo, legenda], i) => ({ f, i, arquivo, legenda })));
+  const lista = Object.entries(FOTOS).flatMap(([f, fotos]) => (fotos || []).map(([arquivo, legenda, descricao], i) => ({ f, i, arquivo, legenda, descricao })));
   const pronta = ({ f, i, arquivo }) => !todas && antigo[f]?.[i]?.arquivo === arquivo && existsSync(new URL(nome(f, i), OUT_DIR));
   const info = await metadados([...new Set(lista.filter(x => !pronta(x)).map(x => x.arquivo))]);
   const meta = {}, faltando = [];
   for (const x of lista) {
-    const { f, i, arquivo, legenda } = x;
-    let m = pronta(x) ? antigo[f][i] : null;
+    const { f, i, arquivo, legenda, descricao } = x;
+    let m = null;
+    if (pronta(x)) { const { legenda: _l, descricao: _d, ...resto } = antigo[f][i]; m = resto; }
     if (!m) {
       const d = info[arquivo];
       try {
@@ -95,7 +96,7 @@ async function main() {
         console.log('ok  ', nome(f, i).padEnd(16), arquivo);
       } catch (e) { faltando.push(nome(f, i)); console.log('erro', nome(f, i), e.message); continue; }
     }
-    (meta[f] ||= [])[i] = { ...m, legenda };
+    (meta[f] ||= [])[i] = { ...m, legenda, ...(descricao ? { descricao } : {}) };
   }
   for (const f of Object.keys(meta)) meta[f] = meta[f].filter(Boolean);
   await writeFile(META, JSON.stringify(meta, null, 1) + '\n');

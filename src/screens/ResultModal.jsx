@@ -40,10 +40,9 @@ function Mol2D({ s }) {
 export default function ResultModal({ game, onClose, toColl }) {
   const { st } = game;
   const s = bySymbolFormula(st.result);
-  const foto = s && temFoto(s.f);
   const [escolha, setView] = useState(null);
-  const view = escolha === 'Foto' && !foto ? '3D' : escolha || (foto ? 'Foto' : '3D');
-  const views = foto ? ['Foto', '2D', '3D'] : ['2D', '3D'];
+  const view = escolha || '3D';
+  const views = ['2D', '3D'];
   const [elem, setElem] = useState(null);
   const voltar = () => setElem(null);
   useEffect(() => { setView(null); setElem(null); }, [st.result]);
@@ -69,9 +68,7 @@ export default function ResultModal({ game, onClose, toColl }) {
             <div className="eyebrow">Estrutura</div>
             <div className="seg accent">{views.map(l => <button key={l} aria-pressed={view === l} onClick={() => setView(l)}>{l}</button>)}</div>
           </div>
-          {view === 'Foto' ? (
-            <Foto s={s} />
-          ) : view === '2D' ? (
+          {view === '2D' ? (
             <>
               <Mol2D s={s} />
               <div style={{ fontSize: 12, color: 'oklch(0.66 0.02 265)', textAlign: 'center' }}>Traço duplo ou triplo = ligação dupla ou tripla · tracejado = atração iônica</div>
@@ -110,6 +107,7 @@ export default function ResultModal({ game, onClose, toColl }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <div className="eyebrow">No dia a dia</div>
             <div style={{ fontSize: 15, lineHeight: 1.5 }}>{s.where}</div>
+            {temFoto(s.f) && <Foto s={s} style={{ marginTop: 8 }} />}
           </div>
           <div className="fact">
             <div className="eyebrow" style={{ color: 'var(--accent)' }}>Curiosidade</div>

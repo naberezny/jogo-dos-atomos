@@ -166,7 +166,10 @@ button.brand { cursor: pointer; }
 /* ---------- Resultado ---------- */
 .modal-wrap { position: fixed; inset: 0; z-index: 50; background: oklch(0.1 0.02 265 / 0.78); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 32px; }
 .modal { width: min(920px, 100%); max-height: calc(100vh - 64px); overflow: auto; border-radius: 18px; border: 1px solid oklch(0.82 0.13 195 / 0.45); background: var(--panel); box-shadow: 0 0 80px oklch(0.82 0.13 195 / 0.18); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
-.modal-left { padding: 26px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; background: var(--bg-side); }
+.modal-left { padding: 26px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; background: var(--bg-side); position: sticky; top: 0; align-self: start; }
+/* A coluna do modelo fica parada enquanto a da direita rola; o fundo e a divisória vêm do .modal. */
+.modal { background: linear-gradient(to right, var(--bg-side) calc(100% / 2.15 - 1px), var(--line) 0 calc(100% / 2.15), var(--panel) 0); }
+.modal-left { border-right-color: transparent; background: transparent; }
 .modal-right { padding: 28px 30px; display: flex; flex-direction: column; gap: 18px; }
 .mol2d { position: relative; width: 340px; height: 280px; max-width: 100%; margin: 0 auto; }
 .badge { padding: 5px 10px; border-radius: 6px; font-family: var(--mono); font-size: 12px; font-weight: 500; }
@@ -191,7 +194,8 @@ button.brand { cursor: pointer; }
 .foto-seta:hover { background: oklch(0.15 0.02 265 / 0.85); }
 .foto-seta.esq { left: 8px; } .foto-seta.dir { right: 8px; }
 .foto-cont { position: absolute; right: 8px; bottom: 8px; font-size: 11px; font-weight: 600; color: #fff; background: oklch(0.15 0.02 265 / 0.6); border-radius: 999px; padding: 2px 8px; }
-.foto-legenda { font-size: 13px; line-height: 1.4; color: var(--text-2, oklch(0.85 0.02 265)); }
+.foto-legenda { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.45; color: var(--text-2, oklch(0.85 0.02 265)); min-height: 4.4em; }
+.foto-legenda strong { font-weight: 600; color: var(--text, #fff); }
 .foto-miniaturas { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
 .foto-miniaturas button { flex: 0 0 auto; width: 52px; height: 40px; padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden; background: var(--sunken); cursor: pointer; opacity: 0.6; }
 .foto-miniaturas button[aria-selected="true"] { border-color: var(--accent); opacity: 1; }
@@ -237,7 +241,9 @@ button.brand { cursor: pointer; }
   .main { padding: 20px 16px calc(96px + env(safe-area-inset-bottom)); gap: 20px; }
   .modal-wrap { padding: 12px; align-items: flex-start; overflow: auto; }
   .modal { grid-template-columns: minmax(0, 1fr); max-height: none; }
-  .modal-left { border-right: none; border-bottom: 1px solid var(--line); }
+  .modal-left { border-right: none; border-bottom: 1px solid var(--line); position: static; }
+  .modal { background: var(--panel); }
+  .modal-left { background: var(--bg-side); }
   .mission { grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; }
   .mission > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
   .mission .reward { grid-column: 2; grid-row: 1; align-self: start; }

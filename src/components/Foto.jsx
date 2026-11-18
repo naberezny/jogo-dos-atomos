@@ -34,7 +34,12 @@ export default function Foto({ s, credito = true, style }) {
           <span className="foto-cont">{i + 1}/{n}</span>
         </>}
       </div>
-      {m.legenda && <div className="foto-legenda">{m.legenda}</div>}
+      {m.legenda && (
+        <div className="foto-legenda">
+          <strong>{m.legenda}</strong>
+          {m.descricao && <span>{m.descricao}</span>}
+        </div>
+      )}
       {n > 1 && (
         <div className="foto-miniaturas" role="tablist" aria-label="Fotos">
           {fotos.map((x, k) => (

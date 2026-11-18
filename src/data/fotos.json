@@ -5,21 +5,24 @@
    "autor": "Thomas Fuhrmann",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Waves_of_Luputhana_11.jpg",
-   "legenda": "Ondas no mar"
+   "legenda": "Ondas no mar",
+   "descricao": "Cerca de 97% de toda a água da Terra está nos oceanos, salgada. Ela cobre perto de 71% da superfície do planeta."
   },
   {
    "arquivo": "Phu_Sang_Waterfall_01.jpg",
    "autor": "Khunkay",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Phu_Sang_Waterfall_01.jpg",
-   "legenda": "Cachoeira"
+   "legenda": "Cachoeira",
+   "descricao": "A água doce dos rios e cachoeiras é menos de 3% do total, e a maior parte dela está congelada nas geleiras."
   },
   {
    "arquivo": "Water_drop_001.jpg",
    "autor": "José Manuel Suárez from Spain",
    "licenca": "CC BY 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Water_drop_001.jpg",
-   "legenda": "Gota caindo na água"
+   "legenda": "Gota caindo na água",
+   "descricao": "A tensão superficial faz a gota ficar redonda: as moléculas de água se puxam umas às outras por ligações de hidrogênio."
   }
  ],
  "O2": [
@@ -28,21 +31,24 @@
    "autor": "Staff Sgt. Nika Glover, U.S. Air Force",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Liquid_oxygen_in_a_beaker_(cropped_and_retouched).jpg",
-   "legenda": "Oxigênio líquido (azul-claro)"
+   "legenda": "Oxigênio líquido (azul-claro)",
+   "descricao": "Resfriado abaixo de −183 °C, o oxigênio vira um líquido azul-claro. Ele é atraído por ímãs, porque é paramagnético."
   },
   {
    "arquivo": "Plastic_oxygen_mask_on_an_ER_patient.jpg",
    "autor": "Hmwith at English Wikipedia",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Plastic_oxygen_mask_on_an_ER_patient.jpg",
-   "legenda": "Máscara de oxigênio no hospital"
+   "legenda": "Máscara de oxigênio no hospital",
+   "descricao": "O ar tem cerca de 21% de oxigênio; pacientes com falta de ar recebem O₂ mais concentrado pela máscara."
   },
   {
    "arquivo": "10ltr_oxygen_cylinder.png",
    "autor": "Pawar0365",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:10ltr_oxygen_cylinder.png",
-   "legenda": "Cilindro de oxigênio"
+   "legenda": "Cilindro de oxigênio",
+   "descricao": "Em hospitais e na solda, o oxigênio fica guardado sob alta pressão em cilindros de aço."
   }
  ],
  "CO2": [
@@ -51,21 +57,24 @@
    "autor": "Shawn Henning",
    "licenca": "CC BY-SA 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Dry_ice_in_cup.jpg",
-   "legenda": "Gelo-seco (CO₂ sólido) soltando névoa"
+   "legenda": "Gelo-seco (CO₂ sólido) soltando névoa",
+   "descricao": "A −78 °C o gás carbônico vira gelo-seco, que passa direto de sólido para gás (sublimação) sem derreter."
   },
   {
    "arquivo": "Sparkling_(4291030959).jpg",
    "autor": "Harald Hoyer from Schwerin, Germany",
    "licenca": "CC BY-SA 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Sparkling_(4291030959).jpg",
-   "legenda": "Bolhas de gás carbônico em bebida"
+   "legenda": "Bolhas de gás carbônico em bebida",
+   "descricao": "Refrigerantes e águas com gás têm CO₂ dissolvido sob pressão; ao abrir a garrafa, ele escapa em bolhas."
   },
   {
    "arquivo": "Dry_Ice_1_(cropped).jpg",
    "autor": "KarolinaHalatek",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Dry_Ice_1_(cropped).jpg",
-   "legenda": "Bloco de gelo-seco"
+   "legenda": "Bloco de gelo-seco",
+   "descricao": "O gelo-seco é usado para transportar alimentos e vacinas congelados, porque não deixa água ao sumir."
   }
  ],
  "H2": [
@@ -74,21 +83,24 @@
    "autor": "NASA",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Space_Shuttle_Columbia_launching.jpg",
-   "legenda": "Ônibus espacial: o combustível era hidrogênio líquido"
+   "legenda": "Ônibus espacial: o combustível era hidrogênio líquido",
+   "descricao": "O tanque laranja do ônibus espacial levava hidrogênio e oxigênio líquidos; ao reagirem, eles formavam vapor de água."
   },
   {
    "arquivo": "Toyota_Mirai_(JPD20)_IMG_5303.jpg",
    "autor": "Alexander Migl",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Toyota_Mirai_(JPD20)_IMG_5303.jpg",
-   "legenda": "Carro movido a hidrogênio"
+   "legenda": "Carro movido a hidrogênio",
+   "descricao": "No carro a hidrogênio, uma célula a combustível junta H₂ e O₂ do ar para gerar eletricidade; pelo escapamento sai só água."
   },
   {
    "arquivo": "Hydrogen_discharge_tube.jpg",
    "autor": "Alchemist-hp (talk) (www.pse-mendelejew.de)",
    "licenca": "FAL",
    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_discharge_tube.jpg",
-   "legenda": "Tubo com hidrogênio brilhando"
+   "legenda": "Tubo com hidrogênio brilhando",
+   "descricao": "Com corrente elétrica, o hidrogênio brilha em rosa-violeta: são as linhas de emissão do átomo de hidrogênio."
   }
  ],
  "N2": [
@@ -97,21 +109,24 @@
    "autor": "Rico Shen",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:2007TaipeiITMonth_IntelOCLiveTest_Overclocking-6.jpg",
-   "legenda": "Nitrogênio líquido"
+   "legenda": "Nitrogênio líquido",
+   "descricao": "O nitrogênio forma 78% do ar. Abaixo de −196 °C ele fica líquido e ferve na hora em contato com o ambiente."
   },
   {
    "arquivo": "Nitrogen_ice_cream_0020.jpg",
    "autor": "Desconhecido",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Nitrogen_ice_cream_0020.jpg",
-   "legenda": "Sorvete feito com nitrogênio líquido"
+   "legenda": "Sorvete feito com nitrogênio líquido",
+   "descricao": "O nitrogênio líquido congela o creme tão rápido que os cristais de gelo ficam minúsculos e o sorvete sai bem cremoso."
   },
   {
    "arquivo": "Cryogenic_Liquid_Nitrogen_Tank.jpg",
    "autor": "Joe Ravi",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Cryogenic_Liquid_Nitrogen_Tank.jpg",
-   "legenda": "Tanque de nitrogênio líquido"
+   "legenda": "Tanque de nitrogênio líquido",
+   "descricao": "Em laboratórios e hospitais, o nitrogênio líquido conserva amostras, sêmen e embriões em tanques isolados."
   }
  ],
  "O3": [
@@ -120,7 +135,8 @@
    "autor": "NASA",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:NASA_and_NOAA_Announce_Ozone_Hole_is_a_Double_Record_Breaker.png",
-   "legenda": "Buraco na camada de ozônio sobre a Antártida"
+   "legenda": "Buraco na camada de ozônio sobre a Antártida",
+   "descricao": "O ozônio da estratosfera filtra boa parte da radiação ultravioleta do Sol. Gases CFC abriram um buraco nessa camada sobre a Antártida."
   }
  ],
  "NaCl": [
@@ -129,28 +145,32 @@
    "autor": "Luca Galuzzi (Lucag), edit by Trialsanderrors",
    "licenca": "CC BY-SA 2.5",
    "pagina": "https://commons.wikimedia.org/wiki/File:Piles_of_Salt_Salar_de_Uyuni_Bolivia_Luca_Galuzzi_2006_a.jpg",
-   "legenda": "Montes de sal no Salar de Uyuni, Bolívia"
+   "legenda": "Montes de sal no Salar de Uyuni, Bolívia",
+   "descricao": "O Salar de Uyuni é o maior deserto de sal do mundo: o sal de cozinha (cloreto de sódio) sobrou de lagos antigos que secaram."
   },
   {
    "arquivo": "Salinas_de_Maras,_Peru-20Sept2013.jpg",
    "autor": "pululante",
    "licenca": "CC BY 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Salinas_de_Maras,_Peru-20Sept2013.jpg",
-   "legenda": "Salinas de Maras, Peru"
+   "legenda": "Salinas de Maras, Peru",
+   "descricao": "Nas salinas de Maras, a água salgada de uma fonte evapora em tanques e deixa o cloreto de sódio para trás."
   },
   {
    "arquivo": "Rock_salt_(halitite)_(Billianwala_Salt_Member,_Salt_Range_Formation,_Ediacaran_to_Lower_Cambrian;_Khewra_Salt_Mine,_Salt_Range,_Pakistan)_14.jpg",
    "autor": "James St. John",
    "licenca": "CC BY 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Rock_salt_(halitite)_(Billianwala_Salt_Member,_Salt_Range_Formation,_Ediacaran_to_Lower_Cambrian;_Khewra_Salt_Mine,_Salt_Range,_Pakistan)_14.jpg",
-   "legenda": "Cristal de halita (sal-gema)"
+   "legenda": "Cristal de halita (sal-gema)",
+   "descricao": "Na halita, os íons de sódio e cloreto se arrumam em cubos; por isso o cristal tem faces retas e ângulos retos."
   },
   {
    "arquivo": "Salt_Farmers_-_Pak_Thale-edit1.jpg",
    "autor": "JJ Harrison (jjharrison89@facebook.com) (tilt correction).",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Salt_Farmers_-_Pak_Thale-edit1.jpg",
-   "legenda": "Colheita de sal"
+   "legenda": "Colheita de sal",
+   "descricao": "Nas salinas do litoral, a água do mar evapora ao sol e o sal é raspado e amontoado."
   }
  ],
  "KCl": [
@@ -159,14 +179,16 @@
    "autor": "André Karwath aka Aka",
    "licenca": "CC BY-SA 2.5",
    "pagina": "https://commons.wikimedia.org/wiki/File:Sylvin_(aka).jpg",
-   "legenda": "Silvita, o mineral do cloreto de potássio"
+   "legenda": "Silvita, o mineral do cloreto de potássio",
+   "descricao": "A silvita é o cloreto de potássio da natureza. Ela é minerada sobretudo para fazer adubo de potássio."
   },
   {
    "arquivo": "Potassium_chloride.jpg",
    "autor": "Desconhecido",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Potassium_chloride.jpg",
-   "legenda": "Cloreto de potássio puro"
+   "legenda": "Cloreto de potássio puro",
+   "descricao": "O cloreto de potássio parece sal de cozinha e é usado como substituto do sal para quem precisa comer menos sódio."
   }
  ],
  "CH4": [
@@ -175,21 +197,24 @@
    "autor": "Marina Burity from Santo André, Brazil",
    "licenca": "CC BY-SA 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Gas_stove_blue_flames.jpg",
-   "legenda": "Chama de fogão a gás natural"
+   "legenda": "Chama de fogão a gás natural",
+   "descricao": "O gás natural do fogão é quase todo metano. A chama azul indica que ele está queimando por completo."
   },
   {
    "arquivo": "Frozen_Methane_Bubbles_(11927906233).jpg",
    "autor": "U.S. Geological Survey from Reston, VA, USA",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Frozen_Methane_Bubbles_(11927906233).jpg",
-   "legenda": "Bolhas de metano presas no gelo"
+   "legenda": "Bolhas de metano presas no gelo",
+   "descricao": "Em lagos congelados, bolhas de metano liberadas pela matéria orgânica do fundo ficam presas no gelo."
   },
   {
    "arquivo": "Cow_on_pasture,_Ehrenbach.jpg",
    "autor": "Gerda Arendt",
    "licenca": "CC0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Cow_on_pasture,_Ehrenbach.jpg",
-   "legenda": "Vacas liberam metano na digestão"
+   "legenda": "Vacas liberam metano na digestão",
+   "descricao": "Micróbios no estômago dos bois e vacas produzem metano, que sai sobretudo pelo arroto; ele é um gás de efeito estufa."
   }
  ],
  "C3H8": [
@@ -198,21 +223,24 @@
    "autor": "Hustvedt",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Propane_tank_20lb.jpg",
-   "legenda": "Botijão de propano"
+   "legenda": "Botijão de propano",
+   "descricao": "O propano fica líquido dentro do botijão por causa da pressão e vira gás ao sair pela válvula."
   },
   {
    "arquivo": "Hamburgers_grilling_outdoors_over_propane.jpg",
    "autor": "Capvideo",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Hamburgers_grilling_outdoors_over_propane.jpg",
-   "legenda": "Churrasqueira a gás"
+   "legenda": "Churrasqueira a gás",
+   "descricao": "Churrasqueiras a gás queimam propano, que libera bastante calor e quase não faz fumaça."
   },
   {
    "arquivo": "Propane_cylinders_type_2012_and_2000_in_Tuntorp.jpg",
    "autor": "W.carter",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Propane_cylinders_type_2012_and_2000_in_Tuntorp.jpg",
-   "legenda": "Botijões de gás"
+   "legenda": "Botijões de gás",
+   "descricao": "O gás de cozinha (GLP) é uma mistura de propano e butano, guardada em botijões de aço."
   }
  ],
  "NH3": [
@@ -221,14 +249,16 @@
    "autor": "Lynn Betts",
    "licenca": "Public domain",
    "pagina": "https://commons.wikimedia.org/wiki/File:Fertilizer_applied_to_corn_field.jpg",
-   "legenda": "Amônia aplicada como adubo na lavoura"
+   "legenda": "Amônia aplicada como adubo na lavoura",
+   "descricao": "Quase toda a amônia produzida no mundo vira adubo: o nitrogênio dela ajuda as plantas a crescer."
   },
   {
    "arquivo": "Liquid_ammonia_bottle.jpg",
    "autor": "real name: Nadina Wiórkiewicz pl.wiki: Nadine90 commons: Nadine90",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Liquid_ammonia_bottle.jpg",
-   "legenda": "Frasco de amônia"
+   "legenda": "Frasco de amônia",
+   "descricao": "A amônia tem cheiro forte e irritante. Dissolvida em água, ela entra em produtos de limpeza."
   }
  ],
  "H2O2": [
@@ -237,21 +267,24 @@
    "autor": "https://www.flickr.com/photos/eigenadam/",
    "licenca": "CC BY-SA 2.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Elephant_Toothpaste_Denver_JDS_Labs.jpg",
-   "legenda": "Experimento da “pasta de dente de elefante”"
+   "legenda": "Experimento da “pasta de dente de elefante”",
+   "descricao": "Com um catalisador, a água oxigenada se decompõe muito rápido em água e oxigênio, que infla o sabão em espuma."
   },
   {
    "arquivo": "Hydrogen_Peroxide_Bottle.jpg",
    "autor": "ThatOneEli",
    "licenca": "CC BY-SA 4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Hydrogen_Peroxide_Bottle.jpg",
-   "legenda": "Água oxigenada"
+   "legenda": "Água oxigenada",
+   "descricao": "A água oxigenada da farmácia tem só cerca de 3% de H₂O₂; ao tocar um machucado, ela faz espuma ao liberar oxigênio."
   },
   {
    "arquivo": "Pheropsophus_verticalis_01_Pengo.jpg",
    "autor": "Desconhecido",
    "licenca": "CC BY-SA 3.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Pheropsophus_verticalis_01_Pengo.jpg",
-   "legenda": "Besouro-bombardeiro, que usa H₂O₂ para se defender"
+   "legenda": "Besouro-bombardeiro, que usa H₂O₂ para se defender",
+   "descricao": "O besouro-bombardeiro mistura água oxigenada e outras substâncias no abdômen e solta um jato quente para afastar predadores."
   }
  ],
  "CO": [
