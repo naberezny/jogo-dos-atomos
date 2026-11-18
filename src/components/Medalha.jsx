@@ -112,7 +112,7 @@ function textoNivel(m, p, nivel, meta) {
  * Começa em `nivelInicial` ou no nível atual (ou no Bronze, se nenhum). `children` entra no fim do cartão.
  * @param compacto versão menor, para as fichas
  */
-export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, cartaoRef, onTopo, nivelInicial = null, children }) {
+export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, cartaoRef, onTopo, nivelInicial = null, grandes = false, children }) {
   const [esc, setEsc] = useState(nivelInicial);
   const metas = m.exclusiva ? [] : m.metas;
   const sel = esc || p.nivel || metas[0]?.[0] || 'exclusiva';
@@ -135,13 +135,16 @@ export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, ca
       <p className="med-card-texto">{m.texto}</p>
       {!m.exclusiva && <>
         <MedalhaBarra p={p} nivel={sel} meta={meta} />
-        <div className="med-niveis" role="group" aria-label="Níveis da medalha">
+        {grandes && <div className="med-niveis-dica mono">Toque num nível para ver o que falta</div>}
+        <div className={`med-niveis${grandes ? ' grandes' : ''}`} role="group" aria-label="Níveis da medalha">
           {metas.map(([n, q]) => {
             const ok = p.tem >= q;
             return (
               <button key={n} className={`med-nv mono${ok ? ' ok' : ''}`} style={{ '--c': corDe(n) }} aria-pressed={sel === n}
                 onClick={() => setEsc(n)} aria-label={`${NIVEIS[n].nome}: ${q}${ok ? ', conquistado' : ', bloqueado'}`}>
-                {!ok && <span className="med-nv-cadeado" aria-hidden="true">🔒</span>}{NIVEIS[n].nome} <b>{q}</b>
+                {grandes
+                  ? <><MedalhaIcone m={m} nivel={n} tam={40} cinza={!ok} /><span className="med-nv-txt">{NIVEIS[n].nome}<b>{ok ? '✓' : '🔒'} {q}</b></span></>
+                  : <>{!ok && <span className="med-nv-cadeado" aria-hidden="true">🔒</span>}{NIVEIS[n].nome} <b>{q}</b></>}
               </button>
             );
           })}
@@ -171,7 +174,7 @@ export function ListaMembros({ m, set, onAbrir }) {
 }
 
 /** Tela por cima da ficha com os detalhes completos de uma medalha, aberta no nível tocado. */
-export function MedalhaDetalhe({ m, p, set, nivel, onFechar, onVerTodas }) {
+export function MedalhaDetalhe({ m, p, set, nivel, onFechar, onVerTodas, onAbrirMembro }) {
   const fechar = useRef(onFechar); fechar.current = onFechar;
   const btn = useRef(null);
   useEffect(() => {
@@ -186,15 +189,15 @@ export function MedalhaDetalhe({ m, p, set, nivel, onFechar, onVerTodas }) {
     <div className="med-detalhe-wrap" onClick={e => { e.stopPropagation(); onFechar(); }}>
       <div className="med-detalhe" role="dialog" aria-modal="true" aria-label={`Medalha ${m.nome}`} onClick={e => e.stopPropagation()}>
         <button ref={btn} className="med-detalhe-fechar" onClick={onFechar} aria-label="Fechar">✕</button>
-        <CartaoMedalha m={m} p={p} nivelInicial={m.exclusiva ? null : nivel}>
-          {!m.exclusiva && <>
-            <div className="eyebrow med-detalhe-sub">Descobertas do grupo ({p.tem}/{p.total})</div>
-            <ListaMembros m={m} set={set} />
+        <CartaoMedalha m={m} p={p} nivelInicial={m.exclusiva ? null : nivel} grandes>
+          {(!m.exclusiva || p.nivel) && <>
+            <div className="eyebrow med-detalhe-sub">{m.exclusiva ? 'Descoberta' : `Descobertas do grupo (${p.tem}/${p.total})`}</div>
+            <ListaMembros m={m} set={set} onAbrir={onAbrirMembro} />
           </>}
         </CartaoMedalha>
         <div className="med-detalhe-acoes">
           <button className="med-detalhe-btn" onClick={onFechar}>Voltar</button>
-          <button className="med-detalhe-btn sec" onClick={onVerTodas}>Tela de medalhas ›</button>
+          {onVerTodas && <button className="med-detalhe-btn sec" onClick={onVerTodas}>Tela de medalhas ›</button>}
         </div>
       </div>
     </div>,
@@ -203,8 +206,29 @@ export function MedalhaDetalhe({ m, p, set, nivel, onFechar, onVerTodas }) {
 }
 
 /**
- * Seção "Medalhas" da ficha de uma descoberta: só os ícones. Cada medalha mostra todos os seus
- * níveis; os já conquistados em cor e os que faltam em cinza. Tocar num ícone abre os detalhes.
+ * Todos os níveis de uma medalha lado a lado, como ícones: os conquistados em cor e os que faltam
+ * em cinza. Tocar num deles chama onAbrir(nível). A exclusiva ainda não ganha aparece como "?".
+ */
+export function NiveisMedalha({ m, p, tam = 58, onAbrir }) {
+  const niveis = m.exclusiva ? [['exclusiva', 1]] : m.metas;
+  return (
+    <div className="med-niveis-icones" role="group" aria-label={m.exclusiva && !p.nivel ? 'Medalha exclusiva bloqueada' : m.nome}>
+      {niveis.map(([n, q]) => {
+        const ok = m.exclusiva ? !!p.nivel : p.tem >= q;
+        const rotulo = m.exclusiva && !ok ? 'Medalha exclusiva ainda bloqueada' : `${m.nome}, ${NIVEIS[n].nome}${ok ? '' : ' (ainda não conquistada)'}`;
+        return (
+          <button key={n} className={`med-icone-btn${ok ? '' : ' falta'}`} title={rotulo} aria-label={rotulo} onClick={() => onAbrir(n)}>
+            <MedalhaIcone m={m} nivel={m.exclusiva && !ok ? null : n} tam={tam} cinza={!ok} />
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/**
+ * Seção "Medalhas" da ficha de uma descoberta: um ícone por medalha, no nível mais alto já
+ * conquistado; as que ainda não têm nenhum nível aparecem em cinza. Tocar abre os detalhes.
  * @param modo 'mol' (substância, chave = fórmula) ou 'sub' (partícula, chave = id da receita)
  * @param descobertas lista de chaves já descobertas no mesmo modo
  */
@@ -215,28 +239,23 @@ export function MedalhasDaFicha({ modo, chave, descobertas, aoAbrir }) {
   if (!lista.length) return null;
   const set = new Set(descobertas);
   const itens = lista.map(m => ({ m, p: progresso(m, set) }));
-  const total = itens.reduce((t, { m }) => t + (m.exclusiva ? 1 : m.metas.length), 0);
-  const ganhas = itens.reduce((t, { m, p }) => t + (m.exclusiva ? (p.nivel ? 1 : 0) : m.metas.filter(([, q]) => p.tem >= q).length), 0);
   const sel = aberta && itens.find(x => x.m.id === aberta.id);
   return (
     <div className="med-ficha">
-      <div className="eyebrow">Medalhas <span className="med-ficha-conta">{ganhas}/{total}</span></div>
+      <div className="eyebrow">{lista.length > 1 ? `Medalhas (${lista.length})` : 'Medalha'}</div>
       <div className="med-ficha-icones">
-        {itens.map(({ m, p }) => (
-          <div key={m.id} className="med-ficha-grupo" role="group" aria-label={m.nome}>
-            {(m.exclusiva ? [['exclusiva', 1]] : m.metas).map(([n, q]) => {
-              const ok = m.exclusiva ? !!p.nivel : p.tem >= q;
-              const rotulo = `${m.nome}, ${NIVEIS[n].nome}${ok ? '' : ' (ainda não conquistada)'}`;
-              return (
-                <button key={n} className={`med-ficha-btn${ok ? '' : ' falta'}`} title={rotulo} aria-label={rotulo} onClick={() => setAberta({ id: m.id, nivel: n })}>
-                  <MedalhaIcone m={m} nivel={n} tam={62} cinza={!ok} />
-                </button>
-              );
-            })}
-          </div>
-        ))}
+        {itens.map(({ m, p }) => {
+          const nivel = p.nivel || (m.exclusiva ? null : 'bronze');
+          const rotulo = p.nivel ? `${m.nome}, ${NIVEIS[p.nivel].nome}` : `${m.exclusiva ? 'Medalha exclusiva' : m.nome}, ainda não conquistada`;
+          return (
+            <button key={m.id} className={`med-icone-btn${p.nivel ? '' : ' falta'}`} title={rotulo} aria-label={rotulo}
+              onClick={() => setAberta({ id: m.id, nivel: p.nivel && p.nivel !== 'exclusiva' ? p.nivel : 'bronze' })}>
+              <MedalhaIcone m={m} nivel={nivel} tam={62} cinza={!p.nivel} />
+            </button>
+          );
+        })}
       </div>
-      {sel && <MedalhaDetalhe key={aberta.id + aberta.nivel} m={sel.m} p={sel.p} set={set} nivel={aberta.nivel} onFechar={() => setAberta(null)}
+      {sel && <MedalhaDetalhe key={aberta.id} m={sel.m} p={sel.p} set={set} nivel={aberta.nivel} onFechar={() => setAberta(null)}
         onVerTodas={() => { aoAbrir?.(); setAberta(null); go('medalhas', { medalhaFoco: sel.m.id, result: null }); }} />}
     </div>
   );

@@ -70,10 +70,13 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
   O grupo "Moléculas fugazes" (Pisca-pisca!) tem 11: íons do espaço (HeH⁺, NeH⁺, ArH⁺, H₃⁺, HCO⁺, N₂H⁺, CH⁺)
   e excímeros de laser (ArF, KrF, XeCl, XeF); a fórmula achatada deles não leva a carga (`H3`, `HCO`…).
-  Na ficha (substância e subatômico) a seção de medalhas mostra só os ícones (`MedalhasDaFicha`): cada medalha
-  com todos os níveis, os conquistados em cor e os que faltam em cinza (`cinza`, sem animação); tocar abre
-  `MedalhaDetalhe` (portal no body, por cima da ficha; Esc fecha só ela) com o cartão completo no nível tocado.
-  O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado na tela de medalhas e no detalhe: os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
+  Tela de medalhas: um bloco por medalha (`NiveisMedalha` em Medalha.jsx) com o nome e os ícones de todos os níveis,
+  os conquistados em cor e os que faltam em cinza (`cinza`, sem animação); a exclusiva ainda não ganha aparece como "?".
+  Na ficha (substância e subatômico), `MedalhasDaFicha` mostra um ícone por medalha, no nível mais alto conquistado
+  (ou em cinza, se nenhum). Tocar em qualquer ícone abre `MedalhaDetalhe` (portal no body, por cima da ficha; Esc
+  fecha só ela): o cartão completo no nível tocado, com botões de nível grandes (com o ícone de cada nível) e a lista
+  de descobertas do grupo (na tela de medalhas, cada uma abre a ficha).
+  O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado no detalhe da medalha: os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
   conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido. A moldura do ícone (SVG,
   `MOLDURA` em Medalha.jsx) ganha detalhes a cada nível: Bronze anel simples → Prata anel duplo e cravos →
   Ouro estrela de 8 pontas → Platina 12 pontas, anel girando e brilhos; a exclusiva tem estrela de 6 pontas magenta.

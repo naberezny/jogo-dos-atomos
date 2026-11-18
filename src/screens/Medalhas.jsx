@@ -2,34 +2,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { MEDALHA, MEDALHAS, NIVEIS, progresso } from '../data/medalhas.js';
 import PageHeader from '../components/PageHeader.jsx';
-import { CartaoMedalha, ListaMembros, MedalhaIcone } from '../components/Medalha.jsx';
+import { MedalhaDetalhe, NiveisMedalha } from '../components/Medalha.jsx';
 
 const ABAS = [['mol', 'Substâncias'], ['sub', 'Partículas']];
 const ORDEM = ['exclusiva', 'platina', 'ouro', 'prata', 'bronze'];
 
-function CartaoGrupo({ m, p, aberto, foco, onToggle, set, abrirFicha }) {
+/** Bloco de uma medalha: nome e os ícones de todos os níveis (os que faltam em cinza). */
+function BlocoMedalha({ m, p, foco, onAbrir }) {
   const ref = useRef(null);
   useEffect(() => { if (foco) ref.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, [foco]);
+  const oculta = m.exclusiva && !p.nivel;
   return (
-    <CartaoMedalha m={m} p={p} foco={foco} aberto={aberto} cartaoRef={ref} onTopo={onToggle}>
-      <button className="med-ver-lista" onClick={onToggle}>{aberto ? 'Esconder lista ▲' : `Ver as ${p.total} descobertas do grupo ▼`}</button>
-      {aberto && <ListaMembros m={m} set={set} onAbrir={abrirFicha} />}
-    </CartaoMedalha>
-  );
-}
-
-function CartaoExclusiva({ m, p, foco, abrirFicha }) {
-  const ref = useRef(null);
-  useEffect(() => { if (foco) ref.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, [foco]);
-  const k = m.membros[0];
-  return (
-    <button ref={ref} className={`med-exc${p.nivel ? '' : ' bloq'}${foco ? ' foco' : ''}`} disabled={!p.nivel || m.modo === 'sub'} onClick={() => abrirFicha(m.modo, k)}
-      aria-label={p.nivel ? `${m.nome}, de ${m.grupo}. Abrir ficha` : 'Medalha exclusiva ainda bloqueada'}>
-      <MedalhaIcone m={m} nivel={p.nivel} tam={66} />
-      <b className="display">{p.nivel ? m.nome : '???'}</b>
-      <span className="med-exc-sub">{p.nivel ? m.grupo : 'Descubra uma substância especial para revelar'}</span>
-      {p.nivel && <span className="med-exc-texto">{m.texto}</span>}
-    </button>
+    <div ref={ref} className={`med-bloco${m.exclusiva ? ' exc' : ''}${p.nivel ? '' : ' bloq'}${foco ? ' foco' : ''}`} style={{ '--c': p.nivel ? NIVEIS[p.nivel].cor : undefined }}>
+      <div className="med-bloco-topo">
+        <span className="eyebrow">{oculta ? 'Exclusiva' : m.grupo}</span>
+        <b className="display">{oculta ? '???' : m.nome}</b>
+        {!m.exclusiva && <span className="mono med-conta">{p.tem}/{p.total}</span>}
+      </div>
+      <NiveisMedalha m={m} p={p} tam={m.exclusiva ? 66 : 58} onAbrir={n => onAbrir(m.id, n)} />
+    </div>
   );
 }
 
@@ -37,13 +28,13 @@ export default function Medalhas({ game }) {
   const { st, set } = game;
   const focoId = st.medalhaFoco;
   const [aba, setAba] = useState('mol');
-  const [abertos, setAbertos] = useState(() => new Set());
+  const [aberta, setAberta] = useState(null); // { id, nivel } da medalha com os detalhes abertos
   const [foco, setFoco] = useState(null);
   useEffect(() => {
     // Veio de uma ficha: abre a aba e o cartão da medalha e destaca por alguns segundos.
     if (!focoId) return;
     const m = MEDALHA.get(focoId);
-    if (m) { setAba(m.modo); setAbertos(s => new Set([...s, focoId])); setFoco(focoId); }
+    if (m) { setAba(m.modo); setFoco(focoId); }
     set({ medalhaFoco: null });
     const t = setTimeout(() => setFoco(null), 3500);
     return () => clearTimeout(t);
@@ -59,10 +50,11 @@ export default function Medalhas({ game }) {
   const ganhas = lista.filter(x => x.p.nivel);
   const contagem = ORDEM.map(n => [n, ganhas.filter(x => x.p.nivel === n).length]);
 
-  const toggle = id => setAbertos(s => { const n = new Set(s); n.has(id) ? n.delete(id) : n.add(id); return n; });
   const abrirFicha = (modo, k) => {
-    if (modo === 'mol') set({ result: k, resultNew: false, levelUp: null });
+    if (modo === 'mol') { setAberta(null); set({ result: k, resultNew: false, levelUp: null }); }
   };
+  const abrir = (id, nivel) => setAberta({ id, nivel: nivel === 'exclusiva' ? null : nivel });
+  const sel = aberta && lista.find(x => x.m.id === aberta.id);
 
   return (
     <section aria-label="Medalhas" className="med-tela" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -82,19 +74,20 @@ export default function Medalhas({ game }) {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <h3 className="display med-titulo-secao">Medalhas de grupo <span className="mono">{grupos.filter(x => x.p.nivel).length}/{grupos.length}</span></h3>
-        <p className="med-explica">Cada descoberta do grupo conta. A primeira dá o Bronze; complete o grupo para chegar ao nível máximo. Uma mesma substância pode valer para vários grupos.</p>
-        <div className="med-grade">
-          {grupos.map(({ m, p }) => <CartaoGrupo key={m.id} m={m} p={p} aberto={abertos.has(m.id)} foco={foco === m.id} onToggle={() => toggle(m.id)} set={descobertas[m.modo]} abrirFicha={abrirFicha} />)}
+        <p className="med-explica">Cada descoberta do grupo conta. A primeira dá o Bronze; complete o grupo para chegar ao nível máximo. Toque numa medalha para ver os detalhes, inclusive dos níveis que ainda faltam.</p>
+        <div className="med-grade-blocos">
+          {grupos.map(({ m, p }) => <BlocoMedalha key={m.id} m={m} p={p} foco={foco === m.id} onAbrir={abrir} />)}
         </div>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
         <h3 className="display med-titulo-secao">Medalhas exclusivas <span className="mono">{exclusivas.filter(x => x.p.nivel).length}/{exclusivas.length}</span></h3>
         <p className="med-explica">Algumas descobertas famosas têm uma medalha só delas. Quais serão as que faltam?</p>
-        <div className="med-grade-exc">
-          {exclusivas.map(({ m, p }) => <CartaoExclusiva key={m.id} m={m} p={p} foco={foco === m.id} abrirFicha={abrirFicha} />)}
+        <div className="med-grade-blocos exc">
+          {exclusivas.map(({ m, p }) => <BlocoMedalha key={m.id} m={m} p={p} foco={foco === m.id} onAbrir={abrir} />)}
         </div>
       </div>
+      {sel && <MedalhaDetalhe key={aberta.id} m={sel.m} p={sel.p} set={descobertas[sel.m.modo]} nivel={aberta.nivel} onFechar={() => setAberta(null)} onAbrirMembro={sel.m.modo === 'mol' ? abrirFicha : undefined} />}
     </section>
   );
 }
