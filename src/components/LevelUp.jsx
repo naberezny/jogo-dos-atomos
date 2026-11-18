@@ -1,19 +1,48 @@
 // Comemoração ao subir de nível: raios girando, medalhão com o novo nível e uma chuva de partículas.
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 const DURA = 4200;
 const CORES = ['oklch(0.82 0.13 195)', 'oklch(0.82 0.15 145)', 'oklch(0.82 0.14 65)', 'oklch(0.8 0.13 340)', 'oklch(0.8 0.12 250)', '#fff'];
 const rnd = (a, b) => a + Math.random() * (b - a);
 
-/** Chuva de confete que explode de um ponto da tela (cy = altura relativa) e cai com a gravidade. */
-export function Particulas({ cores = CORES, cy: cyRel = 0.42, dura = DURA }) {
+/**
+ * Põe o centro dos raios (variáveis --rx/--ry na tela `wrap`) no centro do elemento `alvo`
+ * (medalhão, foto da substância, barra de XP). Mede de novo quando o tamanho muda, a fonte carrega
+ * ou as animações de entrada terminam, para os raios saírem sempre do meio do destaque.
+ */
+export function useCentro(wrap, alvo) {
+  useLayoutEffect(() => {
+    const w = wrap.current, a = alvo.current;
+    if (!w || !a) return;
+    const medir = () => {
+      const rw = w.getBoundingClientRect(), ra = a.getBoundingClientRect();
+      w.style.setProperty('--rx', `${ra.left + ra.width / 2 - rw.left}px`);
+      w.style.setProperty('--ry', `${ra.top + ra.height / 2 - rw.top + w.scrollTop}px`);
+    };
+    medir();
+    const ro = new ResizeObserver(medir);
+    ro.observe(w); if (a.parentElement) ro.observe(a.parentElement);
+    const ts = [300, 700, 1300].map(t => setTimeout(medir, t));
+    document.fonts?.ready.then(medir);
+    return () => { ro.disconnect(); ts.forEach(clearTimeout); };
+  }, [wrap, alvo]);
+}
+
+/**
+ * Chuva de confete que explode de um ponto da tela e cai com a gravidade. O ponto é o centro do
+ * elemento `alvo` (ref), se houver; senão, o meio da largura na altura relativa `cy`.
+ */
+export function Particulas({ cores = CORES, cy: cyRel = 0.42, dura = DURA, alvo }) {
   const ref = useRef(null);
   useEffect(() => {
     const cv = ref.current, ctx = cv.getContext('2d');
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const W = cv.clientWidth, H = cv.clientHeight;
     cv.width = W * dpr; cv.height = H * dpr; ctx.scale(dpr, dpr);
-    const cx = W / 2, cy = H * cyRel, forca = Math.min(W, H);
+    let cx = W / 2, cy = H * cyRel;
+    const a = alvo?.current;
+    if (a) { const rc = cv.getBoundingClientRect(), ra = a.getBoundingClientRect(); cx = ra.left + ra.width / 2 - rc.left; cy = ra.top + ra.height / 2 - rc.top; }
+    const forca = Math.min(W, H);
     const lote = (n, atraso) => Array.from({ length: n }, (_, i) => {
       const a = rnd(0, Math.PI * 2), v = rnd(0.25, 1) * forca * 1.5;
       return { t0: atraso, vx: Math.cos(a) * v, vy: Math.sin(a) * v - forca * 0.35, k: rnd(1.6, 3), w: rnd(4, 9), h: rnd(3, 6), giro: rnd(-9, 9), a0: rnd(0, 6), cor: cores[i % cores.length], vida: rnd(1.6, 2.8), redonda: i % 3 === 0 };
@@ -50,6 +79,8 @@ export function Particulas({ cores = CORES, cy: cyRel = 0.42, dura = DURA }) {
 }
 
 export default function LevelUp({ nivel, onClose }) {
+  const wrap = useRef(null), medalhao = useRef(null);
+  useCentro(wrap, medalhao);
   const reduzido = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
   useEffect(() => {
     const t = setTimeout(onClose, reduzido ? 2600 : DURA);
@@ -60,11 +91,11 @@ export default function LevelUp({ nivel, onClose }) {
   }, [onClose, reduzido]);
 
   return (
-    <div className="nivel-wrap" role="status" aria-live="assertive" onClick={onClose} style={{ '--dura': `${DURA}ms` }}>
+    <div ref={wrap} className="nivel-wrap" role="status" aria-live="assertive" onClick={onClose} style={{ '--dura': `${DURA}ms` }}>
       <div className="nivel-raios" aria-hidden="true" />
-      {!reduzido && <Particulas />}
+      {!reduzido && <Particulas alvo={medalhao} />}
       <div className="nivel-centro">
-        <div className="nivel-medalhao" aria-hidden="true">
+        <div ref={medalhao} className="nivel-medalhao" aria-hidden="true">
           <span className="anel a1" /><span className="anel a2" /><span className="anel a3" />
           <svg className="nivel-aneis" viewBox="0 0 200 200">
             <circle className="na-marcas" cx="100" cy="100" r="96" />

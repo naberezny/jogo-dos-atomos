@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { XP_PER_LEVEL as XPL } from '../game/logic.js';
 import { substances } from '../data/nucleo.js';
-import { Particulas } from './LevelUp.jsx';
+import { Particulas, useCentro } from './LevelUp.jsx';
 import { MedalhaIcone } from './Medalha.jsx';
 import { NIVEIS } from '../data/medalhas.js';
 
@@ -21,7 +21,8 @@ export const nivelDe = xp => Math.floor(xp / XPL) + 1;
  */
 export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, n, total, repetida, onContinuar }) {
   const reduzido = semMovimento();
-  const btn = useRef(null);
+  const btn = useRef(null), wrap = useRef(null), orbe = useRef(null);
+  useCentro(wrap, orbe);
   const [pronto, setPronto] = useState(reduzido);
   useEffect(() => {
     btn.current?.focus({ preventScroll: true });
@@ -35,15 +36,15 @@ export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, n, total,
   const orbita = partes.flatMap(p => Array.from({ length: p.qtd || 1 }, () => p)).slice(0, 12);
 
   return (
-    <div className="rev-wrap" style={{ '--tom': tom }} onClick={seguir} role="dialog" aria-modal="true" aria-label={`Nova descoberta: ${nome}`}>
+    <div ref={wrap} className="rev-wrap" style={{ '--tom': tom }} onClick={seguir} role="dialog" aria-modal="true" aria-label={`Nova descoberta: ${nome}`}>
       <div className="rev-flash" aria-hidden="true" />
-      <div className="nivel-raios rev-raios" aria-hidden="true" />
-      {!reduzido && <Particulas cores={[tom, 'oklch(0.9 0.08 195)', '#fff', 'oklch(0.85 0.14 90)']} cy={0.36} />}
+      <div className="rev-camada" aria-hidden="true"><div className="nivel-raios rev-raios" /></div>
+      {!reduzido && <Particulas cores={[tom, 'oklch(0.9 0.08 195)', '#fff', 'oklch(0.85 0.14 90)']} alvo={orbe} />}
       <div className="rev-centro">
         <div className="rev-selo mono">{repetida ? '✦ Já está na coleção ✦' : '✦ Nova descoberta ✦'}</div>
         <h2 className="rev-titulo display">{titulo}</h2>
         <p className="rev-frase">{texto}</p>
-        <div className="rev-orbe" aria-hidden="true">
+        <div ref={orbe} className="rev-orbe" aria-hidden="true">
           <span className="rev-halo" />
           <svg className="nivel-aneis rev-aneis" viewBox="0 0 200 200">
             <circle className="na-marcas" cx="100" cy="100" r="96" />
@@ -78,6 +79,8 @@ export function XpTela({ de, ate, onFim }) {
   const nivel = nivelDe(de), limite = nivel * XPL, fim = Math.min(ate, limite), subiu = ate >= limite;
   const [v, setV] = useState({ x: de, ganho: 0, fase: 'entra' });
   const r = useRef({ pular: null }).current;
+  const wrap = useRef(null), barra = useRef(null);
+  useCentro(wrap, barra);
   const fimRef = useRef(onFim); fimRef.current = onFim;
 
   useEffect(() => {
@@ -113,14 +116,14 @@ export function XpTela({ de, ate, onFim }) {
   const dentro = Math.round(v.x - (nivel - 1) * XPL), pct = (v.x - (nivel - 1) * XPL) / XPL * 100;
   const cheia = v.fase === 'cheia';
   return (
-    <div className={`xpt-wrap ${v.fase}`} onClick={() => r.pular?.()} role="status" aria-live="polite">
+    <div ref={wrap} className={`xpt-wrap ${v.fase}`} onClick={() => r.pular?.()} role="status" aria-live="polite">
       <div className="xpt-grade" aria-hidden="true" />
       <div className="nivel-raios xpt-raios" aria-hidden="true" />
-      {cheia && !reduzido && <Particulas cores={['oklch(0.86 0.15 195)', '#fff', 'oklch(0.72 0.22 330)']} cy={0.5} dura={1500} />}
+      {cheia && !reduzido && <Particulas cores={['oklch(0.86 0.15 195)', '#fff', 'oklch(0.72 0.22 330)']} alvo={barra} dura={1500} />}
       <div className="xpt-centro">
         <div className="eyebrow xpt-rotulo">Experiência</div>
         <div className="xpt-ganho display">+{v.ganho} <small>XP</small></div>
-        <div className="xpt-trilha">
+        <div ref={barra} className="xpt-trilha">
           <span className="xpt-nivel display">{nivel}</span>
           <div className="xpt-bar">
             <div className="xpt-enchimento" style={{ width: pct + '%' }} />
