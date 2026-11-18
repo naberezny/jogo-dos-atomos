@@ -2975,6 +2975,128 @@
    "descricao": "O neônio é raro no ar: cerca de 18 partes por milhão. Ele é separado do ar liquefeito."
   }
  ],
+ "ArH": [
+  {
+   "arquivo": "Crab_Nebula,_as_Seen_by_Herschel_and_Hubble.jpg",
+   "autor": "ESA/Herschel/PACS/MESS Key Programme Supernova Remnant Team; NASA, ESA and Allison Loll/Jeff Hester (Arizona State University)",
+   "licenca": "Public domain",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Crab_Nebula,_as_Seen_by_Herschel_and_Hubble.jpg",
+   "legenda": "Nebulosa do Caranguejo, vista pelos telescópios Herschel e Hubble",
+   "descricao": "É o que sobrou de uma estrela que explodiu e foi vista da Terra em 1054. Foi nesta nuvem que o Herschel achou o ArH⁺, em 2013."
+  },
+  {
+   "arquivo": "Argon_discharge_tube.jpg",
+   "autor": "Alchemist-hp (talk) (www.pse-mendelejew.de)",
+   "licenca": "GFDL 1.2",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Argon_discharge_tube.jpg",
+   "legenda": "Argônio brilhando num tubo de descarga",
+   "descricao": "O argônio quase não reage com nada. No espaço, os raios cósmicos o ionizam e ele consegue se ligar a um hidrogênio por um instante."
+  }
+ ],
+ "H3": [
+  {
+   "arquivo": "Auroras_on_Jupiter_in_2014.jpg",
+   "autor": "NASA, ESA",
+   "licenca": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Auroras_on_Jupiter_in_2014.jpg",
+   "legenda": "Auroras no polo norte de Júpiter, vistas pelo Hubble",
+   "descricao": "As auroras de Júpiter são maiores que a Terra inteira. Nelas o H₃⁺ brilha no infravermelho, e foi lá que ele foi visto fora da Terra pela primeira vez."
+  },
+  {
+   "arquivo": "Close-up_observations_of_auroras_on_Jupiter_(December_2023)_(weic2510a).jpg",
+   "autor": "ESA/Webb, NASA, CSA, J. Nichols (University of Leicester), M. Zamani (ESA/Webb)",
+   "licenca": "CC BY 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Close-up_observations_of_auroras_on_Jupiter_(December_2023)_(weic2510a).jpg",
+   "legenda": "Auroras de Júpiter vistas de perto pelo James Webb",
+   "descricao": "O telescópio James Webb fotografa as auroras pela luz infravermelha do H₃⁺, que muda de brilho em segundos."
+  }
+ ],
+ "HCO": [
+  {
+   "arquivo": "12meterdish.jpg",
+   "autor": "Jeff Mangum, NRAO",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:12meterdish.jpg",
+   "legenda": "Radiotelescópio em Kitt Peak, nos Estados Unidos",
+   "descricao": "Neste observatório, em 1970, um sinal de rádio sem dono apareceu vindo do espaço. Era o HCO⁺, chamado de \"X-ogênio\" até descobrirem o que era."
+  }
+ ],
+ "N2H": [
+  {
+   "arquivo": "Herschel’s_view_of_the_Taurus_molecular_cloud_ESA384012.jpg",
+   "autor": "European Space Agency",
+   "licenca": "CC BY-SA 3.0 igo",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Herschel%E2%80%99s_view_of_the_Taurus_molecular_cloud_ESA384012.jpg",
+   "legenda": "Nuvem molecular de Touro, vista pelo telescópio Herschel",
+   "descricao": "Os fios brilhantes são gás e poeira a poucos graus acima do zero absoluto. É nesses cantos gelados que o N₂H⁺ ajuda a achar estrelas nascendo."
+  }
+ ],
+ "CH": [
+  {
+   "arquivo": "M45_JeffJohnson.jpg",
+   "autor": "Jeffjnet (http://jeffjastro.com)",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:M45_JeffJohnson.jpg",
+   "legenda": "Plêiades e a nuvem de poeira em volta delas",
+   "descricao": "O azul é poeira entre as estrelas refletindo a luz delas. O CH⁺ aparece em nuvens de gás assim, espalhadas pela galáxia."
+  }
+ ],
+ "ArF": [
+  {
+   "arquivo": "Lasik_surgery.jpg",
+   "autor": "Kanonzibaee",
+   "licenca": "CC BY-SA 4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Lasik_surgery.jpg",
+   "legenda": "Cirurgia de correção da visão a laser",
+   "descricao": "O laser de ArF tira camadas finíssimas da córnea para mudar o foco do olho, sem queimar o tecido em volta."
+  },
+  {
+   "arquivo": "Lasik_eye_surgery.jpg",
+   "autor": "Peretz Partensky from San Francisco, USA",
+   "licenca": "CC BY 2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Lasik_eye_surgery.jpg",
+   "legenda": "Olho do paciente durante a cirurgia",
+   "descricao": "A luz de 193 nm é ultravioleta, invisível para nós, e é absorvida logo na superfície da córnea."
+  }
+ ],
+ "KrF": [
+  {
+   "arquivo": "12-inch_silicon_wafer.jpg",
+   "autor": "Peellden",
+   "licenca": "CC BY-SA 3.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:12-inch_silicon_wafer.jpg",
+   "legenda": "Bolacha (wafer) de silício com centenas de chips",
+   "descricao": "Lasers de KrF desenham os circuitos dos chips: a luz de 248 nm passa por uma máscara e grava detalhes minúsculos no silício."
+  },
+  {
+   "arquivo": "KrTube.jpg",
+   "autor": "User:Pslawinski",
+   "licenca": "CC BY-SA 2.5",
+   "pagina": "https://commons.wikimedia.org/wiki/File:KrTube.jpg",
+   "legenda": "Criptônio brilhando num tubo de descarga",
+   "descricao": "Numa descarga elétrica, o criptônio se liga ao flúor por alguns bilionésimos de segundo e solta a luz do laser ao se separar."
+  }
+ ],
+ "XeCl": [
+  {
+   "arquivo": "XeTube.jpg",
+   "autor": "User:Pslawinski",
+   "licenca": "CC BY-SA 2.5",
+   "pagina": "https://commons.wikimedia.org/wiki/File:XeTube.jpg",
+   "legenda": "Xenônio brilhando num tubo de descarga",
+   "descricao": "No laser, uma descarga como esta junta o xenônio a um cloro por um instante; ao se desfazer, a molécula solta luz ultravioleta de 308 nm."
+  }
+ ],
+ "XeF": [
+  {
+   "arquivo": "Edelgase_in_Entladungsroehren.jpg",
+   "autor": "Alchemist-hp www.pse-mendelejew.de",
+   "licenca": "CC BY-SA 2.0 de",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Edelgase_in_Entladungsroehren.jpg",
+   "legenda": "Gases nobres em tubos de descarga: hélio, neônio, argônio, criptônio e xenônio",
+   "descricao": "O xenônio é o último, à direita. Numa descarga com flúor, ele forma o XeF energizado, que brilha em 351 nm."
+  }
+ ],
  "HeH": [
   {
    "arquivo": "Planetary_Nebula_NGC_7027_(opo9811e).jpg",

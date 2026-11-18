@@ -53,7 +53,7 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
 
 ## Estado atual (novembro de 2026)
 
-- **512 substâncias**, usando 103 dos 118 elementos. Os 15 restantes (Fr, Fm–Lr, Mt–Og) não têm
+- **521 substâncias**, usando 103 dos 118 elementos. Os 15 restantes (Fr, Fm–Lr, Mt–Og) não têm
   composto conhecido; o reator e a ficha explicam o porquê (`SEM_COMPOSTO` em `logic.js`).
   Isômeros (frutose, lactose…) não entram: a combinação é identificada só pela fórmula.
 - **Descoberta nova:** tela "Uau!" com título e frase da medalha principal → barra de XP em tela cheia
@@ -68,6 +68,8 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   substância ficou no visual antigo, a pedido.
 - **Medalhas:** 156 (109 exclusivas, 47 de grupo com Bronze/Prata/Ouro/Platina); tela própria, aberta
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
+  O grupo "Moléculas fugazes" (Pisca-pisca!) tem 11: íons do espaço (HeH⁺, NeH⁺, ArH⁺, H₃⁺, HCO⁺, N₂H⁺, CH⁺)
+  e excímeros de laser (ArF, KrF, XeCl, XeF); a fórmula achatada deles não leva a carga (`H3`, `HCO`…).
   O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado na tela de medalhas e nas
   fichas (substância e subatômico): os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
   conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido. A moldura do ícone (SVG,
@@ -79,7 +81,7 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
 - **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar
   a tabela"); botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
-- **Fotos:** 503 das 512 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas
+- **Fotos:** 512 das 521 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas
   escolhidas à mão e com legenda. A 1ª é a principal (capa, coleção, revelação): a própria substância
   ou onde ela é encontrada/usada (água → mar, PVC → cano). Na ficha da substância, a galeria fica abaixo
   de "No dia a dia" e antes da curiosidade (setas, miniaturas, arrastar para o lado); cada foto tem

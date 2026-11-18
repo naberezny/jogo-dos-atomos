@@ -621,6 +621,37 @@ export const FOTOS = {
     ["Buildings_with_colorful_neon_street_signs_at_blue_hour,_Shinjuku,_Tokyo.jpg", "Letreiros luminosos em Tóquio", "Muitos letreiros \"de neon\" usam outros gases ou pó colorido no tubo. Só o vermelho-alaranjado é do neônio puro."],
     ["Neon-glow.jpg", "Tubo com neônio", "O neônio é raro no ar: cerca de 18 partes por milhão. Ele é separado do ar liquefeito."],
   ],
+  ArH: [
+    ["Crab_Nebula,_as_Seen_by_Herschel_and_Hubble.jpg", "Nebulosa do Caranguejo, vista pelos telescópios Herschel e Hubble", "É o que sobrou de uma estrela que explodiu e foi vista da Terra em 1054. Foi nesta nuvem que o Herschel achou o ArH⁺, em 2013."],
+    ["Argon_discharge_tube.jpg", "Argônio brilhando num tubo de descarga", "O argônio quase não reage com nada. No espaço, os raios cósmicos o ionizam e ele consegue se ligar a um hidrogênio por um instante."],
+  ],
+  H3: [
+    ["Auroras_on_Jupiter_in_2014.jpg", "Auroras no polo norte de Júpiter, vistas pelo Hubble", "As auroras de Júpiter são maiores que a Terra inteira. Nelas o H₃⁺ brilha no infravermelho, e foi lá que ele foi visto fora da Terra pela primeira vez."],
+    ["Close-up_observations_of_auroras_on_Jupiter_(December_2023)_(weic2510a).jpg", "Auroras de Júpiter vistas de perto pelo James Webb", "O telescópio James Webb fotografa as auroras pela luz infravermelha do H₃⁺, que muda de brilho em segundos."],
+  ],
+  HCO: [
+    ["12meterdish.jpg", "Radiotelescópio em Kitt Peak, nos Estados Unidos", "Neste observatório, em 1970, um sinal de rádio sem dono apareceu vindo do espaço. Era o HCO⁺, chamado de \"X-ogênio\" até descobrirem o que era."],
+  ],
+  N2H: [
+    ["Herschel’s_view_of_the_Taurus_molecular_cloud_ESA384012.jpg", "Nuvem molecular de Touro, vista pelo telescópio Herschel", "Os fios brilhantes são gás e poeira a poucos graus acima do zero absoluto. É nesses cantos gelados que o N₂H⁺ ajuda a achar estrelas nascendo."],
+  ],
+  CH: [
+    ["M45_JeffJohnson.jpg", "Plêiades e a nuvem de poeira em volta delas", "O azul é poeira entre as estrelas refletindo a luz delas. O CH⁺ aparece em nuvens de gás assim, espalhadas pela galáxia."],
+  ],
+  ArF: [
+    ["Lasik_surgery.jpg", "Cirurgia de correção da visão a laser", "O laser de ArF tira camadas finíssimas da córnea para mudar o foco do olho, sem queimar o tecido em volta."],
+    ["Lasik_eye_surgery.jpg", "Olho do paciente durante a cirurgia", "A luz de 193 nm é ultravioleta, invisível para nós, e é absorvida logo na superfície da córnea."],
+  ],
+  KrF: [
+    ["12-inch_silicon_wafer.jpg", "Bolacha (wafer) de silício com centenas de chips", "Lasers de KrF desenham os circuitos dos chips: a luz de 248 nm passa por uma máscara e grava detalhes minúsculos no silício."],
+    ["KrTube.jpg", "Criptônio brilhando num tubo de descarga", "Numa descarga elétrica, o criptônio se liga ao flúor por alguns bilionésimos de segundo e solta a luz do laser ao se separar."],
+  ],
+  XeCl: [
+    ["XeTube.jpg", "Xenônio brilhando num tubo de descarga", "No laser, uma descarga como esta junta o xenônio a um cloro por um instante; ao se desfazer, a molécula solta luz ultravioleta de 308 nm."],
+  ],
+  XeF: [
+    ["Edelgase_in_Entladungsroehren.jpg", "Gases nobres em tubos de descarga: hélio, neônio, argônio, criptônio e xenônio", "O xenônio é o último, à direita. Numa descarga com flúor, ele forma o XeF energizado, que brilha em 351 nm."],
+  ],
   HeH: [
     ["Planetary_Nebula_NGC_7027_(opo9811e).jpg", "Nebulosa NGC 7027, onde o HeH⁺ foi detectado em 2019", "Ele foi provavelmente a primeira molécula do Universo, formada logo depois do Big Bang. Em 2019, o observatório SOFIA o detectou nesta nebulosa."],
     ["NGC_7027_(2020-31-4682).png", "Outra nebulosa planetária", "Nebulosas planetárias são as camadas de gás que uma estrela parecida com o Sol solta no fim da vida."],
