@@ -110,7 +110,9 @@ export function XpTela({ de, ate, onFim }) {
   const cheia = v.fase === 'cheia';
   return (
     <div className={`xpt-wrap ${v.fase}`} onClick={() => r.pular?.()} role="status" aria-live="polite">
-      {cheia && !reduzido && <Particulas cores={['oklch(0.82 0.13 195)', '#fff', 'oklch(0.85 0.14 90)']} cy={0.5} dura={1500} />}
+      <div className="xpt-grade" aria-hidden="true" />
+      <div className="nivel-raios xpt-raios" aria-hidden="true" />
+      {cheia && !reduzido && <Particulas cores={['oklch(0.86 0.15 195)', '#fff', 'oklch(0.72 0.22 330)']} cy={0.5} dura={1500} />}
       <div className="xpt-centro">
         <div className="eyebrow xpt-rotulo">Experiência</div>
         <div className="xpt-ganho display">+{v.ganho} <small>XP</small></div>
