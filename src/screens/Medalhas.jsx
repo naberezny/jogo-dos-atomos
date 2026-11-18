@@ -4,7 +4,7 @@ import { MEDALHA, MEDALHAS, NIVEIS, progresso } from '../data/medalhas.js';
 import { bySymbolFormula, sub } from '../game/logic.js';
 import { REC } from '../data/subatomico.js';
 import PageHeader from '../components/PageHeader.jsx';
-import { MedalhaBarra, MedalhaIcone, NivelTag, textoProgresso } from '../components/Medalha.jsx';
+import { CartaoMedalha, MedalhaIcone } from '../components/Medalha.jsx';
 
 const ABAS = [['mol', 'Substâncias'], ['sub', 'Partículas']];
 const ORDEM = ['exclusiva', 'platina', 'ouro', 'prata', 'bronze'];
@@ -13,21 +13,7 @@ function CartaoGrupo({ m, p, aberto, foco, onToggle, set, abrirFicha }) {
   const ref = useRef(null);
   useEffect(() => { if (foco) ref.current?.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, [foco]);
   return (
-    <div ref={ref} className={`med-card${p.nivel ? '' : ' bloq'}${foco ? ' foco' : ''}${aberto ? ' aberto' : ''}`} style={{ '--c': p.nivel ? NIVEIS[p.nivel].cor : undefined }}>
-      <button className="med-card-topo" onClick={onToggle} aria-expanded={aberto}>
-        <MedalhaIcone m={m} nivel={p.nivel} tam={64} />
-        <span className="med-card-info">
-          <span className="eyebrow">{m.grupo}</span>
-          <b className="display med-card-nome">{m.nome}</b>
-          <span className="med-card-linha"><NivelTag nivel={p.nivel} /><span className="mono med-conta">{p.tem}/{p.total}</span></span>
-        </span>
-      </button>
-      <p className="med-card-texto">{m.texto}</p>
-      <MedalhaBarra m={m} p={p} />
-      <div className="med-metas">
-        {m.metas.map(([n, q]) => <span key={n} className={`med-meta mono${p.tem >= q ? ' ok' : ''}`} style={{ '--c': NIVEIS[n].cor }}>{NIVEIS[n].nome} {q}</span>)}
-      </div>
-      <div className="med-card-prog">{textoProgresso(m, p)}</div>
+    <CartaoMedalha m={m} p={p} foco={foco} aberto={aberto} cartaoRef={ref} onTopo={onToggle}>
       <button className="med-ver-lista" onClick={onToggle}>{aberto ? 'Esconder lista ▲' : `Ver as ${p.total} descobertas do grupo ▼`}</button>
       {aberto && (
         <div className="med-membros">
@@ -39,7 +25,7 @@ function CartaoGrupo({ m, p, aberto, foco, onToggle, set, abrirFicha }) {
           })}
         </div>
       )}
-    </div>
+    </CartaoMedalha>
   );
 }
 
@@ -50,7 +36,7 @@ function CartaoExclusiva({ m, p, foco, abrirFicha }) {
   return (
     <button ref={ref} className={`med-exc${p.nivel ? '' : ' bloq'}${foco ? ' foco' : ''}`} disabled={!p.nivel || m.modo === 'sub'} onClick={() => abrirFicha(m.modo, k)}
       aria-label={p.nivel ? `${m.nome}, de ${m.grupo}. Abrir ficha` : 'Medalha exclusiva ainda bloqueada'}>
-      <MedalhaIcone m={m} nivel={p.nivel} tam={58} />
+      <MedalhaIcone m={m} nivel={p.nivel} tam={66} />
       <b className="display">{p.nivel ? m.nome : '???'}</b>
       <span className="med-exc-sub">{p.nivel ? m.grupo : 'Descubra uma substância especial para revelar'}</span>
       {p.nivel && <span className="med-exc-texto">{m.texto}</span>}

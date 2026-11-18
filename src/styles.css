@@ -552,7 +552,7 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
   .prog-secao { margin-top: 6px; }
   .prog-wrap .xpt-med, .prog-wrap .xpt-conq { padding: 8px 12px; gap: 10px; }
   .prog-wrap .xpt-med-txt { gap: 4px; }
-  .prog-wrap .med-icone { width: 36px !important; height: 36px !important; font-size: 17px !important; }
+  .prog-wrap .med-icone { width: 36px !important; height: 36px !important; font-size: 14px !important; }
   .prog-missao-icone, .prog-wrap .xpt-conq-glifo { width: 36px; height: 36px; font-size: 16px; }
   .prog-wrap .xpt-med-topo b { font-size: 14px; }
   .prog-wrap .xpt-med-sub { font-size: 12px; }
@@ -671,9 +671,16 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 /* ---------- Medalhas ---------- */
-.med-icone { --c: var(--accent); flex: none; position: relative; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; line-height: 1; background: radial-gradient(circle at 35% 28%, color-mix(in oklch, var(--c) 45%, oklch(0.3 0.03 265)), color-mix(in oklch, var(--c) 18%, oklch(0.16 0.02 265)) 70%); box-shadow: 0 0 0 3px var(--c), 0 0 0 6px color-mix(in oklch, var(--c) 22%, transparent), 0 0 22px color-mix(in oklch, var(--c) 45%, transparent); }
-.med-icone.bloq { filter: grayscale(1); opacity: .55; box-shadow: 0 0 0 2px oklch(0.4 0.02 265); background: oklch(0.2 0.02 265); font-family: var(--display); font-weight: 700; color: oklch(0.6 0.02 265); }
-.med-icone.platina::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 70%, oklch(1 0 0 / .8) 80%, transparent 90%); mask: radial-gradient(circle, transparent 62%, #000 64%); -webkit-mask: radial-gradient(circle, transparent 62%, #000 64%); animation: nivel-gira 3s linear infinite; }
+/* Ícone da medalha: moldura de marcas na cor do nível em volta de um núcleo escuro com anel neon. */
+.med-icone { --c: var(--accent); flex: none; position: relative; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
+.med-moldura { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(from -2deg, var(--c) 0 4deg, transparent 4deg 15deg); mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); -webkit-mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); opacity: .8; filter: drop-shadow(0 0 3px var(--c)); transition: opacity .3s; }
+.med-nucleo { position: absolute; inset: 14%; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 35%, color-mix(in oklch, var(--c) 42%, oklch(0.22 0.04 250)), oklch(0.1 0.03 250) 75%); box-shadow: 0 0 0 2px var(--c), 0 0 14px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); transition: filter .3s, box-shadow .3s, background .3s; }
+.med-icone.bloq { filter: grayscale(1); opacity: .55; }
+.med-icone.bloq .med-nucleo { font-family: var(--display); font-weight: 700; color: oklch(0.6 0.02 265); }
+.med-icone.trancada .med-moldura { opacity: .5; filter: none; }
+.med-icone.trancada .med-nucleo { filter: grayscale(.75) brightness(.75); box-shadow: 0 0 0 2px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 10px color-mix(in oklch, var(--c) 25%, transparent); }
+.med-cadeado { position: absolute; right: -1px; bottom: -1px; width: 42%; height: 42%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .5em; background: oklch(0.1 0.03 250); box-shadow: 0 0 0 1.5px var(--c), 0 0 8px color-mix(in oklch, var(--c) 50%, transparent); }
+.med-icone.platina::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 70%, oklch(1 0 0 / .9) 80%, transparent 90%); mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); -webkit-mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); animation: nivel-gira 3s linear infinite; }
 .med-nivel { --c: var(--accent); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: oklch(0.16 0.03 265); background: var(--c); }
 .med-nivel.bloq { color: var(--muted); background: oklch(0.26 0.02 265); }
 .med-conta { font-size: 12px; color: var(--muted); }
@@ -682,15 +689,6 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .med-marca { position: absolute; top: -3px; bottom: -3px; width: 3px; margin-left: -1.5px; border-radius: 2px; background: var(--c); }
 
 .med-ficha { display: flex; flex-direction: column; gap: 10px; }
-.med-ficha-item { --c: var(--accent); display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 12px; text-align: left; color: inherit; font: inherit; cursor: pointer; border: 1px solid color-mix(in oklch, var(--c) 40%, transparent); background: linear-gradient(135deg, color-mix(in oklch, var(--c) 12%, var(--panel)), var(--panel) 70%); transition: transform .15s, border-color .15s; }
-.med-ficha-item:hover { transform: translateY(-2px); border-color: var(--c); }
-.med-ficha-item .med-icone { margin: 4px 2px 0 4px; }
-.med-ficha-txt { display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1; }
-.med-ficha-topo { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-.med-ficha-topo b { font-size: 17px; }
-.med-ficha-texto { font-size: 14px; line-height: 1.45; color: oklch(0.86 0.02 265); text-wrap: pretty; }
-.med-ficha-prog { font-size: 12.5px; color: var(--muted); }
-.med-ver { color: var(--accent); white-space: nowrap; }
 
 .med-resumo { display: flex; flex-wrap: wrap; gap: 10px; }
 .med-resumo-item { display: flex; align-items: baseline; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid color-mix(in oklch, var(--c) 35%, transparent); background: color-mix(in oklch, var(--c) 8%, var(--panel)); font-size: 13px; color: var(--fg-2); }
@@ -707,9 +705,6 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .med-card-nome { font-size: 19px; line-height: 1.15; }
 .med-card-linha { display: flex; align-items: center; gap: 8px; }
 .med-card-texto { margin: 0; font-size: 13.5px; line-height: 1.45; color: oklch(0.8 0.02 265); }
-.med-metas { display: flex; flex-wrap: wrap; gap: 6px; }
-.med-meta { padding: 2px 7px; border-radius: 6px; font-size: 11px; border: 1px solid oklch(0.32 0.02 265); color: var(--muted); }
-.med-meta.ok { border-color: var(--c); color: var(--c); }
 .med-card-prog { font-size: 12.5px; color: var(--fg-2); }
 .med-ver-lista { align-self: flex-start; padding: 0; border: 0; background: none; font: inherit; font-size: 13px; color: var(--accent); cursor: pointer; }
 .med-membros { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -851,13 +846,12 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
    Mesmo visual das comemorações: painéis escuros com linhas de varredura, bordas e textos em neon,
    barras em blocos. Ciano (--neon) é a cor principal; magenta (--neon2), a de destaque. */
 :root { --neon: oklch(0.86 0.15 195); --neon2: oklch(0.72 0.22 330); --painel-neon: oklch(0.12 0.03 250); }
-.med-tela { --varredura: repeating-linear-gradient(0deg, oklch(1 0 0 / .03) 0 1px, transparent 1px 4px); }
-.med-tela .med-barra { height: 10px; padding: 2px; border-radius: 3px; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c, var(--neon)) 35%, oklch(0.4 0.03 250)); }
-.med-tela .med-barra-fill { border-radius: 1px; box-shadow: none; filter: drop-shadow(0 0 4px var(--c)); mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); }
-.med-tela .med-marca { top: -2px; bottom: -2px; box-shadow: 0 0 6px var(--c); }
-.med-tela .med-nivel { border-radius: 4px; color: oklch(0.98 0.02 220); text-shadow: 0 0 6px var(--c); background: color-mix(in oklch, var(--c) 16%, transparent); box-shadow: 0 0 0 1px var(--c), 0 0 10px color-mix(in oklch, var(--c) 55%, transparent); }
-.med-tela .med-nivel.bloq { color: var(--muted); text-shadow: none; background: transparent; box-shadow: 0 0 0 1px oklch(0.4 0.02 265); }
-.med-tela .med-conta { color: var(--neon); text-shadow: 0 0 8px oklch(0.86 0.15 195 / .5); }
+.med-tela, .med-card { --varredura: repeating-linear-gradient(0deg, oklch(1 0 0 / .03) 0 1px, transparent 1px 4px); }
+.med-card .med-barra { height: 10px; padding: 2px; border-radius: 3px; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c, var(--neon)) 35%, oklch(0.4 0.03 250)); }
+.med-card .med-barra-fill { border-radius: 1px; box-shadow: none; filter: drop-shadow(0 0 4px var(--c)); mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); }
+.med-card .med-nivel { border-radius: 4px; color: oklch(0.98 0.02 220); text-shadow: 0 0 6px var(--c); background: color-mix(in oklch, var(--c) 16%, transparent); box-shadow: 0 0 0 1px var(--c), 0 0 10px color-mix(in oklch, var(--c) 55%, transparent); }
+.med-card .med-nivel.bloq { color: var(--muted); text-shadow: none; background: transparent; box-shadow: 0 0 0 1px oklch(0.4 0.02 265); }
+.med-card .med-conta { color: var(--neon); text-shadow: 0 0 8px oklch(0.86 0.15 195 / .5); }
 
 /* Tela de medalhas */
 .med-tela .seg { border: 0; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .4); }
@@ -866,12 +860,24 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .med-tela .med-resumo-item b { color: oklch(0.98 0.02 220); text-shadow: 0 0 10px var(--c); }
 .med-titulo-secao { color: oklch(0.97 0.03 195); text-shadow: 0 0 12px oklch(0.86 0.15 195 / .55); }
 .med-tela .med-titulo-secao .mono { color: var(--neon); text-shadow: none; }
-.med-tela .med-card { border: 0; background: var(--varredura), linear-gradient(160deg, color-mix(in oklch, var(--c) 12%, oklch(0.1 0.03 250)), oklch(0.09 0.025 250) 60%); box-shadow: 0 0 0 1.5px color-mix(in oklch, var(--c) 60%, transparent), 0 0 20px color-mix(in oklch, var(--c) 18%, transparent), inset 0 0 20px color-mix(in oklch, var(--c) 7%, transparent); }
-.med-tela .med-card.bloq { background: var(--varredura), oklch(0.1 0.02 255); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .16); }
-.med-tela .med-card-nome { color: oklch(0.97 0.02 220); text-shadow: 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); }
-.med-tela .med-card .eyebrow, .med-tela .med-ver-lista { color: var(--neon); text-shadow: 0 0 6px oklch(0.86 0.15 195 / .5); }
-.med-tela .med-meta { border: 0; border-radius: 4px; box-shadow: 0 0 0 1px oklch(0.4 0.03 250); }
-.med-tela .med-meta.ok { color: oklch(0.97 0.02 220); text-shadow: 0 0 6px var(--c); box-shadow: 0 0 0 1px var(--c), 0 0 10px color-mix(in oklch, var(--c) 45%, transparent); }
+.med-card { border: 0; background: var(--varredura), linear-gradient(160deg, color-mix(in oklch, var(--c) 12%, oklch(0.1 0.03 250)), oklch(0.09 0.025 250) 60%); box-shadow: 0 0 0 1.5px color-mix(in oklch, var(--c) 60%, transparent), 0 0 20px color-mix(in oklch, var(--c) 18%, transparent), inset 0 0 20px color-mix(in oklch, var(--c) 7%, transparent); }
+.med-card.bloq { background: var(--varredura), oklch(0.1 0.02 255); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .16); }
+.med-card-nome { color: oklch(0.97 0.02 220); text-shadow: 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); }
+.med-card .eyebrow, .med-ver-lista { color: var(--neon); text-shadow: 0 0 6px oklch(0.86 0.15 195 / .5); }
+.med-card .med-barra-fill { transition: width .5s cubic-bezier(.3, .7, .3, 1), background-color .35s, filter .35s; }
+div.med-card-topo { cursor: default; }
+.med-card.compacto { padding: 14px; gap: 8px; }
+.med-card.compacto .med-card-topo { gap: 14px; }
+.med-card.compacto .med-card-nome { font-size: 17px; }
+.med-card.compacto .med-card-texto { font-size: 13.5px; }
+/* Botões dos níveis: o escolhido acende; os não conquistados têm cadeado */
+.med-niveis { display: flex; flex-wrap: wrap; gap: 6px; }
+.med-nv { --c: var(--accent); display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border: 0; border-radius: 5px; font-size: 11.5px; cursor: pointer; color: oklch(0.62 0.03 265); background: oklch(0.09 0.025 250); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c) 30%, oklch(0.32 0.03 250)); transition: box-shadow .2s, background .2s, color .2s, transform .2s; }
+.med-nv b { font-weight: 600; }
+.med-nv.ok { color: oklch(0.95 0.02 220); text-shadow: 0 0 6px var(--c); box-shadow: 0 0 0 1px var(--c), 0 0 8px color-mix(in oklch, var(--c) 35%, transparent); }
+.med-nv:hover { box-shadow: 0 0 0 1.5px var(--c), 0 0 10px color-mix(in oklch, var(--c) 40%, transparent); }
+.med-nv[aria-pressed='true'] { color: #fff; text-shadow: 0 0 6px var(--c); background: color-mix(in oklch, var(--c) 24%, oklch(0.1 0.03 250)); box-shadow: 0 0 0 2px var(--c), 0 0 16px color-mix(in oklch, var(--c) 60%, transparent); transform: translateY(-1px); }
+.med-nv-cadeado { font-size: 9px; }
 .med-tela .med-membro { border: 0; background: oklch(0.09 0.025 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .35); }
 .med-tela .med-membro b { text-shadow: 0 0 6px var(--neon); }
 .med-tela .med-membro.oculto { box-shadow: none; outline: 1px dashed oklch(0.4 0.03 250); outline-offset: -1px; }

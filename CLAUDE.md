@@ -68,6 +68,9 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   substância ficou no visual antigo, a pedido.
 - **Medalhas:** 156 (109 exclusivas, 47 de grupo com Bronze/Prata/Ouro/Platina); tela própria, aberta
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
+  O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado na tela de medalhas e nas
+  fichas (substância e subatômico): os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
+  conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido.
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
 - **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar
