@@ -10,8 +10,8 @@ const corDe = nivel => (nivel ? NIVEIS[nivel].cor : 'oklch(0.42 0.02 265)');
 const MOLDURA = {
   bronze: { aneis: [37], marcas: 12, cravos: 0, pontas: 0 },
   prata: { aneis: [36.5, 40], marcas: 24, cravos: 4, pontas: 0 },
-  ouro: { aneis: [36.5, 40], marcas: 36, cravos: 8, pontas: 8 },
-  platina: { aneis: [36.5, 40], marcas: 48, cravos: 8, pontas: 12, giro: true, brilhos: 4 },
+  ouro: { aneis: [36.5, 40], marcas: 36, cravos: 8, pontas: 8, brilhos: 2 },
+  platina: { aneis: [36.5, 40], marcas: 48, cravos: 8, pontas: 12, giro: true, brilhos: 6 },
   exclusiva: { aneis: [37], marcas: 0, pontilhado: true, cravos: 6, pontas: 6, brilhos: 3 },
 };
 const pol = (r, a) => [50 + r * Math.sin(a), 50 - r * Math.cos(a)];
@@ -35,11 +35,11 @@ function Moldura({ nivel }) {
       })}
       {Array.from({ length: d.cravos }, (_, i) => {
         const [x, y] = pol(nivel === 'exclusiva' ? 42.5 : 45, (2 * Math.PI * i) / d.cravos);
-        return <rect key={i} x={x - 2.2} y={y - 2.2} width="4.4" height="4.4" transform={`rotate(45 ${x} ${y})`} className="mm-cravo" />;
+        return <rect key={i} x={x - 2.2} y={y - 2.2} width="4.4" height="4.4" transform={`rotate(45 ${x} ${y})`} className="mm-cravo" style={{ animationDelay: `${(i * 2.4) / d.cravos}s` }} />;
       })}
       {Array.from({ length: d.brilhos || 0 }, (_, i) => {
-        const [x, y] = pol(46, (2 * Math.PI * i) / (d.brilhos || 1) + Math.PI / 4);
-        return <path key={i} d={brilho(x, y, 4.5)} className="mm-brilho" style={{ animationDelay: `${i * 0.5}s` }} />;
+        const [x, y] = pol(46, (2 * Math.PI * i) / d.brilhos + Math.PI / 4);
+        return <path key={i} d={brilho(x, y, 4.5)} className="mm-brilho" style={{ animationDelay: `${(i * 2.4) / d.brilhos + (i % 2) * 0.7}s` }} />;
       })}
     </svg>
   );
@@ -53,7 +53,9 @@ function Moldura({ nivel }) {
  */
 export function MedalhaIcone({ m, nivel, tam = 56, trancada = false }) {
   const c = corDe(nivel);
-  const cls = ['med-icone', nivel ? '' : 'bloq', nivel === 'platina' && !trancada ? 'platina' : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
+  // Ouro, Platina e Exclusiva brilham (reflexo girando, pontas e cravos pulsando); a Platina, mais que todas.
+  const brilha = !trancada && ['ouro', 'platina', 'exclusiva'].includes(nivel);
+  const cls = ['med-icone', nivel ? '' : 'bloq', brilha ? `brilha brilha-${nivel}` : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
   return (
     <span className={cls} style={{ '--c': c, width: tam, height: tam, fontSize: tam * 0.34 }} aria-hidden="true">
       <Moldura nivel={nivel} />

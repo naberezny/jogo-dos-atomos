@@ -73,6 +73,8 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido. A moldura do ícone (SVG,
   `MOLDURA` em Medalha.jsx) ganha detalhes a cada nível: Bronze anel simples → Prata anel duplo e cravos →
   Ouro estrela de 8 pontas → Platina 12 pontas, anel girando e brilhos; a exclusiva tem estrela de 6 pontas magenta.
+  Ouro, Platina e Exclusiva brilham (classe `brilha`: reflexo girando no anel, pontas pulsando, faíscas); a Platina
+  tem dois reflexos, cravos piscando em sequência e miolo pulsando.
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
 - **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar

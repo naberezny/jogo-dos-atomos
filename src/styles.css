@@ -692,7 +692,20 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .med-icone.trancada .mm-brilho, .med-icone.trancada .mm-giro { animation: none; }
 .med-icone.trancada .med-nucleo { filter: grayscale(.75) brightness(.75); box-shadow: 0 0 0 2px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 10px color-mix(in oklch, var(--c) 25%, transparent); }
 .med-cadeado { position: absolute; right: -1px; bottom: -1px; width: 42%; height: 42%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .5em; background: oklch(0.1 0.03 250); box-shadow: 0 0 0 1.5px var(--c), 0 0 8px color-mix(in oklch, var(--c) 50%, transparent); }
-.med-icone.platina::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 70%, oklch(1 0 0 / .9) 80%, transparent 90%); mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); -webkit-mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); animation: nivel-gira 3s linear infinite; pointer-events: none; }
+/* Brilho das medalhas mais altas: reflexo girando no anel, pontas e cravos pulsando, miolo respirando */
+.med-icone.brilha::after, .med-icone.brilha-platina::before { content: ''; position: absolute; inset: 0; border-radius: 50%; pointer-events: none; mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); -webkit-mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); }
+.med-icone.brilha::after { background: conic-gradient(from 0deg, transparent 0 68%, oklch(1 0 0 / .95) 78%, transparent 88%); animation: nivel-gira var(--vel, 4.5s) linear infinite; }
+.med-icone.brilha-platina { --vel: 2.6s; }
+.med-icone.brilha-platina::before { background: conic-gradient(from 180deg, transparent 0 74%, color-mix(in srgb, var(--c) 60%, #fff) 82%, transparent 90%); animation: nivel-gira 3.8s linear infinite reverse; }
+.med-icone.brilha-exclusiva { --vel: 3.4s; }
+.med-icone.brilha .mm-pontas { animation: mm-pulsa 2.4s ease-in-out infinite; }
+.med-icone.brilha-platina .mm-pontas { animation-duration: 1.6s; }
+.med-icone.brilha .mm-cravo { animation: mm-cravo 2.4s ease-in-out infinite; }
+.med-icone.brilha .med-nucleo { animation: mm-nucleo 2.4s ease-in-out infinite; }
+.med-icone.brilha-ouro .mm-cravo, .med-icone.brilha-ouro .med-nucleo { animation: none; }
+@keyframes mm-pulsa { 50% { filter: drop-shadow(0 0 6px var(--c)) drop-shadow(0 0 2px #fff); } }
+@keyframes mm-cravo { 0%, 70%, 100% { fill: var(--c); } 80% { fill: #fff; filter: drop-shadow(0 0 3px #fff); } }
+@keyframes mm-nucleo { 50% { box-shadow: 0 0 0 2px var(--c), 0 0 26px color-mix(in srgb, var(--c) 80%, transparent), inset 0 0 18px color-mix(in srgb, var(--c) 65%, transparent); } }
 .med-nivel { --c: var(--accent); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: oklch(0.16 0.03 265); background: var(--c); }
 .med-nivel.bloq { color: var(--muted); background: oklch(0.26 0.02 265); }
 .med-conta { font-size: 12px; color: var(--muted); }
