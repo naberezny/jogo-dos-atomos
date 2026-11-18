@@ -74,7 +74,7 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   os conquistados em cor e os que faltam em cinza (`cinza`, sem animação); a exclusiva ainda não ganha aparece como "?".
   Na ficha (substância e subatômico), `MedalhasDaFicha` mostra um ícone por medalha, no nível mais alto conquistado
   (ou em cinza, se nenhum). Tocar em qualquer ícone abre `MedalhaDetalhe` (portal no body, por cima da ficha; Esc
-  fecha só ela): o cartão completo no nível tocado, com botões de nível grandes (com o ícone de cada nível) e a lista
+  fecha só ela): o cartão completo no nível tocado, com botões de nível grandes (só nome e número) e a lista
   de descobertas do grupo (na tela de medalhas, cada uma abre a ficha).
   O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado no detalhe da medalha: os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
   conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido. A moldura do ícone (SVG,

@@ -143,7 +143,7 @@ export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, ca
               <button key={n} className={`med-nv mono${ok ? ' ok' : ''}`} style={{ '--c': corDe(n) }} aria-pressed={sel === n}
                 onClick={() => setEsc(n)} aria-label={`${NIVEIS[n].nome}: ${q}${ok ? ', conquistado' : ', bloqueado'}`}>
                 {grandes
-                  ? <><MedalhaIcone m={m} nivel={n} tam={40} cinza={!ok} /><span className="med-nv-txt">{NIVEIS[n].nome}<b>{ok ? '✓' : '🔒'} {q}</b></span></>
+                  ? <span className="med-nv-txt">{NIVEIS[n].nome}<b>{q}</b></span>
                   : <>{!ok && <span className="med-nv-cadeado" aria-hidden="true">🔒</span>}{NIVEIS[n].nome} <b>{q}</b></>}
               </button>
             );
