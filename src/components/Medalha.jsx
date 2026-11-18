@@ -229,7 +229,7 @@ export function MedalhasDaFicha({ modo, chave, descobertas, aoAbrir }) {
               const rotulo = `${m.nome}, ${NIVEIS[n].nome}${ok ? '' : ' (ainda não conquistada)'}`;
               return (
                 <button key={n} className={`med-ficha-btn${ok ? '' : ' falta'}`} title={rotulo} aria-label={rotulo} onClick={() => setAberta({ id: m.id, nivel: n })}>
-                  <MedalhaIcone m={m} nivel={n} tam={50} cinza={!ok} />
+                  <MedalhaIcone m={m} nivel={n} tam={62} cinza={!ok} />
                 </button>
               );
             })}
