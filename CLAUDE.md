@@ -70,8 +70,10 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
   O grupo "Moléculas fugazes" (Pisca-pisca!) tem 11: íons do espaço (HeH⁺, NeH⁺, ArH⁺, H₃⁺, HCO⁺, N₂H⁺, CH⁺)
   e excímeros de laser (ArF, KrF, XeCl, XeF); a fórmula achatada deles não leva a carga (`H3`, `HCO`…).
-  O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado na tela de medalhas e nas
-  fichas (substância e subatômico): os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
+  Na ficha (substância e subatômico) a seção de medalhas mostra só os ícones (`MedalhasDaFicha`): cada medalha
+  com todos os níveis, os conquistados em cor e os que faltam em cinza (`cinza`, sem animação); tocar abre
+  `MedalhaDetalhe` (portal no body, por cima da ficha; Esc fecha só ela) com o cartão completo no nível tocado.
+  O cartão da medalha é um componente só (`CartaoMedalha` em Medalha.jsx), usado na tela de medalhas e no detalhe: os níveis (Bronze…Platina) são botões, e o ícone (com cadeado se ainda não
   conquistado), a barra (tem/meta do nível) e a cor mudam conforme o nível escolhido. A moldura do ícone (SVG,
   `MOLDURA` em Medalha.jsx) ganha detalhes a cada nível: Bronze anel simples → Prata anel duplo e cravos →
   Ouro estrela de 8 pontas → Platina 12 pontas, anel girando e brilhos; a exclusiva tem estrela de 6 pontas magenta.

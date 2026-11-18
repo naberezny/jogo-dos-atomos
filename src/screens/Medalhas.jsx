@@ -1,10 +1,8 @@
 // Tela de medalhas: grupos (com níveis Bronze → Platina) e exclusivas, de substâncias e de partículas.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { MEDALHA, MEDALHAS, NIVEIS, progresso } from '../data/medalhas.js';
-import { bySymbolFormula, sub } from '../game/logic.js';
-import { REC } from '../data/subatomico.js';
 import PageHeader from '../components/PageHeader.jsx';
-import { CartaoMedalha, MedalhaIcone } from '../components/Medalha.jsx';
+import { CartaoMedalha, ListaMembros, MedalhaIcone } from '../components/Medalha.jsx';
 
 const ABAS = [['mol', 'Substâncias'], ['sub', 'Partículas']];
 const ORDEM = ['exclusiva', 'platina', 'ouro', 'prata', 'bronze'];
@@ -15,16 +13,7 @@ function CartaoGrupo({ m, p, aberto, foco, onToggle, set, abrirFicha }) {
   return (
     <CartaoMedalha m={m} p={p} foco={foco} aberto={aberto} cartaoRef={ref} onTopo={onToggle}>
       <button className="med-ver-lista" onClick={onToggle}>{aberto ? 'Esconder lista ▲' : `Ver as ${p.total} descobertas do grupo ▼`}</button>
-      {aberto && (
-        <div className="med-membros">
-          {m.membros.map(k => {
-            if (!set.has(k)) return <span key={k} className="med-membro oculto mono">???</span>;
-            const nome = m.modo === 'mol' ? bySymbolFormula(k)?.name : REC.get(k)?.name;
-            const simb = m.modo === 'mol' ? sub(bySymbolFormula(k)?.d || k) : REC.get(k)?.sym;
-            return <button key={k} className="med-membro" onClick={() => abrirFicha(m.modo, k)}><b className="display">{simb}</b> {nome}</button>;
-          })}
-        </div>
-      )}
+      {aberto && <ListaMembros m={m} set={set} onAbrir={abrirFicha} />}
     </CartaoMedalha>
   );
 }

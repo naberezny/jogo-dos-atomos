@@ -1,8 +1,11 @@
 // Peças visuais das medalhas, usadas na tela de medalhas, nas fichas e nas comemorações:
 // o ícone com moldura, a barra de um nível, os botões de nível e o cartão completo da medalha.
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { medalhasDe, NIVEIS, progresso } from '../data/medalhas.js';
 import { useNav } from '../nav.js';
+import { bySymbolFormula, sub } from '../game/logic.js';
+import { REC } from '../data/subatomico.js';
 
 const corDe = nivel => (nivel ? NIVEIS[nivel].cor : 'oklch(0.42 0.02 265)');
 
@@ -51,18 +54,18 @@ function Moldura({ nivel }) {
  * Com `trancada`, mostra a medalha daquele nível ainda não conquistado: moldura do nível,
  * desenho apagado e um cadeado.
  */
-export function MedalhaIcone({ m, nivel, tam = 56, trancada = false }) {
+export function MedalhaIcone({ m, nivel, tam = 56, trancada = false, cinza = false }) {
   const c = corDe(nivel);
   // Ouro, Platina e Exclusiva brilham (reflexo girando, pontas e cravos pulsando); a Platina, mais que todas.
-  const brilha = !trancada && ['ouro', 'platina', 'exclusiva'].includes(nivel);
-  const cls = ['med-icone', nivel && !trancada ? `nv-${nivel}` : '', nivel ? '' : 'bloq', brilha ? `brilha brilha-${nivel}` : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
+  const brilha = !trancada && !cinza && ['ouro', 'platina', 'exclusiva'].includes(nivel);
+  const cls = ['med-icone', nivel && !trancada && !cinza ? `nv-${nivel}` : '', cinza ? 'cinza' : '', nivel ? '' : 'bloq', brilha ? `brilha brilha-${nivel}` : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
   // Cada medalha começa o reflexo num momento diferente, para não piscarem todas juntas.
   const atraso = [...(m.id || '')].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 997, 7) / 997 * 5;
   return (
     <span className={cls} style={{ '--c': c, '--atraso-reflexo': `${atraso.toFixed(2)}s`, width: tam, height: tam, fontSize: tam * 0.34 }} aria-hidden="true">
       <Moldura nivel={nivel} />
       <span className="med-nucleo">{nivel || !m.exclusiva ? m.icone : '?'}</span>
-      {nivel && !trancada && <span className="med-reflexo" />}
+      {nivel && !trancada && !cinza && <span className="med-reflexo" />}
       {trancada && <span className="med-cadeado">🔒</span>}
     </span>
   );
@@ -106,11 +109,11 @@ function textoNivel(m, p, nivel, meta) {
 /**
  * Cartão de uma medalha (tela de medalhas e fichas). Nas de grupo, cada nível é um botão:
  * o ícone, a barra e o texto mostram o nível escolhido, mesmo que ainda não conquistado.
- * Começa no nível atual (ou no Bronze, se nenhum). `children` entra no fim do cartão.
+ * Começa em `nivelInicial` ou no nível atual (ou no Bronze, se nenhum). `children` entra no fim do cartão.
  * @param compacto versão menor, para as fichas
  */
-export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, cartaoRef, onTopo, children }) {
-  const [esc, setEsc] = useState(null);
+export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, cartaoRef, onTopo, nivelInicial = null, children }) {
+  const [esc, setEsc] = useState(nivelInicial);
   const metas = m.exclusiva ? [] : m.metas;
   const sel = esc || p.nivel || metas[0]?.[0] || 'exclusiva';
   const meta = metas.find(([n]) => n === sel)?.[1] ?? 1;
@@ -150,24 +153,91 @@ export function CartaoMedalha({ m, p, compacto = false, foco = false, aberto, ca
   );
 }
 
+/** Lista das descobertas de um grupo: as que faltam aparecem como "???". Com `onAbrir`, cada uma é um botão. */
+export function ListaMembros({ m, set, onAbrir }) {
+  return (
+    <div className="med-membros">
+      {m.membros.map(k => {
+        if (!set.has(k)) return <span key={k} className="med-membro oculto mono">???</span>;
+        const nome = m.modo === 'mol' ? bySymbolFormula(k)?.name : REC.get(k)?.name;
+        const simb = m.modo === 'mol' ? sub(bySymbolFormula(k)?.d || k) : REC.get(k)?.sym;
+        const conteudo = <><b className="display">{simb}</b> {nome}</>;
+        return onAbrir
+          ? <button key={k} className="med-membro" onClick={() => onAbrir(m.modo, k)}>{conteudo}</button>
+          : <span key={k} className="med-membro">{conteudo}</span>;
+      })}
+    </div>
+  );
+}
+
+/** Tela por cima da ficha com os detalhes completos de uma medalha, aberta no nível tocado. */
+export function MedalhaDetalhe({ m, p, set, nivel, onFechar, onVerTodas }) {
+  const fechar = useRef(onFechar); fechar.current = onFechar;
+  const btn = useRef(null);
+  useEffect(() => {
+    btn.current?.focus({ preventScroll: true });
+    // Esc fecha só esta tela (escuta antes da ficha, que também fecha com Esc).
+    const k = e => { if (e.key === 'Escape') { e.stopImmediatePropagation(); e.preventDefault(); fechar.current(); } };
+    window.addEventListener('keydown', k, true);
+    return () => window.removeEventListener('keydown', k, true);
+  }, []);
+  // Vai direto para o <body>: dentro da ficha (que rola e tem desfoque) o "fixo" acompanharia a rolagem.
+  return createPortal(
+    <div className="med-detalhe-wrap" onClick={e => { e.stopPropagation(); onFechar(); }}>
+      <div className="med-detalhe" role="dialog" aria-modal="true" aria-label={`Medalha ${m.nome}`} onClick={e => e.stopPropagation()}>
+        <button ref={btn} className="med-detalhe-fechar" onClick={onFechar} aria-label="Fechar">✕</button>
+        <CartaoMedalha m={m} p={p} nivelInicial={m.exclusiva ? null : nivel}>
+          {!m.exclusiva && <>
+            <div className="eyebrow med-detalhe-sub">Descobertas do grupo ({p.tem}/{p.total})</div>
+            <ListaMembros m={m} set={set} />
+          </>}
+        </CartaoMedalha>
+        <div className="med-detalhe-acoes">
+          <button className="med-detalhe-btn" onClick={onFechar}>Voltar</button>
+          <button className="med-detalhe-btn sec" onClick={onVerTodas}>Tela de medalhas ›</button>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 /**
- * Seção "Medalhas" da ficha de uma descoberta, com os mesmos cartões da tela de medalhas.
+ * Seção "Medalhas" da ficha de uma descoberta: só os ícones. Cada medalha mostra todos os seus
+ * níveis; os já conquistados em cor e os que faltam em cinza. Tocar num ícone abre os detalhes.
  * @param modo 'mol' (substância, chave = fórmula) ou 'sub' (partícula, chave = id da receita)
  * @param descobertas lista de chaves já descobertas no mesmo modo
  */
 export function MedalhasDaFicha({ modo, chave, descobertas, aoAbrir }) {
   const { go } = useNav();
+  const [aberta, setAberta] = useState(null);
   const lista = medalhasDe(modo, chave);
   if (!lista.length) return null;
   const set = new Set(descobertas);
+  const itens = lista.map(m => ({ m, p: progresso(m, set) }));
+  const total = itens.reduce((t, { m }) => t + (m.exclusiva ? 1 : m.metas.length), 0);
+  const ganhas = itens.reduce((t, { m, p }) => t + (m.exclusiva ? (p.nivel ? 1 : 0) : m.metas.filter(([, q]) => p.tem >= q).length), 0);
+  const sel = aberta && itens.find(x => x.m.id === aberta.id);
   return (
     <div className="med-ficha">
-      <div className="eyebrow">{lista.length > 1 ? `Medalhas (${lista.length})` : 'Medalha'}</div>
-      {lista.map(m => (
-        <CartaoMedalha key={m.id} m={m} p={progresso(m, set)} compacto>
-          <button className="med-ver-lista" onClick={() => { aoAbrir?.(); go('medalhas', { medalhaFoco: m.id, result: null }); }}>Ver na tela de medalhas ›</button>
-        </CartaoMedalha>
-      ))}
+      <div className="eyebrow">Medalhas <span className="med-ficha-conta">{ganhas}/{total}</span></div>
+      <div className="med-ficha-icones">
+        {itens.map(({ m, p }) => (
+          <div key={m.id} className="med-ficha-grupo" role="group" aria-label={m.nome}>
+            {(m.exclusiva ? [['exclusiva', 1]] : m.metas).map(([n, q]) => {
+              const ok = m.exclusiva ? !!p.nivel : p.tem >= q;
+              const rotulo = `${m.nome}, ${NIVEIS[n].nome}${ok ? '' : ' (ainda não conquistada)'}`;
+              return (
+                <button key={n} className={`med-ficha-btn${ok ? '' : ' falta'}`} title={rotulo} aria-label={rotulo} onClick={() => setAberta({ id: m.id, nivel: n })}>
+                  <MedalhaIcone m={m} nivel={n} tam={50} cinza={!ok} />
+                </button>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      {sel && <MedalhaDetalhe key={aberta.id + aberta.nivel} m={sel.m} p={sel.p} set={set} nivel={aberta.nivel} onFechar={() => setAberta(null)}
+        onVerTodas={() => { aoAbrir?.(); setAberta(null); go('medalhas', { medalhaFoco: sel.m.id, result: null }); }} />}
     </div>
   );
 }
