@@ -66,7 +66,7 @@ export default function ResultModal({ game, onClose, toColl }) {
         <div className="modal-left">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
             <div className="eyebrow">Estrutura</div>
-            <div className="seg accent">{views.map(l => <button key={l} aria-pressed={view === l} onClick={() => setView(l)}>{l}</button>)}</div>
+            <div className="seg accent seg-estrutura" role="group" aria-label="Vista da estrutura">{views.map(l => <button key={l} aria-pressed={view === l} onClick={() => setView(l)}>{l}</button>)}</div>
           </div>
           {view === '2D' ? (
             <>
