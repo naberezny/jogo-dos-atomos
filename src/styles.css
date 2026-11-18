@@ -964,7 +964,11 @@ div.med-card-topo { cursor: default; }
 .med-detalhe-wrap { position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center; padding: 16px; overflow: auto; background: linear-gradient(oklch(0.86 0.15 195 / .045) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(90deg, oklch(0.86 0.15 195 / .045) 1px, transparent 1px) 0 0 / 34px 34px, oklch(0.07 0.02 265 / .9); backdrop-filter: blur(4px); animation: rev-entra .2s ease-out both; }
 .med-detalhe { position: relative; width: min(460px, 100%); margin: auto 0; display: flex; flex-direction: column; gap: 12px; animation: pop .25s ease-out; }
 .med-detalhe .med-card { padding-top: 22px; }
-.med-detalhe .med-card .med-icone { width: 92px !important; height: 92px !important; font-size: 31px !important; }
+.med-detalhe .med-card-topo { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+.med-detalhe .med-card-info { align-items: center; }
+.med-detalhe .med-card-nome { font-size: 22px; }
+.med-detalhe .med-card .med-card-topo .med-icone { width: 140px !important; height: 140px !important; font-size: 48px !important; margin-top: 4px; }
+.med-detalhe .med-card-texto, .med-detalhe .med-niveis-dica, .med-detalhe .med-card-prog { text-align: center; }
 .med-detalhe-sub { margin-top: 4px; }
 .med-detalhe-fechar { position: absolute; top: 10px; right: 10px; z-index: 2; width: 34px; height: 34px; border: 0; border-radius: 50%; cursor: pointer; font-size: 15px; color: var(--neon); background: oklch(0.1 0.03 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .5); }
 .med-detalhe-acoes { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
