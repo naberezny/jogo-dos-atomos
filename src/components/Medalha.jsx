@@ -6,18 +6,57 @@ import { useNav } from '../nav.js';
 
 const corDe = nivel => (nivel ? NIVEIS[nivel].cor : 'oklch(0.42 0.02 265)');
 
+// Moldura de cada nível: quanto mais alto, mais detalhes (anéis, marcas, cravos, pontas e brilhos).
+const MOLDURA = {
+  bronze: { aneis: [37], marcas: 12, cravos: 0, pontas: 0 },
+  prata: { aneis: [36.5, 40], marcas: 24, cravos: 4, pontas: 0 },
+  ouro: { aneis: [36.5, 40], marcas: 36, cravos: 8, pontas: 8 },
+  platina: { aneis: [36.5, 40], marcas: 48, cravos: 8, pontas: 12, giro: true, brilhos: 4 },
+  exclusiva: { aneis: [37], marcas: 0, pontilhado: true, cravos: 6, pontas: 6, brilhos: 3 },
+};
+const pol = (r, a) => [50 + r * Math.sin(a), 50 - r * Math.cos(a)];
+const estrela = (n, r1, r2, giro = 0) => Array.from({ length: n * 2 }, (_, i) => pol(i % 2 ? r2 : r1, giro + (Math.PI * i) / n).map(v => v.toFixed(2)).join(',')).join(' ');
+const brilho = (x, y, r) => `M${x},${y - r} Q${x},${y} ${x + r},${y} Q${x},${y} ${x},${y + r} Q${x},${y} ${x - r},${y} Q${x},${y} ${x},${y - r}Z`;
+
+/** Desenho da moldura (SVG 100×100) para o nível; sem nível, um anel tracejado simples. */
+function Moldura({ nivel }) {
+  const d = MOLDURA[nivel];
+  if (!d) return <svg className="med-moldura" viewBox="0 0 100 100"><circle cx="50" cy="50" r="37" className="mm-traco" /></svg>;
+  return (
+    <svg className={`med-moldura mm-${nivel}`} viewBox="0 0 100 100">
+      {d.pontas > 0 && <polygon className="mm-pontas" points={estrela(d.pontas, 49, 39, Math.PI / d.pontas)} />}
+      {d.giro && <circle cx="50" cy="50" r="46.5" className="mm-giro" />}
+      {d.pontilhado && <circle cx="50" cy="50" r="42.5" className="mm-pontos" />}
+      {d.aneis.map(r => <circle key={r} cx="50" cy="50" r={r} className="mm-anel" />)}
+      {Array.from({ length: d.marcas }, (_, i) => {
+        const a = (2 * Math.PI * i) / d.marcas, longa = d.marcas >= 24 && i % (d.marcas / 12) === 0;
+        const [x1, y1] = pol(41.5, a), [x2, y2] = pol(longa ? 46 : 44, a);
+        return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} className={longa ? 'mm-marca longa' : 'mm-marca'} />;
+      })}
+      {Array.from({ length: d.cravos }, (_, i) => {
+        const [x, y] = pol(nivel === 'exclusiva' ? 42.5 : 45, (2 * Math.PI * i) / d.cravos);
+        return <rect key={i} x={x - 2.2} y={y - 2.2} width="4.4" height="4.4" transform={`rotate(45 ${x} ${y})`} className="mm-cravo" />;
+      })}
+      {Array.from({ length: d.brilhos || 0 }, (_, i) => {
+        const [x, y] = pol(46, (2 * Math.PI * i) / (d.brilhos || 1) + Math.PI / 4);
+        return <path key={i} d={brilho(x, y, 4.5)} className="mm-brilho" style={{ animationDelay: `${i * 0.5}s` }} />;
+      })}
+    </svg>
+  );
+}
+
 /**
- * Ícone redondo da medalha: núcleo com o desenho e uma moldura de marcas na cor do nível.
- * Sem nível (ainda bloqueada) fica apagado; a exclusiva bloqueada mostra "?".
- * Com `trancada`, mostra a medalha daquele nível ainda não conquistado: moldura na cor do nível,
+ * Ícone redondo da medalha: núcleo com o desenho dentro de uma moldura que fica mais elaborada
+ * a cada nível. Sem nível (ainda bloqueada) fica apagado; a exclusiva bloqueada mostra "?".
+ * Com `trancada`, mostra a medalha daquele nível ainda não conquistado: moldura do nível,
  * desenho apagado e um cadeado.
  */
 export function MedalhaIcone({ m, nivel, tam = 56, trancada = false }) {
   const c = corDe(nivel);
   const cls = ['med-icone', nivel ? '' : 'bloq', nivel === 'platina' && !trancada ? 'platina' : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
   return (
-    <span className={cls} style={{ '--c': c, width: tam, height: tam, fontSize: tam * 0.4 }} aria-hidden="true">
-      <span className="med-moldura" />
+    <span className={cls} style={{ '--c': c, width: tam, height: tam, fontSize: tam * 0.34 }} aria-hidden="true">
+      <Moldura nivel={nivel} />
       <span className="med-nucleo">{nivel || !m.exclusiva ? m.icone : '?'}</span>
       {trancada && <span className="med-cadeado">🔒</span>}
     </span>

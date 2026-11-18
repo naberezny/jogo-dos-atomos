@@ -673,14 +673,26 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 /* ---------- Medalhas ---------- */
 /* Ícone da medalha: moldura de marcas na cor do nível em volta de um núcleo escuro com anel neon. */
 .med-icone { --c: var(--accent); flex: none; position: relative; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; line-height: 1; }
-.med-moldura { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(from -2deg, var(--c) 0 4deg, transparent 4deg 15deg); mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); -webkit-mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); opacity: .8; filter: drop-shadow(0 0 3px var(--c)); transition: opacity .3s; }
-.med-nucleo { position: absolute; inset: 14%; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 35%, color-mix(in oklch, var(--c) 42%, oklch(0.22 0.04 250)), oklch(0.1 0.03 250) 75%); box-shadow: 0 0 0 2px var(--c), 0 0 14px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); transition: filter .3s, box-shadow .3s, background .3s; }
+.med-moldura { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; fill: none; stroke: var(--c); filter: drop-shadow(0 0 2px var(--c)); transition: opacity .3s; }
+.med-moldura .mm-anel { stroke-width: 1.6; }
+.med-moldura .mm-traco { stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .6; }
+.med-moldura .mm-marca { stroke-width: 1.4; opacity: .85; }
+.med-moldura .mm-marca.longa { stroke-width: 2.2; opacity: 1; }
+.med-moldura .mm-cravo { fill: var(--c); stroke: oklch(0.1 0.03 250); stroke-width: .8; }
+.med-moldura .mm-pontas { fill: color-mix(in srgb, var(--c) 30%, #0a0e18); stroke-width: 1.2; stroke-linejoin: round; }
+.med-moldura .mm-pontos { stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0 4.45; }
+.med-moldura .mm-giro { stroke-width: 1.4; stroke-dasharray: 10 4 2 4; transform-origin: 50px 50px; animation: nivel-gira 12s linear infinite; }
+.med-moldura .mm-brilho { fill: #fff; stroke: none; filter: drop-shadow(0 0 2px #fff); transform-box: fill-box; transform-origin: center; animation: mm-brilha 2.4s ease-in-out infinite; }
+@keyframes mm-brilha { 0%, 100% { opacity: .2; transform: scale(.5); } 50% { opacity: 1; transform: scale(1); } }
+.mm-ouro .mm-pontas, .mm-platina .mm-pontas { filter: drop-shadow(0 0 3px var(--c)); }
+.med-nucleo { position: absolute; inset: 18%; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--c) 38%, #141b2a), #0a0e18 75%); box-shadow: 0 0 0 2px var(--c), 0 0 14px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); transition: filter .3s, box-shadow .3s, background .3s; }
 .med-icone.bloq { filter: grayscale(1); opacity: .55; }
 .med-icone.bloq .med-nucleo { font-family: var(--display); font-weight: 700; color: oklch(0.6 0.02 265); }
-.med-icone.trancada .med-moldura { opacity: .5; filter: none; }
+.med-icone.trancada .med-moldura { opacity: .45; filter: none; }
+.med-icone.trancada .mm-brilho, .med-icone.trancada .mm-giro { animation: none; }
 .med-icone.trancada .med-nucleo { filter: grayscale(.75) brightness(.75); box-shadow: 0 0 0 2px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 10px color-mix(in oklch, var(--c) 25%, transparent); }
 .med-cadeado { position: absolute; right: -1px; bottom: -1px; width: 42%; height: 42%; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .5em; background: oklch(0.1 0.03 250); box-shadow: 0 0 0 1.5px var(--c), 0 0 8px color-mix(in oklch, var(--c) 50%, transparent); }
-.med-icone.platina::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 70%, oklch(1 0 0 / .9) 80%, transparent 90%); mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); -webkit-mask: radial-gradient(closest-side, transparent 83%, #000 85% 100%); animation: nivel-gira 3s linear infinite; }
+.med-icone.platina::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, transparent 0 70%, oklch(1 0 0 / .9) 80%, transparent 90%); mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); -webkit-mask: radial-gradient(closest-side, transparent 70%, #000 72% 80%, transparent 82%); animation: nivel-gira 3s linear infinite; pointer-events: none; }
 .med-nivel { --c: var(--accent); padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: oklch(0.16 0.03 265); background: var(--c); }
 .med-nivel.bloq { color: var(--muted); background: oklch(0.26 0.02 265); }
 .med-conta { font-size: 12px; color: var(--muted); }
