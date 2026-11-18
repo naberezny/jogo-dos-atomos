@@ -5,6 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 import { XP_PER_LEVEL as XPL } from '../game/logic.js';
 import { substances } from '../data/nucleo.js';
 import { Particulas } from './LevelUp.jsx';
+import { MedalhaIcone } from './Medalha.jsx';
+import { NIVEIS } from '../data/medalhas.js';
+
+// Ritmo em que medalhas, missões e conquistas entram na tela de progresso (segundos).
+const GANHO_INICIO = 0.45, GANHO_PASSO = 0.45;
 
 const semMovimento = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 export const nivelDe = xp => Math.floor(xp / XPL) + 1;
@@ -129,6 +134,103 @@ export function XpTela({ de, ate, onFim }) {
     </div>
   );
 }
+
+/** Há algo para mostrar na tela de progresso? */
+export const temGanhos = g => !!g && (g.medalhas.length + g.missoes.length + g.conquistas.length) > 0;
+
+/**
+ * Última tela da comemoração: o que a descoberta fez avançar. No topo, o nível e a barra de XP
+ * (pequenos); abaixo, as medalhas (barra enchendo do antes ao agora e selo do nível novo), as
+ * missões e as conquistas desbloqueadas, entrando uma de cada vez. Fecha só pelo jogador.
+ */
+export function ProgressoTela({ xp, ganhos, onFechar }) {
+  const btn = useRef(null);
+  const fechar = useRef(onFechar); fechar.current = onFechar;
+  useEffect(() => {
+    btn.current?.focus({ preventScroll: true });
+    const k = e => { if (e.key === 'Escape') { e.preventDefault(); fechar.current(); } };
+    window.addEventListener('keydown', k);
+    return () => window.removeEventListener('keydown', k);
+  }, []);
+  const nivel = nivelDe(xp), dentro = xp - (nivel - 1) * XPL;
+  let i = 0;
+  const atraso = () => ({ '--atraso': `${GANHO_INICIO + GANHO_PASSO * i++}s` });
+  const secao = (titulo, itens) => itens.length > 0 && <div className="eyebrow prog-secao" style={atraso()}>{titulo}</div>;
+
+  return (
+    <div className="prog-wrap" role="dialog" aria-modal="true" aria-label="Seu progresso">
+      <div className="prog-centro">
+        <div className="prog-topo">
+          <span className="prog-nivel display">{nivel}</span>
+          <span className="prog-topo-txt">
+            <span className="prog-topo-linha"><b className="display">Nível {nivel}</b><span className="mono">{dentro}/{XPL} XP</span></span>
+            <span className="prog-bar"><span style={{ width: (dentro / XPL) * 100 + '%' }} /></span>
+          </span>
+        </div>
+        <h2 className="prog-titulo display">Seu progresso</h2>
+
+        {secao(ganhos.medalhas.length > 1 ? 'Medalhas' : 'Medalha', ganhos.medalhas)}
+        {ganhos.medalhas.map(({ m, antes, depois, subiu }) => (
+          <div key={m.id} className={`xpt-med${subiu ? ' subiu' : ''}`} style={{ ...atraso(), '--c': NIVEIS[depois.nivel || 'bronze'].cor }}>
+            <span className="xpt-med-icone"><MedalhaIcone m={m} nivel={depois.nivel} tam={42} /></span>
+            <span className="xpt-med-txt">
+              <span className="xpt-med-topo">
+                <b className="display">{m.nome}</b>
+                {!m.exclusiva && <span className="mono xpt-med-conta">{depois.tem}/{depois.total}</span>}
+                {subiu && <span className="xpt-med-selo mono">{m.exclusiva ? 'Desbloqueada!' : `${NIVEIS[depois.nivel].nome}!`}</span>}
+              </span>
+              {m.exclusiva
+                ? <span className="xpt-med-sub">Medalha exclusiva desta descoberta</span>
+                : <Barrinha de={antes.tem} ate={depois.tem} total={depois.total} />}
+            </span>
+          </div>
+        ))}
+
+        {secao(ganhos.missoes.length > 1 ? 'Missões' : 'Missão', ganhos.missoes)}
+        {ganhos.missoes.map(({ m, de, ate }) => {
+          const feita = ate >= m.t;
+          return (
+            <div key={m.title} className={`xpt-med prog-missao${feita ? ' subiu' : ''}`} style={{ ...atraso(), '--c': feita ? 'oklch(0.82 0.15 145)' : 'oklch(0.82 0.13 195)' }}>
+              <span className="prog-missao-icone" aria-hidden="true">{feita ? '✓' : '◎'}</span>
+              <span className="xpt-med-txt">
+                <span className="xpt-med-topo">
+                  <b className="display">{m.title}</b>
+                  <span className="mono xpt-med-conta">{ate}/{m.t}</span>
+                  {feita && <span className="xpt-med-selo mono">Concluída! +{m.reward} XP</span>}
+                </span>
+                <span className="xpt-med-sub">{m.desc}</span>
+                <Barrinha de={de} ate={ate} total={m.t} />
+              </span>
+            </div>
+          );
+        })}
+
+        {secao(ganhos.conquistas.length > 1 ? 'Conquistas' : 'Conquista', ganhos.conquistas)}
+        {ganhos.conquistas.map(c => (
+          <div key={c.title} className="xpt-conq" style={{ ...atraso(), '--c': `oklch(0.82 0.14 ${c.h})` }}>
+            <span className="xpt-conq-glifo display">{c.glyph}</span>
+            <span className="xpt-med-txt">
+              <span className="xpt-conq-rot mono">Conquista desbloqueada</span>
+              <b className="display">{c.title}</b>
+              <span className="xpt-med-sub">{c.desc}</span>
+            </span>
+          </div>
+        ))}
+
+        <div className="prog-rodape" style={atraso()}>
+          <button ref={btn} className="btn btn-primary prog-btn" onClick={onFechar}>Continuar</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Barra pequena que enche do valor de antes até o de agora. */
+const Barrinha = ({ de, ate, total }) => (
+  <span className="xpt-med-barra" role="img" aria-label={`${de} para ${ate} de ${total}`}>
+    <span className="xpt-med-fill" style={{ '--de': (de / total) * 100 + '%', '--ate': (ate / total) * 100 + '%' }} />
+  </span>
+);
 
 const Barra = ({ xp, ...resto }) => <div className="bar" {...resto}><div style={{ width: ((xp % XPL) / XPL) * 100 + '%' }} /></div>;
 

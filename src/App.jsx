@@ -14,7 +14,8 @@ import Estudos from './screens/Estudos.jsx';
 import Icon from './components/Icon.jsx';
 import Tour from './components/Tour.jsx';
 import LevelUp from './components/LevelUp.jsx';
-import { nivelDe, Revelacao, XpLateral, XpTela, XpTopo } from './components/Celebracao.jsx';
+import { nivelDe, ProgressoTela, Revelacao, temGanhos, XpLateral, XpTela, XpTopo } from './components/Celebracao.jsx';
+import { ganhosEntre } from './game/ganhos.js';
 import { ehSecao, NavCtx, SECOES } from './nav.js';
 import Missions from './screens/Missions.jsx';
 import Profile from './screens/Profile.jsx';
@@ -52,25 +53,33 @@ export default function App() {
   }, []);
   const nav = useMemo(() => ({ go, back }), [go, back]);
 
-  // Comemoração de uma descoberta nova, em sequência: revelação → barra de XP → subida de nível.
+  // Comemoração de uma descoberta nova, em sequência: revelação → barra de XP → subida de nível (se
+  // houver) → tela de progresso (medalhas, missões e conquistas que avançaram; só se houver alguma).
   // `base` é o XP que o jogador já viu ser contado; o que passar dele ainda vai ser mostrado.
   const base = useRef(P.xp);
-  const [fase, setFase] = useState(null); // { tipo: 'xp', de, ate } | { tipo: 'nivel', nivel }
+  const [fase, setFase] = useState(null); // { tipo: 'xp' | 'nivel' | 'progresso', de, ate, ganhos, nivel }
+  // Último estado já comemorado: a tela de progresso mostra o que mudou desde ele.
+  const visto = useRef(st);
+  useEffect(() => { if (!st.revelar && !fase && P.xp === base.current) visto.current = st; });
+  const ganhos = () => { const g = ganhosEntre(visto.current, st); visto.current = st; return g; };
   useEffect(() => {
     if (P.xp < base.current) { base.current = P.xp; setFase(null); return; } // recomeçou o jogo
     if (P.xp === base.current || st.revelar || fase) return;
     // XP sem descoberta (ex.: missão ao colocar um átomo no reator): só interrompe se subir de nível.
-    if (nivelDe(P.xp) > nivelDe(base.current)) setFase({ tipo: 'xp', de: base.current, ate: P.xp });
+    if (nivelDe(P.xp) > nivelDe(base.current)) setFase({ tipo: 'xp', de: base.current, ate: P.xp, ganhos: ganhos() });
     else base.current = P.xp;
   }, [P.xp, st.revelar, fase]);
   const fecharRevelacao = useCallback(() => {
     set({ revelar: null });
-    if (P.xp > base.current) setFase({ tipo: 'xp', de: base.current, ate: P.xp });
-  }, [set, P.xp]);
+    if (P.xp > base.current) setFase({ tipo: 'xp', de: base.current, ate: P.xp, ganhos: ganhos() });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [set, P.xp, st]);
+  const progresso = f => (temGanhos(f.ganhos) ? { ...f, tipo: 'progresso' } : null);
   const fimXp = useCallback(subiu => {
-    setFase(f => { base.current = f.ate; return subiu ? { tipo: 'nivel', nivel: nivelDe(f.ate) } : null; });
+    setFase(f => { base.current = f.ate; return subiu ? { ...f, tipo: 'nivel', nivel: nivelDe(f.ate) } : progresso(f); });
   }, []);
-  const fecharNivel = useCallback(() => setFase(null), []);
+  const fecharNivel = useCallback(() => setFase(f => progresso(f)), []);
+  const fecharProgresso = useCallback(() => setFase(null), []);
   const rev = useMemo(() => {
     const r = st.revelar;
     if (r?.tipo === 'mol') {
@@ -128,6 +137,7 @@ export default function App() {
       {rev && <Revelacao key={st.revelar.id} {...rev} onContinuar={fecharRevelacao} />}
       {fase?.tipo === 'xp' && <XpTela key={fase.de} de={fase.de} ate={fase.ate} onFim={fimXp} />}
       {fase?.tipo === 'nivel' && <LevelUp key={fase.nivel} nivel={fase.nivel} onClose={fecharNivel} />}
+      {fase?.tipo === 'progresso' && <ProgressoTela xp={fase.ate} ganhos={fase.ganhos} onFechar={fecharProgresso} />}
       {!st.tourVisto && !st.result && <Tour onClose={() => set({ tourVisto: true })} onStart={() => go('lab', { tourVisto: true })} />}
     </div>
     </NavCtx.Provider>

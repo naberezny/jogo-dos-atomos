@@ -46,6 +46,7 @@ src/components/             Celebracao (revelação + XP em tela cheia), LevelUp
                             ElementFicha (ficha do elemento), Espectro, PeriodicTable, Tour (onboarding)
 src/screens/                Lab, Collection (filtros), Subatomico, Estudos, Missions, Profile, Medalhas, ResultModal
 testes/                     testes unitários (Vitest): cor, núcleo, esfera
+src/game/ganhos.js          medalhas, missões e conquistas que avançaram entre dois estados salvos
 src/game/nucleons.js        posições dos prótons e nêutrons no zoom do átomo 3D
 scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia)
 ```
@@ -56,7 +57,10 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   composto conhecido; o reator e a ficha explicam o porquê (`SEM_COMPOSTO` em `logic.js`).
   Isômeros (frutose, lactose…) não entram: a combinação é identificada só pela fórmula.
 - **Descoberta nova:** tela "Uau!" com título e frase da medalha principal → barra de XP em tela cheia
-  → subida de nível, se houver. Opção no perfil para mostrar a revelação também em repetidas (padrão: desligada).
+  → subida de nível, se houver → tela "Seu progresso" (`ProgressoTela` em Celebracao.jsx): nível e XP
+  pequenos no topo, medalhas que avançaram (até 4, barra do antes ao agora, selo do nível novo),
+  missões que avançaram (até 3, concluídas primeiro) e conquistas desbloqueadas; só aparece se algo
+  mudou e fecha pelo botão Continuar. O que mudou vem de `ganhosEntre` (`src/game/ganhos.js`). Opção no perfil para mostrar a revelação também em repetidas (padrão: desligada).
 - **Medalhas:** 156 (109 exclusivas, 47 de grupo com Bronze/Prata/Ouro/Platina); tela própria, aberta
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
