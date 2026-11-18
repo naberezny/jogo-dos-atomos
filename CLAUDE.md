@@ -59,9 +59,10 @@ scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST),
   a tabela"); botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
 - **Fotos:** 503 das 512 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas
   escolhidas à mão e com legenda. A 1ª é a principal (capa, coleção, revelação): a própria substância
-  ou onde ela é encontrada/usada (água → mar, PVC → cano); as outras aparecem na ficha (setas,
-  miniaturas, arrastar para o lado). Lista em `scripts/fotos-escolhidas.mjs` (null = sem foto, mostra
-  o 3D); `scripts/baixar-fotos.mjs` baixa para `public/fotos/<f>.jpg`, `<f>-2.jpg`… A API da Wikimedia
+  ou onde ela é encontrada/usada (água → mar, PVC → cano). Na ficha da substância, a galeria fica abaixo
+  de "No dia a dia" e antes da curiosidade (setas, miniaturas, arrastar para o lado); cada foto tem
+  título e uma descrição de 1–2 frases com um fato real ligado à substância. O quadro da estrutura
+  tem só 2D/3D e abre no 3D (no computador ele fica parado enquanto a coluna da direita rola). Lista em `scripts/fotos-escolhidas.mjs` ([arquivo, título, descrição]; null = sem foto); `scripts/baixar-fotos.mjs` baixa para `public/fotos/<f>.jpg`, `<f>-2.jpg`… A API da Wikimedia
   dá muito 429 aqui; para buscar candidatas use as páginas HTML (Special:MediaSearch) e miniaturas de
   thumb.wikimedia.org.
 - **Modelo 3D da molécula:** cores CPK, luz que gira com a molécula, varetas 28% mais curtas
