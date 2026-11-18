@@ -14,6 +14,10 @@ Todo o jogo, o código, os comentários e os commits são em **português do Bra
   Playwright (Chromium já instalado; `require('playwright')`). Testar no celular (`devices['Pixel 7']`)
   e no computador. Para gestos de toque (segurar, arrastar, pinça) usar CDP `Input.dispatchTouchEvent`.
   Mandar capturas ao usuário quando a mudança for visual. Não deixar `.png` de teste na pasta do projeto.
+- **Testes:** `npm test` (Vitest, pasta `testes/`; roda também no GitHub Actions antes de publicar)
+  confere cores CPK, núcleo (prótons/nêutrons) e desenho das bolas 3D dos 118 elementos.
+  `npm run testar:navegador` abre a ficha de todos os elementos no Chromium (computador e celular).
+  Rodar os dois ao mexer no Atom3D, Mol3D, esfera.js, cor.js ou ciencia.json.
 - **Conferir dados** com `node scripts/verificar-catalogo.mjs --geometria` (fórmulas, SMILES, geometria)
   sempre que mexer em substâncias.
 - **Dados científicos devem ser reais.** Não inventar linhas de espectro, valores ou fatos; na dúvida,
@@ -41,7 +45,9 @@ src/hooks/usePegarElemento.js  gestos da tabela: toque = adiciona, arrastar = pe
 src/components/             Celebracao (revelação + XP em tela cheia), LevelUp, Medalha, Mol3D (3D com zoom), Foto (galeria),
                             ElementFicha (ficha do elemento), Espectro, PeriodicTable, Tour (onboarding)
 src/screens/                Lab, Collection (filtros), Subatomico, Estudos, Missions, Profile, Medalhas, ResultModal
-scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia)
+testes/                     testes unitários (Vitest): cor, núcleo, esfera
+src/game/nucleons.js        posições dos prótons e nêutrons no zoom do átomo 3D
+scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia)
 ```
 
 ## Estado atual (novembro de 2026)

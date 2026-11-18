@@ -6,7 +6,8 @@
 // transparente e mostra os prótons e nêutrons.
 import { useEffect, useRef, useState } from 'react';
 import { corAtomo } from '../game/cor.js';
-import { luzGirada, pintaEsfera, rotulo } from './esfera.js';
+import { nucleons } from '../game/nucleons.js';
+import { ajustaCanvas, luzGirada, pintaEsfera, rotulo } from './esfera.js';
 
 // Elétrons: bolinhas azul-claras; órbita selecionada: cor de destaque do jogo.
 const ELETRON = { L: 0.86, C: 0.07, h: 235 };
@@ -19,69 +20,6 @@ const ZOOM_MIN = 1, ZOOM_MAX = 6;
 const NUCLEO_DE = 1.6, NUCLEO_ATE = 2.6;
 
 const shared = { yaw: 0, pitch: -0.35 };
-
-/**
- * Posições dos prótons e nêutrons dentro de uma esfera de raio 1 e o raio de cada bolinha.
- * Empilhamento homogêneo: as bolinhas ficam nos pontos de um arranjo compacto (como laranjas
- * empilhadas na feira), escolhendo as camadas mais próximas do centro. Na última camada, que fica
- * incompleta, os pontos são escolhidos bem espalhados. Prótons e nêutrons se alternam por igual.
- */
-const NUCLEONS = new Map();
-function nucleons(z, n) {
-  const chave = z + '-' + n;
-  if (NUCLEONS.has(chave)) return NUCLEONS.get(chave);
-  const A = Math.max(1, z + n), L = Math.ceil(Math.cbrt(A)) + 2, rede = [];
-  // Rede cúbica de faces centradas: pontos inteiros com soma par; vizinhos a √2 de distância.
-  for (let i = -L; i <= L; i++) for (let j = -L; j <= L; j++) for (let k = -L; k <= L; k++)
-    if ((i + j + k) % 2 === 0) rede.push({ x: i, y: j, z: k, r: Math.hypot(i, j, k) });
-  rede.sort((a, b) => a.r - b.r || Math.atan2(a.y, a.x) - Math.atan2(b.y, b.x) || a.z - b.z);
-  const pts = [];
-  let i = 0;
-  while (pts.length < A) {
-    let j = i; while (j < rede.length && Math.abs(rede[j].r - rede[i].r) < 1e-6) j++;
-    const camada = rede.slice(i, j), falta = A - pts.length;
-    if (camada.length <= falta) pts.push(...camada);
-    else {
-      // Camada incompleta: cada novo ponto é o mais longe possível dos já escolhidos nela.
-      const esc = [camada[0]];
-      while (esc.length < falta) {
-        let melhor = null, md = -1;
-        for (const q of camada) {
-          if (esc.includes(q)) continue;
-          const d = Math.min(...esc.map(e => Math.hypot(q.x - e.x, q.y - e.y, q.z - e.z)));
-          if (d > md) { md = d; melhor = q; }
-        }
-        esc.push(melhor);
-      }
-      pts.push(...esc);
-    }
-    i = j;
-  }
-  // Centraliza e encaixa tudo dentro da esfera de raio 1.
-  const cx = pts.reduce((s, q) => s + q.x, 0) / A, cy = pts.reduce((s, q) => s + q.y, 0) / A, cz = pts.reduce((s, q) => s + q.z, 0) / A;
-  const meio = Math.SQRT2 / 2, rmax = Math.max(...pts.map(q => Math.hypot(q.x - cx, q.y - cy, q.z - cz))) + meio;
-  // Próton ou nêutron: cada bolinha olha as vizinhas já decididas e fica do tipo que está faltando
-  // em volta dela; assim os dois tipos se misturam por igual em todo o núcleo.
-  const quer = z / A;
-  let restaZ = z, restaN = A - z, feitosZ = 0;
-  pts.forEach((q, k) => {
-    let viz = 0, vizP = 0;
-    for (let m = 0; m < k; m++) {
-      const o = pts[m];
-      if (Math.hypot(q.x - o.x, q.y - o.y, q.z - o.z) < 1.5) { viz++; if (o.p) vizP++; }
-    }
-    const f = viz ? vizP / viz : feitosZ / Math.max(1, k);
-    q.p = restaN === 0 ? true : restaZ === 0 ? false
-      : Math.abs(f - quer) > 0.02 ? f < quer : feitosZ < quer * (k + 1);
-    if (q.p) { restaZ--; feitosZ++; } else restaN--;
-  });
-  const res = {
-    rb: meio / rmax,
-    pts: pts.map(q => ({ x: (q.x - cx) / rmax, y: (q.y - cy) / rmax, z: (q.z - cz) / rmax, p: q.p })),
-  };
-  NUCLEONS.set(chave, res);
-  return res;
-}
 
 export default function Atom3D(props) {
   const ref = useRef(null);
@@ -160,8 +98,7 @@ export default function Atom3D(props) {
       const { size: S, shells, h, c, fusing, top, sel, own } = pr.current;
       const dpr = window.devicePixelRatio || 1;
       const dt = Math.min(0.05, (now - last) / 1000); last = now;
-      // Confere largura e altura: o canvas nasce com 300×150 e, com S = 300 e densidade 1, só a largura bateria.
-      if (cv.width !== Math.round(S * dpr) || cv.height !== Math.round(S * dpr)) { cv.width = Math.round(S * dpr); cv.height = Math.round(S * dpr); }
+      ajustaCanvas(cv, S, S, dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, S, S);
       k += ((top ? 1 : 0) - k) * Math.min(1, dt * 5);
       if (!drag.on && !top) spinY += dt * 0.25;

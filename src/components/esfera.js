@@ -56,3 +56,12 @@ export function rotulo(ctx, x, y, r, k, txt) {
   ctx.font = `600 ${Math.round(r * 0.62)}px 'Chakra Petch', sans-serif`;
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(txt, x, y + 1);
 }
+
+/**
+ * Deixa o canvas com w×h pixels de tela (vezes a densidade dpr). Confere largura e altura: o canvas
+ * nasce com 300×150, e conferir só a largura deixava o átomo de 300 px esticado em telas de densidade 1.
+ */
+export function ajustaCanvas(cv, w, h, dpr = 1) {
+  const W = Math.round(w * dpr), H = Math.round(h * dpr);
+  if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+}
