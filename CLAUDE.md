@@ -40,6 +40,7 @@ src/data/estruturas.js      SMILES de cada substância (maiúsculas só; `~` = a
 src/data/medalhas.js        medalhas: exclusivas, grupos (fs e/ou regex no nome) e do subatômico; frases da revelação
 src/data/espectros.json     linhas de emissão visíveis (NIST) de 97 elementos + D
 src/data/ciencia.json       dados físico-químicos (PubChem) e cor CPK por elemento
+src/data/isotopos.json      3.352 isótopos (NIST: massa e abundância; NUBASE2020 via Wikipédia: meia-vida); funções em src/game/isotopos.js
 src/data/subatomico.js      partículas e receitas do modo subatômico
 src/hooks/usePegarElemento.js  gestos da tabela: toque = adiciona, arrastar p/ cima ou baixo = pega, p/ os lados = rola (no dedo), segurar 0,45 s = detalhes
 src/components/             Celebracao (revelação + XP em tela cheia), LevelUp, Medalha, Mol3D (3D com zoom), Foto (galeria),
@@ -48,7 +49,8 @@ src/screens/                Lab, Collection (filtros), Subatomico, Estudos, Miss
 testes/                     testes unitários (Vitest): cor, núcleo, esfera
 src/game/ganhos.js          medalhas, missões e conquistas que avançaram entre dois estados salvos
 src/game/nucleons.js        posições dos prótons e nêutrons no zoom do átomo 3D
-scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia)
+scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs, baixar-espectros.mjs (NIST), baixar-fotos.mjs (Wikimedia),
+                            baixar-isotopos.mjs (NIST + Wikipédia)
 ```
 
 ## Estado atual (novembro de 2026)
@@ -105,7 +107,11 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
 - **Ficha do elemento:** topo com símbolo + prótons/nêutrons/elétrons (alinhados à base do símbolo);
   átomo 3D e camadas sempre visíveis (seletor de vista dentro do quadro); abas Básico (badges de
   descoberta/estado, história, nome, curiosidades, no jogo) e Avançado (espectro de emissão,
-  identidade, distribuição eletrônica, propriedades).
+  identidade, distribuição eletrônica, propriedades). Na aba Básico, a seção Isótopos (`components/Isotopos.jsx`):
+  os naturais em destaque com barra de proporção, os demais recolhidos em "Ver os outros" (cor pela meia-vida),
+  e o detalhe do escolhido (nêutrons, massa, abundância, meia-vida, fato em `FATO_ISOTOPO`). O isótopo escolhido
+  muda os nêutrons do topo e do átomo 3D; o padrão é o mais abundante (sem natural, o de vida mais longa).
+  Meias-vidas com # (estimadas) ficam como desconhecidas; 151 isótopos não têm meia-vida medida.
 - **Modo subatômico:** espectro nas descobertas de átomos (H, D, He, anti-H); núcleos e átomos exóticos
   explicam por que não têm linhas visíveis.
 

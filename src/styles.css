@@ -974,3 +974,37 @@ div.med-card-topo { cursor: default; }
 .med-detalhe-acoes { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .med-detalhe-btn { min-width: 150px; padding: 11px 18px; border: 0; border-radius: 10px; cursor: pointer; font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: oklch(0.98 0.03 195); text-shadow: 0 0 6px var(--neon); background: oklch(0.14 0.05 220); box-shadow: 0 0 0 2px var(--neon), 0 0 18px oklch(0.86 0.15 195 / .45), inset 0 0 12px oklch(0.86 0.15 195 / .3); }
 .med-detalhe-btn.sec { color: oklch(0.95 0.04 330); text-shadow: 0 0 6px var(--neon2); background: oklch(0.12 0.04 320 / .7); box-shadow: 0 0 0 1.5px oklch(0.72 0.22 330 / .8), 0 0 14px oklch(0.72 0.22 330 / .3); }
+
+/* Isótopos na ficha do elemento */
+.iso { display: flex; flex-direction: column; gap: 10px; }
+.iso-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.iso-conta { font-size: 12px; color: var(--muted); }
+.iso-explica { margin: 0; font-size: 13px; line-height: 1.5; color: oklch(0.74 0.02 265); }
+.iso-barra { display: flex; height: 10px; border-radius: 5px; overflow: hidden; gap: 2px; background: var(--sunken); }
+.iso-barra span { min-width: 3px; background: var(--c); opacity: .45; transition: opacity .2s; }
+.iso-barra span:nth-child(even) { opacity: .7; }
+.iso-barra span.sel { opacity: 1; box-shadow: 0 0 8px var(--c); }
+.iso-lista { display: flex; flex-wrap: wrap; gap: 6px; }
+.iso-chip { --f: var(--c); display: inline-flex; flex-direction: column; align-items: center; gap: 1px; min-width: 50px; padding: 5px 8px; border-radius: 8px; cursor: pointer; font: inherit; color: var(--fg); background: var(--sunken); border: 1px solid color-mix(in oklch, var(--f) 45%, transparent); border-left: 3px solid var(--f); transition: transform .15s, background .15s; }
+.iso-chip:hover { transform: translateY(-1px); }
+.iso-chip.sel { background: color-mix(in oklch, var(--f) 20%, var(--panel)); border-color: var(--f); box-shadow: 0 0 10px color-mix(in oklch, var(--f) 40%, transparent); }
+.iso-sim { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1.1; }
+.iso-sim sup { font-size: .62em; margin-right: 1px; }
+.iso-ab { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.iso-todos { align-self: flex-start; padding: 0; border: 0; background: none; font: inherit; font-size: 13px; color: var(--accent); cursor: pointer; text-align: left; }
+.iso-legenda { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 11px; color: var(--muted); }
+.iso-legenda span { display: inline-flex; align-items: center; gap: 5px; }
+.iso-legenda i { width: 9px; height: 9px; border-radius: 2px; }
+.iso-detalhe { --f: var(--c); display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 12px; border: 1px solid color-mix(in oklch, var(--f) 45%, transparent); background: color-mix(in oklch, var(--f) 7%, var(--sunken)); }
+.iso-detalhe-topo { display: flex; align-items: center; gap: 12px; }
+.iso-detalhe-topo > span:last-child { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.iso-detalhe-topo b { font-size: 16px; color: var(--fg); line-height: 1.2; }
+.iso-grande { flex: none; min-width: 58px; padding: 6px 8px; border-radius: 10px; text-align: center; font-size: 26px; font-weight: 700; line-height: 1; color: var(--c); background: var(--panel); border: 1px solid color-mix(in oklch, var(--c) 40%, transparent); }
+.iso-grande sup { font-size: .5em; margin-right: 1px; color: var(--fg); }
+.iso-selo { padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; color: oklch(0.16 0.03 265); background: var(--f); }
+.iso-dados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.iso-meia { grid-column: 1 / -1; }
+.iso-nota { font-size: 11.5px; color: var(--muted); }
+.iso-fato { margin: 0; font-size: 13.5px; line-height: 1.5; color: oklch(0.86 0.02 265); }
+.iso-fonte { font-size: 11px; line-height: 1.45; color: var(--muted); }
+.ef-particula.mudou b { text-shadow: 0 0 10px var(--c); }

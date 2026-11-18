@@ -9,6 +9,8 @@ import Atom3D from './Atom3D.jsx';
 import Espectro from './Espectro.jsx';
 import HIST from '../data/historia/index.js';
 import CIENCIA from '../data/ciencia.json';
+import Isotopos from './Isotopos.jsx';
+import { isotopoPadrao, isotopos } from '../game/isotopos.js';
 
 const ESTADO = { 'gás': 'Gás', 'líquido': 'Líquido', 'sólido': 'Sólido' };
 const BLOCO = ['s', 'p', 'd', 'f'];
@@ -54,7 +56,13 @@ export default function ElementFicha({ sym, discovered }) {
   const [tab, setTab] = useState('Básico');
   const [view, setView] = useState('3D');
   const [shell, setShell] = useState(-1);
-  useEffect(() => setShell(-1), [sym]);
+  // Isótopo mostrado no átomo e no topo: começa no que representa o elemento (o mais abundante).
+  const isos = isotopos(t.z), padrao = isotopoPadrao(isos, t.mass);
+  const [isoSel, setIsoSel] = useState(null);
+  useEffect(() => { setShell(-1); setIsoSel(null); }, [sym]);
+  const iso = isos.find(x => x.A === isoSel) || padrao;
+  const neut = iso ? iso.n : Math.round(t.mass) - t.z;
+  const textoNeut = !iso ? 'No isótopo mais comum' : isoSel ? `No isótopo ${t.sym}-${iso.A}` : iso.natural ? `No isótopo mais comum (${t.sym}-${iso.A})` : `No isótopo de vida mais longa (${t.sym}-${iso.A})`;
 
   const info = electronInfo(t);
   const sel = shell >= 0 && shell < t.shells.length ? shell : -1;
@@ -68,7 +76,7 @@ export default function ElementFicha({ sym, discovered }) {
         <div className="seg accent ef-vista">
           {[['3D', '3D livre'], ['Topo', 'Vista de topo']].map(([id, l]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{l}</button>)}
         </div>
-        <Atom3D key={'drawer-' + t.sym} sym={t.sym} prot={t.z} neut={f.neut} zoom own size={300} shells={t.shells} h={tc.h} c={tc.c} fusing={false} top={view === 'Topo'} sel={sel} onPick={i => setShell(i)} title={`Eletrosfera de ${t.name}`} />
+        <Atom3D key={'drawer-' + t.sym} sym={t.sym} prot={t.z} neut={neut} zoom own size={300} shells={t.shells} h={tc.h} c={tc.c} fusing={false} top={view === 'Topo'} sel={sel} onPick={i => setShell(i)} title={`Eletrosfera de ${t.name}`} />
       </div>
       <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
         {t.shells.map((n, i) => {
@@ -105,8 +113,8 @@ export default function ElementFicha({ sym, discovered }) {
         <div style={{ fontSize: 13.5, color: col(t.cat) }}>{tc.name}</div>
         {/* Partículas do átomo neutro, no espaço ao lado do nome. */}
         <div className="ef-particulas" style={{ '--c': col(t.cat) }}>
-          {[['Prótons', t.z, 'p⁺'], ['Nêutrons', f.neut, 'n⁰'], ['Elétrons', t.z, 'e⁻']].map(([rot, n, simb]) => (
-            <div key={simb} className="ef-particula" title={simb === 'n⁰' ? (t.est ? 'No isótopo mais estável' : 'No isótopo mais comum') : undefined}>
+          {[['Prótons', t.z, 'p⁺'], ['Nêutrons', neut, 'n⁰'], ['Elétrons', t.z, 'e⁻']].map(([rot, n, simb]) => (
+            <div key={simb} className={`ef-particula${simb === 'n⁰' && isoSel ? ' mudou' : ''}`} title={simb === 'n⁰' ? textoNeut : undefined}>
               <b className="display">{n}</b><span>{simb} {rot}</span>
             </div>
           ))}
@@ -136,6 +144,7 @@ export default function ElementFicha({ sym, discovered }) {
             </Secao>
           </>
         )}
+        <Isotopos t={t} lista={isos} sel={iso?.A} onEscolher={setIsoSel} cor={col(t.cat)} />
         <Secao titulo="No jogo"><p style={{ color: 'oklch(0.86 0.02 265)' }}>{usageText(t.sym, discovered)}</p></Secao>
       </div>
     ) : (
@@ -149,7 +158,7 @@ export default function ElementFicha({ sym, discovered }) {
             <Dado k="Número atômico (Z)" v={t.z} />
             <Dado k="Massa atômica" v={`${n2(t.mass, 3)} u`} />
             <Dado k="Prótons" v={t.z} />
-            <Dado k={t.est ? 'Nêutrons (isótopo mais estável)' : 'Nêutrons (isótopo mais comum)'} v={`≈ ${f.neut}`} />
+            <Dado k={iso ? `Nêutrons (${t.sym}-${iso.A})` : 'Nêutrons (isótopo mais comum)'} v={neut} />
             <Dado k="Elétrons (átomo neutro)" v={t.z} />
             <Dado k="Grupo" v={f.grupo ?? `série dos ${f.serie}`} />
             <Dado k="Período" v={f.periodo} />
