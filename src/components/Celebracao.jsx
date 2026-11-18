@@ -45,6 +45,10 @@ export function Revelacao({ d, nome, titulo, texto, foto, tom, partes, n, total,
         <p className="rev-frase">{texto}</p>
         <div className="rev-orbe" aria-hidden="true">
           <span className="rev-halo" />
+          <svg className="nivel-aneis rev-aneis" viewBox="0 0 200 200">
+            <circle className="na-marcas" cx="100" cy="100" r="96" />
+            <circle className="na-segmentos" cx="100" cy="100" r="87" />
+          </svg>
           {foto
             ? <img className="rev-foto" src={foto} alt="" decoding="async" />
             : <span className="rev-nucleo display">{d}</span>}
