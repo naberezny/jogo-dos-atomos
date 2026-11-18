@@ -61,10 +61,11 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   pequenos no topo, medalhas que avançaram (até 4, barra do antes ao agora, selo do nível novo),
   missões que avançaram (até 3, concluídas primeiro) e conquistas desbloqueadas; só aparece se algo
   mudou e fecha pelo botão Continuar. O que mudou vem de `ganhosEntre` (`src/game/ganhos.js`). Opção no perfil para mostrar a revelação também em repetidas (padrão: desligada).
-- **Estilo neon:** revelação, XP, subida de nível, "Seu progresso", ficha da substância e tela de medalhas usam o
+- **Estilo neon:** revelação, XP, subida de nível, "Seu progresso" e tela de medalhas usam o
   mesmo visual digital (ciano `--neon` + magenta `--neon2`, grade ao fundo, painéis escuros com varredura, barras em
   blocos). Os raios das comemorações saem do centro do destaque (`useCentro` em LevelUp.jsx); um fundo fixo
-  (`.cel-fundo`) fica atrás da sequência para a ficha não aparecer entre as telas.
+  (`.cel-fundo`) fica atrás da sequência para a ficha não aparecer entre as telas. A ficha da
+  substância ficou no visual antigo, a pedido.
 - **Medalhas:** 156 (109 exclusivas, 47 de grupo com Bronze/Prata/Ouro/Platina); tela própria, aberta
   pela ficha da substância ou pelo perfil. Toda substância tem ao menos uma medalha (conferir ao adicionar).
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
