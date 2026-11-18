@@ -135,6 +135,8 @@ export default function App() {
 
       {st.result && <ResultModal game={game} onClose={() => set({ result: null })} toColl={() => go('coll', { result: null, collFiltro: null })} />}
       {rev && <Revelacao key={st.revelar.id} {...rev} onContinuar={fecharRevelacao} />}
+      {/* Fundo fixo durante toda a sequência: entre uma tela e outra a ficha da substância não aparece. */}
+      {fase && <div className="cel-fundo" aria-hidden="true" />}
       {fase?.tipo === 'xp' && <XpTela key={fase.de} de={fase.de} ate={fase.ate} onFim={fimXp} />}
       {fase?.tipo === 'nivel' && <LevelUp key={fase.nivel} nivel={fase.nivel} onClose={fecharNivel} />}
       {fase?.tipo === 'progresso' && <ProgressoTela xp={fase.ate} ganhos={fase.ganhos} onFechar={fecharProgresso} />}

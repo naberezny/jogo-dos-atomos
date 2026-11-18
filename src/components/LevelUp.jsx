@@ -66,8 +66,17 @@ export default function LevelUp({ nivel, onClose }) {
       <div className="nivel-centro">
         <div className="nivel-medalhao" aria-hidden="true">
           <span className="anel a1" /><span className="anel a2" /><span className="anel a3" />
-          {!reduzido && <span className="nivel-antes display">{nivel - 1}</span>}
-          <span className="nivel-num display">{nivel}</span>
+          <svg className="nivel-aneis" viewBox="0 0 200 200">
+            <circle className="na-marcas" cx="100" cy="100" r="96" />
+            <circle className="na-segmentos" cx="100" cy="100" r="87" />
+            <circle className="na-trilha" cx="100" cy="100" r="78" />
+            <circle className="na-carga" cx="100" cy="100" r="78" pathLength="100" />
+          </svg>
+          <div className="nivel-nucleo">
+            <span className="nivel-rot mono">Nível</span>
+            {!reduzido && <span className="nivel-antes display">{nivel - 1}</span>}
+            <span className="nivel-num display">{nivel}</span>
+          </div>
         </div>
         <div className="nivel-titulo display">Subiu de nível!</div>
         <div className="nivel-sub">Você chegou ao <b>nível {nivel}</b>. Continue descobrindo.</div>

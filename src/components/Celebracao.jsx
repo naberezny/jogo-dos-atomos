@@ -9,7 +9,7 @@ import { MedalhaIcone } from './Medalha.jsx';
 import { NIVEIS } from '../data/medalhas.js';
 
 // Ritmo em que medalhas, missões e conquistas entram na tela de progresso (segundos).
-const GANHO_INICIO = 0.45, GANHO_PASSO = 0.45;
+const GANHO_INICIO = 0.25, GANHO_PASSO = 0.4;
 
 const semMovimento = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 export const nivelDe = xp => Math.floor(xp / XPL) + 1;
