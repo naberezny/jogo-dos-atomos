@@ -85,7 +85,7 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   atravessando o rosto (`.med-reflexo`), mais forte, largo e frequente a cada nível (variáveis `--rf-*` por `nv-<nível>`).
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
-- **Laboratório (celular):** tabela compacta; arrastar o dedo para os lados rola a tabela em qualquer ponto,
+- **Laboratório (celular):** tabela compacta (célula `--cel` = clamp(30px, (100dvh − 360px) / 9,4, 40px): S24+ ≈ 37 px, Pixel 7 = 40 px); arrastar o dedo para os lados rola a tabela em qualquer ponto,
   até em cima de um elemento (com embalo ao soltar), e arrastar um elemento para cima ou para baixo pega o átomo.
   A direção é decidida pelo primeiro movimento (`usePegarElemento`). A faixa vazia do topo mostra a dica; botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
 - **Fotos:** 512 das 521 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas

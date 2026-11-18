@@ -324,7 +324,7 @@ button.brand { cursor: pointer; }
 @keyframes lampada { 50% { transform: scale(1.12) rotate(-8deg); } }
 @keyframes dica-brilho { 50% { box-shadow: 0 0 0 5px color-mix(in oklch, var(--tom) 22%, transparent), 0 4px 22px color-mix(in oklch, var(--tom) 45%, transparent); } }
 .dica-painel { position: absolute; inset: auto 8px 8px 8px; z-index: 5; max-height: calc(100% - 68px); overflow: auto; padding: 14px 16px; box-shadow: 0 -10px 40px oklch(0.08 0.02 265 / 0.8); animation: pop .2s ease-out; }
-.ptable-card.compacta { padding: 8px; gap: 0; border-radius: 12px; flex: none; --cel: clamp(26px, calc((100dvh - 440px) / 9.4), 40px); }
+.ptable-card.compacta { padding: 8px; gap: 0; border-radius: 12px; flex: none; --cel: clamp(30px, calc((100dvh - 360px) / 9.4), 40px); }
 .compacta .ptable-scroll { overflow-x: auto; padding: 0; margin: 0; overscroll-behavior-x: contain; scrollbar-width: none; }
 .compacta .ptable-scroll::-webkit-scrollbar { display: none; }
 .compacta .ptable { min-width: 0; width: calc(18 * var(--cel) + 17 * 3px); gap: 3px; grid-template-columns: repeat(18, var(--cel)); grid-template-rows: repeat(7, var(--cel)) 4px var(--cel) var(--cel); }
