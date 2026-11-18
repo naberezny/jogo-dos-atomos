@@ -71,7 +71,7 @@ export default function Mol3D({ g, label }) {
 
     const frame = now => {
       const geo = gr.current, dpr = window.devicePixelRatio || 1;
-      if (cv.width !== W * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
+      if (cv.width !== W * dpr || cv.height !== H * dpr) { cv.width = W * dpr; cv.height = H * dpr; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       if (volta) {
         const t = Math.min(1, (now - volta.t0) / RESTAURAR_MS), e = 1 - (1 - t) ** 3;

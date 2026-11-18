@@ -24,7 +24,9 @@ const CACHE = new Map();
 /** Cor CPK de um elemento: { hex, L, C, h }. Sem dado, usa a cor da família do elemento. */
 export function corAtomo(sym) {
   if (CACHE.has(sym)) return CACHE.get(sym);
-  const hex = CIENCIA[sym]?.cpk || EXTRA[sym];
+  // O PubChem às vezes tira os zeros da frente (Pd vinha como "6985" = 006985); completa até 6 dígitos.
+  const bruto = CIENCIA[sym]?.cpk || EXTRA[sym];
+  const hex = bruto && /^[0-9A-Fa-f]{1,6}$/.test(bruto) ? bruto.padStart(6, '0') : null;
   const k = cats[CAT.get(sym)];
   const cor = hex ? { hex: '#' + hex, ...oklch(hex) } : { hex: `oklch(0.8 ${k.c} ${k.h})`, L: 0.8, C: k.c, h: k.h };
   CACHE.set(sym, cor);

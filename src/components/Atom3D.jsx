@@ -160,7 +160,8 @@ export default function Atom3D(props) {
       const { size: S, shells, h, c, fusing, top, sel, own } = pr.current;
       const dpr = window.devicePixelRatio || 1;
       const dt = Math.min(0.05, (now - last) / 1000); last = now;
-      if (cv.width !== Math.round(S * dpr)) { cv.width = Math.round(S * dpr); cv.height = Math.round(S * dpr); }
+      // Confere largura e altura: o canvas nasce com 300×150 e, com S = 300 e densidade 1, só a largura bateria.
+      if (cv.width !== Math.round(S * dpr) || cv.height !== Math.round(S * dpr)) { cv.width = Math.round(S * dpr); cv.height = Math.round(S * dpr); }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, S, S);
       k += ((top ? 1 : 0) - k) * Math.min(1, dt * 5);
       if (!drag.on && !top) spinY += dt * 0.25;
