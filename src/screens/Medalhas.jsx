@@ -90,7 +90,7 @@ export default function Medalhas({ game }) {
   };
 
   return (
-    <section aria-label="Medalhas" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+    <section aria-label="Medalhas" className="med-tela" style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
       <PageHeader eyebrow="Coleção" title="Medalhas" sub={`${ganhas.length} de ${MEDALHAS.length} medalhas conquistadas`}>
         <div className="seg accent" role="group" aria-label="Tipo de medalha">
           {ABAS.map(([id, l]) => <button key={id} aria-pressed={aba === id} onClick={() => setAba(id)}>{l}</button>)}

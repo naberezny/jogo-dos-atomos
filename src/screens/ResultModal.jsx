@@ -62,7 +62,7 @@ export default function ResultModal({ game, onClose, toColl }) {
 
   return (
     <div className="modal-wrap" ref={wrap} onClick={onClose}>
-      <div className="modal" role="dialog" aria-modal="true" aria-label={`${s.name} (${s.d})`} onClick={e => e.stopPropagation()}>
+      <div className="modal ficha-sub" role="dialog" aria-modal="true" aria-label={`${s.name} (${s.d})`} onClick={e => e.stopPropagation()}>
         <div className="modal-left">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
             <div className="eyebrow">Estrutura</div>
@@ -84,20 +84,20 @@ export default function ResultModal({ game, onClose, toColl }) {
             <div className="chips">
               {Object.keys(s.c).map(k => {
                 const e = el(k);
-                return <button key={k} className="chip chip-btn" onClick={() => setElem(k)} aria-label={`Ver ficha de ${e.name}`} style={{ borderColor: col(e.cat, 0.3), background: col(e.cat, 0.08), fontFamily: 'inherit', whiteSpace: 'nowrap' }}><span className="display" style={{ fontWeight: 600, color: col(e.cat) }}>{k}</span> {e.name} ×{s.c[k]}</button>;
+                return <button key={k} className="chip chip-btn" onClick={() => setElem(k)} aria-label={`Ver ficha de ${e.name}`} style={{ '--c': col(e.cat), fontFamily: 'inherit', whiteSpace: 'nowrap' }}><span className="display" style={{ fontWeight: 600, color: col(e.cat) }}>{k}</span> {e.name} ×{s.c[k]}</button>;
               })}
             </div>
           </div>
         </div>
         <div className="modal-right">
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <div className="badge" style={st.resultNew ? { background: 'var(--ok)', color: 'var(--ok-ink)' } : { background: 'oklch(0.28 0.025 265)', color: 'oklch(0.85 0.02 265)' }}>
+            <div className={`badge ${st.resultNew ? 'badge-nova' : 'badge-ja'}`}>
               {st.resultNew ? 'NOVA DESCOBERTA' : 'JÁ NA COLEÇÃO'}
             </div>
           </div>
           <div>
-            <div className="display" style={{ fontSize: 52, fontWeight: 700, lineHeight: 1, color: 'var(--accent)' }}>{s.d}</div>
-            <div className="display" style={{ marginTop: 8, fontSize: 28, fontWeight: 600 }}>{s.name}</div>
+            <div className="display ficha-formula">{s.d}</div>
+            <div className="display ficha-nome">{s.name}</div>
           </div>
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <div className="kv"><span>Estado físico (25 °C)</span><span>{STATE[s.state]}</span></div>
@@ -110,7 +110,7 @@ export default function ResultModal({ game, onClose, toColl }) {
             {temFoto(s.f) && <Foto s={s} style={{ marginTop: 8 }} />}
           </div>
           <div className="fact">
-            <div className="eyebrow" style={{ color: 'var(--accent)' }}>Curiosidade</div>
+            <div className="eyebrow">Curiosidade</div>
             <div style={{ textWrap: 'pretty' }}>{s.fact}</div>
           </div>
           <MedalhasDaFicha modo="mol" chave={s.f} descobertas={st.discovered} />

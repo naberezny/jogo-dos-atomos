@@ -846,3 +846,73 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .ef-particula b { font-size: 17px; line-height: 1.05; color: var(--c); }
 .ef-particula span { font-size: 10.5px; color: var(--muted); white-space: nowrap; }
 .ficha-corpo > .ef-badges { margin: -6px 0 0; }
+
+/* ---------- Estilo neon: ficha da substância e tela de medalhas ----------
+   Mesmo visual das comemorações: painéis escuros com linhas de varredura, bordas e textos em neon,
+   barras em blocos. Ciano (--neon) é a cor principal; magenta (--neon2), a de destaque. */
+:root { --neon: oklch(0.86 0.15 195); --neon2: oklch(0.72 0.22 330); --painel-neon: oklch(0.12 0.03 250); }
+.ficha-sub, .med-tela { --varredura: repeating-linear-gradient(0deg, oklch(1 0 0 / .03) 0 1px, transparent 1px 4px); }
+.med-tela .med-barra, .ficha-sub .med-barra { height: 10px; padding: 2px; border-radius: 3px; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c, var(--neon)) 35%, oklch(0.4 0.03 250)); }
+.med-tela .med-barra-fill, .ficha-sub .med-barra-fill { border-radius: 1px; box-shadow: none; filter: drop-shadow(0 0 4px var(--c)); mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); }
+.med-tela .med-marca, .ficha-sub .med-marca { top: -2px; bottom: -2px; box-shadow: 0 0 6px var(--c); }
+.med-tela .med-nivel, .ficha-sub .med-nivel { border-radius: 4px; color: oklch(0.98 0.02 220); text-shadow: 0 0 6px var(--c); background: color-mix(in oklch, var(--c) 16%, transparent); box-shadow: 0 0 0 1px var(--c), 0 0 10px color-mix(in oklch, var(--c) 55%, transparent); }
+.med-tela .med-nivel.bloq, .ficha-sub .med-nivel.bloq { color: var(--muted); text-shadow: none; background: transparent; box-shadow: 0 0 0 1px oklch(0.4 0.02 265); }
+.med-tela .med-conta, .ficha-sub .med-conta { color: var(--neon); text-shadow: 0 0 8px oklch(0.86 0.15 195 / .5); }
+
+/* Ficha da substância */
+.modal-wrap:has(> .ficha-sub) { background: linear-gradient(oklch(0.86 0.15 195 / .045) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(90deg, oklch(0.86 0.15 195 / .045) 1px, transparent 1px) 0 0 / 34px 34px, oklch(0.07 0.02 265 / .88); }
+.modal.ficha-sub { border: 0; background: linear-gradient(to right, oklch(0.1 0.03 250) calc(100% / 2.15 - 1px), oklch(0.86 0.15 195 / .35) 0 calc(100% / 2.15), var(--painel-neon) 0); box-shadow: 0 0 0 1.5px var(--neon), 0 0 30px oklch(0.86 0.15 195 / .35), 0 0 90px oklch(0.86 0.15 195 / .15), inset 0 0 40px oklch(0.86 0.15 195 / .06); }
+.ficha-sub .eyebrow { color: var(--neon); letter-spacing: .2em; text-shadow: 0 0 8px oklch(0.86 0.15 195 / .7); }
+.ficha-sub .seg { border: 0; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .4); }
+.ficha-sub .seg button { font-family: var(--display); color: oklch(0.7 0.04 220); }
+.ficha-sub .seg.accent button[aria-pressed='true'] { color: oklch(0.98 0.03 195); text-shadow: 0 0 6px var(--neon); background: oklch(0.18 0.06 215); box-shadow: 0 0 0 1.5px var(--neon), 0 0 14px oklch(0.86 0.15 195 / .5), inset 0 0 10px oklch(0.86 0.15 195 / .35); }
+.ficha-sub .chip-btn { --c: var(--neon); border: 0; background: oklch(0.1 0.03 250); color: oklch(0.88 0.02 220); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c) 60%, transparent), 0 0 10px color-mix(in oklch, var(--c) 25%, transparent); }
+.ficha-sub .chip-btn > span { text-shadow: 0 0 8px var(--c); }
+.ficha-sub .chip-btn:hover { filter: none; box-shadow: 0 0 0 1.5px var(--c), 0 0 16px color-mix(in oklch, var(--c) 50%, transparent); }
+.ficha-sub .badge { border-radius: 4px; letter-spacing: .14em; }
+.badge-nova { color: oklch(0.97 0.05 150); text-shadow: 0 0 6px oklch(0.86 0.2 150); background: oklch(0.86 0.2 150 / .12); box-shadow: 0 0 0 1.5px oklch(0.86 0.2 150), 0 0 14px oklch(0.86 0.2 150 / .5); }
+.badge-ja { color: oklch(0.92 0.04 195); text-shadow: 0 0 6px var(--neon); background: oklch(0.86 0.15 195 / .08); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .6), 0 0 10px oklch(0.86 0.15 195 / .3); }
+.ficha-formula { font-size: 52px; font-weight: 700; line-height: 1; color: oklch(0.97 0.04 195); text-shadow: 0 0 4px #fff, 0 0 14px var(--neon), 0 0 34px var(--neon), 0 0 70px oklch(0.86 0.15 195 / .45); }
+.ficha-nome { margin-top: 8px; font-size: 28px; font-weight: 600; color: oklch(0.96 0.02 220); text-shadow: 0 0 14px oklch(0.86 0.15 195 / .35); }
+.ficha-sub .kv { position: relative; border: 0; border-radius: 8px; background: var(--varredura), oklch(0.09 0.025 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .45), 0 0 12px oklch(0.86 0.15 195 / .15), inset 0 0 12px oklch(0.86 0.15 195 / .08); }
+.ficha-sub .kv span:first-child { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--neon); opacity: .85; }
+.ficha-sub .kv span:last-child { font-family: var(--display); font-size: 16px; font-weight: 600; color: oklch(0.97 0.02 220); }
+.ficha-sub .foto-quadro > img { background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .45), 0 0 16px oklch(0.86 0.15 195 / .18); }
+.ficha-sub .foto-miniaturas button[aria-selected="true"] { border-color: var(--neon); box-shadow: 0 0 10px oklch(0.86 0.15 195 / .6); }
+.ficha-sub .fact { background: var(--varredura), oklch(0.12 0.05 320 / .35); box-shadow: 0 0 0 1.5px oklch(0.72 0.22 330 / .7), 0 0 20px oklch(0.72 0.22 330 / .25), inset 0 0 18px oklch(0.72 0.22 330 / .12); }
+.ficha-sub .fact .eyebrow { color: oklch(0.85 0.14 330); text-shadow: 0 0 8px var(--neon2); }
+.ficha-sub .med-ficha-item { border: 0; background: var(--varredura), oklch(0.09 0.025 250); box-shadow: 0 0 0 1.5px color-mix(in oklch, var(--c) 55%, transparent), 0 0 16px color-mix(in oklch, var(--c) 20%, transparent), inset 0 0 16px color-mix(in oklch, var(--c) 8%, transparent); }
+.ficha-sub .med-ficha-item:hover { box-shadow: 0 0 0 1.5px var(--c), 0 0 24px color-mix(in oklch, var(--c) 40%, transparent), inset 0 0 18px color-mix(in oklch, var(--c) 14%, transparent); }
+.ficha-sub .med-ver { color: var(--neon); text-shadow: 0 0 6px oklch(0.86 0.15 195 / .6); }
+.ficha-sub .btn-primary, .ficha-sub .btn-ghost { font-family: var(--display); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border: 0; }
+.ficha-sub .btn-primary { color: oklch(0.98 0.03 195); text-shadow: 0 0 6px var(--neon); background: oklch(0.14 0.05 220); box-shadow: 0 0 0 2px var(--neon), 0 0 20px oklch(0.86 0.15 195 / .5), inset 0 0 14px oklch(0.86 0.15 195 / .35); }
+.ficha-sub .btn-ghost { color: oklch(0.95 0.04 330); text-shadow: 0 0 6px var(--neon2); background: oklch(0.12 0.04 320 / .6); box-shadow: 0 0 0 1.5px oklch(0.72 0.22 330 / .8), 0 0 14px oklch(0.72 0.22 330 / .3); }
+.ficha-sub .btn-primary:hover, .ficha-sub .btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 30px var(--neon), inset 0 0 20px oklch(0.86 0.15 195 / .5); }
+.ficha-sub .btn-ghost:hover, .ficha-sub .btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 1.5px var(--neon2), 0 0 24px oklch(0.72 0.22 330 / .6); }
+@media (max-width: 900px) { .modal.ficha-sub { background: var(--painel-neon); } .ficha-sub .modal-left { background: oklch(0.1 0.03 250); border-bottom-color: oklch(0.86 0.15 195 / .35); } }
+
+/* Tela de medalhas */
+.med-tela .seg { border: 0; background: oklch(0.08 0.02 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .4); }
+.med-tela .seg.accent button[aria-pressed='true'] { color: oklch(0.98 0.03 195); text-shadow: 0 0 6px var(--neon); background: oklch(0.18 0.06 215); box-shadow: 0 0 0 1.5px var(--neon), 0 0 14px oklch(0.86 0.15 195 / .5), inset 0 0 10px oklch(0.86 0.15 195 / .35); }
+.med-tela .med-resumo-item { border: 0; background: var(--varredura), oklch(0.09 0.025 250); box-shadow: 0 0 0 1px color-mix(in oklch, var(--c) 55%, transparent), 0 0 14px color-mix(in oklch, var(--c) 20%, transparent); }
+.med-tela .med-resumo-item b { color: oklch(0.98 0.02 220); text-shadow: 0 0 10px var(--c); }
+.med-titulo-secao { color: oklch(0.97 0.03 195); text-shadow: 0 0 12px oklch(0.86 0.15 195 / .55); }
+.med-tela .med-titulo-secao .mono { color: var(--neon); text-shadow: none; }
+.med-tela .med-card { border: 0; background: var(--varredura), linear-gradient(160deg, color-mix(in oklch, var(--c) 12%, oklch(0.1 0.03 250)), oklch(0.09 0.025 250) 60%); box-shadow: 0 0 0 1.5px color-mix(in oklch, var(--c) 60%, transparent), 0 0 20px color-mix(in oklch, var(--c) 18%, transparent), inset 0 0 20px color-mix(in oklch, var(--c) 7%, transparent); }
+.med-tela .med-card.bloq { background: var(--varredura), oklch(0.1 0.02 255); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .16); }
+.med-tela .med-card-nome { color: oklch(0.97 0.02 220); text-shadow: 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); }
+.med-tela .med-card .eyebrow, .med-tela .med-ver-lista { color: var(--neon); text-shadow: 0 0 6px oklch(0.86 0.15 195 / .5); }
+.med-tela .med-meta { border: 0; border-radius: 4px; box-shadow: 0 0 0 1px oklch(0.4 0.03 250); }
+.med-tela .med-meta.ok { color: oklch(0.97 0.02 220); text-shadow: 0 0 6px var(--c); box-shadow: 0 0 0 1px var(--c), 0 0 10px color-mix(in oklch, var(--c) 45%, transparent); }
+.med-tela .med-membro { border: 0; background: oklch(0.09 0.025 250); box-shadow: 0 0 0 1px oklch(0.86 0.15 195 / .35); }
+.med-tela .med-membro b { text-shadow: 0 0 6px var(--neon); }
+.med-tela .med-membro.oculto { box-shadow: none; outline: 1px dashed oklch(0.4 0.03 250); outline-offset: -1px; }
+.med-tela .med-exc { border: 0; background: var(--varredura), radial-gradient(circle at 50% 0%, oklch(0.72 0.22 330 / .16), oklch(0.09 0.025 250) 70%); box-shadow: 0 0 0 1.5px oklch(0.72 0.22 330 / .7), 0 0 20px oklch(0.72 0.22 330 / .25), inset 0 0 18px oklch(0.72 0.22 330 / .1); }
+.med-tela .med-exc b { color: oklch(0.97 0.03 330); text-shadow: 0 0 10px var(--neon2); }
+.med-tela .med-exc.bloq { background: var(--varredura), oklch(0.1 0.02 255); box-shadow: 0 0 0 1px oklch(0.72 0.22 330 / .2); }
+.med-tela .med-exc.bloq b { color: oklch(0.6 0.03 265); text-shadow: none; }
+.med-tela .med-exc:not(:disabled):hover { box-shadow: 0 0 0 1.5px var(--neon2), 0 0 30px oklch(0.72 0.22 330 / .5), inset 0 0 20px oklch(0.72 0.22 330 / .18); }
+.main:has(> .med-tela) { background: linear-gradient(oklch(0.86 0.15 195 / .04) 1px, transparent 1px) 0 0 / 34px 34px, linear-gradient(90deg, oklch(0.86 0.15 195 / .04) 1px, transparent 1px) 0 0 / 34px 34px, radial-gradient(ellipse at 50% 0%, oklch(0.17 0.05 220), var(--bg) 70%); background-attachment: fixed; }
+.med-tela .page-head h1, .med-tela .page-head h2 { color: oklch(0.97 0.03 195); text-shadow: 0 0 4px #fff, 0 0 14px var(--neon), 0 0 34px oklch(0.86 0.15 195 / .5); }
+.med-tela .page-head .eyebrow { color: var(--neon); letter-spacing: .2em; text-shadow: 0 0 8px oklch(0.86 0.15 195 / .7); }
+.med-tela .page-head .btn-voltar { border: 0; background: oklch(0.1 0.03 250); color: var(--neon); box-shadow: 0 0 0 1.5px oklch(0.86 0.15 195 / .6), 0 0 12px oklch(0.86 0.15 195 / .3); }
