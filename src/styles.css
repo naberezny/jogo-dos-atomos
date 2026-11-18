@@ -686,6 +686,19 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 @keyframes mm-brilha { 0%, 100% { opacity: .2; transform: scale(.5); } 50% { opacity: 1; transform: scale(1); } }
 .mm-ouro .mm-pontas, .mm-platina .mm-pontas { filter: drop-shadow(0 0 3px var(--c)); }
 .med-nucleo { position: absolute; inset: 18%; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--c) 38%, #141b2a), #0a0e18 75%); box-shadow: 0 0 0 2px var(--c), 0 0 14px color-mix(in oklch, var(--c) 55%, transparent), inset 0 0 12px color-mix(in oklch, var(--c) 45%, transparent); transition: filter .3s, box-shadow .3s, background .3s; }
+/* Reflexo de luz que atravessa o rosto da medalha (e o anel em volta); mais forte, largo e frequente
+   nos níveis altos. Ouro, Platina e Exclusiva ganham uma segunda faixa fina logo atrás. */
+.med-reflexo { position: absolute; inset: 15%; border-radius: 50%; overflow: hidden; pointer-events: none; }
+.med-reflexo::after { content: ''; position: absolute; top: -30%; bottom: -30%; left: -30%; width: 160%; background:
+    linear-gradient(110deg, transparent 30%, oklch(1 0 0 / var(--rf-dupla, 0)) 33%, transparent 35.5%),
+    linear-gradient(110deg, transparent calc(46% - var(--rf-larg)), oklch(1 0 0 / calc(var(--rf-forca) * .45)) calc(48% - var(--rf-larg) * .4), oklch(1 0 0 / var(--rf-forca)) 48%, oklch(1 0 0 / calc(var(--rf-forca) * .45)) calc(48% + var(--rf-larg) * .4), transparent calc(50% + var(--rf-larg)));
+  transform: translateX(-100%); animation: med-reflexo var(--rf-tempo) cubic-bezier(.45, 0, .3, 1) var(--atraso-reflexo, 0s) infinite; }
+.med-icone.nv-bronze { --rf-forca: .28; --rf-larg: 4%; --rf-tempo: 7s; }
+.med-icone.nv-prata { --rf-forca: .45; --rf-larg: 5%; --rf-tempo: 6s; }
+.med-icone.nv-ouro { --rf-forca: .65; --rf-larg: 6%; --rf-dupla: .4; --rf-tempo: 4.8s; }
+.med-icone.nv-exclusiva { --rf-forca: .7; --rf-larg: 6.5%; --rf-dupla: .45; --rf-tempo: 4.4s; }
+.med-icone.nv-platina { --rf-forca: .9; --rf-larg: 7.5%; --rf-dupla: .65; --rf-tempo: 3.6s; }
+@keyframes med-reflexo { 0% { transform: translateX(-100%); } 35%, 100% { transform: translateX(60%); } }
 .med-icone.bloq { filter: grayscale(1); opacity: .55; }
 .med-icone.bloq .med-nucleo { font-family: var(--display); font-weight: 700; color: oklch(0.6 0.02 265); }
 .med-icone.trancada .med-moldura { opacity: .45; filter: none; }

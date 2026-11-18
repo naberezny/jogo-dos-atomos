@@ -55,11 +55,14 @@ export function MedalhaIcone({ m, nivel, tam = 56, trancada = false }) {
   const c = corDe(nivel);
   // Ouro, Platina e Exclusiva brilham (reflexo girando, pontas e cravos pulsando); a Platina, mais que todas.
   const brilha = !trancada && ['ouro', 'platina', 'exclusiva'].includes(nivel);
-  const cls = ['med-icone', nivel ? '' : 'bloq', brilha ? `brilha brilha-${nivel}` : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
+  const cls = ['med-icone', nivel && !trancada ? `nv-${nivel}` : '', nivel ? '' : 'bloq', brilha ? `brilha brilha-${nivel}` : '', trancada ? 'trancada' : ''].filter(Boolean).join(' ');
+  // Cada medalha começa o reflexo num momento diferente, para não piscarem todas juntas.
+  const atraso = [...(m.id || '')].reduce((a, ch) => (a * 31 + ch.charCodeAt(0)) % 997, 7) / 997 * 5;
   return (
-    <span className={cls} style={{ '--c': c, width: tam, height: tam, fontSize: tam * 0.34 }} aria-hidden="true">
+    <span className={cls} style={{ '--c': c, '--atraso-reflexo': `${atraso.toFixed(2)}s`, width: tam, height: tam, fontSize: tam * 0.34 }} aria-hidden="true">
       <Moldura nivel={nivel} />
       <span className="med-nucleo">{nivel || !m.exclusiva ? m.icone : '?'}</span>
+      {nivel && !trancada && <span className="med-reflexo" />}
       {trancada && <span className="med-cadeado">🔒</span>}
     </span>
   );
