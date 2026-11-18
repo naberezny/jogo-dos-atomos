@@ -16,8 +16,8 @@ const passos = t => [
   // No celular a tabela não cabe na tela: ensina a rolar pela faixa vazia do topo.
   ...(t ? [{
     icon: 'lab', h: 195, title: 'Role a tabela', anim: 'rolar',
-    text: 'A tabela é maior que a tela. Para ver o resto, arraste para os lados a faixa vazia do topo, onde aparece "Arraste aqui para rolar a tabela".',
-    extra: 'Arrastar em cima de um elemento pega o átomo; arrastar no espaço vazio rola a tabela.',
+    text: 'A tabela é maior que a tela. Para ver o resto, arraste o dedo para os lados, em qualquer parte dela, até em cima dos elementos.',
+    extra: 'Arrastar para os lados rola a tabela; arrastar um elemento para cima ou para baixo pega o átomo.',
   }] : []),
   {
     icon: 'estudos', h: 250, title: 'Veja os detalhes do átomo', anim: 'segurar',
@@ -61,7 +61,7 @@ export default function Tour({ onClose, onStart }) {
             <div className="tour-anim arrastar" aria-hidden="true"><span className="casa">O</span><span className="atomo" /><span className="alvo" /></div>
           ) : p.anim === 'rolar' ? (
             <div className="tour-anim rolar" aria-hidden="true">
-              <span className="pilula">‹ Arraste aqui ›</span>
+              <span className="pilula">‹ Arraste para os lados ›</span>
               <div className="faixa">
                 {['Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se'].map((s, k) => <span key={s} className="cel" style={{ left: 8 + k * 34 }}>{s}</span>)}
                 {['Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te'].map((s, k) => <span key={s} className="cel l2" style={{ left: 8 + k * 34 }}>{s}</span>)}

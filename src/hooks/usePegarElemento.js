@@ -1,6 +1,8 @@
 // Gestos sobre um elemento da tabela (no dedo e no mouse):
 // - tocar/clicar: o clique normal da célula (no laboratório, adiciona ao reator);
-// - arrastar: o átomo vai na hora para a mão e pode ser solto sobre um alvo, como o reator;
+// - arrastar para cima ou para baixo: o átomo vai na hora para a mão e pode ser solto sobre um alvo,
+//   como o reator;
+// - arrastar para os lados (no dedo): rola a tabela, mesmo começando em cima de um elemento;
 // - segurar parado: o contorno da célula carrega e, quando completa, abre os detalhes (onSegurar).
 // O espaço vazio da tabela continua livre para rolar a tabela com o dedo.
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -90,27 +92,63 @@ export default function usePegarElemento({ alvo, onSoltar, onSobre, onSegurar, s
   useEffect(() => {
     const el = grade;
     if (!el || !ativo) return;
+    // A tabela rola dentro do elemento com rolagem lateral mais próximo (no celular ela não cabe na tela).
+    const caixa = el.closest('.ptable-scroll');
+    const rola = () => caixa && caixa.scrollWidth > caixa.clientWidth + 4;
     const move = e => {
       const s = g.current, t = e.touches[0];
       if (!s.inicio || !t) return;
       e.preventDefault();
       if (s.naMao) { mover(t.clientX, t.clientY); return; }
-      // Mexeu o dedo: o átomo vai para a mão na hora, sem tempo mínimo.
-      if (Math.hypot(t.clientX - s.inicio.x, t.clientY - s.inicio.y) > FOLGA_TOQUE) pegar(s.inicio.sym, t.clientX, t.clientY, true);
+      if (s.rolando) {
+        // Rola junto com o dedo e guarda a velocidade para o embalo ao soltar.
+        const agora = performance.now(), dt = Math.max(1, agora - s.rolando.t);
+        s.rolando.v = (t.clientX - s.rolando.x) / dt;
+        s.rolando.x = t.clientX; s.rolando.t = agora;
+        caixa.scrollLeft = s.rolando.s0 - (t.clientX - s.rolando.x0);
+        return;
+      }
+      const dx = t.clientX - s.inicio.x, dy = t.clientY - s.inicio.y;
+      if (Math.hypot(dx, dy) <= FOLGA_TOQUE) return;
+      // Decide pela direção do primeiro movimento: para os lados rola, para cima ou para baixo pega.
+      if (Math.abs(dx) > Math.abs(dy) && rola()) {
+        cancelarSegurar();
+        s.bloquearClique = Date.now() + 400;
+        s.rolando = { x0: t.clientX, s0: caixa.scrollLeft, x: t.clientX, t: performance.now(), v: 0 };
+        cancelAnimationFrame(s.embalo);
+        return;
+      }
+      pegar(s.inicio.sym, t.clientX, t.clientY, true);
     };
-    const fim = e => { if (g.current.naMao) e.preventDefault(); largar(); };
+    const fim = e => {
+      const s = g.current;
+      if (s.naMao) e.preventDefault();
+      if (s.rolando) {
+        // Embalo: continua rolando e vai freando, como a rolagem normal do celular.
+        let v = s.rolando.v * 16, ultimo = performance.now();
+        s.rolando = null; s.bloquearClique = Date.now() + 250;
+        const passo = agora => {
+          const dt = (agora - ultimo) / 16; ultimo = agora;
+          caixa.scrollLeft -= v * dt; v *= Math.pow(0.94, dt);
+          if (Math.abs(v) > 0.3) s.embalo = requestAnimationFrame(passo);
+        };
+        if (Math.abs(v) > 1 && !semMovimento()) s.embalo = requestAnimationFrame(passo);
+      }
+      largar();
+    };
     el.addEventListener('touchmove', move, { passive: false });
     el.addEventListener('touchend', fim, { passive: false });
     el.addEventListener('touchcancel', fim);
     return () => { el.removeEventListener('touchmove', move); el.removeEventListener('touchend', fim); el.removeEventListener('touchcancel', fim); };
-  }, [grade, ativo, mover, largar, pegar]);
-  useEffect(() => () => clearTimeout(g.current.timer), []);
+  }, [grade, ativo, mover, largar, pegar, cancelarSegurar]);
+  useEffect(() => () => { clearTimeout(g.current.timer); cancelAnimationFrame(g.current.embalo); }, []);
 
   /** Propriedades para espalhar em cada célula da tabela. */
   const celula = useCallback(sym => (!ativo ? {} : {
     onTouchStart: e => {
       const t = e.touches[0], s = g.current;
       if (e.touches.length > 1) { cancelarSegurar(); s.inicio = null; return; }
+      cancelAnimationFrame(s.embalo); s.rolando = null;
       s.inicio = { x: t.clientX, y: t.clientY, sym }; s.usouToque = Date.now();
       comecarSegurar(sym);
     },

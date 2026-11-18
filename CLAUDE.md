@@ -41,7 +41,7 @@ src/data/medalhas.js        medalhas: exclusivas, grupos (fs e/ou regex no nome)
 src/data/espectros.json     linhas de emissão visíveis (NIST) de 97 elementos + D
 src/data/ciencia.json       dados físico-químicos (PubChem) e cor CPK por elemento
 src/data/subatomico.js      partículas e receitas do modo subatômico
-src/hooks/usePegarElemento.js  gestos da tabela: toque = adiciona, arrastar = pega na hora, segurar 0,45 s = detalhes
+src/hooks/usePegarElemento.js  gestos da tabela: toque = adiciona, arrastar p/ cima ou baixo = pega, p/ os lados = rola (no dedo), segurar 0,45 s = detalhes
 src/components/             Celebracao (revelação + XP em tela cheia), LevelUp, Medalha, Mol3D (3D com zoom), Foto (galeria),
                             ElementFicha (ficha do elemento), Espectro, PeriodicTable, Tour (onboarding)
 src/screens/                Lab, Collection (filtros), Subatomico, Estudos, Missions, Profile, Medalhas, ResultModal
@@ -85,8 +85,9 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   atravessando o rosto (`.med-reflexo`), mais forte, largo e frequente a cada nível (variáveis `--rf-*` por `nv-<nível>`).
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
 - **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
-- **Laboratório (celular):** tabela compacta que rola pela faixa vazia do topo ("Arraste aqui para rolar
-  a tabela"); botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
+- **Laboratório (celular):** tabela compacta; arrastar o dedo para os lados rola a tabela em qualquer ponto,
+  até em cima de um elemento (com embalo ao soltar), e arrastar um elemento para cima ou para baixo pega o átomo.
+  A direção é decidida pelo primeiro movimento (`usePegarElemento`). A faixa vazia do topo mostra a dica; botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.
 - **Fotos:** 512 das 521 substâncias têm foto (Wikimedia Commons, 500 px), ~1.200 no total, todas
   escolhidas à mão e com legenda. A 1ª é a principal (capa, coleção, revelação): a própria substância
   ou onde ela é encontrada/usada (água → mar, PVC → cano). Na ficha da substância, a galeria fica abaixo

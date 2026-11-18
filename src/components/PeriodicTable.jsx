@@ -108,7 +108,7 @@ export default function PeriodicTable({ titulo = 'Tabela periódica', onPick, se
             <div className="ptable-rolar" aria-hidden="true">
               <div className="ptable-rolar-pilula">
                 <span className="seta">‹</span>
-                <span>Arraste aqui para rolar a tabela</span>
+                <span>Arraste para os lados para rolar a tabela</span>
                 <span className="seta">›</span>
               </div>
             </div>
