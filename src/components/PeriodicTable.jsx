@@ -11,7 +11,7 @@ function AtomoNaMao({ sym, toque, innerRef }) {
   const e = el(sym), c = cats[e.cat];
   return (
     <NaMao innerRef={innerRef} toque={toque} cor={col(e.cat)} rotulo={sym}>
-      <Atom3D size={92} shells={e.shells} h={c.h} c={c.c} fusing title="" />
+      <Atom3D sym={e.sym} size={92} shells={e.shells} h={c.h} c={c.c} fusing title="" />
     </NaMao>
   );
 }

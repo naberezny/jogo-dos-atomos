@@ -706,6 +706,7 @@ body:has(.atomo-mao) { cursor: grabbing; user-select: none; }
 .ef-eletrosfera .atom-stage { position: relative; }
 .ef-vista { position: absolute; top: 8px; right: 8px; z-index: 1; background: oklch(0.16 0.02 265 / .8); backdrop-filter: blur(6px); }
 .ef-vista button { padding: 5px 10px; font-size: 12px; }
+.atom3d-reset { top: auto; bottom: 8px; z-index: 1; }
 
 /* Espectro de emissão (ficha do elemento, aba Avançado) */
 .espectro { display: flex; flex-direction: column; gap: 8px; color: var(--muted); }

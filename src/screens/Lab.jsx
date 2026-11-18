@@ -100,7 +100,7 @@ export default function Lab({ game }) {
               return (
                 <div className={`zone-atom${flash?.sym === sym ? ' just-added' : ''}${foco === sym && zoneKeys.length > 1 ? ' foco' : ''}${foco === sym ? ' ativo' : ''}`} key={flash?.sym === sym ? sym + flash.k : sym} onClick={() => setHovered(sym)}>
                   <div className="atom-wrap">
-                    <Atom3D size={Math.max(small ? 38 : 44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
+                    <Atom3D sym={e.sym} size={Math.max(small ? 38 : 44, Math.round(e.rad * atomScale))} shells={e.shells} h={cat.h} c={cat.c} fusing={st.fusing} title={`${e.name}: camadas ${e.shells.join(' · ')}`} />
                   </div>
                   <span className="mono" style={{ fontSize: 12, color: 'oklch(0.9 0.01 265)' }}>{sym} ×{st.zone[sym]}</span>
                   <div className="steppers">

@@ -68,7 +68,7 @@ export default function ElementFicha({ sym, discovered }) {
         <div className="seg accent ef-vista">
           {[['3D', '3D livre'], ['Topo', 'Vista de topo']].map(([id, l]) => <button key={id} aria-pressed={view === id} onClick={() => setView(id)}>{l}</button>)}
         </div>
-        <Atom3D key={'drawer-' + t.sym} own size={300} shells={t.shells} h={tc.h} c={tc.c} fusing={false} top={view === 'Topo'} sel={sel} onPick={i => setShell(i)} title={`Eletrosfera de ${t.name}`} />
+        <Atom3D key={'drawer-' + t.sym} sym={t.sym} prot={t.z} neut={f.neut} zoom own size={300} shells={t.shells} h={tc.h} c={tc.c} fusing={false} top={view === 'Topo'} sel={sel} onPick={i => setShell(i)} title={`Eletrosfera de ${t.name}`} />
       </div>
       <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
         {t.shells.map((n, i) => {
@@ -89,7 +89,7 @@ export default function ElementFicha({ sym, discovered }) {
           <div style={{ fontSize: 12.5, lineHeight: 1.45, color: 'oklch(0.76 0.02 265)' }}>{si.role}</div>
         </div>
       ) : (
-        <div style={{ fontSize: 12.5, color: 'oklch(0.66 0.02 265)' }}>Toque em uma órbita (ou em uma camada acima) para ver os detalhes.</div>
+        <div style={{ fontSize: 12.5, color: 'oklch(0.66 0.02 265)' }}>Toque em uma órbita (ou em uma camada acima) para ver os detalhes. Dê zoom (pinça ou roda do mouse) para ver os prótons e nêutrons do núcleo.</div>
       )}
     </section>
   );

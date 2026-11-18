@@ -3,15 +3,15 @@
 // e devolve os dois ao padrão, numa animação curta.
 import { useEffect, useRef, useState } from 'react';
 import { cats } from '../data/nucleo.js';
+import { luzGirada, pintaEsfera, rotulo } from './esfera.js';
 
 const W = 340, H = 280;
 const ZOOM_MIN = 0.6, ZOOM_MAX = 4;
 const limita = z => Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, z));
 const ANGULO = { yaw: 0.5, pitch: -0.3 }; // vista inicial
 const RESTAURAR_MS = 450;
-// Luz principal presa à molécula: gira junto com ela, então o brilho desliza pela superfície de cada
-// átomo e até o do centro mostra o movimento. (x para a direita, y para baixo, z para a câmera)
-const LUZ = (() => { const v = [-0.55, -0.65, 0.52], n = Math.hypot(...v); return v.map(c => c / n); })();
+// A luz (em esfera.js) gira junto com a molécula, então o brilho desliza pela superfície de cada
+// átomo e até o do centro mostra o movimento.
 
 export default function Mol3D({ g, label }) {
   const ref = useRef(null);
@@ -88,9 +88,7 @@ export default function Mol3D({ g, label }) {
         return { a, x: W / 2 + x1 * s, y: H / 2 + y2 * s, z: z2, s };
       });
       // A mesma rotação dos átomos, aplicada à direção da luz.
-      const lx1 = LUZ[0] * cy + LUZ[2] * sy, lz1 = -LUZ[0] * sy + LUZ[2] * cy;
-      const Lx = lx1, Ly = LUZ[1] * cp - lz1 * sp, Lz = LUZ[1] * sp + lz1 * cp;
-      const frente = Math.max(0, Lz), tras = Math.max(0, -Lz);
+      const luz = luzGirada(cy, sy, cp, sp), frente = luz.frente;
       const items = [];
       geo.bonds.forEach(([i, j, o = 1]) => {
         const A = P[i], B = P[j], M = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2, s: (A.s + B.s) / 2 };
@@ -113,43 +111,9 @@ export default function Mol3D({ g, label }) {
         }
         // Cor do átomo no padrão dos químicos (CPK); a luz clareia ou escurece a partir dela.
         const q = it.atom, r = q.a.r * q.s, k = q.a.cor || { L: 0.75, C: cats[q.a.cat].c, h: cats[q.a.cat].h }, f = 0.5 + 0.5 * Math.max(-1, Math.min(1, q.z / 120));
-        // Lado iluminado: para onde a luz aponta na tela (ponto que acompanha a rotação).
-        const hx = q.x + Lx * r * 0.55, hy = q.y + Ly * r * 0.55;
         // Os de trás ficam mais escuros, para dar profundidade.
-        const prof = 0.78 + 0.22 * f;
-        ctx.save(); ctx.beginPath(); ctx.arc(q.x, q.y, r, 0, Math.PI * 2); ctx.clip();
-        // 1) corpo: claro do lado da luz, escuro do lado oposto; nunca apaga de vez (luz ambiente).
-        const corpo = ctx.createRadialGradient(hx, hy, r * 0.05, q.x - Lx * r * 0.2, q.y - Ly * r * 0.2, r * 1.35);
-        corpo.addColorStop(0, `oklch(${Math.min(0.99, k.L + 0.16 + 0.12 * frente) * prof} ${k.C * 0.6} ${k.h})`);
-        corpo.addColorStop(0.45, `oklch(${k.L * (0.84 + 0.16 * frente) * prof} ${k.C} ${k.h})`);
-        corpo.addColorStop(1, `oklch(${k.L * 0.36 * prof} ${k.C * 0.85} ${k.h})`);
-        ctx.fillStyle = corpo; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
-        // 2) reflexo: ponto branco que corre pela bola; some quando a luz passa para trás.
-        if (frente > 0.05) {
-          const rf = ctx.createRadialGradient(hx, hy, 0, hx, hy, r * 0.42);
-          rf.addColorStop(0, `oklch(1 0 0 / ${0.9 * frente ** 1.5})`); rf.addColorStop(1, 'oklch(1 0 0 / 0)');
-          ctx.fillStyle = rf; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
-        }
-        // 2b) reflexo fixo da câmera, fraquinho: a bola nunca perde o aspecto brilhante.
-        const fx = q.x - r * 0.38, fy = q.y - r * 0.42, rc = ctx.createRadialGradient(fx, fy, 0, fx, fy, r * 0.3);
-        rc.addColorStop(0, 'oklch(1 0 0 / 0.28)'); rc.addColorStop(1, 'oklch(1 0 0 / 0)');
-        ctx.fillStyle = rc; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
-        // 3) sombra suave na borda, que arredonda a bola.
-        const borda = ctx.createRadialGradient(q.x, q.y, r * 0.62, q.x, q.y, r);
-        borda.addColorStop(0, 'oklch(0.1 0.02 265 / 0)'); borda.addColorStop(1, 'oklch(0.1 0.02 265 / 0.42)');
-        ctx.fillStyle = borda; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
-        // 4) contraluz: com a luz atrás, acende a borda do lado dela.
-        if (tras > 0.05) {
-          const ex = q.x + Lx * r, ey = q.y + Ly * r;
-          const rim = ctx.createRadialGradient(ex, ey, 0, ex, ey, r * 1.1);
-          rim.addColorStop(0, `oklch(0.96 ${Math.min(0.07, k.C)} ${k.h} / ${0.95 * tras})`); rim.addColorStop(0.6, `oklch(0.85 ${Math.min(0.1, k.C)} ${k.h} / 0)`);
-          ctx.fillStyle = rim; ctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
-        }
-        ctx.restore();
-        if (r > 11) {
-          ctx.fillStyle = k.L > 0.55 ? 'oklch(0.15 0.02 265 / 0.85)' : 'oklch(0.97 0.01 265 / 0.9)'; ctx.font = `600 ${Math.round(r * 0.62)}px 'Chakra Petch', sans-serif`;
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(q.a.sym, q.x, q.y + 1);
-        }
+        pintaEsfera(ctx, q.x, q.y, r, k, luz, f);
+        if (r > 11) rotulo(ctx, q.x, q.y, r, k, q.a.sym);
       });
       raf = requestAnimationFrame(frame);
     };

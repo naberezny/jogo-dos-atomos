@@ -29,7 +29,7 @@ src/nav.js                  seções (a de medalhas é `oculta`: fora do menu)
 src/game/logic.js           regras: combinação, XP/nível, MISSIONS, medals (conquistas), geom3d, mensagens do reator
 src/game/useGame.js         estado salvo (SAVED), fusão, `revelar` (abre a tela "Uau!")
 src/game/estrutura.js       SMILES → átomos/ligações e geometria 2D/3D (raios COV/ION por elemento)
-src/game/cor.js             cores CPK dos átomos nos modelos moleculares
+src/game/cor.js             cores CPK dos átomos nos modelos moleculares e no núcleo dos átomos
 src/data/nucleo.js          118 elementos + catálogo (junta src/data/grupos/*.js)
 src/data/grupos/*.js        substâncias por tamanho: muito-faceis (2–4 átomos), faceis (5–9), medias (10–26), desafio
 src/data/estruturas.js      SMILES de cada substância (maiúsculas só; `~` = atração iônica; [X+n] = íon)
@@ -67,6 +67,10 @@ scripts/                    verificar-catalogo.mjs, baixar-espectros.mjs (NIST),
   thumb.wikimedia.org.
 - **Modelo 3D da molécula:** cores CPK, luz que gira com a molécula, varetas 28% mais curtas
   (`VARETA` em `logic.js`), zoom por pinça/roda (60–400%) e botão ↺ que restaura zoom e ângulo.
+- **Átomo 3D (Atom3D):** mesmo estilo das moléculas (bolas sombreadas de `components/esfera.js`, núcleo
+  na cor CPK, elétrons azul-claros, órbitas da cor das varetas). Na ficha do elemento tem zoom (pinça/roda,
+  100–600%): de perto o núcleo fica transparente e mostra prótons (p⁺, vermelhos) e nêutrons (n, cinza)
+  em empilhamento compacto regular, misturados por igual.
 - **Ficha do elemento:** topo com símbolo + prótons/nêutrons/elétrons (alinhados à base do símbolo);
   átomo 3D e camadas sempre visíveis (seletor de vista dentro do quadro); abas Básico (badges de
   descoberta/estado, história, nome, curiosidades, no jogo) e Avançado (espectro de emissão,
