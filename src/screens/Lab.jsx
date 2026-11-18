@@ -50,6 +50,8 @@ export default function Lab({ game }) {
   const foco = hovered === null ? null : st.zone[hovered] ? hovered : zoneKeys[zoneKeys.length - 1];
   const match = findMatch(st.zone);
   const status = reactorStatus(st.zone, st.discovered, true);
+  // Seguiu a dica e a fusão ficou disponível: fecha o card para o reator (e o botão Fundir) aparecer.
+  useEffect(() => { if (status.tone === 'ok') setDica(false); }, [status.tone]);
   const tone = st.fusing ? 'var(--ok)' : TONE[status.tone];
   const acesos = useMemo(() => fusable(st.zone), [st.zone]);
   const painel = {
