@@ -117,6 +117,9 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
 
 ## Ideias que ficaram em aberto
 
+- **Publicação nas lojas** (Google Play, App Store, Microsoft Store e outras): proposta em
+  `docs/publicacao-nas-lojas.md` (Capacitor + PWA). Ainda não começada; faltam as decisões listadas no fim do arquivo.
+
 - No computador ainda existe o botão largo "Detalhes" ao lado do reator do laboratório, e no modo
   subatômico o reator ainda tem o botão "Detalhes" (celular) e a lista de partículas abaixo do reator;
   no laboratório esses dois foram removidos a pedido. Perguntar antes de remover.
