@@ -86,7 +86,8 @@ scripts/                    verificar-catalogo.mjs, testar-atomos-navegador.mjs,
   tem dois reflexos, cravos piscando em sequência e miolo pulsando. Toda medalha conquistada tem um reflexo de luz
   atravessando o rosto (`.med-reflexo`), mais forte, largo e frequente a cada nível (variáveis `--rf-*` por `nv-<nível>`).
 - **Missões:** 58, todas concluíveis com o catálogo completo; conquistas: 21.
-- **Coleção:** filtro principal (Todas/Descobertas) + subfiltros (estado, composição, tamanho, grupo) e busca.
+- **Coleção:** filtro principal (Todas/Descobertas), busca e botão "Filtros" que abre um painel (fechado por padrão) com
+  estado, composição, tamanho e grupo (lista de seleção); os filtros em uso aparecem como etiquetas com × e "Limpar".
 - **Laboratório (celular):** tabela compacta (célula `--cel` = clamp(30px, (100dvh − 360px) / 9,4, 40px): S24+ ≈ 37 px, Pixel 7 = 40 px; mostra número atômico, símbolo e nome, como nos Estudos); arrastar o dedo para os lados rola a tabela em qualquer ponto,
   até em cima de um elemento (com embalo ao soltar), e arrastar um elemento para cima ou para baixo pega o átomo.
   A direção é decidida pelo primeiro movimento (`usePegarElemento`). A faixa vazia do topo mostra a dica; botões − + +5 só no átomo ativo (o último adicionado); toque no vazio do reator tira a seleção.

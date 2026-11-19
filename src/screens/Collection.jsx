@@ -41,7 +41,7 @@ export default function Collection({ game }) {
   const f = { ...VAZIO, ...(st.collFiltro || {}) };
   const muda = patch => set({ collFiltro: { ...f, ...patch } });
   const alterna = (campo, id) => muda({ [campo]: f[campo] === id ? null : id });
-  const [gruposAbertos, setGruposAbertos] = useState(false);
+  const [painel, setPainel] = useState(false); // painel com as opções de filtro (fechado por padrão)
 
   const desc = useMemo(() => new Set(st.discovered), [st.discovered]);
   const testes = useMemo(() => {
@@ -55,12 +55,16 @@ export default function Collection({ game }) {
     return t;
   }, [f.base, f.estado, f.tipo, f.tamanho, f.grupo, f.busca, desc]); // eslint-disable-line react-hooks/exhaustive-deps
   const items = substances.map((s, i) => ({ s, i })).filter(({ s }) => testes.every(t => t(s)));
-  const subAtivos = LINHAS.filter(l => f[l.id]).length + (f.grupo ? 1 : 0) + (f.busca.trim() ? 1 : 0);
   // Contagem de cada opção já respeitando o filtro principal, para guiar a escolha.
   const naBase = s => f.base !== 'Descobertas' || desc.has(s.f);
   const conta = teste => substances.filter(s => naBase(s) && teste(s)).length;
   const grupoAtual = GRUPOS.find(m => m.id === f.grupo);
-  const gruposVisiveis = gruposAbertos || !f.grupo ? GRUPOS : [grupoAtual, ...GRUPOS.filter(m => m !== grupoAtual)];
+  const filtrosAtivos = LINHAS.filter(l => f[l.id]).length + (f.grupo ? 1 : 0);
+  // Etiquetas dos filtros em uso, cada uma com × para tirar.
+  const ativos = [
+    ...LINHAS.filter(l => f[l.id]).map(l => ({ chave: l.id, rotulo: l.opcoes.find(o => o[0] === f[l.id])[1], tirar: () => muda({ [l.id]: null }) })),
+    ...(grupoAtual ? [{ chave: 'grupo', rotulo: `${grupoAtual.icone} ${grupoAtual.grupo}`, tirar: () => muda({ grupo: null }) }] : []),
+  ];
 
   return (
     <section aria-label="Coleção" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -72,35 +76,44 @@ export default function Collection({ game }) {
         </div>
       </PageHeader>
 
-      <div className="card filtros">
+      <div className="filtros">
         <div className="filtro-topo">
           <input className="filtro-busca" type="search" placeholder="Buscar por nome ou fórmula…" value={f.busca} onChange={e => muda({ busca: e.target.value })} aria-label="Buscar substância descoberta" />
-          {subAtivos > 0 && <button className="btn-small" onClick={() => set({ collFiltro: { ...VAZIO, base: f.base } })}>Limpar filtros ({subAtivos})</button>}
+          <button className={`filtro-abrir${painel ? ' aberto' : ''}${filtrosAtivos ? ' ativo' : ''}`} onClick={() => setPainel(v => !v)} aria-expanded={painel} aria-controls="filtro-painel">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /></svg>
+            Filtros{filtrosAtivos > 0 && <span className="filtro-badge">{filtrosAtivos}</span>}
+          </button>
         </div>
-        {LINHAS.map(l => (
-          <div key={l.id} className="filtro-linha">
-            <span className="eyebrow">{l.rotulo}</span>
-            <div className="filtro-chips">
-              {l.opcoes.map(([id, rotulo, teste]) => (
-                <button key={id} className="fchip" aria-pressed={f[l.id] === id} onClick={() => alterna(l.id, id)}>{rotulo} <span className="mono filtro-n">{conta(teste)}</span></button>
-              ))}
+
+        {ativos.length > 0 && (
+          <div className="filtro-ativos">
+            {ativos.map(a => <button key={a.chave} className="fchip ativo" onClick={a.tirar} aria-label={`Tirar filtro ${a.rotulo}`}>{a.rotulo} <span aria-hidden="true">×</span></button>)}
+            <button className="filtro-limpar" onClick={() => set({ collFiltro: { ...VAZIO, base: f.base, busca: f.busca } })}>Limpar</button>
+          </div>
+        )}
+
+        {painel && (
+          <div className="card filtro-painel" id="filtro-painel">
+            {LINHAS.map(l => (
+              <div key={l.id} className="filtro-linha">
+                <span className="eyebrow">{l.rotulo}</span>
+                <div className="filtro-chips">
+                  {l.opcoes.map(([id, rotulo, teste]) => (
+                    <button key={id} className="fchip" aria-pressed={f[l.id] === id} onClick={() => alterna(l.id, id)}>{rotulo} <span className="mono filtro-n">{conta(teste)}</span></button>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="filtro-linha">
+              <span className="eyebrow">Grupo</span>
+              <select className="filtro-grupo" value={f.grupo || ''} onChange={e => muda({ grupo: e.target.value || null })} aria-label="Grupo">
+                <option value="">Todos os grupos</option>
+                {GRUPOS.map(m => <option key={m.id} value={m.id}>{m.icone} {m.grupo} ({m.membros.filter(k => desc.has(k)).length}/{m.membros.length})</option>)}
+              </select>
             </div>
+            <button className="filtro-fechar" onClick={() => setPainel(false)}>Pronto</button>
           </div>
-        ))}
-        <div className="filtro-linha">
-          <span className="eyebrow">Grupos</span>
-          <div className={`filtro-chips grupos${gruposAbertos ? ' abertos' : ''}`}>
-            {gruposVisiveis.map(m => {
-              const tem = m.membros.filter(k => desc.has(k)).length;
-              return (
-                <button key={m.id} className="fchip" aria-pressed={f.grupo === m.id} onClick={() => alterna('grupo', m.id)} title={m.nome}>
-                  <span aria-hidden="true">{m.icone}</span> {m.grupo} <span className="mono filtro-n">{tem}/{m.membros.length}</span>
-                </button>
-              );
-            })}
-          </div>
-          <button className="filtro-mais" onClick={() => setGruposAbertos(a => !a)}>{gruposAbertos ? 'Mostrar menos ▲' : `Ver todos os ${GRUPOS.length} grupos ▼`}</button>
-        </div>
+        )}
       </div>
 
       <div className="filtro-resultado mono">
