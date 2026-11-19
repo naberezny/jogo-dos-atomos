@@ -328,10 +328,12 @@ button.brand { cursor: pointer; }
 .compacta .ptable-scroll { overflow-x: auto; padding: 0; margin: 0; overscroll-behavior-x: contain; scrollbar-width: none; }
 .compacta .ptable-scroll::-webkit-scrollbar { display: none; }
 .compacta .ptable { min-width: 0; width: calc(18 * var(--cel) + 17 * 3px); gap: 3px; grid-template-columns: repeat(18, var(--cel)); grid-template-rows: repeat(7, var(--cel)) 4px var(--cel) var(--cel); }
-.compacta .cell { aspect-ratio: auto; padding: 0; border-radius: 4px; align-items: center; justify-content: center; }
+.compacta .cell { aspect-ratio: auto; padding: 2px 2px 1px; border-radius: 4px; align-items: stretch; justify-content: space-between; }
 .compacta .cell:hover { transform: none; }
-.compacta .cell .z, .compacta .cell .n { display: none; }
-.compacta .cell .s { font-size: calc(var(--cel) * .42); }
+/* Número atômico no canto e nome embaixo, como na tabela dos Estudos, em tamanho proporcional à célula. */
+.compacta .cell .z { font-size: calc(var(--cel) * .22); }
+.compacta .cell .s { font-size: calc(var(--cel) * .38); }
+.compacta .cell .n { font-size: calc(var(--cel) * .175); letter-spacing: -.02em; }
 .compacta .series { font-size: 0; border-radius: 4px; }
 
 /* Modo subatômico no celular: mesma ideia, com as abas e o seletor de antimatéria numa linha fina */
